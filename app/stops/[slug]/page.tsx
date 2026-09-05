@@ -14,7 +14,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-/** Prerender every stop at build time. Cheap at this size; revisit at scale. */
+/*
+  Prerender the stops known at build time, and regenerate periodically so
+  newly imported places pick up their page without a redeploy. Slugs that
+  did not exist at build are rendered on demand.
+*/
+export const revalidate = 300;
+
+/** Prerender the stops known at build time; the rest render on request. */
 export async function generateStaticParams() {
   const stops = await getStops();
   return stops.map((stop) => ({ slug: stop.slug }));
@@ -106,6 +113,19 @@ export default async function StopPage({ params }: PageProps) {
               , licensed ODbL.
             </p>
           ) : null}
+
+          {/*
+            A correction link where the problem is visible. Someone reading a
+            stop page is the person most likely to know the hours are wrong.
+          */}
+          <p className="mt-6 text-[0.9rem]">
+            <Link
+              href={`/suggest?stop=${stop.slug}`}
+              className="text-route underline underline-offset-4"
+            >
+              Something wrong with this entry?
+            </Link>
+          </p>
 
           <p className="mt-8 text-[0.9rem] text-ink-soft">
             {stop.source ? (

@@ -1,9 +1,11 @@
 import { RouteMap } from "./RouteMap";
 import { formatCoordinates, formatDetour } from "@/lib/format";
-import type { Route, Stop } from "@/types/oddway";
+import type { MapStop, Route, Stop } from "@/types/oddway";
 
 interface MapSectionProps {
   stops: Stop[];
+  /** Every stop we hold, plotted when no route has been planned yet. */
+  allStops?: MapStop[];
   /** The drawn route. Null until the routing API exists. */
   route?: Route | null;
 }
@@ -17,7 +19,15 @@ interface MapSectionProps {
  * decoration — a WebGL canvas is unreadable to assistive technology, so the
  * list is the accessible equivalent and stays in the DOM either way.
  */
-export function MapSection({ stops, route = null }: MapSectionProps) {
+export function MapSection({
+  stops,
+  allStops,
+  route = null,
+}: MapSectionProps) {
+  // Before a search, the map is a picture of everything OddWay knows. After
+  // one, it narrows to the stops actually near the route.
+  const plotted = route ? stops : (allStops ?? stops);
+  const isOverview = !route && allStops !== undefined;
   return (
     <section
       id="map"
@@ -36,14 +46,17 @@ export function MapSection({ stops, route = null }: MapSectionProps) {
         </p>
 
         <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-[4px] border border-brass/30 bg-paper-sunk sm:aspect-16/9">
-          <RouteMap stops={stops} route={route} />
+          <RouteMap
+            stops={plotted}
+            route={route}
+            markerStyle={isOverview ? "dot" : "numbered"}
+          />
         </div>
 
         {route === null ? (
           <p className="mt-5 max-w-[62ch] border-l-2 border-brass pl-4 text-[0.95rem] text-lichen">
-            Route drawing isn&rsquo;t switched on yet, so the map is framed on
-            the stops themselves. Once the routing engine lands, the line
-            appears here and the stops re-sort by detour.
+            Every one of the {plotted.length} places in the index. Plan a route
+            and the map narrows to what&rsquo;s actually near it.
           </p>
         ) : null}
 

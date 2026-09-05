@@ -156,6 +156,28 @@
   transition: transform 150ms ease;
 }
 
+/* Overview pins: hundreds at once, so small and unnumbered. */
+.oddway-pin {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: 2px solid var(--color-paper);
+  border-radius: 9999px;
+  background-color: var(--color-route);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgb(43 38 32 / 0.35);
+  transition: transform 120ms ease;
+}
+
+.oddway-pin:hover {
+  transform: scale(1.5);
+}
+
+.oddway-pin:focus-visible {
+  outline: 2px solid var(--color-route);
+  outline-offset: 2px;
+}
+
 .oddway-marker:hover {
   transform: scale(1.08);
 }

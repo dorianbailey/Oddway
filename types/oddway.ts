@@ -67,6 +67,18 @@ export interface Stop {
   timezone: string | null;
 }
 
+/**
+ * The minimum needed to plot a stop and label its popup.
+ *
+ * The map does not need descriptions, hours or sources, and sending several
+ * hundred full records to the browser to draw dots would be wasteful.
+ * `detourMinutes` is optional because it only exists once a route is planned.
+ */
+export type MapStop = Pick<
+  Stop,
+  "id" | "name" | "slug" | "category" | "latitude" | "longitude" | "city" | "state"
+> & { detourMinutes?: number };
+
 /** What the user asked for on the route search form. */
 export interface RouteQuery {
   origin: string;

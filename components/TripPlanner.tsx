@@ -9,11 +9,13 @@ import { TripSummary } from "./TripSummary";
 import { formatDuration } from "@/lib/format";
 import { formatDistance } from "@/lib/units";
 import { useUnits } from "./UnitsProvider";
-import type { CategorySlug, Route, Stop } from "@/types/oddway";
+import type { CategorySlug, MapStop, Route, Stop } from "@/types/oddway";
 
 interface TripPlannerProps {
-  /** Shown before any search runs, so the page is never empty. */
+  /** Featured before any search runs, so the page is never empty. */
   fallbackStops: Stop[];
+  /** Every stop, plotted on the map until a route narrows it down. */
+  allStops?: MapStop[];
 }
 
 interface TripResult {
@@ -50,7 +52,7 @@ const REFINE_DEBOUNCE_MS = 500;
  * The heavy lifting happens server-side in /api/trip — this component never
  * sees an API key and never talks to a provider directly.
  */
-export function TripPlanner({ fallbackStops }: TripPlannerProps) {
+export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState<TripResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -160,7 +162,11 @@ export function TripPlanner({ fallbackStops }: TripPlannerProps) {
         </div>
       </section>
 
-      <MapSection stops={shownStops} route={result?.route ?? null} />
+      <MapSection
+        stops={shownStops}
+        allStops={allStops}
+        route={result?.route ?? null}
+      />
 
       <section
         id="stops"
@@ -172,7 +178,7 @@ export function TripPlanner({ fallbackStops }: TripPlannerProps) {
         <h2 id="stops-heading" className="mt-14 max-w-[24ch] text-section first:mt-0">
           {hasSearched
             ? `${result.stops.length} ${result.stops.length === 1 ? "stop" : "stops"} worth pulling off for`
-            : "What turns up on a run through Appalachia"}
+            : "OddWay recommendations"}
         </h2>
 
         {hasSearched ? (
@@ -183,9 +189,9 @@ export function TripPlanner({ fallbackStops }: TripPlannerProps) {
           </p>
         ) : (
           <p className="mt-5 max-w-[62ch] text-lede text-ink-soft">
-            A sample of the index. Every entry carries the detour cost and
-            whether you can actually get in, so you know what you&rsquo;re
-            signing up for before you turn off.
+            Three from the index, changing daily. Every entry carries whether
+            you can actually get in, so you know what you&rsquo;re signing up
+            for before you turn off.
           </p>
         )}
 

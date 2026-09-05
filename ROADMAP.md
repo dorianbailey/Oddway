@@ -49,6 +49,13 @@ starts, because the schema is the easy half.
 `lib/trip-order.ts`. Alphabetical and by-distance are two sort modes over one
 list, not two pages.
 
+**Dormant events.** Not deleted. A Facebook page that has gone quiet does not
+reliably mean the festival stopped — many are run through a county visitor
+centre rather than their own account. The listing links to whatever page exists
+and tells people to confirm before travelling. If this becomes a real problem,
+a `status` column (active / dormant) would hide them without discarding the
+research.
+
 **Past events.** Hide rather than delete. A festival that ran last October is
 evidence it will likely run again, and deleting it throws away the research.
 

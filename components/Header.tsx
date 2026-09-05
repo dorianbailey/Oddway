@@ -3,6 +3,7 @@ import { OddWayLogo } from "./OddWayLogo";
 
 const NAV_LINKS = [
   { href: "/explore", label: "Explore" },
+  { href: "/events", label: "Events" },
   { href: "/about", label: "About" },
 ] as const;
 

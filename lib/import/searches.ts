@@ -62,15 +62,27 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
   },
   {
     category: "haunted",
+    /*
+      No amenity=prison and no healthcare tags. Those return working
+      correctional facilities and functioning psychiatric hospitals, and an
+      index that tells travellers to go and look at either is indefensible.
+      The historic ones worth visiting — Eastern State, the West Virginia
+      Penitentiary — are tagged as attractions or museums anyway.
+
+      tourism=hotel is included because haunted hotels are often tagged only
+      that way, but it makes each query far heavier. Use --tile 3 for this
+      category.
+    */
     tags: [
       ...ATTRACTION_TAGS,
       '["tourism"="hotel"]',
       '["historic"="ruins"]',
-      '["amenity"="prison"]',
     ],
     keywords: [
       "haunted",
+      "haunted house",
       "ghost tour",
+      "ghost walk",
       "ghost town",
       "poltergeist",
       "asylum",
@@ -78,8 +90,10 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
       "sanitarium",
       "lunatic",
       "penitentiary",
-      "spirits of",
       "paranormal",
+      "spirit tour",
+      "séance",
+      "seance",
     ],
   },
   {
@@ -133,6 +147,19 @@ export function getCategorySearch(
  * which are Indigenous cultural and sacred works, not roadside curiosities.
  */
 const EXCLUSIONS = [
+  // Places that match a keyword but are working facilities, not attractions.
+  // Sending sightseers to an operating prison or psychiatric hospital is
+  // both useless and intrusive.
+  /\bcorrectional\b/i,
+  /\bdetention\b/i,
+  /\bcounty jail\b/i,
+  /\bstate prison\b/i,
+  /\bhospital\b/i,
+  /\bmedical cent(er|re)\b/i,
+  /\bpsychiatric\b/i,
+  /\bbehavioral health\b/i,
+  /\btreatment cent(er|re)\b/i,
+  /\brehabilitation\b/i,
   /\bmasonic\b/i,
   /\bcemetery\b/i,
   /\bairboat\b/i,

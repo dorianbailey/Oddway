@@ -12,12 +12,17 @@ import {
 import { categoryLabel } from "@/lib/categories";
 import { formatDetour } from "@/lib/format";
 import { useUnits } from "./UnitsProvider";
-import type { Route, Stop } from "@/types/oddway";
+import type { MapStop, Route } from "@/types/oddway";
 
 interface RouteMapProps {
-  stops: Stop[];
+  stops: MapStop[];
   /** The drawn route. Null until the routing API is wired up. */
   route?: Route | null;
+  /**
+   * "numbered" ties markers to a results list. "dot" is for showing the whole
+   * index at once, where numbering hundreds of pins would be meaningless.
+   */
+  markerStyle?: "numbered" | "dot";
 }
 
 type MapStatus = "loading" | "ready" | "error";
@@ -36,7 +41,11 @@ const ROUTE_LAYER_ID = "oddway-route-line";
  * once; markers and the route are applied by separate effects so either can
  * change without tearing the map down.
  */
-export function RouteMap({ stops, route = null }: RouteMapProps) {
+export function RouteMap({
+  stops,
+  route = null,
+  markerStyle = "numbered",
+}: RouteMapProps) {
   const { units } = useUnits();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -176,8 +185,11 @@ export function RouteMap({ stops, route = null }: RouteMapProps) {
       stops.forEach((stop, index) => {
         const element = document.createElement("button");
         element.type = "button";
-        element.className = "oddway-marker";
-        element.textContent = String(index + 1);
+        element.className =
+          markerStyle === "dot" ? "oddway-pin" : "oddway-marker";
+        if (markerStyle === "numbered") {
+          element.textContent = String(index + 1);
+        }
         element.setAttribute(
           "aria-label",
           `${stop.name}, ${stop.city}, ${stop.state}`,
@@ -196,11 +208,15 @@ export function RouteMap({ stops, route = null }: RouteMapProps) {
         place.className = "oddway-popup-meta";
         place.textContent = `${categoryLabel(stop.category)} · ${stop.city}, ${stop.state}`;
 
-        const detour = document.createElement("p");
-        detour.className = "oddway-popup-meta";
-        detour.textContent = formatDetour(stop.detourMinutes);
+        content.append(heading, place);
 
-        content.append(heading, place, detour);
+        // Only meaningful once a route exists to be detouring from.
+        if (stop.detourMinutes !== undefined && stop.detourMinutes > 0) {
+          const detour = document.createElement("p");
+          detour.className = "oddway-popup-meta";
+          detour.textContent = formatDetour(stop.detourMinutes);
+          content.append(detour);
+        }
 
         const popup = new maplibregl.Popup({
           offset: 22,
@@ -236,7 +252,7 @@ export function RouteMap({ stops, route = null }: RouteMapProps) {
     return () => {
       cancelled = true;
     };
-  }, [stops, route, status]);
+  }, [stops, route, status, markerStyle]);
 
   // Draw the route, once there is one.
   useEffect(() => {

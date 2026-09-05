@@ -103,10 +103,82 @@ export async function getStopBySlug(slug: string): Promise<Stop | null> {
   return data ? toStop(data) : null;
 }
 
+/**
+ * Just enough of every stop to plot it. Sending 300-odd full records with
+ * descriptions to the browser to draw dots on a map is a waste of everyone's
+ * bandwidth.
+ */
+export async function getStopPins(): Promise<
+  Array<Pick<Stop, "id" | "name" | "slug" | "category" | "latitude" | "longitude" | "city" | "state">>
+> {
+  const stops = await getStops();
+  return stops.map(({ id, name, slug, category, latitude, longitude, city, state }) => ({
+    id, name, slug, category, latitude, longitude, city, state,
+  }));
+}
+
+/**
+ * A rotating handful to feature on the homepage.
+ *
+ * Chosen by the date rather than at random: the same three all day means the
+ * server and the browser agree, the page can still be cached, and someone who
+ * refreshes twice doesn't get a reshuffle. It moves on tomorrow, so the whole
+ * index gets a turn instead of the same three places forever.
+ *
+ * Only entries with a description are eligible. Featuring a blank card would
+ * be advertising the gap.
+ */
+export async function getRecommendedStops(
+  count = 3,
+  today = new Date(),
+): Promise<Stop[]> {
+  const stops = await getStops();
+  const eligible = stops.filter((stop) => stop.description?.trim());
+  const pool = eligible.length >= count ? eligible : stops;
+
+  if (pool.length === 0) return [];
+
+  // Stable order first, so the rotation is reproducible run to run.
+  const ordered = [...pool].sort((a, b) => a.id.localeCompare(b.id));
+
+  const day = Math.floor(
+    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()) /
+      86_400_000,
+  );
+  const start = (day * count) % ordered.length;
+
+  return Array.from(
+    { length: Math.min(count, ordered.length) },
+    (_, i) => ordered[(start + i) % ordered.length],
+  );
+}
+
 /** A small set for the homepage, to show what results look like. */
 export async function getFeaturedStops(limit = 3): Promise<Stop[]> {
   const stops = await getStops();
   return stops.slice(0, limit);
+}
+
+/**
+ * Every state we hold stops in, with counts, ordered by name.
+ *
+ * Derived from the stops themselves rather than a fixed list, so the filter
+ * only ever offers states that actually have something in them. An empty
+ * option is a dead end.
+ */
+export async function getStatesWithCounts(): Promise<
+  Array<{ code: string; count: number }>
+> {
+  const stops = await getStops();
+  const counts = new Map<string, number>();
+
+  for (const stop of stops) {
+    counts.set(stop.state, (counts.get(stop.state) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .map(([code, count]) => ({ code, count }))
+    .sort((a, b) => a.code.localeCompare(b.code));
 }
 
 /** How many stops sit in each category, for the explore index. */

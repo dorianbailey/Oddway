@@ -23,11 +23,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 pt-16 pb-4 sm:px-8 sm:pt-24">
-          <Hero />
-        </div>
-      </section>
+      <Hero />
 
       <TripPlanner fallbackStops={recommended} allStops={allStops} />
 

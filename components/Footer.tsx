@@ -13,7 +13,12 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer data-surface="dark" className="bg-pine text-paper">
+    <footer
+      data-surface="dark"
+      className="bg-pine/85 text-paper backdrop-blur-[1px]"
+    >
+
+
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-5 py-14 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div>
           <OddWayLogo size="lg" className="w-fit" />

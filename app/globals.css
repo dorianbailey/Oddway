@@ -30,19 +30,33 @@
   --color-ink: #14110d; /* dense black, never quite neutral on newsprint */
   --color-ink-soft: #4a453c; /* 7.4:1 on stock */
 
-  /* The room the paper is lying in. Dark, brown-green, never pure black. */
-  --color-pine: #1a1712;
-  --color-pine-deep: #12100c;
-  /* The surface the paper is lying on: a grey board, lit unevenly. */
-  --color-board: #a5a199;
+  /*
+    Dark surfaces — header, footer, the map band.
+
+    Pitched to the blue-black of the backdrop photograph rather than the brown
+    they were, so the bands read as continuous with the woods behind the page
+    instead of sitting on top of them as a different material.
+  */
+  --color-pine: #0e161b;
+  --color-pine-deep: #070d11;
+  /* Sampled from the backdrop photograph, used as a paint-time fallback. */
+  --color-board: #050a0d;
   --color-night: #14120e;
   --color-night-deep: #0b0a08;
 
-  /* The one colour a paper like this would run, and then only in the masthead */
-  --color-route: #9c2b1c;
-  --color-route-line: #c04026;
+  /*
+    Sodium-vapour amber, the colour of the streetlights in the hero photograph.
+
+    The same hue needs two lightnesses to stay legible. A bright amber on pale
+    newsprint sits around 2:1 and is unreadable, so anything on paper uses the
+    dark ochre end of the ramp, and anything on a dark ground uses the bright
+    end. It reads as one colour because it is one hue.
+  */
+  --color-route: #7d5f0e; /* on paper — 4.7:1 */
+  --color-route-hover: #674d0b;
+  --color-route-line: #e8a33d; /* the lamp itself, on the dark map */
   --color-contour: #6f695c; /* rules — 3.9:1 on stock */
-  --color-brass: #c9c2ae; /* reversed-out rules on dark */
+  --color-brass: #e0a63a; /* amber on dark surfaces — 8:1 on pine */
   --color-lichen: #cfc9b8;
   --color-water: #6b7570;
 
@@ -86,25 +100,16 @@
     lives — the sheet itself stays plain and readable, because a texture behind
     body text makes it harder to read and creepy is not worth that.
   */
+  /*
+    The page sits on a photograph of woods at night, rendered as a fixed layer
+    behind everything (see layout.tsx) rather than as a background-attachment,
+    which iOS ignores and which janks badly on scroll.
+
+    The colour here is only a fallback so nothing flashes pale before the
+    image paints — it is sampled from the darkest part of the photograph.
+  */
   body {
-    background-color: var(--color-board);
-    background-image:
-      radial-gradient(
-        ellipse 90% 60% at 50% 0%,
-        color-mix(in srgb, #c8c3b8 60%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 70% 50% at 10% 60%,
-        color-mix(in srgb, #8e8b81 35%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 80% 60% at 90% 90%,
-        color-mix(in srgb, #86837a 35%, transparent),
-        transparent 70%
-      );
-    background-attachment: fixed;
+    background-color: #050a0d;
     color: var(--color-ink);
     /* Prose in the text serif. Buttons and labels opt back into the sans. */
     font-family: var(--font-serif);
@@ -406,6 +411,7 @@ body::before {
   pointer-events: none;
 }
 
+
 /*
   The masthead rule: a heavy line with a hairline beneath it, which is how
   almost every newspaper separates its nameplate from the news.
@@ -420,31 +426,7 @@ body::before {
   border-left: 1px solid color-mix(in srgb, var(--color-contour) 55%, transparent);
 }
 
-/* Halftone dot screen, as used to print a photograph on newsprint. */
-@utility halftone {
-  background-image: radial-gradient(
-    color-mix(in srgb, var(--color-ink) 45%, transparent) 1px,
-    transparent 1.4px
-  );
-  background-size: 5px 5px;
-}
 
-/* A faint graticule, like the grid ticks printed on a quadrangle sheet. */
-@utility map-grid {
-  background-image:
-    linear-gradient(
-      to right,
-      color-mix(in srgb, var(--color-contour) 14%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-contour) 14%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 104px 104px;
-  background-position: center;
-}
 
 /*
   MapLibre styling.

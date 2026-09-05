@@ -127,7 +127,7 @@ export function RouteSearch({
         <button
           type="submit"
           disabled={isLoading}
-          className="rounded-[3px] bg-route px-6 py-3 font-semibold text-paper transition-colors hover:bg-[#8a2411] disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-[3px] bg-route px-6 py-3 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isLoading ? "Finding stops\u2026" : "Find strange stops"}
         </button>

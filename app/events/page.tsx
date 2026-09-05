@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 import { StateFilter } from "@/components/StateFilter";
 import { EventList } from "@/components/EventList";
 import { getEventStates, getEvents } from "@/lib/events";
@@ -37,18 +38,16 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <PageHero>
           <h1 className="max-w-[20ch] text-hero">
             {selected ? `Events in ${stateName(selected)}` : "Events"}
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lede text-ink-soft">
+          <p className="mt-6 max-w-[62ch] text-lede text-[#cfc9bb]">
             Festivals, conferences and gatherings for people who drive a long
             way to hear about a monster. Listed alphabetically — sort by how
             close they are, or how soon.
           </p>
-        </div>
-      </section>
+        </PageHero>
 
       <div className="border-b border-contour/30 bg-paper-sunk">
         <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8">

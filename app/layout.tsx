@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { UnitsProvider } from "@/components/UnitsProvider";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#241d17",
+  themeColor: "#050a0d",
   colorScheme: "light",
 };
 
@@ -45,6 +46,26 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        {/*
+          The backdrop: woods at night, fixed behind everything so the sheet
+          appears to lie on it. A fixed layer rather than
+          background-attachment: fixed, which iOS ignores and which janks on
+          scroll. Decorative, so it carries an empty alt.
+        */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 -z-10"
+        >
+          <Image
+            src="/images/night-forest.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
+
         <UnitsProvider>
           <Header />
 
@@ -52,8 +73,12 @@ export default function RootLayout({
             The sheet: content on paper, laid over the dark ground. The padding
             on this wrapper is what lets the room show around the edges.
           */}
-          <div className="sheet-shadow grow sm:px-6 sm:py-8 lg:px-10 lg:py-12">
-            <main id="main" className="sheet mx-auto max-w-[1400px]">
+          {/*
+            Generous margins so the board reads as a surface the paper is
+            lying on, rather than as a hairline border round the page.
+          */}
+          <div className="sheet-shadow grow px-3 pt-4 pb-0 sm:px-10 sm:pt-12 lg:px-16 lg:pt-16">
+            <main id="main" className="sheet mx-auto max-w-[1280px]">
               {children}
             </main>
           </div>

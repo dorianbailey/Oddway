@@ -93,8 +93,16 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
       return { label, latitude, longitude };
     },
 
+    /*
+      Uses /geocode/search rather than /geocode/autocomplete.
+
+      The autocomplete endpoint returns 403 on this key — it is not on the
+      plan, and no amount of waiting changes that. Search accepts partial text
+      and returns ranked results, so type-ahead still works; it is a little
+      less forgiving of half-typed words, which is a fair trade for working.
+    */
     async autocomplete(query, signal) {
-      const url = new URL("/geocode/autocomplete", BASE_URL);
+      const url = new URL("/geocode/search", BASE_URL);
       url.searchParams.set("text", query);
       url.searchParams.set("size", String(SUGGESTION_LIMIT));
       url.searchParams.set("layers", AUTOCOMPLETE_LAYERS);

@@ -109,7 +109,7 @@ export function EventList({ events }: { events: OddEvent[] }) {
               type="button"
               onClick={findMe}
               disabled={locating}
-              className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[#8a2411] disabled:opacity-60"
+              className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] disabled:opacity-60"
             >
               {locating ? "Finding you…" : "Show me what's near me"}
             </button>

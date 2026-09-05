@@ -122,7 +122,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
+      <section className="border-b-2 border-ink/70">
         <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
           <RouteSearch
             onPlan={handlePlan}

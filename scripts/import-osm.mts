@@ -32,6 +32,7 @@ import {
   type OverpassElement,
 } from "../lib/import/overpass";
 import { getCategorySearch, matchesKeywords } from "../lib/import/searches";
+import { stateCode } from "../lib/us-states";
 
 interface Candidate {
   name: string;
@@ -50,6 +51,9 @@ interface Candidate {
 }
 
 const CACHE_DIR = ".import-cache";
+
+/** is_in is far lighter than a tile scan, so it does not need the same pause. */
+const LOOKUP_DELAY_MS = 1_500;
 
 async function main() {
   const [category, ...flags] = process.argv.slice(2);
@@ -123,39 +127,55 @@ async function main() {
   const needPlace = unique.filter((c) => !c.city || !c.state);
 
   if (needPlace.length > 0) {
-    const apiKey = readApiKey();
+    console.log(
+      `\nLooking up city and state for ${needPlace.length} places via Overpass…`,
+    );
+    const cachePath = join(CACHE_DIR, `${category}-places.json`);
+    const cache: Record<string, { city: string | null; state: string | null }> =
+      existsSync(cachePath) ? JSON.parse(readFileSync(cachePath, "utf8")) : {};
 
-    if (!apiKey) {
-      console.log(
-        `\n${needPlace.length} have no city/state and ORS_API_KEY was not found in .env.local.`,
-      );
-      console.log("They will be listed as comments rather than dropped.");
-    } else {
-      console.log(`\nLooking up city and state for ${needPlace.length} places…`);
-      const cachePath = join(CACHE_DIR, `${category}-places.json`);
-      const cache: Record<string, { city: string | null; state: string | null }> =
-        existsSync(cachePath) ? JSON.parse(readFileSync(cachePath, "utf8")) : {};
+    let failures = 0;
 
-      for (const [index, candidate] of needPlace.entries()) {
-        const key = `${candidate.latitude},${candidate.longitude}`;
+    for (const [index, candidate] of needPlace.entries()) {
+      const key = `${candidate.latitude},${candidate.longitude}`;
 
-        if (!(key in cache)) {
-          cache[key] = await reversePlace(
-            candidate.latitude,
-            candidate.longitude,
-            apiKey,
-          );
+      if (!(key in cache)) {
+        process.stdout.write(
+          `  [${index + 1}/${needPlace.length}] ${candidate.name.slice(0, 40)} `,
+        );
+        const startedAt = Date.now();
+        const answer = await reversePlace(
+          candidate.latitude,
+          candidate.longitude,
+        );
+        console.log(
+          answer.failed
+            ? "— failed"
+            : `— ${answer.city ?? "?"}, ${answer.state ?? "outside US"} (${Date.now() - startedAt}ms)`,
+        );
+
+        // Only remember real answers, so a failure is retried next run rather
+        // than being frozen in as "this place has no city".
+        if (!answer.failed) {
+          cache[key] = { city: answer.city, state: answer.state };
           writeFileSync(cachePath, JSON.stringify(cache));
-          await sleep(600);
+        } else {
+          failures += 1;
         }
 
-        candidate.city = candidate.city ?? cache[key].city;
-        candidate.state = candidate.state ?? cache[key].state;
-
-        if ((index + 1) % 10 === 0) {
-          console.log(`  ${index + 1}/${needPlace.length}`);
-        }
+        // is_in is a cheap query, so a shorter pause is still polite.
+        await sleep(LOOKUP_DELAY_MS);
       }
+
+      candidate.city = candidate.city ?? cache[key]?.city ?? null;
+      candidate.state = candidate.state ?? cache[key]?.state ?? null;
+
+    }
+
+    if (failures > 0) {
+      console.log(
+        `  ${failures} lookups failed and were not cached — re-run to retry them.`,
+      );
     }
   }
 
@@ -293,94 +313,50 @@ ${skipped ? `-- Skipped, no city/state in OSM:\n${skipped}` : ""}
 }
 
 /**
- * Key for the import, read from .env.local; this script runs outside Next.
+ * Coordinates to a city and two-letter state, via Overpass.
  *
- * Prefers ORS_IMPORT_KEY over ORS_API_KEY. Bulk imports and live traffic have
- * opposite shapes — hundreds of requests in ten minutes versus a handful per
- * visitor — and sharing one key means an import can exhaust the quota the
- * website depends on. That is exactly what happened during the haunted run.
- */
-function readApiKey(): string | null {
-  for (const name of ["ORS_IMPORT_KEY", "ORS_API_KEY"]) {
-    const value = readEnv(name);
-    if (value) {
-      if (name === "ORS_API_KEY") {
-        console.log(
-          "Using ORS_API_KEY. Set ORS_IMPORT_KEY to a second token so a long\n" +
-            "import cannot use up the quota the live site needs.\n",
-        );
-      }
-      return value;
-    }
-  }
-  return null;
-}
-
-function readEnv(name: string): string | null {
-  try {
-    const line = readFileSync(".env.local", "utf8")
-      .split("\n")
-      .find((row) => row.startsWith(`${name}=`));
-    const value = line?.slice(name.length + 1).trim();
-    return value ? value : null;
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Coordinates to a city and two-letter state.
- *
- * Failures return nulls rather than throwing: a missing place name should
- * leave one row commented out, not abandon the whole run.
+ * OpenRouteService's reverse endpoint returns 403 on our key — it is not on
+ * the plan — so this uses the same service the import already depends on.
+ * `is_in` returns every administrative area containing a point, which gives
+ * the state at admin_level 4 and the town at 8 in a single query, with no
+ * quota to exhaust.
  */
 async function reversePlace(
   latitude: number,
   longitude: number,
-  apiKey: string,
-): Promise<{ city: string | null; state: string | null }> {
-  const url = new URL("https://api.openrouteservice.org/geocode/reverse");
-  url.searchParams.set("point.lat", String(latitude));
-  url.searchParams.set("point.lon", String(longitude));
-  url.searchParams.set("size", "1");
-  // Deliberately NOT filtering by country. Forcing a US match would relabel a
-  // point in British Columbia as the nearest American town, silently putting
-  // Canadian places in a US index. Better to read the country back and reject.
+): Promise<{ city: string | null; state: string | null; failed: boolean }> {
+  const query = `[out:json][timeout:30];is_in(${latitude},${longitude});out tags;`;
 
+  let elements;
   try {
-    const response = await fetch(url, {
-      headers: { Authorization: apiKey, Accept: "application/json" },
-    });
-    if (!response.ok) return { city: null, state: null };
-
-    const data = (await response.json()) as {
-      features?: Array<{
-        properties?: {
-          locality?: string;
-          localadmin?: string;
-          county?: string;
-          region_a?: string;
-          country_a?: string;
-        };
-      }>;
-    };
-
-    const props = data.features?.[0]?.properties;
-
-    // Outside the US: leave it unplaced so it is commented out, not imported.
-    if (props?.country_a && props.country_a !== "USA") {
-      return { city: null, state: null };
-    }
-
-    const region = props?.region_a;
-
-    return {
-      city: props?.locality ?? props?.localadmin ?? props?.county ?? null,
-      state: region && region.length === 2 ? region.toUpperCase() : null,
-    };
-  } catch {
-    return { city: null, state: null };
+    elements = await runQuery(query, (message) => console.log(message));
+  } catch (error) {
+    console.log(`    lookup failed: ${String(error).slice(0, 90)}`);
+    return { city: null, state: null, failed: true };
   }
+
+  let state: string | null = null;
+  let city: string | null = null;
+
+  for (const element of elements) {
+    const tags = element.tags ?? {};
+    const level = tags.admin_level;
+    const name = tags.name;
+    if (!name) continue;
+
+    if (level === "4" && !state) {
+      // Prefer the ISO code when OSM carries one; fall back to the name.
+      const iso = tags["ISO3166-2"];
+      state = iso?.startsWith("US-") ? iso.slice(3) : stateCode(name);
+    }
+    // 8 is a city or town; 7 is sometimes a township. Take the smallest.
+    if ((level === "8" || level === "7") && !city) city = name;
+  }
+
+  // Outside the US, or nothing administrative covers the point.
+  if (!state) return { city: null, state: null, failed: false };
+
+  return { city, state, failed: false };
 }
 
 function valueOf(flags: string[], name: string): string | undefined {

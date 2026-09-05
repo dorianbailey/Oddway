@@ -64,7 +64,7 @@ export function StopCard({ stop }: StopCardProps) {
         back to grid paper with the coordinates printed on it. Drop an
         <Image /> in here once we have licensed photography.
       */}
-      <div className="map-grid flex items-end justify-between gap-3 rounded-t-[2px] border-b border-contour/35 bg-paper px-5 py-3">
+      <div className="flex items-end justify-between gap-3 rounded-t-[2px] border-b border-contour/35 bg-paper px-5 py-3">
         <span className="rounded-full bg-lichen px-3 py-1 text-[0.8rem] font-semibold text-ink">
           {categoryLabel(stop.category)}
         </span>

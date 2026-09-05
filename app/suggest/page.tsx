@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 import { SuggestionForm } from "@/components/SuggestionForm";
 import { getStopBySlug } from "@/lib/stops";
 import { getCategory } from "@/lib/categories";
@@ -25,8 +26,7 @@ export default async function SuggestPage({ searchParams }: SuggestPageProps) {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <PageHero>
           <h1 className="max-w-[18ch] text-hero">
             {stop
               ? `Something wrong with ${stop.name}?`
@@ -34,13 +34,12 @@ export default async function SuggestPage({ searchParams }: SuggestPageProps) {
                 ? `Know a ${category.label.toLowerCase().replace(/s$/, "")} stop we've missed?`
                 : "Tell us what we've got wrong"}
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lede text-ink-soft">
+          <p className="mt-6 max-w-[62ch] text-lede text-[#cfc9bb]">
             Most of this index was assembled from public map data and then
             researched by hand. Plenty of it is still unverified, and places
             close, move and change their hours without telling anybody.
           </p>
-        </div>
-      </section>
+        </PageHero>
 
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 sm:py-16 lg:grid-cols-[1.3fr_1fr]">
         <SuggestionForm

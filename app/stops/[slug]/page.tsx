@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { StopMap } from "@/components/StopMap";
 import { OpeningHours } from "@/components/OpeningHours";
 import { OpenNowBadge } from "@/components/OpenNowBadge";
+import { PageHero } from "@/components/PageHero";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
@@ -56,33 +57,31 @@ export default async function StopPage({ params }: PageProps) {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
-          <p className="text-[0.95rem] text-ink-soft">
-            <Link href="/explore" className="underline underline-offset-4">
-              Explore
-            </Link>{" "}
-            <span aria-hidden="true">/</span>{" "}
-            <Link
-              href={`/explore#${stop.category}`}
-              className="underline underline-offset-4"
-            >
-              {categoryLabel(stop.category)}
-            </Link>
-          </p>
+      <PageHero>
+        <p className="text-[0.95rem] text-[#cfc9bb]">
+          <Link href="/explore" className="underline underline-offset-4">
+            Explore
+          </Link>{" "}
+          <span aria-hidden="true">/</span>{" "}
+          <Link
+            href={`/explore#${stop.category}`}
+            className="underline underline-offset-4"
+          >
+            {categoryLabel(stop.category)}
+          </Link>
+        </p>
 
-          <h1 className="mt-4 max-w-[18ch] text-hero">{stop.name}</h1>
-          <p className="mt-4 text-lede text-ink-soft">
-            {stop.city}, {stop.state}
-          </p>
+        <h1 className="mt-4 max-w-[18ch] text-hero">{stop.name}</h1>
+        <p className="mt-4 text-lede text-[#cfc9bb]">
+          {stop.city}, {stop.state}
+        </p>
 
-          <OpenNowBadge
-            openingHours={stop.openingHours}
-            timezone={stop.timezone}
-            className="mt-5"
-          />
-        </div>
-      </section>
+        <OpenNowBadge
+          openingHours={stop.openingHours}
+          timezone={stop.timezone}
+          className="mt-5"
+        />
+      </PageHero>
 
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
         <div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,13 +11,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <PageHero>
           <h1 className="max-w-[18ch] text-hero">
             The interesting part is rarely on the interstate
           </h1>
-        </div>
-      </section>
+        </PageHero>
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="max-w-[68ch] space-y-6 text-lede">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 import Link from "next/link";
 import { StateFilter } from "@/components/StateFilter";
 import { StopCard } from "@/components/StopCard";
@@ -51,20 +52,18 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
 
   return (
     <>
-      <section className="map-grid border-b border-contour/30">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <PageHero>
           <h1 className="max-w-[20ch] text-hero">
             {selected
               ? `Strange stops in ${stateName(selected)}`
               : "Explore the index"}
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lede text-ink-soft">
+          <p className="mt-6 max-w-[62ch] text-lede text-[#cfc9bb]">
             {selected
               ? `${stops.length} ${stops.length === 1 ? "place" : "places"} in ${stateName(selected)}, sorted by what they are. Enough for a weekend without leaving the state.`
               : "Everything OddWay knows about, sorted by what it is. Pick a state if you'd rather stay close to home."}
           </p>
-        </div>
-      </section>
+        </PageHero>
 
       <div className="border-b border-contour/30 bg-paper-sunk">
         <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8">

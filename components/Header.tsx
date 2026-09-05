@@ -39,7 +39,7 @@ export function Header() {
 
         <Link
           href="/#plan"
-          className="order-2 ml-auto rounded-[3px] bg-route px-4 py-2 text-[0.95rem] font-semibold text-paper transition-colors hover:bg-[#8a2411] sm:order-3"
+          className="order-2 ml-auto rounded-[3px] bg-route px-4 py-2 text-[0.95rem] font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] sm:order-3"
         >
           Plan a trip
         </Link>

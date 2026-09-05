@@ -27,3 +27,12 @@ export function stateName(code: string): string {
 export function isKnownState(code: string): boolean {
   return code.toUpperCase() in US_STATES;
 }
+
+/** Reverse lookup: "West Virginia" -> "WV". Used when a source gives names. */
+const CODE_BY_NAME = new Map(
+  Object.entries(US_STATES).map(([code, name]) => [name.toLowerCase(), code]),
+);
+
+export function stateCode(name: string): string | null {
+  return CODE_BY_NAME.get(name.trim().toLowerCase()) ?? null;
+}

@@ -74,6 +74,16 @@ export interface RouteQuery {
   maxDetourMinutes?: number;
 }
 
+/** A single manoeuvre along a route. */
+export interface RouteStep {
+  /** Human instruction, e.g. "Turn left onto Main Street". */
+  instruction: string;
+  distanceMeters: number;
+  durationSeconds: number;
+  /** Street or road being joined, when the provider gives one. */
+  name: string | null;
+}
+
 /** A route as returned by the routing provider, ready for MapLibre and Turf. */
 export interface Route {
   distanceMeters: number;
@@ -82,6 +92,8 @@ export interface Route {
   geometry: [number, number][];
   /** [west, south, east, north] — used to fit the map viewport. */
   bounds: [number, number, number, number];
+  /** Turn-by-turn manoeuvres. Empty when the provider omits them. */
+  steps: RouteStep[];
 }
 
 /** The full result of a search: the drawn route plus the stops found near it. */

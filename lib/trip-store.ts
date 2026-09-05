@@ -1,4 +1,5 @@
 import type { Stop } from "@/types/oddway";
+import type { TripOrigin } from "./trip-order";
 
 /**
  * The trip: stops the traveller has actually chosen.
@@ -15,6 +16,10 @@ const STORAGE_KEY = "oddway:trip";
 const EMPTY: Stop[] = [];
 
 let stops: Stop[] = EMPTY;
+/** Where the trip starts. Needed to order stops and to hand off a full route. */
+let origin: TripOrigin | null = null;
+/** Where the trip ends. Often home again, hence the location shortcut. */
+let destination: TripOrigin | null = null;
 let hydrated = false;
 
 const listeners = new Set<() => void>();
@@ -25,7 +30,10 @@ function emit() {
 
 function persist() {
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stops));
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ stops, origin, destination }),
+    );
   } catch {
     // Private mode or a full quota. The trip just won't survive a reload.
   }
@@ -39,7 +47,23 @@ function hydrate() {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return;
-    const parsed: unknown = JSON.parse(raw);
+    const decoded: unknown = JSON.parse(raw);
+    // Older versions stored a bare array. Accept both shapes.
+    const parsed: unknown = Array.isArray(decoded)
+      ? decoded
+      : (decoded as { stops?: unknown })?.stops;
+
+    const savedOrigin = Array.isArray(decoded)
+      ? null
+      : (decoded as { origin?: TripOrigin | null })?.origin ?? null;
+
+    if (isPlace(savedOrigin)) origin = savedOrigin;
+
+    const savedDestination = Array.isArray(decoded)
+      ? null
+      : (decoded as { destination?: TripOrigin | null })?.destination ?? null;
+    if (isPlace(savedDestination)) destination = savedDestination;
+
     if (Array.isArray(parsed)) {
       // Trust only what still looks like a Stop; the shape may have changed
       // since it was written.
@@ -56,6 +80,15 @@ function hydrate() {
   }
 }
 
+function isPlace(value: unknown): value is TripOrigin {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    typeof (value as TripOrigin).latitude === "number" &&
+    typeof (value as TripOrigin).longitude === "number"
+  );
+}
+
 export const tripStore = {
   subscribe(listener: () => void) {
     hydrate();
@@ -68,6 +101,36 @@ export const tripStore = {
   getSnapshot(): Stop[] {
     hydrate();
     return stops;
+  },
+
+  getOrigin(): TripOrigin | null {
+    hydrate();
+    return origin;
+  },
+
+  getOriginServerSnapshot(): TripOrigin | null {
+    return null;
+  },
+
+  setOrigin(next: TripOrigin | null) {
+    origin = next;
+    persist();
+    emit();
+  },
+
+  getDestination(): TripOrigin | null {
+    hydrate();
+    return destination;
+  },
+
+  getDestinationServerSnapshot(): TripOrigin | null {
+    return null;
+  },
+
+  setDestination(next: TripOrigin | null) {
+    destination = next;
+    persist();
+    emit();
   },
 
   /** Server renders an empty trip; the client corrects it after hydration. */
@@ -95,6 +158,8 @@ export const tripStore = {
 
   clear() {
     stops = EMPTY;
+    origin = null;
+    destination = null;
     persist();
     emit();
   },

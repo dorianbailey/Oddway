@@ -27,6 +27,12 @@ export interface RoutingProvider {
   geocode(query: string, signal?: AbortSignal): Promise<GeocodeResult | null>;
   /** Type-ahead suggestions for a partial query. Ordered best-first. */
   autocomplete(query: string, signal?: AbortSignal): Promise<GeocodeResult[]>;
+  /** Coordinates to a place name, so device location can be named on screen. */
+  reverseGeocode(
+    latitude: number,
+    longitude: number,
+    signal?: AbortSignal,
+  ): Promise<GeocodeResult | null>;
   /** Driving route between two points. */
   route(
     from: GeocodeResult,

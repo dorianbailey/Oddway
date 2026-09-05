@@ -9,8 +9,9 @@ import type { Stop } from "@/types/oddway";
  * verified. Nothing here is scraped: coordinates are approximate and the copy
  * is original.
  *
- * When Postgres lands, delete this file and have `lib/stops.ts` query the
- * `stops` table instead. Nothing else needs to change.
+ * `detourMinutes` is 0 on every entry, matching what the database returns.
+ * It is computed per route in lib/corridor.ts, so any stored value would be
+ * wrong for every journey but one.
  */
 export const DEMO_STOPS: readonly Stop[] = [
   {
@@ -24,7 +25,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "WV",
     description:
       "Point Pleasant spent thirteen months in 1966 and 1967 reporting a winged figure with red eyes, and it has never really stopped. The museum keeps the newspaper clippings, the witness statements and the props from the film adaptation in one small storefront on Main Street.",
-    detourMinutes: 14,
+    detourMinutes: 0,
     publicAccess: "open",
     image: null,
     source: null,
@@ -45,7 +46,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "WV",
     description:
       "In September 1952 a group of Braxton County kids went up a hill after a light in the sky and came back down describing something ten feet tall in a pleated metal skirt. The collection is small, free and unexpectedly thorough about what the witnesses actually said.",
-    detourMinutes: 9,
+    detourMinutes: 0,
     publicAccess: "open",
     image: null,
     source: null,
@@ -66,7 +67,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "PA",
     description:
       "Something came down in the woods here on a December evening in 1965. Accounts differ on what the military carried out. The fire department settled the matter locally by mounting a large acorn-shaped replica behind the station, which is what most people drive out to see.",
-    detourMinutes: 11,
+    detourMinutes: 0,
     publicAccess: "roadside",
     image: null,
     source: null,
@@ -87,7 +88,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "WV",
     description:
       "A quarter-mile of hand-cut sandstone, built for 250 patients and holding well over two thousand by the 1950s. Daytime tours cover the architecture and the medical history; the overnight ones cover the reason most people have heard of it.",
-    detourMinutes: 22,
+    detourMinutes: 0,
     publicAccess: "limited",
     image: null,
     source: null,
@@ -108,7 +109,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "PA",
     description:
       "A coal seam under the borough caught fire in 1962 and is still burning. Almost everyone was bought out and moved; the street grid remains, the buildings mostly do not, and steam still works its way up through the ground on cold mornings.",
-    detourMinutes: 18,
+    detourMinutes: 0,
     publicAccess: "roadside",
     image: null,
     source: null,
@@ -129,7 +130,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "PA",
     description:
       "Put the car in neutral at the marked spot and it rolls, slowly, in the wrong direction. The surrounding hills hide the true horizon well enough that your eyes lose the argument with the road. Bring a bottle of water to pour out and watch.",
-    detourMinutes: 16,
+    detourMinutes: 0,
     publicAccess: "roadside",
     image: null,
     source: null,
@@ -150,7 +151,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     state: "WV",
     description:
       "A tilted room where water appears to run uphill and standing straight feels wrong, fronted by a building with a car embedded in it. Open seasonally, cash-friendly, and entirely committed to the bit since 1972.",
-    detourMinutes: 7,
+    detourMinutes: 0,
     publicAccess: "limited",
     image: null,
     source: null,

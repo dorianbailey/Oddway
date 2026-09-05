@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { tripStore } from "@/lib/trip-store";
 import { useTrip } from "./TripSummary";
+import { OpenNowBadge } from "./OpenNowBadge";
 import { categoryLabel } from "@/lib/categories";
 import { cx } from "@/lib/cx";
 import { formatAccess, formatCoordinates, formatDetour } from "@/lib/format";
@@ -49,14 +50,21 @@ export function StopCard({ stop }: StopCardProps) {
       </div>
 
       <div className="flex grow flex-col p-5">
-        <h3 className="text-title">
-          <Link
-            href={`/stops/${stop.slug}`}
-            className="underline-offset-4 hover:text-route hover:underline"
-          >
-            {stop.name}
-          </Link>
-        </h3>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+          <h3 className="text-title">
+            <Link
+              href={`/stops/${stop.slug}`}
+              className="underline-offset-4 hover:text-route hover:underline"
+            >
+              {stop.name}
+            </Link>
+          </h3>
+          <OpenNowBadge
+            openingHours={stop.openingHours}
+            timezone={stop.timezone}
+            compact
+          />
+        </div>
         <p className="mt-1 text-[0.95rem] text-ink-soft">
           {stop.city}, {stop.state}
         </p>
@@ -64,17 +72,24 @@ export function StopCard({ stop }: StopCardProps) {
         <p className="mt-4 text-[0.98rem] text-ink">{stop.description}</p>
 
         <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-contour/35 pt-4 text-[0.9rem]">
-          <div>
-            <dt className="text-ink-soft">Detour</dt>
-            <dd className="mt-0.5 font-semibold">
-              {formatDetour(stop.detourMinutes)}
-            </dd>
-            {stop.distanceFromRouteKm !== undefined ? (
-              <dd className="mt-0.5 text-[0.85rem] font-normal text-ink-soft">
-                {formatOffRoute(stop.distanceFromRouteKm, units)}
+          {/*
+            Detour is computed per route in lib/corridor.ts, never stored.
+            Outside a search it is 0, and "0 min off route" would claim the
+            stop sits directly on your way — so show nothing instead.
+          */}
+          {stop.detourMinutes > 0 ? (
+            <div>
+              <dt className="text-ink-soft">Detour</dt>
+              <dd className="mt-0.5 font-semibold">
+                {formatDetour(stop.detourMinutes)}
               </dd>
-            ) : null}
-          </div>
+              {stop.distanceFromRouteKm !== undefined ? (
+                <dd className="mt-0.5 text-[0.85rem] font-normal text-ink-soft">
+                  {formatOffRoute(stop.distanceFromRouteKm, units)}
+                </dd>
+              ) : null}
+            </div>
+          ) : null}
           <div>
             <dt className="text-ink-soft">Access</dt>
             <dd className="mt-0.5 font-semibold">

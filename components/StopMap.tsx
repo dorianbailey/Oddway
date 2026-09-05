@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MAP_STYLE_URL } from "@/lib/map-config";
-import type { Stop } from "@/types/oddway";
+import type { Route, Stop } from "@/types/oddway";
 
 /**
  * A single stop on a map. Simpler than RouteMap: one marker, fixed zoom, no
  * route, no fitting. Kept separate rather than adding a mode flag to RouteMap,
  * which would have made that component answer two questions at once.
  */
-export function StopMap({ stop }: { stop: Stop }) {
+export function StopMap({ stop, route = null }: { stop: Stop; route?: Route | null }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const [failed, setFailed] = useState(false);
@@ -46,9 +46,37 @@ export function StopMap({ stop }: { stop: Stop }) {
 
       map.on("style.load", () => {
         if (cancelled) return;
+
         new maplibregl.Marker({ element })
           .setLngLat([stop.longitude, stop.latitude])
           .addTo(map);
+
+        if (route && route.geometry.length > 1) {
+          map.addSource("directions", {
+            type: "geojson",
+            data: {
+              type: "Feature",
+              properties: {},
+              geometry: { type: "LineString", coordinates: route.geometry },
+            },
+          });
+          map.addLayer({
+            id: "directions-line",
+            type: "line",
+            source: "directions",
+            layout: { "line-join": "round", "line-cap": "round" },
+            paint: {
+              "line-color": "#b23c18",
+              "line-width": 4,
+              "line-opacity": 0.9,
+            },
+          });
+          map.fitBounds(route.bounds, {
+            padding: 48,
+            animate: !window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches,
+          });
+        }
       });
 
       mapRef.current = map;
@@ -59,16 +87,24 @@ export function StopMap({ stop }: { stop: Stop }) {
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [stop.longitude, stop.latitude]);
+  }, [stop.longitude, stop.latitude, stop.name, route]);
 
   return (
     <>
-      <div
-        ref={containerRef}
-        role="application"
-        aria-label={`Map showing ${stop.name}`}
-        className="absolute inset-0"
-      />
+      {/*
+        Sized with h-full rather than absolute inset-0. MapLibre adds its own
+        .maplibregl-map class, which sets position: relative — same specificity
+        as Tailwind's .absolute but loaded later, so it wins and the element
+        collapses to zero height.
+      */}
+      <div className="absolute inset-0">
+        <div
+          ref={containerRef}
+          role="application"
+          aria-label={`Map showing ${stop.name}`}
+          className="h-full w-full"
+        />
+      </div>
       {failed ? (
         <p className="absolute inset-0 flex items-center justify-center bg-paper-sunk p-4 text-center text-[0.9rem] text-ink-soft">
           Map unavailable. The coordinates are listed below.

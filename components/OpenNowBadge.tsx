@@ -9,6 +9,8 @@ interface OpenNowBadgeProps {
   /** IANA zone for the venue, e.g. "America/New_York". */
   timezone: string | null;
   className?: string;
+  /** Cards want the badge only; detail pages want the supporting text too. */
+  compact?: boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export function OpenNowBadge({
   openingHours,
   timezone,
   className,
+  compact = false,
 }: OpenNowBadgeProps) {
   const [result, setResult] = useState<OpenNowResult | null>(null);
 
@@ -64,7 +67,7 @@ export function OpenNowBadge({
         {isOpen ? "Open now" : "Closed now"}
       </span>
 
-      {result.detail ? (
+      {result.detail && !compact ? (
         <span className="text-[0.9rem] text-ink-soft">{result.detail}</span>
       ) : null}
 
@@ -72,7 +75,7 @@ export function OpenNowBadge({
         When a holiday or seasonal rule exists that we could not evaluate, the
         badge must not read as a promise.
       */}
-      {result.caveat && isOpen ? (
+      {result.caveat && isOpen && !compact ? (
         <span className="w-full text-[0.8rem] text-ink-soft">
           {result.caveat} — worth confirming.
         </span>

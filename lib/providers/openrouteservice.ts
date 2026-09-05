@@ -64,6 +64,35 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
       };
     },
 
+    async reverseGeocode(latitude, longitude, signal) {
+      const url = new URL("/geocode/reverse", BASE_URL);
+      url.searchParams.set("point.lat", String(latitude));
+      url.searchParams.set("point.lon", String(longitude));
+      url.searchParams.set("size", "1");
+
+      const response = await fetch(url, {
+        headers: { Authorization: apiKey, Accept: "application/json" },
+        signal,
+      });
+
+      if (!response.ok) throw await providerError(response, "geocode");
+
+      const data = (await response.json()) as {
+        features?: Array<{
+          geometry?: { coordinates?: [number, number] };
+          properties?: { label?: string };
+        }>;
+      };
+
+      const feature = data.features?.[0];
+      const label = feature?.properties?.label;
+      if (!label) return null;
+
+      // Keep the device's own coordinates: they are more precise than the
+      // matched address, and the route should start where the person is.
+      return { label, latitude, longitude };
+    },
+
     async autocomplete(query, signal) {
       const url = new URL("/geocode/autocomplete", BASE_URL);
       url.searchParams.set("text", query);
@@ -130,6 +159,10 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
               [from.longitude, from.latitude],
               [to.longitude, to.latitude],
             ],
+            // Turn-by-turn manoeuvres, so directions can be shown inside
+            // OddWay rather than handing the traveller to another app.
+            instructions: true,
+            instructions_format: "text",
           }),
           signal,
         },
@@ -142,7 +175,17 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
       const data = (await response.json()) as {
         features?: Array<{
           geometry?: { coordinates?: [number, number][] };
-          properties?: { summary?: { distance?: number; duration?: number } };
+          properties?: {
+            summary?: { distance?: number; duration?: number };
+            segments?: Array<{
+              steps?: Array<{
+                instruction?: string;
+                distance?: number;
+                duration?: number;
+                name?: string;
+              }>;
+            }>;
+          };
         }>;
         bbox?: number[];
       };
@@ -162,6 +205,15 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
         durationSeconds: feature.properties?.summary?.duration ?? 0,
         geometry,
         bounds: normaliseBounds(data.bbox, geometry),
+        steps: (feature.properties?.segments ?? []).flatMap((segment) =>
+          (segment.steps ?? []).map((step) => ({
+            instruction: step.instruction ?? "Continue",
+            distanceMeters: step.distance ?? 0,
+            durationSeconds: step.duration ?? 0,
+            // ORS uses "-" for unnamed roads.
+            name: step.name && step.name !== "-" ? step.name : null,
+          })),
+        ),
       } satisfies Route;
     },
   };

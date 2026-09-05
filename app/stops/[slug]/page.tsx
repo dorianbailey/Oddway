@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { StopMap } from "@/components/StopMap";
 import { OpeningHours } from "@/components/OpeningHours";
 import { OpenNowBadge } from "@/components/OpenNowBadge";
+import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
 import { formatAccess, formatCoordinates } from "@/lib/format";
@@ -150,15 +151,21 @@ export default async function StopPage({ params }: PageProps) {
 
           <AddToTripButton stop={stop} className="mt-6" />
 
+          {/*
+            Stays inside OddWay. The handoff to a native maps app lives in the
+            directions section below, offered only once a route exists.
+          */}
           <a
-            href={`https://www.google.com/maps/dir/?api=1&destination=${stop.latitude},${stop.longitude}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#directions-heading"
             className="mt-3 block rounded-[3px] border border-contour/50 px-4 py-2.5 text-center font-semibold text-ink transition-colors hover:bg-lichen/40"
           >
             Get directions
           </a>
         </aside>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 sm:pb-20">
+        <Directions stop={stop} />
       </div>
     </>
   );

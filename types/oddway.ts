@@ -33,7 +33,9 @@ export type PublicAccess =
   /** Visible from a public road or pull-off; nothing to enter. */
   | "roadside"
   /** On private land — view from the road only. */
-  | "private";
+  | "private"
+  /** Gone. Kept in the index so nobody drives there expecting otherwise. */
+  | "closed";
 
 export interface Stop {
   id: string;

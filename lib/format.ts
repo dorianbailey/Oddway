@@ -21,6 +21,8 @@ export function formatAccess(access: PublicAccess): string {
       return "Roadside, no entry";
     case "private":
       return "Private land, view only";
+    case "closed":
+      return "Permanently closed";
   }
 }
 

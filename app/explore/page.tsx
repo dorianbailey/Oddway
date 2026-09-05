@@ -120,7 +120,7 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
               </p>
 
               {matches.length > 0 ? (
-                <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-8 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
                   {matches.map((stop) => (
                     <li key={stop.id} className="flex">
                       <StopCard stop={stop} />

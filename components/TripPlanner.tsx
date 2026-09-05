@@ -202,7 +202,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
             through West Virginia or western Pennsylvania.
           </p>
         ) : (
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
             {shownStops.map((stop) => (
               <li key={stop.id} className="flex">
                 <StopCard stop={stop} />

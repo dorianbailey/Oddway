@@ -10,46 +10,65 @@
 */
 
 @theme {
-  /* Surfaces */
-  --color-paper: #efede4; /* map sheet */
-  --color-paper-raised: #f6f4ec; /* cards, inputs */
-  --color-paper-sunk: #e4e1d4; /* recessed bands */
+  /*
+    A small-town newspaper, mid-1960s.
+
+    Newsprint is grey, not cream — cheap wood pulp that yellows slightly with
+    age. Papers of this era were almost entirely black and white; colour was
+    expensive and reserved for the masthead if it appeared at all. That
+    restraint is the whole effect. What carries the look is not colour but
+    rules: hairlines between stories, heavy rules under the masthead, and
+    dense type set tight.
+  */
+
+  /* Stock */
+  --color-paper: #e9e5da; /* newsprint, aged */
+  --color-paper-raised: #f3f0e8; /* a cleaner sheet, for cards */
+  --color-paper-sunk: #dcd7c9; /* the grey of a photograph's screen */
 
   /* Ink */
-  --color-ink: #2b2620; /* body text */
-  --color-ink-soft: #6b6154; /* secondary text — 5.1:1 on paper */
+  --color-ink: #14110d; /* dense black, never quite neutral on newsprint */
+  --color-ink-soft: #4a453c; /* 7.4:1 on stock */
 
-  /* Dark surfaces */
-  --color-pine: #26382d;
-  --color-pine-deep: #1b2a21;
+  /* The room the paper is lying in. Dark, brown-green, never pure black. */
+  --color-pine: #1a1712;
+  --color-pine-deep: #12100c;
+  /* The surface the paper is lying on: a grey board, lit unevenly. */
+  --color-board: #a5a199;
+  --color-night: #14120e;
+  --color-night-deep: #0b0a08;
 
-  /* Map features */
-  --color-contour: #a8763c; /* contour lines, hairline rules */
-  --color-brass: #d9a85e; /* contour brown, legible on pine */
-  --color-route: #b23c18; /* road overprint — primary action */
-  --color-route-line: #e2643a; /* route drawn on dark map ground */
-  --color-lichen: #c6d3b7; /* woodland tint */
-  --color-water: #5b7f94;
+  /* The one colour a paper like this would run, and then only in the masthead */
+  --color-route: #9c2b1c;
+  --color-route-line: #c04026;
+  --color-contour: #6f695c; /* rules — 3.9:1 on stock */
+  --color-brass: #c9c2ae; /* reversed-out rules on dark */
+  --color-lichen: #cfc9b8;
+  --color-water: #6b7570;
 
-  /* Type scale — a fifth-based ramp, fluid at the display end */
-  --text-hero: clamp(2.5rem, 1.55rem + 3.9vw, 4.25rem);
-  --text-hero--line-height: 1.02;
-  --text-hero--letter-spacing: -0.022em;
+  /*
+    Headline sizes are large and tight. Newspaper display type is set to fill
+    the column measure, so the leading closes right up.
+  */
+  --text-hero: clamp(2.75rem, 1.5rem + 5vw, 5.25rem);
+  --text-hero--line-height: 0.95;
+  --text-hero--letter-spacing: -0.02em;
 
-  --text-section: clamp(1.75rem, 1.36rem + 1.6vw, 2.6rem);
-  --text-section--line-height: 1.1;
+  --text-section: clamp(1.9rem, 1.4rem + 2vw, 2.9rem);
+  --text-section--line-height: 1;
   --text-section--letter-spacing: -0.015em;
 
-  --text-title: clamp(1.25rem, 1.15rem + 0.4vw, 1.45rem);
-  --text-title--line-height: 1.2;
+  --text-title: clamp(1.2rem, 1.1rem + 0.4vw, 1.45rem);
+  --text-title--line-height: 1.15;
   --text-title--letter-spacing: -0.01em;
 
-  --text-lede: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
-  --text-lede--line-height: 1.55;
+  --text-lede: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lede--line-height: 1.5;
 }
 
 @theme inline {
-  --font-display: var(--font-bitter), Georgia, Cambria, serif;
+  --font-display: var(--font-serif), Georgia, Cambria, serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, serif;
   --font-body: var(--font-karla), system-ui, "Segoe UI", Arial, sans-serif;
 }
 
@@ -59,21 +78,70 @@
     scroll-behavior: smooth;
   }
 
+  /*
+    The page is a dark room; the content is a newspaper lying in it.
+
+    Layered radial gradients give an uneven, lamplit falloff rather than a flat
+    colour, so the edges of the screen recede. This is where the atmosphere
+    lives — the sheet itself stays plain and readable, because a texture behind
+    body text makes it harder to read and creepy is not worth that.
+  */
   body {
-    background-color: var(--color-paper);
+    background-color: var(--color-board);
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 50% 0%,
+        color-mix(in srgb, #c8c3b8 60%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 10% 60%,
+        color-mix(in srgb, #8e8b81 35%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 80% 60% at 90% 90%,
+        color-mix(in srgb, #86837a 35%, transparent),
+        transparent 70%
+      );
+    background-attachment: fixed;
     color: var(--color-ink);
-    font-family: var(--font-body);
+    /* Prose in the text serif. Buttons and labels opt back into the sans. */
+    font-family: var(--font-serif);
     font-size: 1.0625rem;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
   }
 
+  /*
+    Headlines set in Anton, uppercase and tight — paperback cover lettering.
+    h3 stays in the slab: card titles need to be readable at a glance, and
+    condensed caps at small sizes are hard work.
+  */
+  /*
+    Headlines in the Didone, set heavy and tight. Not uppercase: newspapers
+    set headlines in mixed case because caps cost column width and slow
+    reading. The authority comes from the weight and the contrast.
+  */
   h1,
-  h2,
-  h3 {
+  h2 {
     font-family: var(--font-display);
     font-weight: 700;
     text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  label {
+    font-family: var(--font-body);
   }
 
   p {
@@ -109,6 +177,256 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/*
+  Press grain.
+
+  A single fixed overlay rather than a background on every panel: cheap paper
+  takes ink unevenly across the whole sheet, not per element. Fixed position
+  means it does not swim when the page scrolls, which is what makes a texture
+  read as printed rather than as a graphic.
+*/
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    opacity: 0.12;
+  }
+}
+
+/*
+  The sheet.
+
+  Content sits on newsprint laid over the dark ground, with a hard shadow and a
+  slightly ragged edge. The ragged edge is a repeating conic gradient rather
+  than an image, so it costs nothing and scales.
+*/
+@utility sheet {
+  background-color: var(--color-paper);
+  /*
+    A torn edge along the top and bottom.
+
+    The points are generated from a fixed sine so the tear is identical on
+    every render — an edge that changes on refresh reads as a rendering glitch
+    rather than as paper.
+
+    All four edges are ragged. The sides use a smaller amplitude and more
+    points than the top and bottom: side positions are percentages, so on a
+    very long page a large amplitude stretches into slow waves instead of
+    reading as a tear.
+
+    clip-path removes box-shadow, so the shadow lives on the wrapper as a
+    drop-shadow filter, which follows the clipped silhouette.
+  */
+  clip-path: polygon(
+    0.0% 8.0px,
+    4.17% 0.3px,
+    8.33% 7.8px,
+    12.5% 4.9px,
+    16.67% 2.4px,
+    20.83% 7.3px,
+    25.0% 4.9px,
+    29.17% 6.6px,
+    33.33% 1.4px,
+    37.5% 6.6px,
+    41.67% 0.6px,
+    45.83% 6.6px,
+    50.0% 7.7px,
+    54.17% 4.8px,
+    58.33% 0.2px,
+    62.5% 1.1px,
+    66.67% 2.9px,
+    70.83% 4.5px,
+    75.0% 7.3px,
+    79.17% 0.1px,
+    83.33% 1.2px,
+    87.5% 1.2px,
+    91.67% 5.3px,
+    95.83% 5.4px,
+    100.0% 7.6px,
+    calc(100% - 5.4px) 2.5%,
+    calc(100% - 3.3px) 5.0%,
+    calc(100% - 5.8px) 7.5%,
+    calc(100% - 4.0px) 10.0%,
+    calc(100% - 2.2px) 12.5%,
+    calc(100% - 1.7px) 15.0%,
+    calc(100% - 2.5px) 17.5%,
+    calc(100% - 0.6px) 20.0%,
+    calc(100% - 3.4px) 22.5%,
+    calc(100% - 0.9px) 25.0%,
+    calc(100% - 3.8px) 27.5%,
+    calc(100% - 4.4px) 30.0%,
+    calc(100% - 5.1px) 32.5%,
+    calc(100% - 2.5px) 35.0%,
+    calc(100% - 3.5px) 37.5%,
+    calc(100% - 5.2px) 40.0%,
+    calc(100% - 3.5px) 42.5%,
+    calc(100% - 1.7px) 45.0%,
+    calc(100% - 0.1px) 47.5%,
+    calc(100% - 6.0px) 50.0%,
+    calc(100% - 0.9px) 52.5%,
+    calc(100% - 0.3px) 55.0%,
+    calc(100% - 1.6px) 57.5%,
+    calc(100% - 4.6px) 60.0%,
+    calc(100% - 0.6px) 62.5%,
+    calc(100% - 4.2px) 65.0%,
+    calc(100% - 0.5px) 67.5%,
+    calc(100% - 4.0px) 70.0%,
+    calc(100% - 0.7px) 72.5%,
+    calc(100% - 1.8px) 75.0%,
+    calc(100% - 1.4px) 77.5%,
+    calc(100% - 4.4px) 80.0%,
+    calc(100% - 1.9px) 82.5%,
+    calc(100% - 1.3px) 85.0%,
+    calc(100% - 5.3px) 87.5%,
+    calc(100% - 5.8px) 90.0%,
+    calc(100% - 3.6px) 92.5%,
+    calc(100% - 1.5px) 95.0%,
+    calc(100% - 1.5px) 97.5%,
+    100.0% calc(100% - 8.8px),
+    95.83% calc(100% - 4.5px),
+    91.67% calc(100% - 0.8px),
+    87.5% calc(100% - 0.7px),
+    83.33% calc(100% - 6.9px),
+    79.17% calc(100% - 2.8px),
+    75.0% calc(100% - 6.4px),
+    70.83% calc(100% - 7.0px),
+    66.67% calc(100% - 0.4px),
+    62.5% calc(100% - 2.0px),
+    58.33% calc(100% - 3.6px),
+    54.17% calc(100% - 2.2px),
+    50.0% calc(100% - 0.9px),
+    45.83% calc(100% - 0.9px),
+    41.67% calc(100% - 6.7px),
+    37.5% calc(100% - 5.7px),
+    33.33% calc(100% - 4.4px),
+    29.17% calc(100% - 6.2px),
+    25.0% calc(100% - 4.3px),
+    20.83% calc(100% - 3.9px),
+    16.67% calc(100% - 2.3px),
+    12.5% calc(100% - 6.4px),
+    8.33% calc(100% - 6.6px),
+    4.17% calc(100% - 3.7px),
+    0.0% calc(100% - 2.3px),
+    4.0px 97.5%,
+    1.4px 95.0%,
+    3.1px 92.5%,
+    0.3px 90.0%,
+    5.9px 87.5%,
+    4.5px 85.0%,
+    1.7px 82.5%,
+    2.8px 80.0%,
+    1.6px 77.5%,
+    5.4px 75.0%,
+    6.0px 72.5%,
+    5.3px 70.0%,
+    0.3px 67.5%,
+    4.1px 65.0%,
+    2.0px 62.5%,
+    1.7px 60.0%,
+    0.7px 57.5%,
+    1.8px 55.0%,
+    5.4px 52.5%,
+    5.8px 50.0%,
+    1.6px 47.5%,
+    4.7px 45.0%,
+    1.4px 42.5%,
+    4.3px 40.0%,
+    4.0px 37.5%,
+    3.8px 35.0%,
+    3.1px 32.5%,
+    0.6px 30.0%,
+    1.8px 27.5%,
+    3.4px 25.0%,
+    1.2px 22.5%,
+    3.7px 20.0%,
+    3.0px 17.5%,
+    4.8px 15.0%,
+    2.2px 12.5%,
+    0.5px 10.0%,
+    1.4px 7.5%,
+    4.3px 5.0%,
+    3.6px 2.5%
+  );
+}
+
+@utility sheet-shadow {
+  filter:
+    drop-shadow(0 2px 3px rgb(20 17 13 / 0.28))
+    drop-shadow(0 14px 28px rgb(20 17 13 / 0.3));
+}
+
+/*
+  A clipping.
+
+  Cards sit at a very slight angle, as though cut out and stuck down by
+  somebody working through this rather than laid out by a designer. The angle
+  is small on purpose: enough to read as handled, not enough to make a grid of
+  three hundred cards feel seasick.
+*/
+@utility clipping {
+  position: relative;
+  box-shadow:
+    0 1px 2px rgb(20 17 13 / 0.18),
+    0 6px 14px rgb(20 17 13 / 0.14);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+@utility clipping-hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow:
+    0 2px 4px rgb(20 17 13 / 0.2),
+    0 12px 26px rgb(20 17 13 / 0.2);
+}
+
+/* A strip of tape across the top corner. */
+@utility tape {
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  width: 4.5rem;
+  height: 1.1rem;
+  transform: translateX(-50%) rotate(-1.5deg);
+  background: color-mix(in srgb, #e8e2cd 80%, transparent);
+  border-left: 1px solid rgb(20 17 13 / 0.08);
+  border-right: 1px solid rgb(20 17 13 / 0.08);
+  box-shadow: 0 1px 2px rgb(20 17 13 / 0.15);
+  pointer-events: none;
+}
+
+/*
+  The masthead rule: a heavy line with a hairline beneath it, which is how
+  almost every newspaper separates its nameplate from the news.
+*/
+@utility masthead-rule {
+  border-bottom: 3px solid var(--color-ink);
+  box-shadow: 0 2px 0 0 var(--color-ink);
+}
+
+/* A column rule, as set between stories. */
+@utility column-rule {
+  border-left: 1px solid color-mix(in srgb, var(--color-contour) 55%, transparent);
+}
+
+/* Halftone dot screen, as used to print a photograph on newsprint. */
+@utility halftone {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-ink) 45%, transparent) 1px,
+    transparent 1.4px
+  );
+  background-size: 5px 5px;
 }
 
 /* A faint graticule, like the grid ticks printed on a quadrangle sheet. */
@@ -218,6 +536,18 @@
   border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
   border-radius: 3px;
   background-color: var(--color-paper-raised);
+}
+
+/*
+  Age the basemap.
+
+  OpenFreeMap's Positron is clean and modern, which fights everything else on
+  the page. Sepia and reduced contrast push it towards a map reproduced in a
+  cheap book. Applied to the canvas alone so markers, popups and controls keep
+  their real colours.
+*/
+.maplibregl-canvas {
+  filter: grayscale(0.85) contrast(1.06) brightness(1.02);
 }
 
 .maplibregl-ctrl-attrib {

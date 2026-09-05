@@ -135,7 +135,7 @@ export function NavigationHandoff({
           href={google.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-[3px] bg-route px-4 py-3 text-paper transition-colors hover:bg-[#992f10]"
+          className="block rounded-[3px] bg-route px-4 py-3 text-paper transition-colors hover:bg-[#8a2411]"
         >
           <span className="font-semibold">{google.label}</span>
           {google.note ? (
@@ -243,7 +243,7 @@ export function NavigationHandoff({
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setPending(null)}
-              className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[#992f10]"
+              className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[#8a2411]"
             >
               Use Google Maps instead
             </a>

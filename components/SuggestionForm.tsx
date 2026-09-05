@@ -205,7 +205,7 @@ export function SuggestionForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-[3px] bg-route px-6 py-3 font-semibold text-paper transition-colors hover:bg-[#992f10] disabled:opacity-60"
+          className="rounded-[3px] bg-route px-6 py-3 font-semibold text-paper transition-colors hover:bg-[#8a2411] disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Send it"}
         </button>

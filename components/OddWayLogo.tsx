@@ -22,7 +22,7 @@ export function OddWayLogo({ className, size = "md" }: OddWayLogoProps) {
     <span className={cx("inline-flex flex-col items-stretch", className)}>
       <span
         className={cx(
-          "font-display font-bold leading-none tracking-[-0.03em]",
+          "font-display leading-none tracking-[0.01em] uppercase",
           SIZES[size],
         )}
       >

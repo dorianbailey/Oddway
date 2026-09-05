@@ -279,7 +279,11 @@ export function RouteMap({
       source: ROUTE_SOURCE_ID,
       layout: { "line-join": "round", "line-cap": "round" },
       paint: {
-        "line-color": "#b23c18",
+        // Read from the palette so a re-skin does not leave the route behind.
+        "line-color":
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--color-route-line")
+            .trim() || "#d1502c",
         "line-width": 4,
         "line-opacity": 0.9,
       },

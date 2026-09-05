@@ -11,6 +11,14 @@ import { formatOffRoute } from "@/lib/units";
 import { useUnits } from "./UnitsProvider";
 import type { Stop } from "@/types/oddway";
 
+/** Small enough to read as handled rather than broken. */
+const TILTS = [
+  "rotate-[-0.5deg]",
+  "rotate-[0.35deg]",
+  "rotate-[-0.25deg]",
+  "rotate-[0.55deg]",
+] as const;
+
 interface StopCardProps {
   /**
    * A stop, optionally carrying the corridor query's measurement of how far it
@@ -20,27 +28,43 @@ interface StopCardProps {
 }
 
 /**
- * One result. Styled after a field-guide specimen card: hairline rule, a
- * grid-printed header band, and the practical facts a driver needs before
- * deciding to leave the highway.
+ * One result, styled as a clipping: cut out, taped down, sitting at a slight
+ * angle on the sheet.
+ *
+ * The angle is derived from the stop's id rather than randomised, so a card
+ * does not shift when the list re-renders and the server and client agree on
+ * hydration. Four values is enough to look hand-placed without any card
+ * tilting far enough to be annoying.
  *
  * The trip state is local for now. When trips become real, replace `added`
  * with a value from the trip store and call the store from `toggle`.
  */
 export function StopCard({ stop }: StopCardProps) {
   // Shared store, so the card and the trip panel can never disagree.
+  // Stable per stop, so it never changes between renders.
+  const tiltIndex = stop.id
+    .split("")
+    .reduce((total, character) => total + character.charCodeAt(0), 0) % TILTS.length;
+
   const trip = useTrip();
   const added = trip.some((item) => item.id === stop.id);
   const { units } = useUnits();
 
   return (
-    <article className="flex w-full flex-col overflow-hidden rounded-[4px] border border-contour/45 bg-paper-raised">
+    <article
+      className={cx(
+        "clipping hover:clipping-hover flex w-full flex-col rounded-[2px] border border-contour/40 bg-paper-raised",
+        TILTS[tiltIndex],
+      )}
+    >
+      <span aria-hidden="true" className="tape" />
+
       {/*
         The image band. `stop.image` is null across the demo data, so it falls
         back to grid paper with the coordinates printed on it. Drop an
         <Image /> in here once we have licensed photography.
       */}
-      <div className="map-grid flex items-end justify-between gap-3 border-b border-contour/35 bg-paper px-5 py-3">
+      <div className="map-grid flex items-end justify-between gap-3 rounded-t-[2px] border-b border-contour/35 bg-paper px-5 py-3">
         <span className="rounded-full bg-lichen px-3 py-1 text-[0.8rem] font-semibold text-ink">
           {categoryLabel(stop.category)}
         </span>

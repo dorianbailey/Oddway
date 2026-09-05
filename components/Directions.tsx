@@ -135,7 +135,7 @@ export function Directions({ stop }: DirectionsProps) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[#992f10] disabled:opacity-60"
+                className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[#8a2411] disabled:opacity-60"
               >
                 {isLoading ? "Working it out\u2026" : "Show me the way"}
               </button>

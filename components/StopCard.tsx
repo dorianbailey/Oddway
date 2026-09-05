@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { tripStore } from "@/lib/trip-store";
+import { useTrip } from "./TripSummary";
 import { categoryLabel } from "@/lib/categories";
 import { cx } from "@/lib/cx";
 import { formatAccess, formatCoordinates, formatDetour } from "@/lib/format";
@@ -25,7 +26,9 @@ interface StopCardProps {
  * with a value from the trip store and call the store from `toggle`.
  */
 export function StopCard({ stop }: StopCardProps) {
-  const [added, setAdded] = useState(false);
+  // Shared store, so the card and the trip panel can never disagree.
+  const trip = useTrip();
+  const added = trip.some((item) => item.id === stop.id);
   const { units } = useUnits();
 
   return (
@@ -74,7 +77,7 @@ export function StopCard({ stop }: StopCardProps) {
 
         <button
           type="button"
-          onClick={() => setAdded((current) => !current)}
+          onClick={() => tripStore.toggle(stop)}
           className={cx(
             "mt-5 w-full rounded-[3px] border px-4 py-2.5 font-semibold transition-colors",
             added

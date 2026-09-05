@@ -5,6 +5,7 @@ import { CategoryFilters } from "./CategoryFilters";
 import { MapSection } from "./MapSection";
 import { RouteSearch } from "./RouteSearch";
 import { StopCard } from "./StopCard";
+import { TripSummary } from "./TripSummary";
 import { formatDuration } from "@/lib/format";
 import { formatDistance } from "@/lib/units";
 import { useUnits } from "./UnitsProvider";
@@ -166,7 +167,9 @@ export function TripPlanner({ fallbackStops }: TripPlannerProps) {
         aria-labelledby="stops-heading"
         className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20"
       >
-        <h2 id="stops-heading" className="max-w-[24ch] text-section">
+        <TripSummary route={result?.route ?? null} />
+
+        <h2 id="stops-heading" className="mt-14 max-w-[24ch] text-section first:mt-0">
           {hasSearched
             ? `${result.stops.length} ${result.stops.length === 1 ? "stop" : "stops"} worth pulling off for`
             : "What turns up on a run through Appalachia"}

@@ -292,13 +292,36 @@ ${skipped ? `-- Skipped, no city/state in OSM:\n${skipped}` : ""}
 `;
 }
 
-/** Read ORS_API_KEY out of .env.local; this script runs outside Next. */
+/**
+ * Key for the import, read from .env.local; this script runs outside Next.
+ *
+ * Prefers ORS_IMPORT_KEY over ORS_API_KEY. Bulk imports and live traffic have
+ * opposite shapes — hundreds of requests in ten minutes versus a handful per
+ * visitor — and sharing one key means an import can exhaust the quota the
+ * website depends on. That is exactly what happened during the haunted run.
+ */
 function readApiKey(): string | null {
+  for (const name of ["ORS_IMPORT_KEY", "ORS_API_KEY"]) {
+    const value = readEnv(name);
+    if (value) {
+      if (name === "ORS_API_KEY") {
+        console.log(
+          "Using ORS_API_KEY. Set ORS_IMPORT_KEY to a second token so a long\n" +
+            "import cannot use up the quota the live site needs.\n",
+        );
+      }
+      return value;
+    }
+  }
+  return null;
+}
+
+function readEnv(name: string): string | null {
   try {
     const line = readFileSync(".env.local", "utf8")
       .split("\n")
-      .find((row) => row.startsWith("ORS_API_KEY="));
-    const value = line?.slice("ORS_API_KEY=".length).trim();
+      .find((row) => row.startsWith(`${name}=`));
+    const value = line?.slice(name.length + 1).trim();
     return value ? value : null;
   } catch {
     return null;

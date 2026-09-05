@@ -1,0 +1,128 @@
+import type { Stop } from "@/types/oddway";
+
+/**
+ * PLACEHOLDER DEMO DATA — not the real index.
+ *
+ * These seven entries exist so the interface can be designed and reviewed
+ * against realistic content. Every one is a real place, but the descriptions,
+ * detour estimates and access notes are written for the demo and are not
+ * verified. Nothing here is scraped: coordinates are approximate and the copy
+ * is original.
+ *
+ * When Postgres lands, delete this file and have `lib/stops.ts` query the
+ * `stops` table instead. Nothing else needs to change.
+ */
+export const DEMO_STOPS: readonly Stop[] = [
+  {
+    id: "demo-mothman-museum",
+    name: "Mothman Museum",
+    slug: "mothman-museum",
+    category: "cryptids",
+    latitude: 38.8434,
+    longitude: -82.1371,
+    city: "Point Pleasant",
+    state: "WV",
+    description:
+      "Point Pleasant spent thirteen months in 1966 and 1967 reporting a winged figure with red eyes, and it has never really stopped. The museum keeps the newspaper clippings, the witness statements and the props from the film adaptation in one small storefront on Main Street.",
+    detourMinutes: 14,
+    publicAccess: "open",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-flatwoods-monster-museum",
+    name: "Flatwoods Monster Museum",
+    slug: "flatwoods-monster-museum",
+    category: "museums",
+    latitude: 38.6651,
+    longitude: -80.7059,
+    city: "Sutton",
+    state: "WV",
+    description:
+      "In September 1952 a group of Braxton County kids went up a hill after a light in the sky and came back down describing something ten feet tall in a pleated metal skirt. The collection is small, free and unexpectedly thorough about what the witnesses actually said.",
+    detourMinutes: 9,
+    publicAccess: "open",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-kecksburg-ufo",
+    name: "Kecksburg UFO Monument",
+    slug: "kecksburg-ufo-monument",
+    category: "ufos",
+    latitude: 40.1834,
+    longitude: -79.462,
+    city: "Kecksburg",
+    state: "PA",
+    description:
+      "Something came down in the woods here on a December evening in 1965. Accounts differ on what the military carried out. The fire department settled the matter locally by mounting a large acorn-shaped replica behind the station, which is what most people drive out to see.",
+    detourMinutes: 11,
+    publicAccess: "roadside",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-trans-allegheny",
+    name: "Trans-Allegheny Lunatic Asylum",
+    slug: "trans-allegheny-lunatic-asylum",
+    category: "haunted",
+    latitude: 39.0389,
+    longitude: -80.47,
+    city: "Weston",
+    state: "WV",
+    description:
+      "A quarter-mile of hand-cut sandstone, built for 250 patients and holding well over two thousand by the 1950s. Daytime tours cover the architecture and the medical history; the overnight ones cover the reason most people have heard of it.",
+    detourMinutes: 22,
+    publicAccess: "limited",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-centralia",
+    name: "Centralia",
+    slug: "centralia",
+    category: "weird-history",
+    latitude: 40.804,
+    longitude: -76.3405,
+    city: "Centralia",
+    state: "PA",
+    description:
+      "A coal seam under the borough caught fire in 1962 and is still burning. Almost everyone was bought out and moved; the street grid remains, the buildings mostly do not, and steam still works its way up through the ground on cold mornings.",
+    detourMinutes: 18,
+    publicAccess: "roadside",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-gravity-hill",
+    name: "Gravity Hill",
+    slug: "gravity-hill-new-paris",
+    category: "folklore",
+    latitude: 39.9856,
+    longitude: -78.6486,
+    city: "New Paris",
+    state: "PA",
+    description:
+      "Put the car in neutral at the marked spot and it rolls, slowly, in the wrong direction. The surrounding hills hide the true horizon well enough that your eyes lose the argument with the road. Bring a bottle of water to pour out and watch.",
+    detourMinutes: 16,
+    publicAccess: "roadside",
+    image: null,
+    source: null,
+  },
+  {
+    id: "demo-mystery-hole",
+    name: "The Mystery Hole",
+    slug: "the-mystery-hole",
+    category: "roadside-oddities",
+    latitude: 38.1339,
+    longitude: -81.1043,
+    city: "Ansted",
+    state: "WV",
+    description:
+      "A tilted room where water appears to run uphill and standing straight feels wrong, fronted by a building with a car embedded in it. Open seasonally, cash-friendly, and entirely committed to the bit since 1972.",
+    detourMinutes: 7,
+    publicAccess: "limited",
+    image: null,
+    source: null,
+  },
+] as const;

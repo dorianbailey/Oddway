@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/*
+  OddWay design tokens.
+
+  The palette is lifted from printed USGS topographic quadrangles and routed
+  National Park Service signage rather than from a generic "vintage" mood:
+  pale sheet stock, contour brown, woodland tint, water blue, and the red-orange
+  overprint reserved almost entirely for roads and routes.
+*/
+
+@theme {
+  /* Surfaces */
+  --color-paper: #efede4; /* map sheet */
+  --color-paper-raised: #f6f4ec; /* cards, inputs */
+  --color-paper-sunk: #e4e1d4; /* recessed bands */
+
+  /* Ink */
+  --color-ink: #2b2620; /* body text */
+  --color-ink-soft: #6b6154; /* secondary text — 5.1:1 on paper */
+
+  /* Dark surfaces */
+  --color-pine: #26382d;
+  --color-pine-deep: #1b2a21;
+
+  /* Map features */
+  --color-contour: #a8763c; /* contour lines, hairline rules */
+  --color-brass: #d9a85e; /* contour brown, legible on pine */
+  --color-route: #b23c18; /* road overprint — primary action */
+  --color-route-line: #e2643a; /* route drawn on dark map ground */
+  --color-lichen: #c6d3b7; /* woodland tint */
+  --color-water: #5b7f94;
+
+  /* Type scale — a fifth-based ramp, fluid at the display end */
+  --text-hero: clamp(2.5rem, 1.55rem + 3.9vw, 4.25rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.022em;
+
+  --text-section: clamp(1.75rem, 1.36rem + 1.6vw, 2.6rem);
+  --text-section--line-height: 1.1;
+  --text-section--letter-spacing: -0.015em;
+
+  --text-title: clamp(1.25rem, 1.15rem + 0.4vw, 1.45rem);
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.01em;
+
+  --text-lede: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lede--line-height: 1.55;
+}
+
+@theme inline {
+  --font-display: var(--font-bitter), Georgia, Cambria, serif;
+  --font-body: var(--font-karla), system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Road-red focus ring on paper, brass on dark map surfaces. */
+  :focus-visible {
+    outline: 2px solid var(--color-route);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  [data-surface="dark"] :focus-visible {
+    outline-color: var(--color-brass);
+  }
+
+  ::selection {
+    background-color: var(--color-lichen);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* A faint graticule, like the grid ticks printed on a quadrangle sheet. */
+@utility map-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-contour) 14%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-contour) 14%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 104px 104px;
+  background-position: center;
+}
+
+/*
+  MapLibre styling.
+
+  Markers and popups are created imperatively by RouteMap, so their styles live
+  here as real classes rather than utility strings. The default MapLibre chrome
+  is neutral grey; these rules pull the controls, popups and attribution into
+  the paper-and-contour palette.
+*/
+
+.oddway-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 3px solid var(--color-route);
+  border-radius: 9999px;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.oddway-marker:hover {
+  transform: scale(1.08);
+}
+
+.oddway-marker:focus-visible {
+  outline: 2px solid var(--color-route);
+  outline-offset: 3px;
+}
+
+.oddway-popup-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.oddway-popup-meta {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+}
+
+.maplibregl-popup-content {
+  padding: 0.875rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
+  border-radius: 3px;
+  background-color: var(--color-paper-raised);
+  box-shadow: 0 2px 10px rgb(43 38 32 / 0.18);
+}
+
+.maplibregl-popup-tip {
+  border-top-color: var(--color-paper-raised);
+  border-bottom-color: var(--color-paper-raised);
+}
+
+.maplibregl-ctrl-group {
+  border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
+  border-radius: 3px;
+  background-color: var(--color-paper-raised);
+}
+
+.maplibregl-ctrl-attrib {
+  font-family: var(--font-body);
+  background-color: color-mix(in srgb, var(--color-paper) 92%, transparent);
+}

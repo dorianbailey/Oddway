@@ -83,7 +83,6 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
       "haunted house",
       "ghost tour",
       "ghost walk",
-      "ghost town",
       "poltergeist",
       "asylum",
       "sanatorium",
@@ -111,6 +110,24 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
       "close encounter",
       "abduction site",
       "kecksburg",
+    ],
+  },
+  {
+    /*
+      Ghost towns live here rather than under haunted. They are abandoned
+      settlements — mining camps that ran out of ore — and grouping them with
+      haunted houses means anyone filtering for haunted gets a dozen empty
+      desert towns. Centralia was already filed this way.
+    */
+    category: "weird-history",
+    tags: [...ATTRACTION_TAGS, '["historic"="ruins"]', '["place"="locality"]'],
+    keywords: [
+      "ghost town",
+      "ghost city",
+      "abandoned town",
+      "abandoned mine",
+      "mining camp",
+      "boom town",
     ],
   },
   {

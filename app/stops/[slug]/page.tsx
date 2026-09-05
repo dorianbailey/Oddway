@@ -1,0 +1,165 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { StopMap } from "@/components/StopMap";
+import { OpeningHours } from "@/components/OpeningHours";
+import { OpenNowBadge } from "@/components/OpenNowBadge";
+import { AddToTripButton } from "@/components/AddToTripButton";
+import { categoryLabel, getCategory } from "@/lib/categories";
+import { formatAccess, formatCoordinates } from "@/lib/format";
+import { getStopBySlug, getStops } from "@/lib/stops";
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+/** Prerender every stop at build time. Cheap at this size; revisit at scale. */
+export async function generateStaticParams() {
+  const stops = await getStops();
+  return stops.map((stop) => ({ slug: stop.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const stop = await getStopBySlug(slug);
+
+  if (!stop) return { title: "Stop not found" };
+
+  return {
+    title: `${stop.name}, ${stop.city} ${stop.state}`,
+    description: stop.description.slice(0, 155),
+    openGraph: {
+      title: `${stop.name} | OddWay`,
+      description: stop.description.slice(0, 155),
+      type: "article",
+    },
+  };
+}
+
+export default async function StopPage({ params }: PageProps) {
+  const { slug } = await params;
+  const stop = await getStopBySlug(slug);
+
+  if (!stop) notFound();
+
+  const category = getCategory(stop.category);
+
+  return (
+    <>
+      <section className="map-grid border-b border-contour/30">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
+          <p className="text-[0.95rem] text-ink-soft">
+            <Link href="/explore" className="underline underline-offset-4">
+              Explore
+            </Link>{" "}
+            <span aria-hidden="true">/</span>{" "}
+            <Link
+              href={`/explore#${stop.category}`}
+              className="underline underline-offset-4"
+            >
+              {categoryLabel(stop.category)}
+            </Link>
+          </p>
+
+          <h1 className="mt-4 max-w-[18ch] text-hero">{stop.name}</h1>
+          <p className="mt-4 text-lede text-ink-soft">
+            {stop.city}, {stop.state}
+          </p>
+
+          <OpenNowBadge
+            openingHours={stop.openingHours}
+            timezone={stop.timezone}
+            className="mt-5"
+          />
+        </div>
+      </section>
+
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
+        <div>
+          <p className="max-w-[68ch] text-lede">{stop.description}</p>
+
+          {category ? (
+            <p className="mt-8 max-w-[60ch] border-l-2 border-contour pl-4 text-ink-soft">
+              Filed under {categoryLabel(stop.category).toLowerCase()}:{" "}
+              {category.blurb.charAt(0).toLowerCase() + category.blurb.slice(1)}
+            </p>
+          ) : null}
+
+          {/*
+            Honest provenance. Every demo entry has source null, and saying so
+            is better than letting an unverified description read as fact.
+          */}
+          {stop.osmRef ? (
+            <p className="mt-4 text-[0.85rem] text-ink-soft">
+              Practical details from{" "}
+              <a
+                href={`https://www.openstreetmap.org/${stop.osmRef}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4"
+              >
+                OpenStreetMap
+              </a>
+              , licensed ODbL.
+            </p>
+          ) : null}
+
+          <p className="mt-8 text-[0.9rem] text-ink-soft">
+            {stop.source ? (
+              <>Source: {stop.source}</>
+            ) : (
+              <>
+                This entry hasn&rsquo;t been verified against a source yet.
+                Check opening hours and access before you drive.
+              </>
+            )}
+          </p>
+        </div>
+
+        <aside>
+          <div className="overflow-hidden rounded-[4px] border border-contour/45">
+            <div className="relative aspect-4/3">
+              <StopMap stop={stop} />
+            </div>
+          </div>
+
+          <dl className="mt-6 space-y-4 border-t border-contour/35 pt-5 text-[0.95rem]">
+            <div>
+              <dt className="text-ink-soft">Access</dt>
+              <dd className="mt-0.5 font-semibold">
+                {formatAccess(stop.publicAccess)}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-ink-soft">Coordinates</dt>
+              <dd className="mt-0.5 font-display italic">
+                {formatCoordinates(stop.latitude, stop.longitude)}
+              </dd>
+            </div>
+          </dl>
+
+          <div className="mt-6">
+            <OpeningHours
+              value={stop.openingHours}
+              website={stop.website}
+              phone={stop.phone}
+            />
+          </div>
+
+          <AddToTripButton stop={stop} className="mt-6" />
+
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${stop.latitude},${stop.longitude}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 block rounded-[3px] border border-contour/50 px-4 py-2.5 text-center font-semibold text-ink transition-colors hover:bg-lichen/40"
+          >
+            Get directions
+          </a>
+        </aside>
+      </div>
+    </>
+  );
+}

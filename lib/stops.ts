@@ -81,6 +81,28 @@ export async function getStopsNearBounds(
   return data.map(toStop);
 }
 
+/** One stop by its URL slug, or null if there isn't one. */
+export async function getStopBySlug(slug: string): Promise<Stop | null> {
+  const supabase = getSupabase();
+
+  if (!supabase) {
+    return DEMO_STOPS.find((stop) => stop.slug === slug) ?? null;
+  }
+
+  const { data, error } = await supabase
+    .from("stops")
+    .select(STOP_COLUMNS)
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Supabase getStopBySlug failed:", error.message);
+    return DEMO_STOPS.find((stop) => stop.slug === slug) ?? null;
+  }
+
+  return data ? toStop(data) : null;
+}
+
 /** A small set for the homepage, to show what results look like. */
 export async function getFeaturedStops(limit = 3): Promise<Stop[]> {
   const stops = await getStops();

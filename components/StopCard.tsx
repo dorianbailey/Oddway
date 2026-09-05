@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { tripStore } from "@/lib/trip-store";
 import { useTrip } from "./TripSummary";
 import { categoryLabel } from "@/lib/categories";
@@ -48,7 +49,14 @@ export function StopCard({ stop }: StopCardProps) {
       </div>
 
       <div className="flex grow flex-col p-5">
-        <h3 className="text-title">{stop.name}</h3>
+        <h3 className="text-title">
+          <Link
+            href={`/stops/${stop.slug}`}
+            className="underline-offset-4 hover:text-route hover:underline"
+          >
+            {stop.name}
+          </Link>
+        </h3>
         <p className="mt-1 text-[0.95rem] text-ink-soft">
           {stop.city}, {stop.state}
         </p>

@@ -54,6 +54,15 @@ export interface Stop {
   image: string | null;
   /** Where the entry came from, for attribution and verification. */
   source: string | null;
+
+  /** Raw OpenStreetMap `opening_hours` tag, parsed at render time. */
+  openingHours: string | null;
+  website: string | null;
+  phone: string | null;
+  /** OSM element this was reconciled against, e.g. "way/904768521". */
+  osmRef: string | null;
+  /** IANA timezone for the venue. Required to evaluate opening hours. */
+  timezone: string | null;
 }
 
 /** What the user asked for on the route search form. */

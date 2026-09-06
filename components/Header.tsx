@@ -86,7 +86,7 @@ export function Header() {
           <OddWayLogo
             className={cx(
               "transition-all duration-300 motion-reduce:transition-none",
-              isScrolled ? "h-9 sm:h-16 lg:h-[72px]" : "h-14 sm:h-16 lg:h-[72px]",
+              isScrolled ? "h-11 sm:h-20 lg:h-24" : "h-16 sm:h-20 lg:h-24",
             )}
             priority
           />

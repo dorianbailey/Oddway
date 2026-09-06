@@ -91,6 +91,8 @@ async function main() {
     done: number;
     found: Candidate[];
     byCategory?: Record<string, Candidate[]>;
+    /** Tiles that could not be fetched. Retried once at the end of the pass. */
+    failed?: number[];
   } = existsSync(checkpointPath)
     ? JSON.parse(readFileSync(checkpointPath, "utf8"))
     : { done: 0, found: [], byCategory: {} };
@@ -117,9 +119,20 @@ async function main() {
     } catch (error) {
       // Save before dying, so the next run does not redo the work.
       writeFileSync(checkpointPath, JSON.stringify(state));
-      console.error(`\nStopped at tile ${index + 1}: ${error}`);
-      console.error(`Progress saved. Re-run the same command to continue.`);
-      process.exit(1);
+      /*
+        A failed tile is not a failed run.
+
+        Tiles are independent, so aborting on the first one that cannot be
+        fetched throws away every tile after it — a single bad minute on a
+        public Overpass mirror used to cost the remaining two thirds of the
+        sweep. Record it, carry on, and come back to it at the end.
+      */
+      console.log(`  skipped (${String(error).slice(0, 60)})`);
+      state.failed = [...new Set([...(state.failed ?? []), index])];
+      state.done = index + 1;
+      writeFileSync(checkpointPath, JSON.stringify(state));
+      await sleep(REQUEST_DELAY_MS);
+      continue;
     }
 
     /*
@@ -146,6 +159,60 @@ async function main() {
     console.log(`${elements.length} tagged, ${matched} matched`);
 
     if (index < tiles.length - 1) await sleep(REQUEST_DELAY_MS);
+  }
+
+  /*
+    Second pass over anything that was skipped.
+
+    By the time the sweep finishes, whatever was overloaded an hour ago has
+    usually recovered, so these mostly succeed. Anything still failing is
+    reported by name rather than silently missing from the results.
+  */
+  if (state.failed && state.failed.length > 0) {
+    const retrying = [...state.failed];
+    console.log(`\nRetrying ${retrying.length} tiles that failed earlier…`);
+
+    for (const index of retrying) {
+      const box = tiles[index];
+      if (!box) continue;
+      process.stdout.write(
+        `  [retry ${index + 1}] ${box.south.toFixed(0)},${box.west.toFixed(0)} `,
+      );
+
+      try {
+        const elements = await runQuery(buildQuery(tags, box), (m) =>
+          console.log(`\n${m}`),
+        );
+
+        let matched = 0;
+        for (const element of elements) {
+          for (const search of searches) {
+            const candidate = toCandidate(element, search!.keywords);
+            if (candidate) {
+              (state.byCategory![search!.category] ??= []).push(candidate);
+              state.found.push(candidate);
+              matched += 1;
+              break;
+            }
+          }
+        }
+
+        state.failed = state.failed.filter((i) => i !== index);
+        writeFileSync(checkpointPath, JSON.stringify(state));
+        console.log(`${elements.length} tagged, ${matched} matched`);
+      } catch {
+        console.log("still failing");
+      }
+
+      await sleep(REQUEST_DELAY_MS);
+    }
+
+    if (state.failed.length > 0) {
+      console.log(
+        `\n${state.failed.length} tiles could not be fetched. Re-run the same ` +
+          `command later to try them again; everything else is already saved.`,
+      );
+    }
   }
 
   const unique = dedupe(state.found);

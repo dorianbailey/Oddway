@@ -26,7 +26,7 @@ export function OddWayLogo({ className, priority = false }: OddWayLogoProps) {
       width={1200}
       height={931}
       priority={priority}
-      sizes="(max-width: 640px) 180px, 320px"
+      sizes="(max-width: 640px) 220px, 400px"
       className={cx("w-auto", className)}
     />
   );

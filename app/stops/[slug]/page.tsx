@@ -6,6 +6,7 @@ import { OpeningHours } from "@/components/OpeningHours";
 import { OpenNowBadge } from "@/components/OpenNowBadge";
 import { PageHero } from "@/components/PageHero";
 import { SourceLink } from "@/components/SourceLink";
+import { StructuredData } from "@/components/StructuredData";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
@@ -40,10 +41,17 @@ export async function generateMetadata({
   return {
     title: `${stop.name}, ${stop.city} ${stop.state}`,
     description: stop.description.slice(0, 155),
+    /*
+      images must be repeated here. Declaring an openGraph object on a page
+      replaces the root one rather than merging into it, so the file-based
+      share card is dropped — and a stop page is the single most likely URL
+      for somebody to text to a friend.
+    */
     openGraph: {
       title: `${stop.name} | OddWay`,
       description: stop.description.slice(0, 155),
       type: "article",
+      images: ["/opengraph-image.jpg"],
     },
   };
 }
@@ -58,6 +66,29 @@ export default async function StopPage({ params }: PageProps) {
 
   return (
     <>
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          name: stop.name,
+          description: stop.description,
+          url: `https://taketheoddway.com/stops/${stop.slug}`,
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: stop.latitude,
+            longitude: stop.longitude,
+          },
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: stop.city,
+            addressRegion: stop.state,
+            addressCountry: "US",
+          },
+          ...(stop.openingHours ? { openingHours: stop.openingHours } : {}),
+          ...(stop.website ? { sameAs: [stop.website] } : {}),
+        }}
+      />
+
       <PageHero>
         <p className="text-[0.95rem] text-[#cfc9bb]">
           <Link href="/explore" className="underline underline-offset-4">

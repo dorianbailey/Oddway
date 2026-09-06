@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { SourceLink } from "@/components/SourceLink";
+import { StructuredData } from "@/components/StructuredData";
 import { getArticle, getArticles } from "@/lib/articles";
 import { getStopBySlug } from "@/lib/stops";
 
@@ -24,7 +25,13 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.summary,
-    openGraph: { type: "article", publishedTime: article.date },
+    // Repeated for the same reason as the stop pages: declaring openGraph
+    // here replaces the root object, image included.
+    openGraph: {
+      type: "article",
+      publishedTime: article.date,
+      images: ["/opengraph-image.jpg"],
+    },
   };
 }
 
@@ -42,6 +49,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: article.summary,
+          datePublished: article.date,
+          url: `https://taketheoddway.com/stories/${article.slug}`,
+          image: "https://taketheoddway.com/opengraph-image.jpg",
+          publisher: { "@type": "Organization", name: "OddWay" },
+          ...(article.sources ? { citation: article.sources } : {}),
+        }}
+      />
+
       <div className="mx-auto max-w-3xl px-5 pt-10 sm:px-8 sm:pt-14">
         <article className="clipping-head rotate-[-0.3deg] px-6 py-7 sm:px-10 sm:py-9">
           <p className="masthead text-center text-[2.1rem] leading-none sm:text-[3rem]">

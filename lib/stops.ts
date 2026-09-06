@@ -1,5 +1,7 @@
 import type { CategorySlug, Stop } from "@/types/oddway";
 import { DEMO_STOPS } from "./mock-data";
+import { unstable_cache } from "next/cache";
+import { cache } from "react";
 import { getSupabase, STOP_COLUMNS, toStop } from "./supabase";
 
 /**
@@ -13,10 +15,35 @@ import { getSupabase, STOP_COLUMNS, toStop } from "./supabase";
 /** Degrees of padding round a route's bounding box, ~30km at these latitudes. */
 const BBOX_PADDING_DEGREES = 0.3;
 
-/** Every stop we have. Fine at this size; paginate once the index grows. */
-export async function getStops(): Promise<Stop[]> {
-  const supabase = getSupabase();
-  if (!supabase) return [...DEMO_STOPS];
+/*
+  Every stop we have, deduplicated per request and cached across them.
+
+  Several helpers here derive their answer from the full list — states with
+  counts, category counts, recommendations — and each was issuing its own
+  query. The explore page alone fetched all 165 rows twice per request, and
+  the sitemap three times.
+
+  React's cache() collapses those into one fetch for the duration of a single
+  render. unstable_cache then holds the result across requests, so most
+  visitors never wait for the database at all.
+
+  Measured from Pennsylvania, a query to the database in AWS us-west-2 costs
+  about 160ms before it returns a single byte, and roughly 240ms for the whole
+  index. Trimming columns changed nothing — 128KB and 97KB both took 237ms —
+  so the cost is distance, not payload, and no amount of tidying the SELECT
+  will touch it.
+
+  What does touch it is not asking. The index changes when an import runs, not
+  between one visitor and the next, so a minute of staleness costs nothing and
+  removes the round trip from almost every request.
+
+  cache() still wraps this for per-request deduplication; the two layers do
+  different jobs.
+*/
+const fetchStops = unstable_cache(
+  async (): Promise<Stop[]> => {
+    const supabase = getSupabase();
+    if (!supabase) return [...DEMO_STOPS];
 
   const { data, error } = await supabase
     .from("stops")
@@ -39,8 +66,13 @@ export async function getStops(): Promise<Stop[]> {
     return [];
   }
 
-  return data.map(toStop);
-}
+    return data.map(toStop);
+  },
+  ["stops:all"],
+  { revalidate: 60, tags: ["stops"] },
+);
+
+export const getStops = cache(fetchStops);
 
 /**
  * Stops, plus whether the load actually worked.

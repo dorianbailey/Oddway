@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+import { cache } from "react";
 import { getSupabase } from "./supabase";
 import type { EventCategory, OddEvent } from "@/types/events";
 
@@ -53,9 +55,12 @@ function toEvent(row: EventRow): OddEvent {
  * and ordering by a guess presents it as fact. Alphabetical is honest and is
  * also how someone looks for an event they already have in mind.
  */
-export async function getEvents(): Promise<OddEvent[]> {
-  const supabase = getSupabase();
-  if (!supabase) return [];
+/** Deduplicated per request, for the same reason as getStops. */
+/** Cached across requests for the same reason as stops: distance, not payload. */
+const fetchEvents = unstable_cache(
+  async (): Promise<OddEvent[]> => {
+    const supabase = getSupabase();
+    if (!supabase) return [];
 
   const { data, error } = await supabase
     .from("events")
@@ -67,8 +72,13 @@ export async function getEvents(): Promise<OddEvent[]> {
     return [];
   }
 
-  return data.map(toEvent);
-}
+    return data.map(toEvent);
+  },
+  ["events:all"],
+  { revalidate: 60, tags: ["events"] },
+);
+
+export const getEvents = cache(fetchEvents);
 
 /**
  * Has it finished?

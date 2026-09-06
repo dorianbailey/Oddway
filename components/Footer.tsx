@@ -5,6 +5,7 @@ import { UnitToggle } from "./UnitToggle";
 const FOOTER_LINKS = [
   { href: "/explore", label: "Explore" },
   { href: "/events", label: "Events" },
+  { href: "/trips", label: "Road trips" },
   { href: "/stories", label: "Stories" },
   { href: "/about", label: "About" },
   { href: "/suggest", label: "Suggest a stop" },

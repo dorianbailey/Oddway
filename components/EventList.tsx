@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { cx } from "@/lib/cx";
-import { daysUntil, hasFinished } from "@/lib/events";
+import { daysUntil, hasFinished, likelyRecurrence } from "@/lib/events";
 import { distanceKm } from "@/lib/trip-order";
 import { formatDistanceFromKm } from "@/lib/units";
 import { stateName } from "@/lib/us-states";
@@ -37,9 +37,13 @@ export function EventList({ events }: { events: OddEvent[] }) {
   );
 
   const visible = useMemo(() => {
-    const rows = showPast
-      ? withDistance
-      : withDistance.filter((row) => !row.finished);
+    /*
+      Hiding finished events is right in September and wrong in March, when
+      every event in the index has passed and hiding them leaves a blank page.
+      So they are hidden only while there is something else to show.
+    */
+    const upcoming = withDistance.filter((row) => !row.finished);
+    const rows = showPast || upcoming.length === 0 ? withDistance : upcoming;
 
     return [...rows].sort((a, b) => {
       if (sort === "distance") {
@@ -50,9 +54,14 @@ export function EventList({ events }: { events: OddEvent[] }) {
         return a.km - b.km;
       }
       if (sort === "date") {
-        if (!a.event.startDate) return 1;
-        if (!b.event.startDate) return -1;
-        return a.event.startDate.localeCompare(b.event.startDate);
+        // A finished event sorts by when it is next expected, not by the date
+        // it last happened — otherwise last spring's festivals sit at the top
+        // of a list meant to answer "what is coming up".
+        const when = (row: typeof a) =>
+          row.finished
+            ? (likelyRecurrence(row.event)?.nextDate ?? "9999-12-31")
+            : (row.event.startDate ?? "9999-12-31");
+        return when(a).localeCompare(when(b));
       }
       return a.event.name.localeCompare(b.event.name);
     });
@@ -241,11 +250,38 @@ export function EventList({ events }: { events: OddEvent[] }) {
               </p>
             ) : null}
 
-            {finished ? (
-              <p className="mt-1 text-[0.9rem] text-ink-soft">
-                Finished for this year — most of these run annually.
-              </p>
-            ) : null}
+            {/*
+              A finished event is not a dead one. Showing when it usually falls
+              means the page still answers "when can I go" in March, instead of
+              being a list of things that already happened.
+
+              Phrased as a pattern and an expectation, never as a date, because
+              a computed date presented as fact is exactly the failure the
+              estimated-date marker exists to prevent.
+            */}
+            {finished
+              ? (() => {
+                  const recurrence = likelyRecurrence(event);
+                  if (!recurrence) {
+                    return (
+                      <p className="mt-1 text-[0.9rem] text-ink-soft">
+                        Finished for this year.
+                      </p>
+                    );
+                  }
+                  return (
+                    <p className="mt-1 text-[0.9rem] text-ink-soft">
+                      Finished for this year. Usually {recurrence.pattern}, so
+                      expect it around{" "}
+                      {new Date(`${recurrence.nextDate}T00:00:00Z`).toLocaleDateString(
+                        "en-US",
+                        { timeZone: "UTC", month: "long", day: "numeric", year: "numeric" },
+                      )}{" "}
+                      — confirm with the organiser before planning around it.
+                    </p>
+                  );
+                })()
+              : null}
 
             <p className="mt-3 text-[0.95rem]">
               {event.website ? (

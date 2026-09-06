@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { StateFilter } from "@/components/StateFilter";
 import { EventList } from "@/components/EventList";
-import { getEventStates, getEvents } from "@/lib/events";
+import { DataUnavailable } from "@/components/DataUnavailable";
+import { getEventStates, loadEvents } from "@/lib/events";
 import { isKnownState, stateName } from "@/lib/us-states";
 
 interface EventsPageProps {
@@ -33,7 +34,10 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
   const { state } = await searchParams;
   const selected = normaliseState(state);
 
-  const [all, states] = await Promise.all([getEvents(), getEventStates()]);
+  const [{ events: all, unavailable }, states] = await Promise.all([
+    loadEvents(),
+    getEventStates(),
+  ]);
   const events = selected ? all.filter((e) => e.state === selected) : all;
 
   return (
@@ -63,7 +67,9 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
-        {events.length === 0 ? (
+        {unavailable ? (
+          <DataUnavailable what="the events list" />
+        ) : events.length === 0 ? (
           <p className="border-l-2 border-contour pl-4 text-lede text-ink-soft">
             {selected
               ? `Nothing listed in ${stateName(selected)} yet.`

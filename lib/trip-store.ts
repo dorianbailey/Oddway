@@ -150,6 +150,22 @@ export const tripStore = {
     emit();
   },
 
+  /**
+   * Replace the whole trip, for loading a curated route.
+   *
+   * Deliberately a replace rather than an append: somebody choosing a
+   * ready-made trip wants that trip, not that trip mixed into whatever they
+   * were browsing an hour ago. The origin and destination are cleared for the
+   * same reason.
+   */
+  load(next: Stop[], startAt: TripOrigin | null = null) {
+    stops = next;
+    origin = startAt;
+    destination = null;
+    persist();
+    emit();
+  },
+
   remove(id: string) {
     stops = stops.filter((stop) => stop.id !== id);
     persist();

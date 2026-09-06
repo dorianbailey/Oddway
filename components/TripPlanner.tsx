@@ -1,6 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { chooseDisplaySets } from "@/lib/display-sets";
+import { tripStore } from "@/lib/trip-store";
+import { distanceKm, orderStopsFrom } from "@/lib/trip-order";
 import { CategoryFilters } from "./CategoryFilters";
 import { MapSection } from "./MapSection";
 import { RouteSearch } from "./RouteSearch";
@@ -59,6 +62,112 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
   const [categories, setCategories] = useState<CategorySlug[]>([]);
   const [maxDetourMinutes, setMaxDetourMinutes] = useState(DEFAULT_DETOUR);
   const [planned, setPlanned] = useState<PlannedRoute | null>(null);
+
+  /*
+    The saved trip, read straight from the store.
+
+    The map used to show the whole index until a search happened, which meant
+    that adding stops to a trip changed nothing on screen — the one moment the
+    map should be most useful. Now the trip takes precedence: as soon as there
+    is one, that is what gets plotted.
+  */
+  const savedTrip = useSyncExternalStore(
+    tripStore.subscribe,
+    tripStore.getSnapshot,
+    tripStore.getServerSnapshot,
+  );
+
+  // The start and finish the traveller chose, which the drawn line has to
+  // begin and end at — otherwise it describes a different journey.
+  const tripOrigin = useSyncExternalStore(
+    tripStore.subscribe,
+    tripStore.getOrigin,
+    tripStore.getOriginServerSnapshot,
+  );
+  const tripDestination = useSyncExternalStore(
+    tripStore.subscribe,
+    tripStore.getDestination,
+    tripStore.getDestinationServerSnapshot,
+  );
+
+  /*
+    The drawn route is stored against the trip it was drawn for.
+
+    Changing the trip therefore invalidates it by derivation rather than by an
+    effect that clears state — which is both simpler and avoids the
+    setState-in-effect pattern that causes render loops.
+  */
+  const tripKey = [
+    tripOrigin ? `${tripOrigin.latitude},${tripOrigin.longitude}` : "",
+    ...savedTrip.map((stop) => stop.id),
+    tripDestination ? `${tripDestination.latitude},${tripDestination.longitude}` : "",
+  ].join("|");
+  const [drawn, setDrawn] = useState<{ key: string; route: Route } | null>(null);
+  const [drawnError, setDrawnError] = useState<{ key: string; message: string } | null>(null);
+  const [drawingTrip, setDrawingTrip] = useState(false);
+
+  const tripRoute = drawn?.key === tripKey ? drawn.route : null;
+  const tripRouteError = drawnError?.key === tripKey ? drawnError.message : null;
+
+  const drawTripRoute = useCallback(async () => {
+    /*
+      Same ordering the trip panel displays, so the line matches the list.
+      Ordering the stops one way and drawing them another would be worse than
+      not drawing them at all.
+    */
+    const ordered = orderStopsFrom(tripOrigin, savedTrip, tripDestination);
+    const points = [
+      ...(tripOrigin ? [tripOrigin] : []),
+      ...ordered,
+      ...(tripDestination ? [tripDestination] : []),
+    ].map((point) => ({
+      latitude: point.latitude,
+      longitude: point.longitude,
+    }));
+
+    if (points.length < 2) return;
+
+    /*
+      Check the span before spending a routing request.
+
+      The free OpenRouteService plan will not draw a route beyond a few
+      thousand kilometres, and a trip that wanders from New Jersey to Utah is
+      well past it. Finding that out from a rejected request costs quota and
+      returns an error about locations, which is not the problem.
+    */
+    let spanKm = 0;
+    for (let i = 1; i < points.length; i += 1) {
+      spanKm += distanceKm(points[i - 1], points[i]);
+    }
+
+    if (spanKm > 4_000) {
+      setDrawnError({
+        key: tripKey,
+        message: `That's roughly ${Math.round(spanKm * 0.621).toLocaleString()} miles of trip — too far to draw as one route. Split it into a few shorter ones.`,
+      });
+      return;
+    }
+    setDrawingTrip(true);
+    setDrawnError(null);
+
+    try {
+      const response = await fetch("/api/trip-route", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ points }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setDrawnError({ key: tripKey, message: data.error ?? "Couldn't draw that route." });
+        return;
+      }
+      setDrawn({ key: tripKey, route: data.route });
+    } catch {
+      setDrawnError({ key: tripKey, message: "Couldn't reach the server." });
+    } finally {
+      setDrawingTrip(false);
+    }
+  }, [savedTrip, tripOrigin, tripDestination, tripKey]);
   const { units } = useUnits();
 
   // Cancel a search still in flight when a new one starts.
@@ -117,7 +226,26 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
     return () => clearTimeout(timer);
   }, [planned, categories, maxDetourMinutes]);
 
-  const shownStops = result ? result.stops : fallbackStops;
+  const hasTrip = savedTrip.length > 0;
+
+  /*
+    The list and the map answer different questions, so they take different
+    sets.
+
+    The list is "what could you add" — search results, or the daily
+    recommendations. Pointing it at the saved trip made the recommendations
+    vanish the moment you added one of them, which read as the others being
+    deleted.
+
+    The map is "what are you looking at", and a trip in progress is the better
+    answer to that than a general overview.
+  */
+  const { listed: listedStops, mapped: mappedStops } = chooseDisplaySets({
+    searchResults: result?.stops ?? null,
+    savedTrip,
+    fallbackStops,
+    allStops,
+  });
   const hasSearched = status === "done" && result !== null;
 
   return (
@@ -163,9 +291,9 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
       </section>
 
       <MapSection
-        stops={shownStops}
-        allStops={allStops}
-        route={result?.route ?? null}
+        stops={mappedStops}
+        isOverview={!result && !hasTrip}
+        route={result?.route ?? tripRoute}
       />
 
       <section
@@ -173,7 +301,13 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
         aria-labelledby="stops-heading"
         className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20"
       >
-        <TripSummary route={result?.route ?? null} />
+        <TripSummary
+          route={result?.route ?? null}
+          onDrawRoute={drawTripRoute}
+          isDrawingRoute={drawingTrip}
+          routeDrawn={tripRoute !== null}
+          drawRouteError={tripRouteError}
+        />
 
         <h2 id="stops-heading" className="mt-14 max-w-[24ch] text-section first:mt-0">
           {hasSearched
@@ -203,7 +337,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
           </p>
         ) : (
           <ul className="mt-10 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-            {shownStops.map((stop) => (
+            {listedStops.map((stop) => (
               <li key={stop.id} className="flex">
                 <StopCard stop={stop} />
               </li>

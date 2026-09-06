@@ -4,7 +4,8 @@ import { ExploreFilters } from "@/components/ExploreFilters";
 import { PageHero } from "@/components/PageHero";
 import { StopCard } from "@/components/StopCard";
 import { CATEGORIES, getCategory } from "@/lib/categories";
-import { getStatesWithCounts, getStops } from "@/lib/stops";
+import { DataUnavailable } from "@/components/DataUnavailable";
+import { getStatesWithCounts, loadStops } from "@/lib/stops";
 import { isKnownState, stateName } from "@/lib/us-states";
 import type { CategorySlug, Stop } from "@/types/oddway";
 
@@ -47,8 +48,8 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
   const selectedCategory = normaliseCategory(category);
   const query = (q ?? "").trim();
 
-  const [allStops, states] = await Promise.all([
-    getStops(),
+  const [{ stops: allStops, unavailable }, states] = await Promise.all([
+    loadStops(),
     getStatesWithCounts(),
   ]);
 
@@ -138,7 +139,9 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
-        {stops.length === 0 ? (
+        {unavailable ? (
+          <DataUnavailable />
+        ) : stops.length === 0 ? (
           <p className="border-l-2 border-contour pl-4 text-lede text-ink-soft">
             Nothing matches that.{" "}
             <Link href="/explore" className="underline underline-offset-4">

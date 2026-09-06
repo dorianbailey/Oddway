@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { CATEGORIES } from "@/lib/categories";
 import { getStops, getStatesWithCounts } from "@/lib/stops";
 import { getArticles } from "@/lib/articles";
+import { getTrips } from "@/lib/trips";
 
 /**
  * The sitemap, built from the database rather than a fixed list.
@@ -28,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/explore`, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE}/events`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/stories`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/trips`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/suggest`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE}/about`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE}/privacy`, changeFrequency: "yearly", priority: 0.2 },
@@ -63,7 +65,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(article.date),
   }));
 
+  const tripPages: MetadataRoute.Sitemap = getTrips().map((trip) => ({
+    url: `${SITE}/trips/${trip.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
+    ...tripPages,
     ...staticPages,
     ...categoryPages,
     ...statePages,

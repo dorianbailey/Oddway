@@ -39,6 +39,17 @@ export interface RoutingProvider {
     to: GeocodeResult,
     signal?: AbortSignal,
   ): Promise<Route>;
+  /**
+   * Driving route through an ordered list of points.
+   *
+   * Used to draw a saved trip on the map. Separate from `route` because a trip
+   * has no origin and destination in the search sense — it is just a sequence,
+   * and the first and last stops are wherever the traveller put them.
+   */
+  routeVia(
+    points: Array<{ latitude: number; longitude: number }>,
+    signal?: AbortSignal,
+  ): Promise<Route>;
 }
 
 /** Thrown when a provider fails in a way worth showing the user. */

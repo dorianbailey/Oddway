@@ -25,10 +25,42 @@ export async function getStops(): Promise<Stop[]> {
 
   if (error) {
     console.error("Supabase getStops failed:", error.message);
-    return [...DEMO_STOPS];
+    /*
+      Deliberately not the demo data.
+
+      Falling back to seven hardcoded entries made a database outage look like
+      a very small index: no error, no clue, just a site quietly claiming to
+      know about seven places. Returning nothing lets the page say plainly that
+      it could not load, which is the only honest option.
+
+      With no credentials configured at all — a fresh checkout — the demo data
+      is still used, because that is development rather than failure.
+    */
+    return [];
   }
 
   return data.map(toStop);
+}
+
+/**
+ * Stops, plus whether the load actually worked.
+ *
+ * An empty index and an unreachable database look identical to a caller that
+ * only gets an array back, and they need completely different messages: one
+ * says "nothing matches", the other says "this is our fault, try again".
+ */
+export async function loadStops(): Promise<{
+  stops: Stop[];
+  unavailable: boolean;
+}> {
+  const supabase = getSupabase();
+  if (!supabase) {
+    // No credentials: a fresh checkout, not an outage.
+    return { stops: [...DEMO_STOPS], unavailable: false };
+  }
+
+  const stops = await getStops();
+  return { stops, unavailable: stops.length === 0 };
 }
 
 /**

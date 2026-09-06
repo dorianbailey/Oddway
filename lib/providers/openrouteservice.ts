@@ -150,7 +150,43 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
         .filter((item): item is NonNullable<typeof item> => item !== null);
     },
 
+    async routeVia(points, signal) {
+      /*
+        ORS caps waypoints per request. Fifty is far above anything a person
+        would plan by hand, and failing clearly beats a truncated route drawn
+        as though it were the whole thing.
+      */
+      if (points.length < 2) {
+        throw new RoutingProviderError("A route needs at least two stops.", 400);
+      }
+      if (points.length > 50) {
+        throw new RoutingProviderError(
+          "That is more stops than we can route in one go. Try splitting the trip.",
+          400,
+        );
+      }
+
+      return requestRoute(
+        points.map((p) => [p.longitude, p.latitude]),
+        signal,
+      );
+    },
+
     async route(from, to, signal) {
+      return requestRoute(
+        [
+          [from.longitude, from.latitude],
+          [to.longitude, to.latitude],
+        ],
+        signal,
+      );
+    },
+  };
+
+  async function requestRoute(
+    coordinates: number[][],
+    signal?: AbortSignal,
+  ): Promise<Route> {
       const response = await fetch(
         `${BASE_URL}/v2/directions/driving-car/geojson`,
         {
@@ -163,10 +199,7 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
             Accept: "application/geo+json, application/json;q=0.9",
           },
           body: JSON.stringify({
-            coordinates: [
-              [from.longitude, from.latitude],
-              [to.longitude, to.latitude],
-            ],
+            coordinates,
             // Turn-by-turn manoeuvres, so directions can be shown inside
             // OddWay rather than handing the traveller to another app.
             instructions: true,
@@ -203,7 +236,7 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
 
       if (!geometry || geometry.length < 2) {
         throw new RoutingProviderError(
-          "No driving route exists between those two places.",
+          "No driving route connects those places.",
           422,
         );
       }
@@ -223,8 +256,7 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
           })),
         ),
       } satisfies Route;
-    },
-  };
+  }
 }
 
 /**
@@ -263,8 +295,23 @@ async function providerError(
     );
   }
   if (status === 400) {
+    /*
+      ORS returns 400 for two very different problems, and telling them apart
+      matters: one is fixable by the traveller and one is not.
+
+      Code 2004 means the request exceeded the plan's limits — almost always
+      total distance. A trip from New Jersey to Utah is not a bad address, it
+      is simply longer than the free plan will route, and telling someone to
+      "try nearby towns" sends them looking for a fault that isn't there.
+    */
+    if (detail.includes("2004") || /exceed|maximum|limit/i.test(detail)) {
+      return new RoutingProviderError(
+        "That route is too long for the routing service to draw in one go. Try splitting it into a couple of shorter trips.",
+        422,
+      );
+    }
     return new RoutingProviderError(
-      "The routing service couldn't use those two locations. Try nearby towns instead.",
+      "The routing service couldn't use one of those locations. Try a nearby town instead.",
       422,
     );
   }

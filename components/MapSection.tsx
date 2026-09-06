@@ -1,10 +1,11 @@
 import { RouteMap } from "./RouteMap";
-import type { MapStop, Route, Stop } from "@/types/oddway";
+import type { MapStop, Route } from "@/types/oddway";
 
 interface MapSectionProps {
-  stops: Stop[];
-  /** Every stop we hold, plotted when no route has been planned yet. */
-  allStops?: MapStop[];
+  /** Whatever the caller has decided to plot. */
+  stops: MapStop[];
+  /** True when these are the whole index rather than a search or a trip. */
+  isOverview?: boolean;
   /** The drawn route. Null until the routing API exists. */
   route?: Route | null;
 }
@@ -19,14 +20,10 @@ interface MapSectionProps {
  * list is the accessible equivalent and stays in the DOM either way.
  */
 export function MapSection({
-  stops,
-  allStops,
+  stops: plotted,
+  isOverview = false,
   route = null,
 }: MapSectionProps) {
-  // Before a search, the map is a picture of everything OddWay knows. After
-  // one, it narrows to the stops actually near the route.
-  const plotted = route ? stops : (allStops ?? stops);
-  const isOverview = !route && allStops !== undefined;
   return (
     <section
       id="map"

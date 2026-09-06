@@ -46,9 +46,9 @@ export function Header() {
         beneath, because three things across 360px leaves room for none of them.
       */}
       <div className={cx(
-          "mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-6 px-5 sm:grid-cols-[1fr_auto_1fr] sm:px-8",
+          "mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-6 px-5 lg:grid-cols-[1fr_auto_1fr] sm:px-8",
           "transition-all duration-300",
-          isScrolled ? "gap-y-0 py-1 sm:gap-y-2 sm:py-2" : "gap-y-2 py-2",
+          isScrolled ? "gap-y-0 py-1 lg:gap-y-2 lg:py-2" : "gap-y-2 py-2",
         )}>
         {/*
           On a phone the two button groups slide inward and collapse, leaving
@@ -59,9 +59,9 @@ export function Header() {
           aria-label="Main"
           className={cx(
             "order-2 justify-self-center overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "sm:order-1 sm:max-h-none sm:translate-x-0 sm:justify-self-start sm:opacity-100",
+            "lg:order-1 lg:max-h-none lg:translate-x-0 lg:justify-self-start lg:opacity-100",
             isScrolled
-              ? "max-h-0 translate-x-10 opacity-0 sm:pointer-events-auto pointer-events-none"
+              ? "max-h-0 translate-x-10 opacity-0 lg:pointer-events-auto pointer-events-none"
               : "max-h-16 translate-x-0 opacity-100",
           )}
         >
@@ -86,7 +86,7 @@ export function Header() {
           <OddWayLogo
             className={cx(
               "transition-all duration-300 motion-reduce:transition-none",
-              isScrolled ? "h-11 sm:h-20 lg:h-24" : "h-16 sm:h-20 lg:h-24",
+              isScrolled ? "h-11 lg:h-24" : "h-16 sm:h-20 lg:h-24",
             )}
             priority
           />
@@ -101,12 +101,19 @@ export function Header() {
         <div
           className={cx(
             "order-3 flex items-center gap-2 overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "justify-self-center sm:max-h-none sm:translate-x-0 sm:gap-3 sm:justify-self-end sm:opacity-100",
+            "justify-self-center lg:max-h-none lg:translate-x-0 lg:gap-3 lg:justify-self-end lg:opacity-100",
             isScrolled
-              ? "max-h-0 -translate-x-10 opacity-0 sm:pointer-events-auto pointer-events-none"
+              ? "max-h-0 -translate-x-10 opacity-0 lg:pointer-events-auto pointer-events-none"
               : "max-h-16 translate-x-0 opacity-100",
           )}
         >
+          <Link
+            href="/trips"
+            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
+          >
+            Trips
+          </Link>
+
           <Link
             href="/stories"
             className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
@@ -129,9 +136,9 @@ export function Header() {
           "border-t border-brass/20 px-5 py-1 text-center font-body",
           "text-[0.7rem] tracking-[0.16em] text-lichen/80 uppercase",
           "transition-colors duration-300 sm:px-8 sm:text-[0.78rem]",
-          "overflow-hidden sm:max-h-none sm:py-1 sm:opacity-100",
+          "overflow-hidden lg:max-h-none lg:py-1 lg:opacity-100",
           isScrolled
-            ? "max-h-0 py-0 opacity-0 sm:opacity-100 bg-pine-deep/75"
+            ? "max-h-0 py-0 opacity-0 lg:opacity-100 bg-pine-deep/75"
             : "max-h-10 opacity-100 bg-pine-deep",
         )}
       >

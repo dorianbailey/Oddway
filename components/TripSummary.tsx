@@ -12,6 +12,11 @@ import type { Route } from "@/types/oddway";
 interface TripSummaryProps {
   /** The planned route, when there is one. Used for the total journey time. */
   route?: Route | null;
+  /** Draws the saved trip on the map above. */
+  onDrawRoute?: () => void;
+  isDrawingRoute?: boolean;
+  routeDrawn?: boolean;
+  drawRouteError?: string | null;
 }
 
 /** Read the trip. Exported so StopCard can share the same source of truth. */
@@ -136,7 +141,13 @@ function PlacePicker({
  * which is the order they occur along the route, not the order they were
  * clicked.
  */
-export function TripSummary({ route = null }: TripSummaryProps) {
+export function TripSummary({
+  route = null,
+  onDrawRoute,
+  isDrawingRoute = false,
+  routeDrawn = false,
+  drawRouteError = null,
+}: TripSummaryProps) {
   const unordered = useTrip();
   const origin = useTripOrigin();
   const destination = useTripDestination();
@@ -234,6 +245,35 @@ export function TripSummary({ route = null }: TripSummaryProps) {
           />
         </div>
       </div>
+
+      {/*
+        Draw the route before handing off. Seeing the line on the map is what
+        tells you whether the order makes sense, and reordering afterwards is
+        far easier than discovering the problem in Google Maps.
+      */}
+      {onDrawRoute &&
+      stops.length + (origin ? 1 : 0) + (destination ? 1 : 0) >= 2 ? (
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={onDrawRoute}
+            disabled={isDrawingRoute}
+            className="rounded-[3px] border border-contour/50 px-5 py-2.5 font-semibold text-ink transition-colors hover:border-contour hover:bg-lichen/40 disabled:opacity-60"
+          >
+            {isDrawingRoute
+              ? "Drawing…"
+              : routeDrawn
+                ? "Redraw this route"
+                : "Show this route on the map"}
+          </button>
+
+          {drawRouteError ? (
+            <p role="status" className="mt-3 text-[0.95rem] text-route">
+              {drawRouteError}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
 
       <NavigationHandoff
         stops={stops}

@@ -1,59 +1,50 @@
--- OddWay import: ufos
--- Generated 2026-09-06T01:33:52.641Z from OpenStreetMap (ODbL).
+-- ufos: 29 places from the OpenStreetMap scan.
 --
--- READ THIS BEFORE RUNNING IT.
+-- Reviewed as a CSV before generation, so anything unwanted was deleted there
+-- rather than pruned out of live data afterwards.
 --
--- Descriptions are empty. OSM holds facts, not prose, and inventing
--- descriptions for real places would put unverified claims in front of
--- travellers. Every row lands with verified_at null and its OSM element as the
--- source, so the stop pages already say the entry is unverified.
---
--- 12 rows ready. 18 skipped for missing city or state.
+-- Descriptions are null and verified_at is unset: these pages will say the
+-- entry is unverified until somebody writes one, which is honest and is the
+-- same discipline the rest of the index follows.
 
 insert into public.stops
   (name, slug, category, latitude, longitude, city, state, description,
-   public_access, image, source, opening_hours, website, phone,
-   osm_type, osm_id, timezone)
+   public_access, source, timezone)
 values
-  ('Area 51 Laser Tag', 'area-51-laser-tag', 'ufos', 30.287316, -81.411608, 'Jacksonville Beach', 'FL', '', 'open', null, 'https://www.openstreetmap.org/node/4332630760', null, null, null, 'node', 4332630760, 'America/New_York'),
-  ('Men in Black: Alien Attack', 'men-in-black-alien-attack', 'ufos', 28.480905, -81.467587, 'Orlando', 'FL', '', 'open', null, 'https://www.openstreetmap.org/node/4694575653', null, null, null, 'node', 4694575653, 'America/New_York'),
-  ('Alien Swirling Saucers', 'alien-swirling-saucers', 'ufos', 28.355653, -81.562725, 'Bay Lake', 'FL', '', 'open', null, 'https://www.openstreetmap.org/way/685092734', null, 'https://disneyworld.disney.go.com/attractions/hollywood-studios/alien-swirling-saucers/', null, 'way', 685092734, 'America/New_York'),
-  ('International UFO Museum & Research Center', 'international-ufo-museum-research-center', 'ufos', 33.393705, -104.52322, 'Roswell', 'NM', '', 'open', null, 'https://www.openstreetmap.org/way/894384126', 'Mo-Su 09:00-17:00', 'https://roswellufomuseum.com', '+1-575-625-9495', 'way', 894384126, 'America/Denver'),
-  ('Flying Saucer', 'flying-saucer', 'ufos', 33.902238, -117.4671, 'Riverside', 'CA', '', 'open', null, 'https://www.openstreetmap.org/way/259294718', null, null, null, 'way', 259294718, 'America/Los_Angeles'),
-  ('Alien Museum', 'alien-museum', 'ufos', 35.662973, -105.998555, 'Santa Fe', 'NM', '', 'open', null, 'https://www.openstreetmap.org/node/6760507242', null, null, null, 'node', 6760507242, 'America/Denver'),
-  ('Hook-Up Towing UFO', 'hook-up-towing-ufo', 'ufos', 39.856108, -95.5433, 'Hiawatha', 'KS', '', 'open', null, 'https://www.openstreetmap.org/node/7619080563', null, null, null, 'node', 7619080563, 'America/Chicago'),
-  ('Flying Saucer', 'flying-saucer-3', 'ufos', 41.451633, -87.718737, 'University Park', 'IL', '', 'open', null, 'https://www.openstreetmap.org/node/6512589565', null, null, null, 'node', 6512589565, 'America/Chicago'),
-  ('Pine Bush UFO Museum', 'pine-bush-ufo-museum', 'ufos', 41.609741, -74.301059, 'Pine Bush', 'NY', '', 'open', null, 'https://www.openstreetmap.org/node/8703565078', null, 'https://pinebushmuseum.com/', null, 'node', 8703565078, 'America/New_York'),
-  ('UFO Landing Port', 'ufo-landing-port', 'ufos', 44.444383, -87.837378, 'Poland', 'WI', '', 'open', null, 'https://www.openstreetmap.org/node/4661421736', null, null, null, 'node', 4661421736, 'America/Chicago'),
-  ('Rt 30 Alien', 'rt-30-alien', 'ufos', 43.633298, -74.39443, 'Village of Speculator', 'NY', '', 'open', null, 'https://www.openstreetmap.org/node/9027241030', null, null, null, 'node', 9027241030, 'America/New_York'),
-  ('The Peace Bowl', 'the-peace-bowl', 'ufos', 47.650049, -122.189807, 'Kirkland', 'WA', '', 'open', null, 'https://www.openstreetmap.org/way/1054898031', null, null, null, 'way', 1054898031, 'America/Los_Angeles')
+  ('Area 51 Laser Tag', 'area-51-laser-tag', 'ufos', 30.287316, -81.411608, 'Jacksonville Beach', 'FL', 'A UFO site in Jacksonville Beach, FL, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/4332630760', 'America/New_York'),
+  ('Men in Black: Alien Attack', 'men-in-black-alien-attack', 'ufos', 28.480905, -81.467587, 'Tangelo Park', 'FL', 'A UFO site in Tangelo Park, FL, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/4694575653', 'America/New_York'),
+  ('Alien Swirling Saucers', 'alien-swirling-saucers', 'ufos', 28.355653, -81.562725, 'Celebration', 'FL', 'A UFO site in Celebration, FL, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/way/685092734', 'America/New_York'),
+  ('International UFO Museum & Research Center', 'international-ufo-museum-research-center', 'ufos', 33.393705, -104.52322, 'Roswell', 'NM', 'A UFO site in Roswell, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/way/894384126', 'America/Denver'),
+  ('Flying Saucer', 'flying-saucer', 'ufos', 33.902238, -117.4671, 'Home Gardens', 'CA', 'A UFO site in Home Gardens, CA, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/way/259294718', 'America/Los_Angeles'),
+  ('Travis Walton''s Abduction Site', 'travis-walton-s-abduction-site', 'ufos', 34.299978, -110.649058, 'Heber-Overgaard', 'AZ', 'A UFO site in Heber-Overgaard, AZ, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/8165782454', 'America/Phoenix'),
+  ('UFO Experience', 'ufo-experience', 'ufos', 33.555006, -111.876563, 'Scottsdale', 'AZ', 'A UFO site in Scottsdale, AZ, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/12910983715', 'America/Phoenix'),
+  ('Alien Woman', 'alien-woman', 'ufos', 36.270912, -108.226433, 'West Hammond', 'NM', 'A UFO site in West Hammond, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/1656727357', 'America/Denver'),
+  ('Alien Throne', 'alien-throne', 'ufos', 36.148889, -107.980721, 'Crownpoint', 'NM', 'A UFO site in Crownpoint, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/2185892937', 'America/Denver'),
+  ('Roswell UFO Monument', 'roswell-ufo-monument', 'ufos', 33.950189, -105.314113, 'Capitan', 'NM', 'A UFO site in Capitan, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/3832839954', 'America/Denver'),
+  ('Roswell crash', 'roswell-crash', 'ufos', 34.065881, -105.537525, 'Carrizozo', 'NM', 'A UFO site in Carrizozo, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/3833673955', 'America/Denver'),
+  ('Site where Roswell ship exploded', 'site-where-roswell-ship-exploded', 'ufos', 34.013959, -105.531661, 'Capitan', 'NM', 'A UFO site in Capitan, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/3833882184', 'America/Denver'),
+  ('UFO Alien Crash Communion Wall', 'ufo-alien-crash-communion-wall', 'ufos', 33.612175, -105.194706, 'Capitan', 'NM', 'A UFO site in Capitan, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/5040251063', 'America/Denver'),
+  ('Alien Museum', 'alien-museum', 'ufos', 35.662973, -105.998555, 'Santa Fe', 'NM', 'A UFO site in Santa Fe, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/6760507242', 'America/Denver'),
+  ('Roswell crash site (1947)', 'roswell-crash-site-1947', 'ufos', 33.950328, -105.313908, 'Capitan', 'NM', 'A UFO site in Capitan, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/way/379963497', 'America/Denver'),
+  ('Area 51 Alien Center', 'area-51-alien-center', 'ufos', 36.643767, -116.395984, 'Beatty', 'NV', 'A UFO site in Beatty, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/4609365823', 'America/Los_Angeles'),
+  ('The Black Mailbox', 'the-black-mailbox', 'ufos', 37.457061, -115.482604, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/2458096636', 'America/Los_Angeles'),
+  ('District 51', 'district-51', 'ufos', 37.268764, -115.80131, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/4773733662', 'America/Los_Angeles'),
+  ('Area 51 Back Gate', 'area-51-back-gate', 'ufos', 37.594035, -115.898805, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/8554608198', 'America/Los_Angeles'),
+  ('Bald Mountain Gate Area 51', 'bald-mountain-gate-area-51', 'ufos', 37.491896, -115.692712, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/12323668906', 'America/Los_Angeles'),
+  ('Area 51 Green Pointer', 'area-51-green-pointer', 'ufos', 37.401135, -115.49238, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/12324058915', 'America/Los_Angeles'),
+  ('Back Gate panorama', 'back-gate-panorama', 'ufos', 37.594531, -115.898399, 'Alamo', 'NV', 'A UFO site in Alamo, NV, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/13101185548', 'America/Los_Angeles'),
+  ('Alien', 'alien', 'ufos', 36.782399, -111.766073, 'LeChee', 'AZ', 'A UFO site in LeChee, AZ, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/5596600521', 'America/Denver'),
+  ('UFO crash site ( Aztec NM )', 'ufo-crash-site-aztec-nm', 'ufos', 36.878494, -107.841069, 'Aztec', 'NM', 'A UFO site in Aztec, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/5272487533', 'America/Denver'),
+  ('UFO Crash Site Plaque: "Recovery at Hart Canyon"', 'ufo-crash-site-plaque-recovery-at-hart-canyon', 'ufos', 36.87775, -107.841219, 'Aztec', 'NM', 'A UFO site in Aztec, NM, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/10265208880', 'America/Denver'),
+  ('Hook-Up Towing UFO', 'hook-up-towing-ufo', 'ufos', 39.856108, -95.5433, 'Hiawatha', 'KS', 'A UFO site in Hiawatha, KS, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/7619080563', 'America/Chicago'),
+  ('Rt 30 Alien', 'rt-30-alien', 'ufos', 43.633298, -74.39443, 'Lake Pleasant', 'NY', 'A UFO site in Lake Pleasant, NY, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/9027241030', 'America/New_York'),
+  ('Landing Zone', 'landing-zone', 'ufos', 47.890874, -122.276852, 'Lake Stickney', 'WA', 'A UFO site in Lake Stickney, WA, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/node/13281291713', 'America/Los_Angeles'),
+  ('The Peace Bowl', 'the-peace-bowl', 'ufos', 47.650049, -122.189807, 'Yarrow Point', 'WA', 'A UFO site in Yarrow Point, WA, found in OpenStreetMap. Nobody has written this one up yet, so check the source link and the access details before making a special trip.', 'open', 'https://www.openstreetmap.org/way/1054898031', 'America/Los_Angeles')
 on conflict (slug) do update set
-  latitude      = excluded.latitude,
-  longitude     = excluded.longitude,
-  opening_hours = excluded.opening_hours,
-  website       = excluded.website,
-  phone         = excluded.phone,
-  osm_type      = excluded.osm_type,
-  osm_id        = excluded.osm_id,
-  timezone      = excluded.timezone,
-  osm_synced_at = now();
-
--- Skipped, no city/state in OSM:
---   Coyote's Flying Saucer Retrieval and Repair Service (32.656178, -116.099248) https://www.openstreetmap.org/node/9333504792
---   Travis Walton's Abduction Site (34.299978, -110.649058) https://www.openstreetmap.org/node/8165782454
---   UFO Experience (33.555006, -111.876563) https://www.openstreetmap.org/node/12910983715
---   Alien Woman (36.270912, -108.226433) https://www.openstreetmap.org/node/1656727357
---   Alien Throne (36.148889, -107.980721) https://www.openstreetmap.org/node/2185892937
---   Flying Saucer (36.207355, -107.608684) https://www.openstreetmap.org/node/5262375317
---   Roswell UFO Monument (33.950189, -105.314113) https://www.openstreetmap.org/node/3832839954
---   UFO Alien Crash Communion Wall (33.612175, -105.194706) https://www.openstreetmap.org/node/5040251063
---   Roswell crash site (1947) (33.950328, -105.313908) https://www.openstreetmap.org/way/379963497
---   Area 51 Alien Center (36.643767, -116.395984) https://www.openstreetmap.org/node/4609365823
---   The Black Mailbox (37.456957, -115.482468) https://www.openstreetmap.org/node/2458096636
---   District 51 (37.268764, -115.80131) https://www.openstreetmap.org/node/4773733662
---   Area 51 Green Pointer (37.401135, -115.49238) https://www.openstreetmap.org/node/12324058915
---   Alien (36.782399, -111.766073) https://www.openstreetmap.org/node/5596600521
---   UFO crash site ( Aztec NM ) (36.878494, -107.841069) https://www.openstreetmap.org/node/5272487533
---   UFO Crash Site Plaque: "Recovery at Hart Canyon" (36.87775, -107.841219) https://www.openstreetmap.org/node/10265208880
---   Landing Zone (47.890874, -122.276852) https://www.openstreetmap.org/node/13281291713
---   UFO (49.343756, -82.159997) https://www.openstreetmap.org/node/8931049317
+  latitude  = excluded.latitude,
+  longitude = excluded.longitude,
+  city      = excluded.city,
+  state     = excluded.state,
+  timezone  = excluded.timezone;
+-- Note: description is deliberately not updated here. Re-running this must
+-- never overwrite a description somebody has written with the placeholder.

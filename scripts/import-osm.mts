@@ -31,7 +31,7 @@ import {
   US_REGIONS,
   type OverpassElement,
 } from "../lib/import/overpass";
-import { getCategorySearch, matchesKeywords } from "../lib/import/searches";
+import { CATEGORY_SEARCHES, getCategorySearch, matchesKeywords } from "../lib/import/searches";
 import { stateCode } from "../lib/us-states";
 
 interface Candidate {
@@ -57,13 +57,29 @@ const LOOKUP_DELAY_MS = 1_500;
 
 async function main() {
   const [category, ...flags] = process.argv.slice(2);
-  const search = category ? getCategorySearch(category as never) : undefined;
 
-  if (!search) {
-    console.error("Usage: npx tsx scripts/import-osm.mts <category> [--tile N]");
-    console.error("Categories: cryptids, haunted, ufos, roadside-oddities");
+  /*
+    "all" runs every category in a single pass.
+
+    Each category previously did its own sweep of the tile grid, which meant
+    six passes downloading substantially the same museums, statues and
+    attractions and differing only in which keywords they matched afterwards.
+    One pass over the union of the tag sets, matched locally against every
+    category, does the same work for a sixth of the requests.
+  */
+  const runAll = category === "all";
+  const searches = runAll
+    ? CATEGORY_SEARCHES
+    : [getCategorySearch(category as never)].filter(Boolean);
+
+  if (searches.length === 0) {
+    console.error("Usage: npx tsx scripts/import-osm.mts <category|all> [--tile N]");
+    console.error(`Categories: ${CATEGORY_SEARCHES.map((c) => c.category).join(", ")}, or "all"`);
     process.exit(1);
   }
+
+  // The union, deduplicated: overlapping tag sets cost nothing extra.
+  const tags = [...new Set(searches.flatMap((c) => c!.tags))];
 
   const tileSize = Number(valueOf(flags, "--tile") ?? 4);
   const tiles = US_REGIONS.flatMap((region) => tile(region, tileSize));
@@ -71,9 +87,14 @@ async function main() {
   mkdirSync(CACHE_DIR, { recursive: true });
   const checkpointPath = join(CACHE_DIR, `${category}-${tileSize}.json`);
 
-  const state: { done: number; found: Candidate[] } = existsSync(checkpointPath)
+  const state: {
+    done: number;
+    found: Candidate[];
+    byCategory?: Record<string, Candidate[]>;
+  } = existsSync(checkpointPath)
     ? JSON.parse(readFileSync(checkpointPath, "utf8"))
-    : { done: 0, found: [] };
+    : { done: 0, found: [], byCategory: {} };
+  state.byCategory ??= {};
 
   if (state.done > 0) {
     console.log(`Resuming at tile ${state.done + 1} of ${tiles.length}.\n`);
@@ -90,7 +111,7 @@ async function main() {
     let elements: OverpassElement[];
     try {
       elements = await runQuery(
-        buildQuery(search.tags, box),
+        buildQuery(tags, box),
         (message) => console.log(`\n${message}`),
       );
     } catch (error) {
@@ -101,15 +122,28 @@ async function main() {
       process.exit(1);
     }
 
-    const matches = elements
-      .map((element) => toCandidate(element, search.keywords))
-      .filter((candidate): candidate is Candidate => candidate !== null);
+    /*
+      One element can only belong to one category, so the first search that
+      claims it wins. Order in CATEGORY_SEARCHES is therefore meaningful:
+      the more specific categories are listed before the broader ones.
+    */
+    let matched = 0;
+    for (const element of elements) {
+      for (const s of searches) {
+        const candidate = toCandidate(element, s!.keywords);
+        if (candidate) {
+          (state.byCategory![s!.category] ??= []).push(candidate);
+          state.found.push(candidate);
+          matched += 1;
+          break;
+        }
+      }
+    }
 
-    state.found.push(...matches);
     state.done = index + 1;
     writeFileSync(checkpointPath, JSON.stringify(state));
 
-    console.log(`${elements.length} tagged, ${matches.length} matched`);
+    console.log(`${elements.length} tagged, ${matched} matched`);
 
     if (index < tiles.length - 1) await sleep(REQUEST_DELAY_MS);
   }
@@ -184,9 +218,24 @@ async function main() {
     console.log(`${stillMissing} still have no city/state and are listed as comments.`);
   }
 
-  const outputPath = join("supabase", `import-${category}.sql`);
-  writeFileSync(outputPath, toSql(unique, category));
-  console.log(`\nWrote ${outputPath}. Read it before you run it.`);
+  // One file per category, so each can be reviewed and run on its own.
+  if (runAll) {
+    const uniqueSlugs = new Set(unique.map((c) => c.slug));
+    for (const s of searches) {
+      const rows = (state.byCategory![s!.category] ?? []).filter((c) =>
+        uniqueSlugs.has(c.slug),
+      );
+      if (rows.length === 0) continue;
+      const path = join("supabase", `import-${s!.category}.sql`);
+      writeFileSync(path, toSql(dedupe(rows), s!.category));
+      console.log(`  ${String(rows.length).padStart(4)}  ${path}`);
+    }
+    console.log("\nRead each file before you run it.");
+  } else {
+    const outputPath = join("supabase", `import-${category}.sql`);
+    writeFileSync(outputPath, toSql(unique, category));
+    console.log(`\nWrote ${outputPath}. Read it before you run it.`);
+  }
 }
 
 function toCandidate(

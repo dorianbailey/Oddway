@@ -9,7 +9,7 @@ import { isKnownState, stateName } from "@/lib/us-states";
 import type { CategorySlug, Stop } from "@/types/oddway";
 
 interface ExplorePageProps {
-  searchParams: Promise<{ state?: string; category?: string; q?: string }>;
+  searchParams: Promise<{ state?: string; category?: string; q?: string; page?: string }>;
 }
 
 /**
@@ -42,7 +42,7 @@ export async function generateMetadata({
 }
 
 export default async function ExplorePage({ searchParams }: ExplorePageProps) {
-  const { state, category, q } = await searchParams;
+  const { state, category, q, page } = await searchParams;
   const selectedState = normaliseState(state);
   const selectedCategory = normaliseCategory(category);
   const query = (q ?? "").trim();
@@ -67,11 +67,44 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
     return true;
   });
 
-  // With a category chosen there is only ever one section, so the heading and
-  // blurb would just repeat what the filter already says.
   const sections = selectedCategory
     ? CATEGORIES.filter((c) => c.slug === selectedCategory)
     : CATEGORIES;
+
+  /*
+    Two shapes, because browsing and drilling in are different jobs.
+
+    Without a category chosen the page is an overview: a handful from each
+    section with a link to the rest. Rendering all of them meant 464KB of HTML
+    and every card on the page before you had decided what you were looking
+    for — slow on exactly the rural signal this site is used on.
+
+    With a category chosen it becomes a list, and lists paginate.
+  */
+  const PREVIEW_PER_CATEGORY = 6;
+  const PER_PAGE = 24;
+
+  const currentPage = Math.max(1, Number(page) || 1);
+  const pageCount = selectedCategory
+    ? Math.max(1, Math.ceil(stops.length / PER_PAGE))
+    : 1;
+  const pageStart = (Math.min(currentPage, pageCount) - 1) * PER_PAGE;
+
+  /** Keeps the other filters when building a link. */
+  function withParams(next: Record<string, string | number | undefined>) {
+    const params = new URLSearchParams();
+    const merged = {
+      q: query || undefined,
+      category: selectedCategory ?? undefined,
+      state: selectedState ?? undefined,
+      ...next,
+    };
+    for (const [key, value] of Object.entries(merged)) {
+      if (value !== undefined && value !== "") params.set(key, String(value));
+    }
+    const search = params.toString();
+    return search ? `/explore?${search}` : "/explore";
+  }
 
   const heading = selectedCategory
     ? `${getCategory(selectedCategory)?.label}${selectedState ? ` in ${stateName(selectedState)}` : ""}`
@@ -148,16 +181,71 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
                 </p>
 
                 <ul className="mt-8 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-                  {matches.map((stop) => (
+                  {(selectedCategory
+                    ? matches.slice(pageStart, pageStart + PER_PAGE)
+                    : matches.slice(0, PREVIEW_PER_CATEGORY)
+                  ).map((stop) => (
                     <li key={stop.id} className="flex">
                       <StopCard stop={stop} />
                     </li>
                   ))}
                 </ul>
+
+                {/* Overview mode: a way through to the rest of the section. */}
+                {!selectedCategory && matches.length > PREVIEW_PER_CATEGORY ? (
+                  <p className="mt-8">
+                    <Link
+                      href={withParams({ category: category.slug })}
+                      className="font-semibold text-route underline underline-offset-4"
+                    >
+                      See all {matches.length} {category.label.toLowerCase()}
+                    </Link>
+                  </p>
+                ) : null}
               </section>
             );
           })
         )}
+
+        {/*
+          Page controls, only when a category is selected and there is more
+          than one page. Plain links so they work without JavaScript and can
+          be opened in a new tab.
+        */}
+        {selectedCategory && pageCount > 1 ? (
+          <nav
+            aria-label="Pagination"
+            className="mt-12 flex items-center justify-between gap-4 border-t border-contour/40 pt-8"
+          >
+            {currentPage > 1 ? (
+              <Link
+                href={withParams({ page: currentPage - 1 === 1 ? undefined : currentPage - 1 })}
+                rel="prev"
+                className="rounded-[3px] border border-contour/50 px-4 py-2 font-semibold text-ink transition-colors hover:border-contour hover:bg-lichen/40"
+              >
+                &larr; Previous
+              </Link>
+            ) : (
+              <span />
+            )}
+
+            <p className="text-[0.95rem] text-ink-soft">
+              Page {Math.min(currentPage, pageCount)} of {pageCount}
+            </p>
+
+            {currentPage < pageCount ? (
+              <Link
+                href={withParams({ page: currentPage + 1 })}
+                rel="next"
+                className="rounded-[3px] border border-contour/50 px-4 py-2 font-semibold text-ink transition-colors hover:border-contour hover:bg-lichen/40"
+              >
+                Next &rarr;
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
+        ) : null}
       </div>
     </>
   );

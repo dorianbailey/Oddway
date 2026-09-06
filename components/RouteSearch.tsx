@@ -37,6 +37,8 @@ export function RouteSearch({
   const destinationId = useId();
 
   const [origin, setOrigin] = useState("");
+  const [locating, setLocating] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
   const [destination, setDestination] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<string | null>(null);
@@ -72,6 +74,35 @@ export function RouteSearch({
 
     setStatus(
       `Routing between ${origin.trim()} and ${destination.trim()} isn't switched on yet. The stops further down show what a finished result looks like.`,
+    );
+  }
+
+  function handleUseMyLocation() {
+    if (!("geolocation" in navigator)) {
+      setLocationError("This device can't share its location.");
+      return;
+    }
+
+    setLocating(true);
+    setLocationError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocating(false);
+        // Five decimal places is about a metre. More is false precision.
+        setOrigin(
+          `${position.coords.latitude.toFixed(5)},${position.coords.longitude.toFixed(5)}`,
+        );
+      },
+      (error) => {
+        setLocating(false);
+        setLocationError(
+          error.code === error.PERMISSION_DENIED
+            ? "Location permission was denied. Type a starting point instead."
+            : "Couldn't get your location. Type a starting point instead.",
+        );
+      },
+      { timeout: 10_000, maximumAge: 60_000 },
     );
   }
 
@@ -115,6 +146,23 @@ export function RouteSearch({
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {/*
+            Fills the starting point with raw coordinates rather than a place
+            name. Reverse geocoding is not available on our provider plan, and
+            the router only needs a point — so the field shows the coordinates
+            and the results label them "Your location".
+          */}
+          <button
+            type="button"
+            onClick={handleUseMyLocation}
+            disabled={locating}
+            className="inline-flex items-center gap-2 rounded-[2px] text-[0.95rem] text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline disabled:opacity-60"
+          >
+            <LocationIcon />
+            {locating ? "Finding you…" : "Use my location"}
+          </button>
+
         <button
           type="button"
           onClick={handleSwap}
@@ -123,6 +171,7 @@ export function RouteSearch({
           <SwapIcon />
           Swap start and destination
         </button>
+        </div>
 
         <button
           type="submit"
@@ -140,7 +189,13 @@ export function RouteSearch({
         readers miss.
       */}
       <div role="status" className="mt-5 empty:mt-0">
-        {serverError ? (
+        {locationError ? (
+        <p role="status" className="mt-4 text-[0.95rem] text-route">
+          {locationError}
+        </p>
+      ) : null}
+
+      {serverError ? (
           <p className="max-w-[68ch] border-l-2 border-route pl-4 text-[0.95rem] text-ink">
             {serverError}
           </p>
@@ -152,6 +207,23 @@ export function RouteSearch({
         ) : null}
       </div>
     </form>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
+      <circle cx="8" cy="8" r="2.5" />
+      <circle cx="8" cy="8" r="5.5" />
+      <path d="M8 .5v2M8 13.5v2M.5 8h2M13.5 8h2" strokeLinecap="round" />
+    </svg>
   );
 }
 

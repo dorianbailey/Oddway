@@ -99,14 +99,35 @@ export function coordinatesOf(
  * 429 and 504 are the two Overpass returns under load, and both mean "wait",
  * not "give up". Each retry also moves to a different mirror.
  */
+/*
+  Mirror health, remembered for the length of the run.
+
+  Previously every tile started with the first mirror in the list. When that
+  mirror began refusing connections partway through a long import — which it
+  does, after a few hundred queries — every remaining tile paid a failed
+  request and a ten second penalty before moving on. Over two hundred tiles
+  that is most of an hour spent knocking on a door nobody is answering.
+
+  Mirrors are now tried in order of how recently they have failed, so a dead
+  one drops to the back after a couple of attempts and stays there.
+*/
+const failures = new Map<string, number>();
+
+function endpointsByHealth(): string[] {
+  return [...OVERPASS_ENDPOINTS].sort(
+    (a, b) => (failures.get(a) ?? 0) - (failures.get(b) ?? 0),
+  );
+}
+
 export async function runQuery(
   query: string,
   log: (message: string) => void = () => {},
 ): Promise<OverpassElement[]> {
   let lastError = "unknown";
+  const endpoints = endpointsByHealth();
 
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
-    const endpoint = OVERPASS_ENDPOINTS[attempt % OVERPASS_ENDPOINTS.length];
+    const endpoint = endpoints[attempt % endpoints.length];
 
     try {
       const response = await fetch(endpoint, {
@@ -117,9 +138,16 @@ export async function runQuery(
           "User-Agent": "OddWay/0.1 (roadside attraction index)",
         },
         body: "data=" + encodeURIComponent(query),
+        /*
+          Node's fetch has no default timeout, so a mirror that accepts the
+          connection and then goes quiet hangs the import indefinitely. Two
+          minutes is generous for a heavy tile and still bounded.
+        */
+        signal: AbortSignal.timeout(120_000),
       });
 
       if (response.status === 429 || response.status === 504) {
+        failures.set(endpoint, (failures.get(endpoint) ?? 0) + 1);
         const wait = 15_000 * 2 ** attempt;
         log(`  ${response.status} from ${host(endpoint)}, waiting ${wait / 1000}s`);
         await sleep(wait);
@@ -130,17 +158,23 @@ export async function runQuery(
       const text = await response.text();
 
       if (!text.trimStart().startsWith("{")) {
+        failures.set(endpoint, (failures.get(endpoint) ?? 0) + 1);
         lastError = `non-JSON from ${host(endpoint)} (HTTP ${response.status})`;
         log(`  ${lastError}`);
         await sleep(10_000);
         continue;
       }
 
+      // A success forgives one earlier failure, so a mirror that recovers
+      // works its way back up the order instead of being written off.
+      failures.set(endpoint, Math.max(0, (failures.get(endpoint) ?? 0) - 1));
       return (JSON.parse(text).elements ?? []) as OverpassElement[];
     } catch (error) {
-      lastError = String(error).slice(0, 120);
+      failures.set(endpoint, (failures.get(endpoint) ?? 0) + 2);
+      lastError = `${host(endpoint)}: ${String(error).slice(0, 90)}`;
       log(`  ${lastError}`);
-      await sleep(10_000);
+      // A refused connection is not rate limiting; no point waiting long.
+      await sleep(3_000);
     }
   }
 

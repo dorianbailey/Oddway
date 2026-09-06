@@ -3,10 +3,16 @@ import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { UnitsProvider } from "@/components/UnitsProvider";
-import { karla, sourceSerif } from "./fonts";
+import { fraktur, karla, sourceSerif } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  /*
+    Required for the share card. Without a metadataBase, Next emits a relative
+    og:image path, and every social platform and messaging app needs an
+    absolute URL — the preview simply comes back blank.
+  */
+  metadataBase: new URL("https://taketheoddway.com"),
   title: {
     default: "OddWay | Find Strange Stops Along Your Route",
     template: "%s | OddWay",
@@ -14,6 +20,7 @@ export const metadata: Metadata = {
   description:
     "Find the Strange. Take the OddWay. Discover cryptids, folklore, haunted places, roadside oddities, strange history, museums, and unusual destinations along your road trip.",
   applicationName: "OddWay",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "OddWay | Find Strange Stops Along Your Route",
     description:
@@ -38,7 +45,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${karla.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${karla.variable} ${fraktur.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
         <a
           href="#main"

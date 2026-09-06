@@ -20,6 +20,17 @@ export const sourceSerif = localFont({
   fallback: ["Georgia", "Cambria", "Times New Roman", "serif"],
 });
 
+/**
+ * Blackletter, used only for the masthead on story pages. A nameplate is the
+ * one place this is legible and appropriate; anywhere else it is unreadable.
+ */
+export const fraktur = localFont({
+  src: [{ path: "./fonts/Unifraktur.woff2", weight: "700", style: "normal" }],
+  variable: "--font-fraktur",
+  display: "swap",
+  fallback: ["Old English Text MT", "Georgia", "serif"],
+});
+
 export const karla = localFont({
   src: [{ path: "./fonts/Karla-Variable.woff2", weight: "200 800", style: "normal" }],
   variable: "--font-karla",

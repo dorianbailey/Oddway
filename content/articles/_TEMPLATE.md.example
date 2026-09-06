@@ -1,0 +1,32 @@
+---
+title: The First Bigfoot Sighting
+summary: A short line for the index and the search snippet. Two sentences at most.
+date: 2026-09-06
+category: cryptids
+# Slugs from the stops table. Rendered as "Go and see it" at the foot.
+stops:
+  - bigfoot-trap
+  - north-american-bigfoot-center
+# Every claim in the piece should be traceable to one of these.
+sources:
+  - https://example.org/a-real-source
+---
+
+Open with the thing itself, not with throat-clearing. The reader arrived for a
+story, so tell it.
+
+## Use headings to break the piece up
+
+Body copy is set at a comfortable measure and is deliberately exempt from the
+site-wide capitalisation rule — these are paragraphs, and title-casing prose
+makes it unreadable.
+
+Link to [a stop](/stops/bigfoot-trap) inline where it helps. The related-stops
+list at the bottom is generated from the frontmatter, so it does not need
+repeating in the text.
+
+> Quotes render as pull quotes.
+
+Keep sources honest. If something is contested, say it is contested — that is
+more interesting than pretending otherwise, and it is the difference between
+this and the rest of the internet on the subject.

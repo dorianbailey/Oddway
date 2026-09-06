@@ -73,7 +73,9 @@ export function OpeningHours({ value, website, phone }: OpeningHoursProps) {
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[0.95rem]">
           {website ? (
             <a
-              href={website}
+              href={
+                /^https?:\/\//i.test(website) ? website : `https://${website}`
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-route underline underline-offset-4"

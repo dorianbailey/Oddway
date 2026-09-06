@@ -168,22 +168,42 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
     ],
   },
   {
+    /*
+      The superlative is the giveaway. A thing is a roadside oddity because
+      somebody decided it should be the largest, tallest or strangest of its
+      kind and put it where cars would pass.
+
+      Two keywords were removed rather than kept: "house of" matched House of
+      Pizza and House of Blues nationwide, and "big boy" matched every branch
+      of the restaurant chain. A keyword that needs a hundred exclusions is the
+      wrong keyword.
+    */
     category: "roadside-oddities",
-    tags: ATTRACTION_TAGS,
+    tags: [...ATTRACTION_TAGS, '["tourism"="viewpoint"]'],
     keywords: [
       "world's largest",
       "worlds largest",
       "world's biggest",
+      "worlds biggest",
+      "world's tallest",
+      "worlds tallest",
+      "world's smallest",
+      "worlds smallest",
+      "largest ball of",
       "giant ball",
+      "muffler man",
+      "paul bunyan",
+      "jolly green giant",
+      "carhenge",
+      "cadillac ranch",
+      "upside down house",
       "mystery spot",
       "mystery hole",
-      "gravity hill",
-      "carhenge",
-      "muffler man",
-      "big boy",
-      "largest ball of",
-      "upside down",
-      "house of",
+      "enchanted highway",
+      "roadside giant",
+      "giant statue",
+      "big chair",
+      "biggest ball",
     ],
   },
 ];
@@ -219,6 +239,11 @@ const EXCLUSIONS = [
   /\btaproom\b/i,
   /\bdistillery\b/i,
   /\bwinery\b/i,
+  /\bsupermarket\b/i,
+  /\bgrocery\b/i,
+  /\bgiant eagle\b/i,
+  /\bgiant food\b/i,
+  /\bpizza\b/i,
   /\bmasonic\b/i,
   /\bcemetery\b/i,
   /\bairboat\b/i,

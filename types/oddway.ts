@@ -65,6 +65,8 @@ export interface Stop {
   osmRef: string | null;
   /** IANA timezone for the venue. Required to evaluate opening hours. */
   timezone: string | null;
+  /** When the entry was last checked against a source. Null means never. */
+  verifiedAt: string | null;
 }
 
 /**

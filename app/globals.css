@@ -249,6 +249,219 @@ body::before {
 }
 
 /*
+  A newspaper clipping.
+
+  The nameplate, rule and headline are set as a front page. The body below is
+  deliberately NOT in newspaper columns: a printed page is a fixed height, so
+  columns work; a web page is not, and multi-column text means scrolling to the
+  bottom and back to the top for every column. The look sits in the header,
+  where it costs nothing to read.
+*/
+.clipping-head {
+  background-color: var(--color-paper-raised);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 30%, transparent);
+  box-shadow: 0 1px 2px rgb(20 17 13 / 0.14), 0 8px 20px rgb(20 17 13 / 0.12);
+}
+
+.masthead {
+  font-family: var(--font-fraktur), "Old English Text MT", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: none;
+}
+
+/* Heavy rule with a hairline beneath, as under a real nameplate. */
+.masthead-rule {
+  border-bottom: 3px solid var(--color-ink);
+  box-shadow: 0 2px 0 0 var(--color-ink);
+}
+
+/*
+  Article bodies.
+
+  The markdown renderer emits plain tags, so the measure, rhythm and heading
+  sizes are set here rather than with a utility class on every element.
+  Deliberately excluded from the global capitalize rule: these are paragraphs,
+  and title-casing prose makes it unreadable.
+*/
+/*
+  A newspaper clipping.
+
+  The nameplate, rule and headline are set as a front page. The body below is
+  deliberately NOT in newspaper columns: a printed page is a fixed height, so
+  columns work; a web page is not, and multi-column text means scrolling to the
+  bottom and back to the top for every column. The look sits in the header,
+  where it costs nothing to read.
+*/
+.clipping-head {
+  background-color: var(--color-paper-raised);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 30%, transparent);
+  box-shadow: 0 1px 2px rgb(20 17 13 / 0.14), 0 8px 20px rgb(20 17 13 / 0.12);
+}
+
+.masthead {
+  font-family: var(--font-fraktur), "Old English Text MT", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: none;
+}
+
+/* Heavy rule with a hairline beneath, as under a real nameplate. */
+.masthead-rule {
+  border-bottom: 3px solid var(--color-ink);
+  box-shadow: 0 2px 0 0 var(--color-ink);
+}
+
+/*
+  Article bodies.
+
+  The markdown renderer emits plain tags, so measure, rhythm and heading sizes
+  are set here rather than with a utility class on every element. Body copy is
+  exempt from the site-wide capitalize rule: these are paragraphs, and
+  title-casing prose makes it unreadable.
+*/
+.article {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.article p,
+.article ul,
+.article ol {
+  margin-block: 1.25em;
+  max-width: 68ch;
+  text-transform: none;
+}
+
+.article h2,
+.article h3 {
+  margin-block: 1.9em 0.5em;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.article h2 { font-size: 1.55rem; line-height: 1.2; }
+.article h3 { font-size: 1.2rem; }
+
+.article ul { list-style: disc; padding-left: 1.4em; }
+.article ol { list-style: decimal; padding-left: 1.4em; }
+.article li { margin-block: 0.4em; }
+
+.article strong { font-weight: 700; }
+
+.article a {
+  color: var(--color-route);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Only images get a border. This selector was accidentally merged into the
+   paragraph rule, which drew a box around every paragraph on the page. */
+.article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
+}
+
+.article figure { margin-block: 2em; }
+
+.article figcaption {
+  margin-top: 0.6em;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  text-transform: none;
+}
+
+/* A 16:9 box so an embed cannot shift the page as it loads. */
+.article .video {
+  position: relative;
+  margin-block: 2em;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-pine-deep);
+}
+
+.article .video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.article blockquote {
+  margin-block: 1.5em;
+  max-width: 68ch;
+  border-left: 2px solid var(--color-contour);
+  padding-left: 1.2em;
+  color: var(--color-ink-soft);
+  text-transform: none;
+}
+
+.article h2,
+.article h3 {
+  margin-block: 1.8em 0.6em;
+  text-transform: none;
+}
+
+.article h2 { font-size: 1.6rem; }
+.article h3 { font-size: 1.25rem; }
+
+.article ul { list-style: disc; padding-left: 1.4em; }
+.article ol { list-style: decimal; padding-left: 1.4em; }
+.article li { margin-block: 0.4em; }
+
+.article a {
+  color: var(--color-route);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.article img {
+  width: 100%;
+  height: auto;
+  border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
+}
+
+.article figure {
+  margin-block: 2em;
+}
+
+.article figcaption {
+  margin-top: 0.6em;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  text-transform: none;
+}
+
+/*
+  Video embeds. A 16:9 box so the iframe cannot shift the page as it loads,
+  which is what causes text to jump under a reader's eye mid-sentence.
+*/
+.article .video {
+  position: relative;
+  margin-block: 2em;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-pine-deep);
+}
+
+.article .video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.article blockquote {
+  border-left: 2px solid var(--color-contour);
+  padding-left: 1.2em;
+  color: var(--color-ink-soft);
+}
+
+/*
   The sheet.
 
   Content sits on newsprint laid over the dark ground, with a hard shadow and a

@@ -5,6 +5,7 @@ import { StopMap } from "@/components/StopMap";
 import { OpeningHours } from "@/components/OpeningHours";
 import { OpenNowBadge } from "@/components/OpenNowBadge";
 import { PageHero } from "@/components/PageHero";
+import { SourceLink } from "@/components/SourceLink";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
@@ -128,7 +129,9 @@ export default async function StopPage({ params }: PageProps) {
 
           <p className="mt-8 text-[0.9rem] text-ink-soft">
             {stop.source ? (
-              <>Source: {stop.source}</>
+              <>
+                Source: <SourceLink href={stop.source} />
+              </>
             ) : (
               <>
                 This entry hasn&rsquo;t been verified against a source yet.

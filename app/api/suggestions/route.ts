@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
+import { notifySuggestion } from "@/lib/notify";
 
 export const runtime = "nodejs";
 
@@ -99,6 +100,13 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
+
+  /*
+    Notify after the insert, never before. The database is the record; the
+    email is a convenience. Awaiting it costs the visitor a moment but means a
+    provider outage shows up in the logs rather than silently dropping mail.
+  */
+  await notifySuggestion({ kind, message, email: email || null, stopSlug, category });
 
   return NextResponse.json({ ok: true });
 }

@@ -51,7 +51,14 @@ export async function POST(request: Request) {
 
     // Sequential rather than parallel: free tiers cap concurrency, and this
     // lets us name which of the two places failed to resolve.
-    const from = await geocodeCached(provider, origin, request.signal);
+    /*
+      "lat,lon" is accepted as an origin so the browser's own geolocation can
+      be used directly. OpenRouteService's reverse endpoint is not on our plan,
+      so there is no way to turn coordinates into a place name — but there is
+      also no need to. The router only ever wanted a point.
+    */
+    const fromPoint = asCoordinates(origin);
+    const from = fromPoint ?? (await geocodeCached(provider, origin, request.signal));
     if (!from) {
       return NextResponse.json(
         { error: `We couldn't find anywhere called "${origin}".`, field: "origin" },
@@ -97,6 +104,24 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
+}
+
+/**
+ * Reads "42.1292,-80.0851" as a point, or returns null.
+ *
+ * Bounds are checked rather than assumed: a transposed pair, or a longitude
+ * typed as a latitude, would otherwise route someone to the wrong hemisphere
+ * without any error.
+ */
+function asCoordinates(value: string): { latitude: number; longitude: number; label: string } | null {
+  const match = value.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
+  if (!match) return null;
+
+  const latitude = Number(match[1]);
+  const longitude = Number(match[2]);
+  if (Math.abs(latitude) > 90 || Math.abs(longitude) > 180) return null;
+
+  return { latitude, longitude, label: "Your location" };
 }
 
 function asQuery(value: unknown): string | null {

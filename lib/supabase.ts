@@ -37,7 +37,7 @@ export function isDatabaseConfigured(): boolean {
 
 /** Columns to select. `geom` is excluded — it's for indexing, not the client. */
 export const STOP_COLUMNS =
-  "id, name, slug, category, latitude, longitude, city, state, description, public_access, image, source, opening_hours, website, phone, osm_type, osm_id, timezone";
+  "id, name, slug, category, latitude, longitude, city, state, description, public_access, image, source, opening_hours, website, phone, osm_type, osm_id, timezone, verified_at";
 
 interface StopRow {
   id: string;
@@ -58,6 +58,7 @@ interface StopRow {
   osm_type?: string | null;
   osm_id?: number | null;
   timezone?: string | null;
+  verified_at?: string | null;
 }
 
 /**
@@ -88,5 +89,6 @@ export function toStop(row: StopRow): Stop {
     osmRef:
       row.osm_type && row.osm_id ? `${row.osm_type}/${row.osm_id}` : null,
     timezone: row.timezone ?? null,
+    verifiedAt: row.verified_at ?? null,
   };
 }

@@ -34,6 +34,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-flatwoods-monster-museum",
@@ -55,6 +56,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-kecksburg-ufo",
@@ -76,6 +78,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-trans-allegheny",
@@ -97,6 +100,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-centralia",
@@ -118,6 +122,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-gravity-hill",
@@ -139,6 +144,7 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
   {
     id: "demo-mystery-hole",
@@ -160,5 +166,6 @@ export const DEMO_STOPS: readonly Stop[] = [
     phone: null,
     osmRef: null,
     timezone: "America/New_York",
+    verifiedAt: null,
   },
 ] as const;

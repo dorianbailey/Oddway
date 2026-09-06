@@ -104,12 +104,49 @@ export const CATEGORY_SEARCHES: CategorySearch[] = [
       "flying saucer",
       "alien",
       "extraterrestrial",
-      "roswell",
       "area 51",
       "spacecraft crash",
       "close encounter",
       "abduction site",
       "kecksburg",
+      "little green men",
+      "saucer crash",
+      "international ufo",
+    ],
+  },
+  {
+    /*
+      Local legend attached to a place: the hill cars roll up, the bridge you
+      hear a baby crying on, the grave with a story. This is what travellers
+      actually ask locals about, and it is almost never tagged as anything but
+      a bridge or a road — so the keywords have to be the legend's name rather
+      than the feature's type.
+    */
+    category: "folklore",
+    tags: [
+      ...ATTRACTION_TAGS,
+      '["historic"="wayside_shrine"]',
+      '["tourism"="viewpoint"]',
+    ],
+    keywords: [
+      "gravity hill",
+      "magnetic hill",
+      "crybaby bridge",
+      "cry baby bridge",
+      "spook light",
+      "ghost light",
+      "witch grave",
+      "witches grave",
+      "witch's grave",
+      "witches circle",
+      "devil's tramping ground",
+      "devils tramping ground",
+      "lovers leap",
+      "lover's leap",
+      "la llorona",
+      "legend of",
+      "seven gates of hell",
+      "haunted bridge",
     ],
   },
   {
@@ -177,6 +214,11 @@ const EXCLUSIONS = [
   /\bbehavioral health\b/i,
   /\btreatment cent(er|re)\b/i,
   /\brehabilitation\b/i,
+  /\bbrewing\b/i,
+  /\bbrewery\b/i,
+  /\btaproom\b/i,
+  /\bdistillery\b/i,
+  /\bwinery\b/i,
   /\bmasonic\b/i,
   /\bcemetery\b/i,
   /\bairboat\b/i,

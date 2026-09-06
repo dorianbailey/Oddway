@@ -41,7 +41,7 @@ export function ExploreCategories({ counts }: ExploreCategoriesProps) {
             <li key={slug} className="border-b border-contour/40">
               <Link
                 href={`/explore#${slug}`}
-                className="group flex flex-wrap items-baseline gap-x-6 gap-y-1 py-5 transition-colors hover:bg-lichen/25"
+                className="group flex flex-wrap items-baseline gap-x-6 gap-y-1 py-5 capitalize transition-colors hover:bg-lichen/25"
               >
                 <span className="font-display text-title font-bold group-hover:text-route">
                   {heading}

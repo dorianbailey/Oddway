@@ -1,35 +1,33 @@
+import Image from "next/image";
 import { cx } from "@/lib/cx";
 
 interface OddWayLogoProps {
+  /**
+   * Tailwind height classes, e.g. "h-16 sm:h-24". Sizing is done with classes
+   * rather than an inline style so responsive variants actually apply — an
+   * inline height silently overrides every breakpoint class.
+   */
   className?: string;
-  /** Type size of the wordmark. */
-  size?: "sm" | "md" | "lg";
+  priority?: boolean;
 }
 
-const SIZES = {
-  sm: "text-[1.0625rem]",
-  md: "text-[1.375rem]",
-  lg: "text-[1.75rem]",
-} as const;
-
 /**
- * Typography-only wordmark. The two rules beneath it are a neatline — the
- * paired border printed around a map sheet — which is the whole mark for now.
- * It inherits `currentColor`, so it works on paper and on pine unchanged.
+ * The wordmark. Artwork is 1.29:1 and already transparent, so one file works
+ * on the dark masthead and on newsprint.
+ *
+ * No alt text: it is decorative wherever it appears and the accessible name
+ * comes from the visually hidden text beside it, so alt would be read twice.
  */
-export function OddWayLogo({ className, size = "md" }: OddWayLogoProps) {
+export function OddWayLogo({ className, priority = false }: OddWayLogoProps) {
   return (
-    <span className={cx("inline-flex flex-col items-stretch", className)}>
-      <span
-        className={cx(
-          "font-display leading-none tracking-[0.01em] uppercase",
-          SIZES[size],
-        )}
-      >
-        OddWay
-      </span>
-      <span aria-hidden="true" className="mt-1.5 h-px bg-current opacity-70" />
-      <span aria-hidden="true" className="mt-[3px] h-px bg-current opacity-30" />
-    </span>
+    <Image
+      src="/images/oddway-logo.webp"
+      alt=""
+      width={1200}
+      height={931}
+      priority={priority}
+      sizes="(max-width: 640px) 180px, 320px"
+      className={cx("w-auto", className)}
+    />
   );
 }

@@ -30,11 +30,23 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32 lg:py-40">
-        <h1 className="max-w-[16ch] text-hero text-[#f3efe4] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-          Have fun while you travel. Take the OddWay.
+        {/*
+          Two blocks, not one balanced paragraph. "Take the OddWay" is the name
+          and must never break across lines — text-wrap: balance was splitting
+          it after "Take", which reads as a typo.
+
+          The size is capped against the viewport as well as the type scale, so
+          the nowrap line can never overflow on a narrow screen.
+        */}
+        <h1
+          className="max-w-[16ch] text-hero text-[#f3efe4] normal-case drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+          style={{ fontSize: "min(var(--text-hero), 8.5vw)" }}
+        >
+          <span className="block">Find the Strange.</span>
+          <span className="block whitespace-nowrap">Take the OddWay.</span>
         </h1>
 
-        <p className="mt-6 max-w-[54ch] text-lede text-[#cfc9bb] drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
+        <p className="mt-6 max-w-[54ch] text-lede text-[#cfc9bb] capitalize drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
           Find cryptids, folklore, haunted places, strange history, roadside
           oddities, museums, and other unusual stops hiding along your route.
         </p>

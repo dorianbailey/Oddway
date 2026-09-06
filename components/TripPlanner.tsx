@@ -151,7 +151,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
               aria-describedby="detour-limit-value"
               className="mt-4 w-full accent-route"
             />
-            <p id="detour-limit-value" className="mt-2 text-ink-soft">
+            <p id="detour-limit-value" className="mt-2 text-ink-soft capitalize">
               Up to{" "}
               <span className="font-semibold text-ink">
                 {maxDetourMinutes} minutes

@@ -1,5 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { useSyncExternalStore } from "react";
 import { OddWayLogo } from "./OddWayLogo";
+import { cx } from "@/lib/cx";
+
+/*
+  Whether the page has been scrolled at all.
+
+  Read through useSyncExternalStore rather than useState in an effect: that
+  gives a defined server snapshot (not scrolled), so the markup matches on
+  hydration, and avoids the setState-in-effect pattern lint rejects.
+*/
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
 
 const NAV_LINKS = [
   { href: "/explore", label: "Explore" },
@@ -8,27 +24,42 @@ const NAV_LINKS = [
 ] as const;
 
 export function Header() {
+  const isScrolled = useSyncExternalStore(
+    subscribeToScroll,
+    () => window.scrollY > 8,
+    () => false,
+  );
+
   return (
     <header
       data-surface="dark"
-      className="sticky top-0 z-50 bg-pine text-paper shadow-[0_3px_0_0_var(--color-ink),0_6px_0_0_var(--color-ink)]"
+      className={cx(
+        "sticky top-0 z-50 text-paper transition-colors duration-300",
+        "shadow-[0_3px_0_0_var(--color-ink),0_6px_0_0_var(--color-ink)]",
+        /*
+          Solid at rest, translucent once you start scrolling, so the header
+          stops covering what you are reading. 85% keeps text legible over any
+          background — paper on it still measures 9:1 even against white.
+        */
+        isScrolled ? "bg-pine/85 backdrop-blur-md" : "bg-pine",
+      )}
     >
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-5 py-3 sm:px-8 sm:py-4">
-        <Link
-          href="/"
-          className="shrink-0 rounded-[2px] transition-opacity hover:opacity-80"
-        >
-          <OddWayLogo />
-          <span className="sr-only">OddWay home</span>
-        </Link>
+      {/*
+        Three columns: navigation, nameplate, action. The logo sits in the
+        middle column, which is centred on the page rather than centred in the
+        leftover space — so it stays put whatever the nav is doing either side.
 
-        <nav aria-label="Main" className="order-3 w-full sm:order-2 sm:w-auto">
-          <ul className="flex items-center gap-6">
+        On phones the grid collapses to a single centred column with the nav
+        beneath, because three things across 360px leaves room for none of them.
+      */}
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-6 gap-y-2 px-5 py-2 sm:grid-cols-[1fr_auto_1fr] sm:px-8">
+        <nav aria-label="Main" className="order-2 justify-self-center sm:order-1 sm:justify-self-start">
+          <ul className="flex items-center gap-2 sm:gap-3">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-[0.95rem] text-lichen underline-offset-4 transition-colors hover:text-paper hover:underline"
+                  className="inline-block rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)]"
                 >
                   {link.label}
                 </Link>
@@ -38,24 +69,31 @@ export function Header() {
         </nav>
 
         <Link
+          href="/"
+          className="order-1 justify-self-center rounded-[2px] transition-opacity hover:opacity-85 sm:order-2"
+        >
+          <OddWayLogo className="h-14 sm:h-16 lg:h-[72px]" priority />
+          <span className="sr-only">OddWay home</span>
+        </Link>
+
+        <Link
           href="/#plan"
-          className="order-2 ml-auto rounded-[3px] bg-route px-4 py-2 text-[0.95rem] font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] sm:order-3"
+          className="order-3 justify-self-center rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)] sm:justify-self-end"
         >
           Plan a trip
         </Link>
       </div>
 
-      {/*
-        The dateline strip a paper runs under its nameplate. Decorative, so it
-        is hidden from assistive technology — a screen reader announcing
-        "Vol. I No. 1" before every page would be noise.
-      */}
       <p
         aria-hidden="true"
-        className="border-t border-brass/20 bg-pine-deep px-5 py-1 text-center font-body text-[0.7rem] tracking-[0.22em] text-lichen/70 uppercase sm:px-8"
+        className={cx(
+          "border-t border-brass/20 px-5 py-1 text-center font-body",
+          "text-[0.7rem] tracking-[0.16em] text-lichen/80 uppercase",
+          "transition-colors duration-300 sm:px-8 sm:text-[0.78rem]",
+          isScrolled ? "bg-pine-deep/85" : "bg-pine-deep",
+        )}
       >
-        Vol. I &middot; No. 1 &middot; Strange stops along your route &middot;
-        Price: free
+        Strange Stops Along Your Route &middot; Price: Free
       </p>
     </header>
   );

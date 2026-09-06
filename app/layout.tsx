@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     template: "%s | OddWay",
   },
   description:
-    "Have fun while you travel. Take the OddWay. Discover cryptids, folklore, haunted places, roadside oddities, strange history, museums, and unusual destinations along your road trip.",
+    "Find the Strange. Take the OddWay. Discover cryptids, folklore, haunted places, roadside oddities, strange history, museums, and unusual destinations along your road trip.",
   applicationName: "OddWay",
   openGraph: {
     title: "OddWay | Find Strange Stops Along Your Route",
     description:
-      "Have fun while you travel. Take the OddWay. Discover cryptids, folklore, haunted places, roadside oddities, strange history, museums, and unusual destinations along your road trip.",
+      "Find the Strange. Take the OddWay. Discover cryptids, folklore, haunted places, roadside oddities, strange history, museums, and unusual destinations along your road trip.",
     siteName: "OddWay",
     type: "website",
   },

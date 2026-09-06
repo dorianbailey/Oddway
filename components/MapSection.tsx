@@ -1,5 +1,4 @@
 import { RouteMap } from "./RouteMap";
-import { formatCoordinates, formatDetour } from "@/lib/format";
 import type { MapStop, Route, Stop } from "@/types/oddway";
 
 interface MapSectionProps {
@@ -61,26 +60,6 @@ export function MapSection({
         ) : null}
 
         {/* Text equivalent of the map, and the path when WebGL is unavailable. */}
-        <details className="mt-8 rounded-[3px] border border-brass/25 p-5">
-          <summary className="cursor-pointer font-display font-bold">
-            List these {stops.length} stops as text
-          </summary>
-          <ul className="mt-5 space-y-4">
-            {stops.map((stop, index) => (
-              <li key={stop.id} className="border-l-2 border-brass/40 pl-4">
-                <p className="font-display font-bold">
-                  {index + 1}. {stop.name}
-                </p>
-                <p className="text-[0.95rem] text-lichen">
-                  {stop.city}, {stop.state} — {formatDetour(stop.detourMinutes)}
-                </p>
-                <p className="font-display text-[0.85rem] text-lichen/80 italic">
-                  {formatCoordinates(stop.latitude, stop.longitude)}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </details>
       </div>
     </section>
   );

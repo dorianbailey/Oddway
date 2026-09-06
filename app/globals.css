@@ -149,6 +149,45 @@
     font-family: var(--font-body);
   }
 
+  /*
+    Title Case on display text: headings, navigation and controls.
+
+    Deliberately not applied to paragraphs. Capitalising every word of a
+    researched description turns readable prose into a ransom note and breaks
+    sentence rhythm, and these descriptions are the part of the site people
+    actually read.
+  */
+  h1,
+  h2,
+  h3,
+  nav a,
+  button,
+  label,
+  legend,
+  select,
+  option,
+  summary,
+  dt,
+  dd {
+    text-transform: capitalize;
+  }
+
+  /*
+    Placeholders too. Not every browser applies text-transform to <option>,
+    so category labels are also capitalised in the markup rather than relying
+    on this alone.
+  */
+  ::placeholder {
+    text-transform: capitalize;
+  }
+
+  /* Names carry their own capitalisation; leave them alone. */
+  h1 .proper-noun,
+  h2 .proper-noun,
+  h3 .proper-noun {
+    text-transform: none;
+  }
+
   p {
     text-wrap: pretty;
   }

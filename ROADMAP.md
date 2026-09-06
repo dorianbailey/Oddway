@@ -59,6 +59,34 @@ research.
 **Past events.** Hide rather than delete. A festival that ran last October is
 evidence it will likely run again, and deleting it throws away the research.
 
+## Filming locations
+
+A category for places where horror and other frightening films were shot: the
+house, the motel, the stretch of road. Distinct from the rest of the index in
+that the interest is entirely borrowed — the building is often unremarkable
+until you know what happened there on screen.
+
+**The import pipeline will not find these.** OpenStreetMap almost never records
+what was filmed somewhere; it maps what a thing *is*, not what it appeared in.
+A keyword scan would return nothing. Wikidata is the plausible source — it has
+a `filming location` property linking films to places — and Wikipedia articles
+often name locations in prose. Both would need a different importer to the
+Overpass one.
+
+**Two cautions.**
+
+Many are private homes. People live in the house from a famous horror film and
+did not sign up for visitors. Anything residential needs `private` access and a
+description that says plainly to look from the road and go no further; some
+should probably not be listed at all.
+
+Naming films is fine — a factual statement that a film was shot somewhere
+carries no rights issue — but stills, posters and dialogue are another matter
+and should stay off the site.
+
+**Needs** a new `filming-locations` value in the `stop_category` enum, an entry
+in `lib/categories.ts`, and a Wikidata-based importer.
+
 ## Data
 
 - **Descriptions.** Every imported stop has an empty description and

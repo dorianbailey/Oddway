@@ -21,9 +21,10 @@ export function Footer() {
 
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-5 py-14 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div>
-          <OddWayLogo size="lg" className="w-fit" />
+          <OddWayLogo className="h-28" />
           <p className="mt-4 max-w-[34ch] text-lichen">
-            Have fun while you travel. Take the OddWay.
+            <span>Find the Strange.</span>{" "}
+            <span className="whitespace-nowrap">Take the OddWay.</span>
           </p>
           <UnitToggle className="mt-8" />
         </div>

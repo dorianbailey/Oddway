@@ -26,6 +26,26 @@ Everything here is idempotent: re-running a file is safe.
 | `010-ufo-verifications.sql` | Resolves two entries that went in unverified |
 | `011-demo-stop-sources.sql` | Sources for the seven original demo entries |
 
+## The files that actually matter
+
+`data-stops.sql` and `data-events.sql` are exported from the live database by
+`scripts/export-data.mts`. They are the authoritative record of what the site
+contains. Everything else in the table above documents how the data was
+gathered — which import found a place, which research session described it —
+and reproduces the *starting* state, not the current one.
+
+If you only run two data files, run those two.
+
+**Re-export after editing data in the SQL editor.** A great deal of this index
+was corrected there: names rewritten, cities moved across state lines, access
+states changed from assumption to checked fact. None of that exists in the
+import scripts, and reconstructing it from them would silently lose it.
+
+```
+export $(grep -E '^NEXT_PUBLIC_SUPABASE' .env.local | xargs)
+npx tsx scripts/export-data.mts
+```
+
 ## Files that are not run as-is
 
 `import-ufos.sql` is the raw scanner output and still contains theme park

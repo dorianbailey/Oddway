@@ -48,20 +48,22 @@ export function Header() {
       <div className={cx(
           "mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-6 px-5 lg:grid-cols-[1fr_auto_1fr] sm:px-8",
           "transition-all duration-300",
-          isScrolled ? "gap-y-0 py-1 lg:gap-y-2 lg:py-2" : "gap-y-2 py-2",
+          isScrolled ? "gap-y-0 py-1" : "gap-y-2 py-2",
         )}>
         {/*
-          On a phone the two button groups slide inward and collapse, leaving
-          just the nameplate. Everything is reset at `sm`, where there is room
-          for all three columns and nothing needs to move.
+          Once you start scrolling, the two button groups slide inward and
+          collapse, leaving just the nameplate in a thin bar. This runs at
+          every width: a sticky header earns its space by being useful, and
+          past the first screen the nameplate is the only part still doing a
+          job.
         */}
         <nav
           aria-label="Main"
           className={cx(
             "order-2 justify-self-center overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "lg:order-1 lg:max-h-none lg:translate-x-0 lg:justify-self-start lg:opacity-100",
+            "lg:order-1 lg:justify-self-start",
             isScrolled
-              ? "max-h-0 translate-x-10 opacity-0 lg:pointer-events-auto pointer-events-none"
+              ? "max-h-0 translate-x-10 opacity-0 pointer-events-none"
               : "max-h-16 translate-x-0 opacity-100",
           )}
         >
@@ -86,7 +88,7 @@ export function Header() {
           <OddWayLogo
             className={cx(
               "transition-all duration-300 motion-reduce:transition-none",
-              isScrolled ? "h-11 lg:h-24" : "h-16 sm:h-20 lg:h-24",
+              isScrolled ? "h-11 sm:h-12 lg:h-14" : "h-16 sm:h-20 lg:h-24",
             )}
             priority
           />
@@ -101,9 +103,9 @@ export function Header() {
         <div
           className={cx(
             "order-3 flex items-center gap-2 overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "justify-self-center lg:max-h-none lg:translate-x-0 lg:gap-3 lg:justify-self-end lg:opacity-100",
+            "justify-self-center lg:gap-3 lg:justify-self-end",
             isScrolled
-              ? "max-h-0 -translate-x-10 opacity-0 lg:pointer-events-auto pointer-events-none"
+              ? "max-h-0 -translate-x-10 opacity-0 pointer-events-none"
               : "max-h-16 translate-x-0 opacity-100",
           )}
         >
@@ -136,9 +138,9 @@ export function Header() {
           "border-t border-brass/20 px-5 py-1 text-center font-body",
           "text-[0.7rem] tracking-[0.16em] text-lichen/80 uppercase",
           "transition-colors duration-300 sm:px-8 sm:text-[0.78rem]",
-          "overflow-hidden lg:max-h-none lg:py-1 lg:opacity-100",
+          "overflow-hidden",
           isScrolled
-            ? "max-h-0 py-0 opacity-0 lg:opacity-100 bg-pine-deep/75"
+            ? "max-h-0 py-0 opacity-0 bg-pine-deep/75"
             : "max-h-10 opacity-100 bg-pine-deep",
         )}
       >

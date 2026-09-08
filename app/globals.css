@@ -338,15 +338,20 @@ body::before {
 .article h2,
 .article h3 {
   margin-block: 1.9em 0.5em;
-  text-transform: none;
   font-weight: 700;
+  /*
+    Title case, matching every other heading on the site. Only the body copy
+    below is exempt — capitalising a full sentence makes it unreadable, which
+    is why the two are separated rather than sharing a rule.
+  */
+  text-transform: capitalize;
 }
 
 .article h2 { font-size: 1.55rem; line-height: 1.2; }
 .article h3 { font-size: 1.2rem; }
 
 .article ul { list-style: disc; padding-left: 1.4em; }
-.article ol { list-style: decimal; padding-left: 1.4em; }
+
 .article li { margin-block: 0.4em; }
 
 .article strong { font-weight: 700; }
@@ -400,66 +405,10 @@ body::before {
   text-transform: none;
 }
 
-.article h2,
-.article h3 {
-  margin-block: 1.8em 0.6em;
-  text-transform: none;
-}
-
-.article h2 { font-size: 1.6rem; }
-.article h3 { font-size: 1.25rem; }
-
-.article ul { list-style: disc; padding-left: 1.4em; }
-.article ol { list-style: decimal; padding-left: 1.4em; }
-.article li { margin-block: 0.4em; }
-
-.article a {
-  color: var(--color-route);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.article img {
-  width: 100%;
-  height: auto;
-  border: 1px solid color-mix(in srgb, var(--color-contour) 45%, transparent);
-}
-
-.article figure {
-  margin-block: 2em;
-}
-
-.article figcaption {
-  margin-top: 0.6em;
-  font-size: 0.85rem;
-  color: var(--color-ink-soft);
-  text-transform: none;
-}
-
 /*
   Video embeds. A 16:9 box so the iframe cannot shift the page as it loads,
   which is what causes text to jump under a reader's eye mid-sentence.
 */
-.article .video {
-  position: relative;
-  margin-block: 2em;
-  aspect-ratio: 16 / 9;
-  background-color: var(--color-pine-deep);
-}
-
-.article .video iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.article blockquote {
-  border-left: 2px solid var(--color-contour);
-  padding-left: 1.2em;
-  color: var(--color-ink-soft);
-}
 
 /*
   The sheet.
@@ -663,7 +612,6 @@ body::before {
   pointer-events: none;
 }
 
-
 /*
   The masthead rule: a heavy line with a hairline beneath it, which is how
   almost every newspaper separates its nameplate from the news.
@@ -677,8 +625,6 @@ body::before {
 @utility column-rule {
   border-left: 1px solid color-mix(in srgb, var(--color-contour) 55%, transparent);
 }
-
-
 
 /*
   MapLibre styling.

@@ -41,8 +41,6 @@ turn up in the lake most summers, released pets that will not survive the
 winter, and the local papers report them with a mixture of alarm and delight
 every time.
 
-The image his own shop uses as its header is a Bigfoot holding a coffee.
-
 None of that is cryptid art in the sense of a careful reconstruction from
 eyewitness accounts. It is a place drawing its own monsters, which is what
 almost every entry in this index started out as.

@@ -47,14 +47,34 @@ function literal(column: string, value: unknown): string {
 }
 
 async function fetchAll(table: string, columns: string[], order: string) {
-  const response = await fetch(
-    `${URL_BASE}/rest/v1/${table}?select=${columns.join(",")}&order=${order}&limit=2000`,
-    { headers: { apikey: KEY!, Authorization: `Bearer ${KEY}` } },
-  );
-  if (!response.ok) {
-    throw new Error(`${table}: HTTP ${response.status}`);
+  /*
+    Paged, because PostgREST caps a response at 1,000 rows and ignores a larger
+    limit without saying so. This script asked for 2,000, was quietly given the
+    first thousand, and wrote a file that looked complete — which would have
+    committed an export missing 705 stops.
+
+    The same cap broke the site itself earlier. Fixing it there and not here
+    left a script whose entire job is to be the authoritative record silently
+    producing a partial one.
+  */
+  const PAGE = 1000;
+  const rows: Array<Record<string, unknown>> = [];
+
+  for (let offset = 0; ; offset += PAGE) {
+    const response = await fetch(
+      `${URL_BASE}/rest/v1/${table}?select=${columns.join(",")}` +
+        `&order=${order}&limit=${PAGE}&offset=${offset}`,
+      { headers: { apikey: KEY!, Authorization: `Bearer ${KEY}` } },
+    );
+    if (!response.ok) {
+      throw new Error(`${table}: HTTP ${response.status}`);
+    }
+    const page = (await response.json()) as Array<Record<string, unknown>>;
+    rows.push(...page);
+    if (page.length < PAGE) break; // A short page is the last page.
   }
-  return (await response.json()) as Array<Record<string, unknown>>;
+
+  return rows;
 }
 
 function toSql(
@@ -105,6 +125,15 @@ async function main() {
 -- how the data was gathered; this records what it became.`),
   );
   console.log(`  ${String(stops.length).padStart(4)}  ${stopsPath}`);
+  /*
+    An exact multiple of the page size is how a truncated read looks, so say so
+    rather than letting a short export pass as a complete one.
+  */
+  if (stops.length > 0 && stops.length % 1000 === 0) {
+    console.warn(
+      `  ! ${stops.length} is an exact multiple of the page size. Verify the count.`,
+    );
+  }
 
   const events = await fetchAll("events", EVENT_COLUMNS, "start_date");
   const eventsPath = join("supabase", "data-events.sql");

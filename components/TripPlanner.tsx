@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { chooseDisplaySets } from "@/lib/display-sets";
 import { tripStore } from "@/lib/trip-store";
@@ -240,6 +242,10 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
     The map is "what are you looking at", and a trip in progress is the better
     answer to that than a general overview.
   */
+  // Honest numbers for the empty state, from the index we already loaded.
+  const totalStops = allStops?.length ?? fallbackStops.length;
+  const statesCovered = new Set((allStops ?? fallbackStops).map((s) => s.state)).size;
+
   const { listed: listedStops, mapped: mappedStops } = chooseDisplaySets({
     searchResults: result?.stops ?? null,
     savedTrip,
@@ -330,11 +336,48 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
         )}
 
         {hasSearched && result.stops.length === 0 ? (
-          <p className="mt-8 max-w-[62ch] border-l-2 border-contour pl-4 text-ink-soft">
-            Nothing in the index sits close enough to that route yet. The
-            coverage starts in Appalachia and grows outward — try a route
-            through West Virginia or western Pennsylvania.
-          </p>
+          /*
+            An empty result used to say coverage "starts in Appalachia", which
+            was true of seven stops and is not true of three hundred. Saying
+            nothing useful is worse than saying nothing: a traveller on I-80
+            gets a blank page and concludes the site is broken.
+
+            So this offers the two things that actually help — a wider detour,
+            which often finds something, and a way to tell us what we missed.
+          */
+          <div className="mt-8 max-w-[62ch] border-l-2 border-contour pl-4">
+            <p className="text-lede text-ink-soft">
+              Nothing in the index is within{" "}
+              <span className="font-semibold text-ink">
+                {maxDetourMinutes} minutes
+              </span>{" "}
+              of that route.
+            </p>
+            <p className="mt-3 text-ink-soft">
+              We hold {totalStops} places across {statesCovered} states, but the
+              coverage is uneven — some corridors are thin, and long drives
+              through the middle of the country are the thinnest of all.
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              {maxDetourMinutes < 90 ? (
+                <button
+                  type="button"
+                  onClick={() => setMaxDetourMinutes(90)}
+                  className="rounded-[3px] bg-route px-5 py-2.5 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)]"
+                >
+                  Look within 90 minutes instead
+                </button>
+              ) : null}
+
+              <Link
+                href="/suggest?kind=new_place"
+                className="text-[0.95rem] font-semibold text-route underline underline-offset-4"
+              >
+                Tell us what we&rsquo;re missing there
+              </Link>
+            </div>
+          </div>
         ) : (
           <ul className="mt-10 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
             {listedStops.map((stop) => (

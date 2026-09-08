@@ -5,8 +5,10 @@ import { getStopBySlug } from "@/lib/stops";
 import { getCategory } from "@/lib/categories";
 import type { CategorySlug } from "@/types/oddway";
 
+const KINDS = new Set(["correction", "new_place", "new_event", "other"]);
+
 interface SuggestPageProps {
-  searchParams: Promise<{ stop?: string; category?: string }>;
+  searchParams: Promise<{ stop?: string; category?: string; kind?: string }>;
 }
 
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SuggestPage({ searchParams }: SuggestPageProps) {
-  const { stop: slug, category: categoryParam } = await searchParams;
+  const { stop: slug, category: categoryParam, kind } = await searchParams;
   // Look both up rather than trusting the URL, so the page cannot be made to
   // display arbitrary text by editing the query string.
   const stop = slug ? await getStopBySlug(slug) : null;
@@ -43,7 +45,21 @@ export default async function SuggestPage({ searchParams }: SuggestPageProps) {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 sm:py-16 lg:grid-cols-[1.3fr_1fr]">
         <SuggestionForm
-          defaultKind={stop ? "correction" : category ? "new_place" : "other"}
+          /*
+            An explicit ?kind= wins. The empty-route message links here having
+            already established what the visitor wants to tell us, and making
+            them pick it again from a list they have effectively answered is
+            the sort of small friction that stops people bothering.
+          */
+          defaultKind={
+            KINDS.has(kind ?? "")
+              ? (kind as "correction" | "new_place" | "new_event" | "other")
+              : stop
+                ? "correction"
+                : category
+                  ? "new_place"
+                  : "other"
+          }
           stopSlug={stop?.slug}
           stopName={stop?.name}
           category={category?.slug}

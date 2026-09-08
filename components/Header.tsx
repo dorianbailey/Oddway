@@ -146,6 +146,13 @@ export function Header() {
           </Link>
 
           <Link
+            href="/artists"
+            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
+          >
+            Artists
+          </Link>
+
+          <Link
             href="/stories"
             className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
           >

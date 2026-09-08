@@ -1,0 +1,33 @@
+---
+name: Jane Doe
+summary: One or two sentences for the index and the featured card.
+location: Asheville, NC
+medium: Linocut and screenprint
+
+# Required. Profiles without this are never shown, anywhere.
+# Featuring somebody's work without asking is the sort of favour nobody wants
+# doing for them, and if it goes wrong the cost falls entirely on them.
+permission: true
+
+# Order here is the order shown. Put the shop first.
+links:
+  - label: Shop
+    href: https://example.com/shop
+  - label: Instagram
+    href: https://instagram.com/example
+  - label: Website
+    href: https://example.com
+
+# Optional. Use an image the artist has given you, and credit it.
+# image: /images/artists/jane-doe.webp
+# imageCredit: "Mothman print, 2025. Courtesy of the artist."
+---
+
+A few paragraphs about the work. What they make, how they make it, what drew
+them to this material.
+
+Write about the work rather than around it. "She has been carving lino blocks
+of Appalachian folklore since 2019, mostly at night, and the linework has got
+progressively wilder" says more than a paragraph of adjectives.
+
+Keep it short. The point of the page is the links at the bottom.

@@ -3,6 +3,7 @@ import { CATEGORIES } from "@/lib/categories";
 import { getStops, getStatesWithCounts } from "@/lib/stops";
 import { getArticles } from "@/lib/articles";
 import { getTrips } from "@/lib/trips";
+import { getArtists } from "@/lib/artists";
 
 /**
  * The sitemap, built from the database rather than a fixed list.
@@ -30,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/events`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/stories`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/trips`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/artists`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/suggest`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE}/about`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE}/privacy`, changeFrequency: "yearly", priority: 0.2 },
@@ -71,7 +73,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const artistPages: MetadataRoute.Sitemap = getArtists().map((artist) => ({
+    url: `${SITE}/artists/${artist.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   return [
+    ...artistPages,
     ...tripPages,
     ...staticPages,
     ...categoryPages,

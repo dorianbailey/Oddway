@@ -323,3 +323,35 @@ test("competing travel guides are credited but not linked", async () => {
   // Subdomains of a competing guide count too.
   assert.equal(describeSource("https://assets.atlasobscura.com/x").href, null);
 });
+
+test("the featured artist changes weekly and only shows those who agreed", async () => {
+  const { getFeaturedArtist, getArtists } = await import("../lib/artists");
+
+  // Nobody without explicit permission is ever returned.
+  for (const artist of getArtists()) {
+    assert.equal(artist.permission, true, `${artist.slug} has no permission flag`);
+  }
+
+  const featured = getFeaturedArtist(new Date("2026-09-08T12:00:00Z"));
+  if (!featured) return; // No artists published yet.
+
+  /*
+    The choice is derived from the date rather than stored, so it must be
+    identical for every request in a week and different the week after. Any
+    drift here means two visitors on the same day see different artists.
+  */
+  const monday = getFeaturedArtist(new Date("2026-09-07T00:00:00Z"));
+  const wednesday = getFeaturedArtist(new Date("2026-09-09T23:59:00Z"));
+  assert.equal(monday?.slug, wednesday?.slug, "must not change mid-week");
+
+  const seen = new Set<string>();
+  for (let week = 0; week < getArtists().length; week += 1) {
+    const day = new Date(Date.UTC(2026, 0, 1 + week * 7));
+    seen.add(getFeaturedArtist(day)!.slug);
+  }
+  assert.equal(
+    seen.size,
+    getArtists().length,
+    "every artist should come up before any repeats",
+  );
+});

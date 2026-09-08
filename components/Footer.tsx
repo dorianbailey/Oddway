@@ -7,6 +7,7 @@ const FOOTER_LINKS = [
   { href: "/events", label: "Events" },
   { href: "/trips", label: "Road trips" },
   { href: "/stories", label: "Stories" },
+  { href: "/artists", label: "Odd artists" },
   { href: "/about", label: "About" },
   { href: "/suggest", label: "Suggest a stop" },
   { href: "/privacy", label: "Privacy" },

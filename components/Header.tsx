@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 import {
   getCollapsed,
@@ -16,12 +17,39 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ] as const;
 
+/** Matches the media query the rest of the site honours. */
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 export function Header() {
   const isScrolled = useSyncExternalStore(
     subscribeToCollapse,
     getCollapsed,
     getServerCollapsed,
   );
+
+  const pathname = usePathname();
+
+  /*
+    The nameplate always takes you to the top of the home page.
+
+    Clicking a link to the page you are already on does nothing in Next — the
+    router sees no navigation to make. So on the home page the logo appeared
+    dead, which is the one place people most expect a masthead to work. Scroll
+    it instead, and let the router handle every other page as usual.
+  */
+  function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (pathname !== "/") return;
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+  }
 
   return (
     <header
@@ -83,6 +111,7 @@ export function Header() {
 
         <Link
           href="/"
+          onClick={handleLogoClick}
           className="order-1 justify-self-center rounded-[2px] transition-opacity hover:opacity-85 sm:order-2"
         >
           <OddWayLogo

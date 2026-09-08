@@ -1,4 +1,5 @@
 import { cx } from "@/lib/cx";
+import { describeSource } from "@/lib/sources";
 
 interface SourceLinkProps {
   /** A URL, or a bare domain like "mysteryhole.com". */
@@ -20,22 +21,19 @@ interface SourceLinkProps {
  * because a full URL wrapping across three lines is worse than useless.
  */
 export function SourceLink({ href, children, className }: SourceLinkProps) {
-  const url = /^https?:\/\//i.test(href) ? href : `https://${href}`;
+  const { label, href: link } = describeSource(href);
 
-  let label = href;
-  if (!children) {
-    try {
-      const parsed = new URL(url);
-      const path = parsed.pathname === "/" ? "" : parsed.pathname;
-      label = parsed.host.replace(/^www\./, "") + path;
-    } catch {
-      label = href;
-    }
+  /*
+    Credited but not linked. The reader can see the publication and go and look
+    it up; we simply do not hand a competing guide the click.
+  */
+  if (!link) {
+    return <span className={cx("text-ink-soft", className)}>{children ?? label}</span>;
   }
 
   return (
     <a
-      href={url}
+      href={link}
       target="_blank"
       rel="noopener noreferrer"
       className={cx(

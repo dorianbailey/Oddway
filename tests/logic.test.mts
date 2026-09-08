@@ -292,3 +292,34 @@ test("reading a table pages past the API row cap", () => {
   assert.equal(readAll(2000), 2000);
   assert.equal(readAll(4321), 4321);
 });
+
+test("competing travel guides are credited but not linked", async () => {
+  const { describeSource } = await import("../lib/sources");
+
+  /*
+    The index cites everything, and that does not change. What changes is
+    whether the citation is clickable: a museum's own page helps a traveller
+    plan, a rival guide's write-up of the same place does not.
+  */
+  const atlas = describeSource("https://www.atlasobscura.com/places/dog-chapel");
+  assert.equal(atlas.href, null, "must not link to a competing guide");
+  assert.equal(atlas.label, "Atlas Obscura", "must still say where it came from");
+
+  assert.equal(describeSource("https://www.roadsideamerica.com/story/75750").href, null);
+  assert.equal(describeSource("https://mapcarta.com/N1731158405").label, "Mapcarta");
+
+  // Everything else keeps its link.
+  const park = describeSource("https://www.michigan.gov/recsearch/parks/fayette");
+  assert.equal(park.href, "https://www.michigan.gov/recsearch/parks/fayette");
+  assert.equal(park.label, "michigan.gov/recsearch/parks/fayette");
+
+  assert.ok(describeSource("https://shelburnemuseum.org/").href);
+  assert.ok(describeSource("https://en.wikipedia.org/wiki/Kecksburg_UFO_incident").href);
+  assert.ok(describeSource("https://www.blm.gov/visit/rhyolite-historic-area").href);
+
+  // A bare domain still becomes a usable link.
+  assert.equal(describeSource("mysteryhole.com").href, "https://mysteryhole.com");
+
+  // Subdomains of a competing guide count too.
+  assert.equal(describeSource("https://assets.atlasobscura.com/x").href, null);
+});

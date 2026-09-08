@@ -2,7 +2,7 @@ import type { CategorySlug, Stop } from "@/types/oddway";
 import { DEMO_STOPS } from "./mock-data";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
-import { getSupabase, STOP_COLUMNS, toStop } from "./supabase";
+import { getSupabase, STOP_COLUMNS, toStop, type StopRow } from "./supabase";
 
 /**
  * The single place the app reads stop data from.
@@ -43,30 +43,45 @@ const BBOX_PADDING_DEGREES = 0.3;
 const fetchStops = unstable_cache(
   async (): Promise<Stop[]> => {
     const supabase = getSupabase();
+    // No credentials at all is a fresh checkout, not a failure.
     if (!supabase) return [...DEMO_STOPS];
 
-  const { data, error } = await supabase
-    .from("stops")
-    .select(STOP_COLUMNS)
-    .order("name");
-
-  if (error) {
-    console.error("Supabase getStops failed:", error.message);
     /*
-      Deliberately not the demo data.
+      Read in pages, because PostgREST caps a response at 1,000 rows and says
+      nothing about it. A single request returned the first thousand stops in
+      name order and looked entirely successful — no error, no warning, and a
+      site that had quietly stopped knowing about anything after the letter S.
 
-      Falling back to seven hardcoded entries made a database outage look like
-      a very small index: no error, no clue, just a site quietly claiming to
-      know about seven places. Returning nothing lets the page say plainly that
-      it could not load, which is the only honest option.
-
-      With no credentials configured at all — a fresh checkout — the demo data
-      is still used, because that is development rather than failure.
+      The failure is invisible from outside and gets worse as the index grows,
+      so this loop is not a temporary measure. It is the only correct way to
+      read a table that can outgrow a page.
     */
-    return [];
-  }
+    const PAGE = 1000;
+    const rows: StopRow[] = [];
 
-    return data.map(toStop);
+    for (let from = 0; ; from += PAGE) {
+      const { data, error } = await supabase
+        .from("stops")
+        .select(STOP_COLUMNS)
+        .order("name")
+        .range(from, from + PAGE - 1);
+
+      if (error) {
+        /*
+          Deliberately not the demo data. Falling back to seven hardcoded
+          entries made an outage look like a very small index: no error, no
+          clue, just a site quietly claiming to know about seven places.
+          Returning nothing lets the page say plainly that it could not load.
+        */
+        console.error("Supabase getStops failed:", error.message);
+        return [];
+      }
+
+      rows.push(...(data as StopRow[]));
+      if (data.length < PAGE) break; // A short page is the last page.
+    }
+
+    return rows.map(toStop);
   },
   ["stops:all"],
   { revalidate: 60, tags: ["stops"] },

@@ -263,3 +263,32 @@ test("the card list never shrinks because a stop was added to the trip", async (
   });
   assert.equal(empty.listed.length, 0, "an empty result must not fall back");
 });
+
+test("reading a table pages past the API row cap", () => {
+  /*
+    PostgREST returns at most 1,000 rows and gives no indication that it
+    truncated. A single request therefore looked completely successful while
+    silently hiding every stop after the thousandth — which is exactly what
+    happened once the index passed that size.
+
+    This models the loop rather than the database: a short page means the end,
+    a full page means ask again.
+  */
+  function readAll(total: number, page = 1000): number {
+    const rows: number[] = [];
+    for (let from = 0; ; from += page) {
+      const returned = Math.max(0, Math.min(page, total - from));
+      for (let i = 0; i < returned; i += 1) rows.push(from + i);
+      if (returned < page) break;
+    }
+    return rows.length;
+  }
+
+  assert.equal(readAll(0), 0);
+  assert.equal(readAll(7), 7, "a small index needs one request");
+  assert.equal(readAll(999), 999);
+  assert.equal(readAll(1000), 1000, "an exactly-full page must not be the end");
+  assert.equal(readAll(1013), 1013, "the case that broke the site");
+  assert.equal(readAll(2000), 2000);
+  assert.equal(readAll(4321), 4321);
+});

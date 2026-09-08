@@ -39,7 +39,7 @@ export function isDatabaseConfigured(): boolean {
 export const STOP_COLUMNS =
   "id, name, slug, category, latitude, longitude, city, state, description, public_access, image, source, opening_hours, website, phone, osm_type, osm_id, timezone, verified_at";
 
-interface StopRow {
+export interface StopRow {
   id: string;
   name: string;
   slug: string;

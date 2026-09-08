@@ -217,28 +217,7 @@ export function RouteMap({
           `${stop.name}, ${stop.city}, ${stop.state}`,
         );
 
-        // Built as DOM nodes rather than an HTML string so that descriptions
-        // coming from the database later can never inject markup.
-        const content = document.createElement("div");
-        content.className = "oddway-popup";
-
-        const heading = document.createElement("p");
-        heading.className = "oddway-popup-name";
-        heading.textContent = stop.name;
-
-        const place = document.createElement("p");
-        place.className = "oddway-popup-meta";
-        place.textContent = `${categoryLabel(stop.category)} · ${stop.city}, ${stop.state}`;
-
-        content.append(heading, place);
-
-        // Only meaningful once a route exists to be detouring from.
-        if (stop.detourMinutes !== undefined && stop.detourMinutes > 0) {
-          const detour = document.createElement("p");
-          detour.className = "oddway-popup-meta";
-          detour.textContent = formatDetour(stop.detourMinutes);
-          content.append(detour);
-        }
+        const content = popupContent(stop);
 
         const popup = new maplibregl.Popup({
           offset: 22,
@@ -498,6 +477,7 @@ function plotClusters(
     if (!feature) return;
 
     const props = feature.properties as {
+      slug: string;
       name: string;
       category: string;
       city: string;
@@ -505,27 +485,7 @@ function plotClusters(
       detourMinutes: number | null;
     };
 
-    // Built as nodes rather than an HTML string, so a description from the
-    // database can never inject markup.
-    const content = document.createElement("div");
-    content.className = "oddway-popup";
-
-    const heading = document.createElement("p");
-    heading.className = "oddway-popup-name";
-    heading.textContent = props.name;
-
-    const place = document.createElement("p");
-    place.className = "oddway-popup-meta";
-    place.textContent = `${categoryLabel(props.category as never)} · ${props.city}, ${props.state}`;
-
-    content.append(heading, place);
-
-    if (props.detourMinutes !== null && props.detourMinutes > 0) {
-      const detour = document.createElement("p");
-      detour.className = "oddway-popup-meta";
-      detour.textContent = formatDetour(props.detourMinutes);
-      content.append(detour);
-    }
+    const content = popupContent(props);
 
     const [lng, lat] = (
       feature.geometry as unknown as { coordinates: [number, number] }
@@ -556,6 +516,56 @@ function plotClusters(
     clusterHandlers.push({ layer: id, type: "mouseenter", handler: enter });
     clusterHandlers.push({ layer: id, type: "mouseleave", handler: leave });
   }
+}
+
+/**
+ * Builds the contents of a popup.
+ *
+ * The name is a link to the stop's own page. A pin that names a place and
+ * offers no way to read about it is a dead end — the map is how people find
+ * things, and the page is where the description, access, hours and source are.
+ *
+ * Assembled from DOM nodes rather than an HTML string, so a description from
+ * the database can never inject markup, and shared by both popup paths so the
+ * marker and cluster versions cannot drift apart.
+ */
+function popupContent(stop: {
+  name: string;
+  slug: string;
+  category: string;
+  city: string;
+  state: string;
+  detourMinutes?: number | null;
+}): HTMLElement {
+  const content = document.createElement("div");
+  content.className = "oddway-popup";
+
+  const heading = document.createElement("p");
+  heading.className = "oddway-popup-name";
+
+  const link = document.createElement("a");
+  link.href = `/stops/${stop.slug}`;
+  link.textContent = stop.name;
+  link.className = "oddway-popup-link";
+  heading.append(link);
+
+  const place = document.createElement("p");
+  place.className = "oddway-popup-meta";
+  place.textContent =
+    `${categoryLabel(stop.category as never)} · ${stop.city}, ${stop.state}`;
+
+  content.append(heading, place);
+
+  // Only meaningful once there is a route to be detouring from.
+  const detourMinutes = stop.detourMinutes;
+  if (detourMinutes !== undefined && detourMinutes !== null && detourMinutes > 0) {
+    const detour = document.createElement("p");
+    detour.className = "oddway-popup-meta";
+    detour.textContent = formatDetour(detourMinutes);
+    content.append(detour);
+  }
+
+  return content;
 }
 
 /** Frames the stops when there is no route to frame instead. */

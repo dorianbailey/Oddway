@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import {
   getCollapsed,
   getServerCollapsed,
@@ -11,9 +11,20 @@ import {
 import { OddWayLogo } from "./OddWayLogo";
 import { cx } from "@/lib/cx";
 
+/**
+ * Everything the header can reach.
+ *
+ * One list, used by both layouts. The wide header splits it into two groups by
+ * position and the narrow one puts all of it in a panel — but a link that
+ * exists in one and not the other is exactly the sort of drift that leaves a
+ * page unreachable on a phone.
+ */
 const NAV_LINKS = [
   { href: "/explore", label: "Explore" },
   { href: "/events", label: "Events" },
+  { href: "/trips", label: "Trips" },
+  { href: "/stories", label: "Stories" },
+  { href: "/artists", label: "Artists" },
   { href: "/about", label: "About" },
 ] as const;
 
@@ -33,16 +44,37 @@ export function Header() {
   );
 
   const pathname = usePathname();
+  /*
+    The menu is stored against the path it was opened on, so a route change
+    closes it by derivation rather than by an effect that calls setState.
+
+    Without closing on navigation, tapping a link leaves the panel sitting open
+    over the new page and the tap looks like it did nothing. Doing that in an
+    effect is the setState-in-effect pattern that caused the header render loop
+    earlier, so it is derived instead.
+  */
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const menuOpen = openedOn === pathname;
+  const setMenuOpen = (open: boolean) => setOpenedOn(open ? pathname : null);
+
+  // Escape closes it, which people expect and which matters more on a phone
+  // where there is no obvious outside to tap.
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpenedOn(null);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   /*
-    The nameplate always takes you to the top of the home page.
-
-    Clicking a link to the page you are already on does nothing in Next — the
-    router sees no navigation to make. So on the home page the logo appeared
-    dead, which is the one place people most expect a masthead to work. Scroll
-    it instead, and let the router handle every other page as usual.
+    The nameplate always takes you to the top of the home page. Clicking a link
+    to the page you are already on does nothing in Next, so on the home page
+    the logo appeared dead — the one place a masthead is most expected to work.
   */
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    setMenuOpen(false);
     if (pathname !== "/") return;
     event.preventDefault();
     window.scrollTo({
@@ -57,67 +89,44 @@ export function Header() {
       className={cx(
         "sticky top-0 z-50 text-paper transition-colors duration-300",
         "shadow-[0_3px_0_0_var(--color-ink),0_6px_0_0_var(--color-ink)]",
-        /*
-          Solid at rest, translucent once you start scrolling, so the header
-          stops covering what you are reading. 85% keeps text legible over any
-          background — paper on it still measures 9:1 even against white.
-        */
         isScrolled ? "bg-pine/75 backdrop-blur-md" : "bg-pine",
       )}
     >
       {/*
-        Three columns: navigation, nameplate, action. The logo sits in the
-        middle column, which is centred on the page rather than centred in the
-        leftover space — so it stays put whatever the nav is doing either side.
+        One layout at every width: a menu button, the nameplate, and a spacer
+        to keep the nameplate centred.
 
-        On phones the grid collapses to a single centred column with the nav
-        beneath, because three things across 360px leaves room for none of them.
+        The wide version used to lay six links and an action across the bar.
+        That fit, but it made the header a wall of amber buttons and left the
+        nameplate fighting for room. Behind a menu, the masthead is the only
+        thing competing for attention, which is what a masthead is for.
       */}
-      <div className={cx(
-          "mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-6 px-5 lg:grid-cols-[1fr_auto_1fr] sm:px-8",
-          "transition-all duration-300",
-          isScrolled ? "gap-y-0 py-1" : "gap-y-2 py-2",
-        )}>
-        {/*
-          Once you start scrolling, the two button groups slide inward and
-          collapse, leaving just the nameplate in a thin bar. This runs at
-          every width: a sticky header earns its space by being useful, and
-          past the first screen the nameplate is the only part still doing a
-          job.
-        */}
-        <nav
-          aria-label="Main"
-          className={cx(
-            "order-2 justify-self-center overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "lg:order-1 lg:justify-self-start",
-            isScrolled
-              ? "max-h-0 translate-x-10 opacity-0 pointer-events-none"
-              : "max-h-16 translate-x-0 opacity-100",
-          )}
+      <div
+        className={cx(
+          "mx-auto flex max-w-6xl items-center px-5 sm:px-8",
+          isScrolled ? "py-1" : "py-2",
+        )}
+      >
+        <button
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="site-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="-ml-1 shrink-0 rounded-[3px] p-2 text-paper transition-colors hover:bg-white/10"
         >
-          <ul className="flex items-center gap-2 sm:gap-3">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-block rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)]"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <MenuIcon open={menuOpen} />
+        </button>
 
         <Link
           href="/"
           onClick={handleLogoClick}
-          className="order-1 justify-self-center rounded-[2px] transition-opacity hover:opacity-85 sm:order-2"
+          className="mx-auto rounded-[2px] transition-opacity hover:opacity-85"
         >
           <OddWayLogo
             className={cx(
               "transition-all duration-300 motion-reduce:transition-none",
-              isScrolled ? "h-11 sm:h-12 lg:h-14" : "h-16 sm:h-20 lg:h-24",
+              isScrolled ? "h-11 lg:h-14" : "h-16 sm:h-20 lg:h-24",
             )}
             priority
           />
@@ -125,47 +134,38 @@ export function Header() {
         </Link>
 
         {/*
-          Stories sits with the action rather than in the nav group: it is the
-          other thing you might come here to do, and the right-hand column was
-          otherwise empty next to a single button.
+          Balances the button so the nameplate sits in the middle of the bar.
+          Hidden from assistive technology: it is spacing, not content.
         */}
-        <div
-          className={cx(
-            "order-3 flex items-center gap-2 overflow-hidden transition-all duration-300 motion-reduce:transition-none",
-            "justify-self-center lg:gap-3 lg:justify-self-end",
-            isScrolled
-              ? "max-h-0 -translate-x-10 opacity-0 pointer-events-none"
-              : "max-h-16 translate-x-0 opacity-100",
-          )}
-        >
-          <Link
-            href="/trips"
-            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
-          >
-            Trips
-          </Link>
+        <span aria-hidden="true" className="w-9 shrink-0" />
+      </div>
 
-          <Link
-            href="/artists"
-            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
-          >
-            Artists
-          </Link>
-
-          <Link
-            href="/stories"
-            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
-          >
-            Stories
-          </Link>
+      <div
+        id="site-menu"
+        hidden={!menuOpen}
+        className="border-t border-brass/20 bg-pine-deep"
+      >
+        <nav aria-label="Main" className="mx-auto max-w-6xl px-5 py-4 sm:px-8">
+          <ul className="flex flex-col gap-2">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block rounded-[3px] px-3 py-3 text-[1.05rem] capitalize text-paper transition-colors hover:bg-white/10"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           <Link
             href="/#plan"
-            className="rounded-[3px] border border-route bg-route px-4 py-1.5 text-[0.9rem] font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
+            className="mt-4 block rounded-[3px] bg-route px-4 py-3 text-center font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
           >
             Plan a trip
           </Link>
-        </div>
+        </nav>
       </div>
 
       <p
@@ -183,5 +183,32 @@ export function Header() {
         Strange Stops Along Your Route &middot; Price: Free
       </p>
     </header>
+  );
+}
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
+      {open ? (
+        <>
+          <path d="M6 6l12 12" />
+          <path d="M18 6L6 18" />
+        </>
+      ) : (
+        <>
+          <path d="M4 7h16" />
+          <path d="M4 12h16" />
+          <path d="M4 17h16" />
+        </>
+      )}
+    </svg>
   );
 }

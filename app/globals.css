@@ -693,6 +693,20 @@ body::before {
   color: var(--color-ink);
 }
 
+.oddway-popup-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  /* The whole name should be an easy target on a phone. */
+  display: inline-block;
+}
+
+.oddway-popup-link:hover,
+.oddway-popup-link:focus-visible {
+  color: var(--color-route);
+}
+
 .oddway-popup-meta {
   margin-top: 0.25rem;
   font-size: 0.9rem;

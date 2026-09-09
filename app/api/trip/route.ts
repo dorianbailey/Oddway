@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { findStopsNearRoute } from "@/lib/corridor";
+import { countStopsNearRoute, findStopsNearRoute } from "@/lib/corridor";
 import {
   geocodeCached,
   getRoutingProvider,
@@ -86,7 +86,26 @@ export async function POST(request: Request) {
     return NextResponse.json({
       query: { origin: from.label, destination: to.label, categories, maxDetourMinutes },
       route,
+      /*
+        More than the page shows at first.
+
+        Revealing another batch should not cost a second routing call — the
+        route has not changed and the provider's quota is finite. So a larger
+        spread set travels with the first response and the page reveals from
+        it, in rank order, so each batch still covers the whole drive.
+      */
       stops: findStopsNearRoute(stops, route.geometry, {
+        maxDetourMinutes,
+        categories,
+        limit: 300,
+      }),
+      /*
+        The total before the display limit, so the page can say how many were
+        left out. Boston to Philadelphia matches over two hundred and sixty;
+        showing sixty without saying so would make a busy corridor look like a
+        thin one.
+      */
+      matchedCount: countStopsNearRoute(stops, route.geometry, {
         maxDetourMinutes,
         categories,
       }),

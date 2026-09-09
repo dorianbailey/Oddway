@@ -10,6 +10,7 @@ import { CategoryFilters } from "./CategoryFilters";
 import { MapSection } from "./MapSection";
 import { RouteSearch } from "./RouteSearch";
 import { StopCard } from "./StopCard";
+import type { RoutedStop } from "@/lib/corridor";
 import { TripSummary } from "./TripSummary";
 import { formatDuration } from "@/lib/format";
 import { formatDistance } from "@/lib/units";
@@ -26,7 +27,14 @@ interface TripPlannerProps {
 interface TripResult {
   query: { origin: string; destination: string };
   route: Route;
-  stops: Stop[];
+  /*
+    RoutedStop, not Stop. The API returns each one with how far off the road it
+    sits, how far along the route you turn off, and its reveal rank — and the
+    page needs all three to show a spread batch in driving order.
+  */
+  stops: RoutedStop[];
+  /** How many matched before the display limit, when that differs. */
+  matchedCount?: number;
   attribution: string;
 }
 
@@ -42,6 +50,9 @@ const DETOUR_MIN = 5;
 const DETOUR_MAX = 120;
 const DETOUR_STEP = 5;
 const DEFAULT_DETOUR = 30;
+
+/** Stops shown at once, and how many each "show more" adds. */
+const PAGE_SIZE = 60;
 
 /**
  * Wait after a filter or slider change before re-querying. Long enough that
@@ -63,6 +74,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
   const [error, setError] = useState<string | null>(null);
   const [categories, setCategories] = useState<CategorySlug[]>([]);
   const [maxDetourMinutes, setMaxDetourMinutes] = useState(DEFAULT_DETOUR);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [planned, setPlanned] = useState<PlannedRoute | null>(null);
 
   /*
@@ -193,6 +205,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
       inFlight.current = controller;
 
       setStatus("loading");
+    setVisibleCount(PAGE_SIZE);
       setError(null);
 
       try {
@@ -246,8 +259,21 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
   const totalStops = allStops?.length ?? fallbackStops.length;
   const statesCovered = new Set((allStops ?? fallbackStops).map((s) => s.state)).size;
 
+  /*
+    Reveal by spreadRank, read by route position.
+
+    The API sends a large spread set so another batch costs no routing call.
+    Taking the lowest ranks gives stops spread end to end, and sorting what is
+    left by position puts them back in the order they will be driven past.
+  */
+  const visibleResults = result
+    ? [...result.stops]
+        .filter((stop) => (stop.spreadRank ?? 0) < visibleCount)
+        .sort((a, b) => (a.routePositionKm ?? 0) - (b.routePositionKm ?? 0))
+    : null;
+
   const { listed: listedStops, mapped: mappedStops } = chooseDisplaySets({
-    searchResults: result?.stops ?? null,
+    searchResults: visibleResults,
     savedTrip,
     fallbackStops,
     allStops,
@@ -315,17 +341,58 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
           drawRouteError={tripRouteError}
         />
 
-        <h2 id="stops-heading" className="mt-14 max-w-[24ch] text-section first:mt-0">
-          {hasSearched
-            ? `${result.stops.length} ${result.stops.length === 1 ? "stop" : "stops"} worth pulling off for`
-            : "OddWay recommendations"}
-        </h2>
+        {/*
+          Heading and the reveal button on one line, button to the right.
+
+          It belongs beside the count rather than below the list: somebody who
+          wants more sees it while reading how many there are, instead of
+          scrolling past sixty cards to discover the option existed.
+
+          It wraps under the heading on a narrow screen, where a row of two
+          would squeeze both.
+        */}
+        <div className="mt-14 flex flex-wrap items-end justify-between gap-x-8 gap-y-4 first:mt-0">
+          <h2 id="stops-heading" className="max-w-[24ch] text-section">
+            {hasSearched
+              ? `${listedStops.length} ${listedStops.length === 1 ? "stop" : "stops"} worth pulling off for`
+              : "OddWay recommendations"}
+          </h2>
+
+          {hasSearched && result && listedStops.length < result.stops.length ? (
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-[0.9rem] text-ink-soft">
+                {listedStops.length} of {result.matchedCount ?? result.stops.length}
+              </span>
+              <button
+                type="button"
+                onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+                className="rounded-[3px] bg-route px-5 py-2 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)]"
+              >
+                Show me another{" "}
+                {Math.min(PAGE_SIZE, result.stops.length - listedStops.length)}
+              </button>
+            </div>
+          ) : null}
+        </div>
 
         {hasSearched ? (
           <p className="mt-5 max-w-[62ch] text-lede text-ink-soft">
             {result.query.origin} to {result.query.destination} —{" "}
             {formatDistance(result.route.distanceMeters, units)},{" "}
             {formatDuration(result.route.durationSeconds)} without stopping.
+            {/*
+              Say when the list has been thinned. A dense corridor matching two
+              hundred stops and showing sixty should not look like a corridor
+              with sixty in it — and somebody who wants fewer can say so with
+              the detour slider rather than wondering what they are missing.
+            */}
+            {result.matchedCount && result.matchedCount > listedStops.length ? (
+              <>
+                {" "}
+                Spread along the route, out of {result.matchedCount} within{" "}
+                {maxDetourMinutes} minutes.
+              </>
+            ) : null}
           </p>
         ) : (
           <p className="mt-5 max-w-[62ch] text-lede text-ink-soft">
@@ -387,6 +454,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
             ))}
           </ul>
         )}
+
 
         {hasSearched ? (
           <p className="mt-10 text-[0.85rem] text-ink-soft">

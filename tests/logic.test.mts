@@ -715,3 +715,102 @@ test("a routing failure is described by its cause, not as an outage", () => {
   assert.match(describe(400, "code 2004 exceeds maximum").message, /too long/);
   assert.match(describe(400, "invalid").message, /locations/);
 });
+
+test("a dense corridor is thinned along the route, not truncated", async () => {
+  const { findStopsNearRoute } = await import("../lib/corridor");
+
+  /*
+    Boston to Philadelphia matched 262 stops, every one genuinely within half
+    an hour of the road. The filter was right and the answer was useless.
+
+    Truncating would have been worse than useless: the northeast is dense
+    enough around New York that the first sixty by any simple ordering are all
+    in one metro area, leaving the traveller with nothing for the rest of the
+    drive and no way to know why.
+  */
+  const geometry: [number, number][] = [];
+  for (let i = 0; i <= 100; i += 1) geometry.push([-75 + i * 0.03, 40 + i * 0.02]);
+
+  // Two hundred stops, three quarters of them piled into the first tenth.
+  const stops = Array.from({ length: 200 }, (_, i) => {
+    const clustered = i < 150;
+    const along = clustered ? Math.random() * 10 : 10 + Math.random() * 90;
+    return {
+      id: `s${i}`, slug: `s${i}`, name: `Stop ${i}`, city: "X", state: "NY",
+      category: "roadside-oddities" as const,
+      latitude: 40 + along * 0.02, longitude: -75 + along * 0.03,
+      description: "", publicAccess: "open" as const,
+      source: null, website: null, timezone: null, verifiedAt: null,
+    };
+  });
+
+  const shown = findStopsNearRoute(stops as never, geometry, { limit: 60 });
+  assert.ok(shown.length <= 60, "the cap holds");
+  assert.ok(shown.length > 40, "and it is not over-eager");
+
+  // The far half of the drive must not be empty.
+  const furthest = Math.max(...shown.map((s) => s.routePositionKm));
+  const lateHalf = shown.filter((s) => s.routePositionKm > furthest / 2);
+  assert.ok(
+    lateHalf.length >= 8,
+    `the second half of the route kept ${lateHalf.length} stops, which is too few`,
+  );
+
+  // Still in travelling order, so the list reads as a journey.
+  for (let i = 1; i < shown.length; i += 1) {
+    assert.ok(shown[i].routePositionKm >= shown[i - 1].routePositionKm);
+  }
+
+  // Under the limit nothing is dropped or reordered away from route position.
+  const few = findStopsNearRoute(stops.slice(0, 12) as never, geometry, { limit: 60 });
+  assert.equal(few.length, 12, "a short list is returned whole");
+});
+
+test("each revealed batch covers the whole route, not the next stretch of it", async () => {
+  const { findStopsNearRoute } = await import("../lib/corridor");
+
+  /*
+    "Show me another sixty" has an obvious wrong implementation: continue from
+    where the last batch stopped. That walks out from the origin, so somebody
+    wanting to know what is near their destination clicks four times to find
+    out. Revealing by spread rank instead means every batch spans the drive.
+  */
+  const geometry: [number, number][] = [];
+  for (let i = 0; i <= 100; i += 1) geometry.push([-75 + i * 0.03, 40 + i * 0.02]);
+
+  const stops = Array.from({ length: 250 }, (_, i) => {
+    const along = (i / 250) * 100;
+    return {
+      id: `s${i}`, slug: `s${i}`, name: `Stop ${i}`, city: "X", state: "NY",
+      category: "roadside-oddities" as const,
+      latitude: 40 + along * 0.02, longitude: -75 + along * 0.03,
+      description: "", publicAccess: "open" as const,
+      source: null, website: null, timezone: null, verifiedAt: null,
+    };
+  });
+
+  const all = findStopsNearRoute(stops as never, geometry, { limit: 300 });
+  const furthest = Math.max(...all.map((s) => s.routePositionKm));
+
+  const batch = (upTo: number) =>
+    all.filter((s) => (s.spreadRank ?? 0) < upTo);
+
+  for (const size of [60, 120, 180]) {
+    const shown = batch(size);
+    const late = shown.filter((s) => s.routePositionKm > furthest * 0.75);
+    assert.ok(
+      late.length >= 5,
+      `showing ${size}: only ${late.length} stops in the last quarter of the route`,
+    );
+  }
+
+  // Revealing more never removes anything already on screen.
+  const first = new Set(batch(60).map((s) => s.id));
+  for (const id of first) {
+    assert.ok(batch(120).some((s) => s.id === id), "a revealed stop must not vanish");
+  }
+
+  // Ranks are unique, so a batch is a clean slice.
+  const ranks = all.map((s) => s.spreadRank);
+  assert.equal(new Set(ranks).size, ranks.length);
+});

@@ -6,6 +6,7 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { PhotoUploadForm } from "./PhotoUploadForm";
 import { AvatarUpload } from "./AvatarUpload";
 import { screenText } from "@/lib/language-filter";
+import { DeleteAccount } from "./DeleteAccount";
 
 interface AccountPanelProps {
   userId: string;
@@ -167,10 +168,17 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
       <button
         type="button"
         onClick={signOut}
-        className="mt-8 text-[0.95rem] font-semibold text-route underline underline-offset-4"
+        className="mt-8 block text-[0.95rem] font-semibold text-route underline underline-offset-4"
       >
         Sign out
       </button>
+
+      {/*
+        Below sign out and visually quieter than everything above it. Somebody
+        looking for it will find it; nobody reaches for it by accident on the
+        way to signing out.
+      */}
+      <DeleteAccount userId={userId} />
     </div>
   );
 }

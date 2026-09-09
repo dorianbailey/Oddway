@@ -551,3 +551,36 @@ test("the language filter does not reject real place names", async () => {
   assert.equal(screenText(null).clean, true);
   assert.equal(screenText(undefined).clean, true);
 });
+
+test("the age gate turns thirteen on the right day", async () => {
+  const { ageOn, MINIMUM_AGE } = await import("../components/AuthForm");
+
+  /*
+    Off-by-one on a birthday is the classic version of this bug: subtracting
+    years alone makes somebody thirteen on the first of January of the year
+    they turn thirteen, which is up to twelve months early.
+  */
+  const today = new Date("2026-09-09T12:00:00");
+
+  assert.equal(ageOn("2013-09-09", today), 13, "thirteen exactly today");
+  assert.equal(ageOn("2013-09-10", today), 12, "birthday is tomorrow");
+  assert.equal(ageOn("2013-01-01", today), 13, "birthday earlier this year");
+  assert.equal(ageOn("2013-12-31", today), 12, "birthday later this year");
+  assert.equal(ageOn("1975-04-02", today), 51);
+
+  // Anything unusable is refused rather than treated as old enough.
+  assert.equal(ageOn("", today), null);
+  assert.equal(ageOn("not-a-date", today), null);
+  assert.equal(ageOn("2030-01-01", today), null, "the future is not a birthday");
+
+  assert.equal(MINIMUM_AGE, 13);
+
+  // The gate itself: null must fail, not pass.
+  const allowed = (dob: string) => {
+    const age = ageOn(dob, today);
+    return age !== null && age >= MINIMUM_AGE;
+  };
+  assert.equal(allowed("2013-09-09"), true);
+  assert.equal(allowed("2013-09-10"), false);
+  assert.equal(allowed(""), false, "a blank date must not get through");
+});

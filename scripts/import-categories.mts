@@ -247,6 +247,71 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "weird-geography": "roadside-oddities",
   "architecture-oddity": "roadside-oddities",
 
+
+  /*
+    North Carolina. A few decided by the stop rather than the word:
+      ancient-mystery      Judaculla Rock, a petroglyph with a Cherokee story
+      animal-oddity        wild horses and white squirrels, mostly
+      living-oddity        Love Valley, a town that allows horses and not cars
+      mystery-spot         Mystery Hill, one of the tilted rooms
+      cryptid-museum       filed under cryptids rather than museums, so it sits
+                           beside the creatures it is about
+  */
+  "abandoned-history": "weird-history",
+  "abandoned-infrastructure": "weird-history",
+  "abandoned-theme-park": "weird-history",
+  "celebrity-grave": "weird-history",
+  "cold-war": "weird-history",
+  "historical-mystery": "weird-history",
+  "music-history": "weird-history",
+  "strange-history": "weird-history",
+
+  "ancient-mystery": "folklore",
+  "cemetery-folklore": "folklore",
+  "folk-tradition": "folklore",
+
+  "ghost-story": "haunted",
+  "haunted-history": "haunted",
+
+  "cryptid-museum": "cryptids",
+  "ufo-folklore": "ufos",
+  "medical-oddity": "museums",
+
+  "ancient-oddity": "roadside-oddities",
+  "animal-oddity": "roadside-oddities",
+  "aviation-oddity": "roadside-oddities",
+  "giant-statue": "roadside-oddities",
+  "hidden-infrastructure": "roadside-oddities",
+  "interactive-art": "roadside-oddities",
+  "living-oddity": "roadside-oddities",
+  "monster-truck-oddity": "roadside-oddities",
+  "mystery-spot": "roadside-oddities",
+  "oddities-bar": "roadside-oddities",
+  "oddities-shop": "roadside-oddities",
+  "tiny-building": "roadside-oddities",
+  "vintage-theme-park": "roadside-oddities",
+  "visionary-art": "roadside-oddities",
+
+
+  /*
+    South Carolina. animal-grave and animal-monument are separated on purpose:
+    Poogan's Grave is a real grave and belongs with the other burials, while a
+    statue of a border collie is a thing you pull over for.
+  */
+  "animal-grave": "weird-history",
+  "church-ruins": "weird-history",
+  "nuclear-history": "weird-history",
+  "buried-alive-folklore": "folklore",
+  "geological-mysteries": "folklore",
+  "ghost-lights": "folklore",
+  "local-characters": "folklore",
+  "animal-monument": "roadside-oddities",
+  "cultural-oddity": "roadside-oddities",
+  "giant-oddity": "roadside-oddities",
+  "nuclear-oddity": "roadside-oddities",
+  "religious-art": "roadside-oddities",
+  "vintage-oddity": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

@@ -140,18 +140,30 @@ export default function PrivacyPage() {
           <h2>Getting rid of it</h2>
           <p>You can delete any photo you have posted from your account page.</p>
           <p>
-            Deleting the account itself is not yet a button, which is a gap
-            rather than a policy. Ask through the{" "}
-            <Link href="/suggest?kind=other">suggestion box</Link> and we will
-            remove the account, its photos and its files. Say so plainly and it
-            will be done rather than negotiated.
+            You can also delete the whole account, from the bottom of the same
+            page. That removes your profile, every photo you have posted and the
+            image files themselves. It asks once to be sure and then does it
+            immediately — no email, no waiting on us, and no undo.
+          </p>
+          <p>
+            If something goes wrong partway through, the page says so and
+            nothing is deleted. Write in through the{" "}
+            <Link href="/suggest?kind=other">suggestion box</Link> if that
+            happens.
           </p>
 
           <h2>Children</h2>
           <p>
-            Accounts are for people aged 13 and over. Browsing needs no account
-            and no age.
+            Accounts are for people aged 13 and over. Signing up asks for your
+            date of birth to check that.
           </p>
+          <p>
+            <strong>We do not store it.</strong> The date is checked in your
+            browser and discarded — keeping a database of children&rsquo;s
+            birthdays in order to keep children out would be a strange way to
+            protect them.
+          </p>
+          <p>Browsing needs no account and no age.</p>
 
           <p>
             This page describes what the site actually does. If you find

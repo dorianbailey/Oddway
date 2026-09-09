@@ -8,6 +8,37 @@ import { screenText } from "@/lib/language-filter";
 
 type Mode = "signin" | "signup" | "forgot";
 
+const MINIMUM_AGE = 13;
+
+/**
+ * Age on a given date, or null if the input is not a usable date.
+ *
+ * Asked as a date of birth rather than a "yes I am over 13" box, because a
+ * checkbox is answered without reading and a date has to be thought about. It
+ * is still self-declared and anybody can lie — the point is a barrier made in
+ * good faith, not enforcement, which no website can do.
+ *
+ * The date is never sent anywhere. It is checked in the browser and discarded,
+ * so the site does not end up holding a database of children's birthdays in
+ * order to keep children out.
+ */
+function ageOn(birthDate: string, today = new Date()): number | null {
+  if (!birthDate) return null;
+  const born = new Date(`${birthDate}T00:00:00`);
+  if (Number.isNaN(born.getTime())) return null;
+  if (born > today) return null;
+
+  let age = today.getFullYear() - born.getFullYear();
+  const monthDiff = today.getMonth() - born.getMonth();
+  // Not yet had this year's birthday.
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < born.getDate())) {
+    age -= 1;
+  }
+  return age;
+}
+
+export { ageOn, MINIMUM_AGE };
+
 function EyeIcon({ open }: { open: boolean }) {
   return (
     <svg
@@ -42,6 +73,7 @@ export function AuthForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [displayName, setDisplayName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -88,6 +120,17 @@ export function AuthForm() {
 
       if (password !== confirmPassword) {
         throw new Error("Those passwords do not match.");
+      }
+
+      const age = ageOn(birthDate);
+      if (age === null) {
+        throw new Error("Enter your date of birth.");
+      }
+      if (age < MINIMUM_AGE) {
+        throw new Error(
+          `Accounts are for people aged ${MINIMUM_AGE} and over. You can still ` +
+            `use the whole site without one.`,
+        );
       }
 
       const trimmed = displayName.trim();
@@ -154,6 +197,7 @@ export function AuthForm() {
               setError(null);
               setNotice(null);
               setConfirmPassword("");
+              setBirthDate("");
             }}
             className={cx(
               "rounded-[3px] px-4 py-2 text-[0.95rem] font-semibold transition-colors",
@@ -166,6 +210,24 @@ export function AuthForm() {
           </button>
         ))}
       </div>
+
+      {mode === "signup" ? (
+        <label className="mb-5 block">
+          <span className="font-semibold">Date of birth</span>
+          <span className="mt-1 block text-[0.9rem] text-ink-soft">
+            Accounts are for {MINIMUM_AGE} and over. We check it and do not
+            store it.
+          </span>
+          <input
+            type="date"
+            required
+            max={new Date().toISOString().slice(0, 10)}
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
+            className={field}
+          />
+        </label>
+      ) : null}
 
       {mode === "signup" ? (
         <label className="block">

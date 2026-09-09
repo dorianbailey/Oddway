@@ -26,6 +26,26 @@ Everything here is idempotent: re-running a file is safe.
 | `010-ufo-verifications.sql` | Resolves two entries that went in unverified |
 | `011-demo-stop-sources.sql` | Sources for the seven original demo entries |
 
+## After importing, refresh the site
+
+Running SQL changes the database and nothing else. Every page that reads the
+whole index reads it through a tagged cache, so new stops do not appear until
+that tag is cleared — or until the next deployment happens to warm a fresh one.
+
+That last part is why this went unnoticed for a while: imports were always
+pushed alongside code, so a deploy always did the job by accident. Import on
+its own and the site keeps reporting the old number, while individual stop
+pages work perfectly because they query by slug. Nothing breaks, nothing
+errors, the site simply understates itself.
+
+```
+export REVALIDATE_SECRET=...        # same value as in Vercel
+npx tsx scripts/refresh-site.mts
+```
+
+The script clears the caches and then reads the count back off /explore, so a
+run that silently failed is visible rather than assumed.
+
 ## The files that actually matter
 
 `data-stops.sql` and `data-events.sql` are exported from the live database by

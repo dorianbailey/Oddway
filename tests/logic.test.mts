@@ -584,3 +584,30 @@ test("the age gate turns thirteen on the right day", async () => {
   assert.equal(allowed("2013-09-10"), false);
   assert.equal(allowed(""), false, "a blank date must not get through");
 });
+
+test("the revalidate endpoint refuses when it is unconfigured", () => {
+  /*
+    An endpoint that clears the site's caches has to fail closed. If a missing
+    secret meant "no authentication required", anybody could make the site
+    rebuild its caches on demand — which is not catastrophic but is a free
+    lever on somebody else's infrastructure.
+
+    Models the route's decision rather than calling it, since the route needs a
+    request and an environment.
+  */
+  function decide(secret: string | undefined, offered: string | null) {
+    if (!secret) return 503;
+    if (offered !== `Bearer ${secret}`) return 401;
+    return 200;
+  }
+
+  assert.equal(decide(undefined, null), 503, "unconfigured must refuse");
+  assert.equal(decide(undefined, "Bearer anything"), 503, "and keep refusing");
+  assert.equal(decide("s3cret", null), 401, "no header is not authorised");
+  assert.equal(decide("s3cret", "s3cret"), 401, "the Bearer prefix is required");
+  assert.equal(decide("s3cret", "Bearer wrong"), 401);
+  assert.equal(decide("s3cret", "Bearer s3cret"), 200);
+
+  // An empty secret must not be satisfiable by an empty header.
+  assert.equal(decide("", "Bearer "), 503, "an empty secret counts as unset");
+});

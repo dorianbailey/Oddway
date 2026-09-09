@@ -148,7 +148,6 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   shipwrecks: "weird-history",
   "urban-archaeology": "weird-history",
   "true-crime": "weird-history",
-  monuments: "weird-history",
 
   /*
     Odd monuments part company with monuments proper. A war memorial is

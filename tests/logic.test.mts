@@ -814,3 +814,35 @@ test("each revealed batch covers the whole route, not the next stretch of it", a
   const ranks = all.map((s) => s.spreadRank);
   assert.equal(new Set(ranks).size, ranks.length);
 });
+
+test("display names are compared ignoring case and surrounding space", async () => {
+  const { checkNameShape } = await import("../lib/display-names");
+
+  /*
+    A signup went through with a name already in use, because nothing enforced
+    uniqueness. That matters more here than in most places: a display name is
+    set once, can never be changed, and every photograph is credited to it. Two
+    accounts sharing one means neither can be told from the other, permanently.
+
+    The database index is on lower(trim(display_name)), so these all collide.
+    "DorianBailey" and "dorianbailey " being separate accounts is exactly the
+    confusion the constraint exists to prevent.
+  */
+  const key = (name: string) => name.trim().toLowerCase();
+
+  assert.equal(key("dorianbailey"), key("DorianBailey"));
+  assert.equal(key("dorianbailey"), key("  dorianbailey  "));
+  assert.equal(key("OddWay Official"), key("oddway official"));
+  assert.notEqual(key("dorianbailey"), key("dorian bailey"));
+
+  // Shape rules, checked before anything touches the network.
+  assert.equal(checkNameShape("a").ok, false, "too short");
+  assert.equal(checkNameShape("x".repeat(41)).ok, false, "too long");
+  assert.equal(checkNameShape("!!!").ok, false, "needs a letter or number");
+  assert.equal(checkNameShape("  ").ok, false, "space is not a name");
+
+  assert.equal(checkNameShape("Jo").ok, true);
+  assert.equal(checkNameShape("Douglas Bailey").ok, true);
+  assert.equal(checkNameShape("814").ok, true, "digits alone are fine");
+  assert.equal(checkNameShape("  padded  ").ok, true, "trimmed before measuring");
+});

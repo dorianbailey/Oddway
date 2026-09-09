@@ -6,6 +6,11 @@ import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { PhotoUploadForm } from "./PhotoUploadForm";
 import { AvatarUpload } from "./AvatarUpload";
 import { screenText } from "@/lib/language-filter";
+import {
+  checkNameShape,
+  describeProfileError,
+  isNameTaken,
+} from "@/lib/display-names";
 import { DeleteAccount } from "./DeleteAccount";
 
 interface AccountPanelProps {
@@ -44,8 +49,17 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
     setError(null);
     try {
       const supabase = getBrowserSupabase();
-      const screened = screenText(name.trim());
+      const trimmed = name.trim();
+
+      const shape = checkNameShape(trimmed);
+      if (!shape.ok) throw new Error(shape.reason);
+
+      const screened = screenText(trimmed);
       if (!screened.clean) throw new Error("Pick a different display name.");
+
+      if (await isNameTaken(trimmed)) {
+        throw new Error("Somebody already has that name. Pick another.");
+      }
 
       const {
         data: { user },
@@ -54,8 +68,8 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
 
       const { error } = await supabase
         .from("profiles")
-        .insert({ id: user.id, display_name: name.trim() });
-      if (error) throw new Error(error.message);
+        .insert({ id: user.id, display_name: trimmed });
+      if (error) throw new Error(describeProfileError(error.message));
       router.refresh();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Something went wrong.");

@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { cx } from "@/lib/cx";
 import { screenText } from "@/lib/language-filter";
+import {
+  checkNameShape,
+  describeProfileError,
+  isNameTaken,
+} from "@/lib/display-names";
 
 type Mode = "signin" | "signup" | "forgot";
 
@@ -74,9 +79,36 @@ export function AuthForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [birthDate, setBirthDate] = useState("");
+  const [nameStatus, setNameStatus] = useState<"idle" | "checking" | "free" | "taken">("idle");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+
+  /*
+    Checks availability while typing rather than only on submit.
+
+    A name that is set once and can never be changed is the wrong place to
+    discover a problem after filling in a whole form. The database still has
+    the last word — two people can type the same name at the same moment — but
+    almost nobody should ever meet that.
+  */
+  useEffect(() => {
+    if (mode !== "signup") return;
+    const trimmed = displayName.trim();
+
+    if (checkNameShape(trimmed).ok === false) {
+      const clear = setTimeout(() => setNameStatus("idle"), 0);
+      return () => clearTimeout(clear);
+    }
+
+    const timer = setTimeout(async () => {
+      setNameStatus("checking");
+      const taken = await isNameTaken(trimmed);
+      setNameStatus(taken ? "taken" : "free");
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [displayName, mode]);
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -134,8 +166,17 @@ export function AuthForm() {
       }
 
       const trimmed = displayName.trim();
-      if (trimmed.length < 2 || trimmed.length > 40) {
-        throw new Error("Pick a display name between 2 and 40 characters.");
+
+      const shape = checkNameShape(trimmed);
+      if (!shape.ok) throw new Error(shape.reason);
+
+      /*
+        Checked before the account is created, so somebody who picked a taken
+        name is not left holding an auth account with no profile — which is
+        how you end up signed in, nameless, and unable to do anything.
+      */
+      if (await isNameTaken(trimmed)) {
+        throw new Error("Somebody already has that name. Pick another.");
       }
 
       /*
@@ -162,7 +203,7 @@ export function AuthForm() {
         const { error: profileError } = await supabase
           .from("profiles")
           .insert({ id: data.user.id, display_name: trimmed });
-        if (profileError) throw new Error(profileError.message);
+        if (profileError) throw new Error(describeProfileError(profileError.message));
 
         router.push("/account");
         router.refresh();
@@ -243,8 +284,24 @@ export function AuthForm() {
             maxLength={40}
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
+            aria-describedby="name-availability"
             className={field}
           />
+          <span
+            id="name-availability"
+            aria-live="polite"
+            className="mt-1 block text-[0.9rem]"
+          >
+            {nameStatus === "checking" ? (
+              <span className="text-ink-soft">Checking…</span>
+            ) : nameStatus === "taken" ? (
+              <span className="text-[#8c2f22]">
+                Somebody already has that name.
+              </span>
+            ) : nameStatus === "free" ? (
+              <span className="text-ink-soft">That one is free.</span>
+            ) : null}
+          </span>
         </label>
       ) : null}
 
@@ -385,7 +442,7 @@ export function AuthForm() {
 
       <button
         type="submit"
-        disabled={busy}
+        disabled={busy || (mode === "signup" && nameStatus === "taken")}
         className="mt-7 rounded-[3px] bg-route px-6 py-2.5 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] disabled:opacity-60"
       >
         {busy

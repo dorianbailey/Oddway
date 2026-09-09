@@ -26,6 +26,23 @@ Everything here is idempotent: re-running a file is safe.
 | `010-ufo-verifications.sql` | Resolves two entries that went in unverified |
 | `011-demo-stop-sources.sql` | Sources for the seven original demo entries |
 
+## Importing a state
+
+Parse with `scripts/parse-batch.mts` and check with `checkBatch` before
+generating any SQL. The check compares incoming slugs against **every** row in
+the database, not just the state being imported.
+
+That last part is not a detail. A six-state import once checked slugs only
+within the batch, and Wisconsin's Crystal Cave took the slug held by the cave
+at Put-in-Bay, Ohio. The upsert updated the Ohio row instead of inserting, so
+an Ohio cave ended up describing a Wisconsin one and two states were quietly a
+stop short. Nothing errored and nothing 404ed.
+
+`reportBatch` throws on a slug collision rather than warning, because a
+collision is never acceptable — it rewrites somebody else's stop. Proximity
+flags are printed and left to a person, since two things can legitimately
+share a car park.
+
 ## After importing, refresh the site
 
 Running SQL changes the database and nothing else. Every page that reads the

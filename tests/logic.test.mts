@@ -611,3 +611,63 @@ test("the revalidate endpoint refuses when it is unconfigured", () => {
   // An empty secret must not be satisfiable by an empty header.
   assert.equal(decide("", "Bearer "), 503, "an empty secret counts as unset");
 });
+
+test("a batch check catches the collision that overwrote two stops", async () => {
+  const { checkBatch, reportBatch } = await import("../scripts/parse-batch.mts");
+
+  /*
+    The real case. Wisconsin's Crystal Cave and Illinois' Smiley Face Water
+    Tower were imported while Ohio and Indiana already held those slugs. The
+    upsert updated the existing rows instead of inserting, so an Ohio cave
+    described a Wisconsin one and two states were quietly a stop short.
+
+    Nothing errored, which is why this has to throw rather than warn.
+  */
+  const existing = [
+    { slug: "crystal-cave", name: "Crystal Cave", city: "Put-in-Bay",
+      state: "OH", latitude: 41.65, longitude: -82.82 },
+    { slug: "smiley-face-water-tower", name: "Smiley Face Water Tower",
+      city: "Ashley", state: "IN", latitude: 41.52, longitude: -85.06 },
+  ];
+
+  const incoming = [
+    { name: "Crystal Cave", city: "Spring Valley", state: "WI",
+      lat: 44.83295, lon: -92.2508, category: "caves", access: "limited",
+      description: "", source: null, website: null },
+    { name: "Smiley Face Water Tower", city: "Atlanta", state: "IL",
+      lat: 40.25833, lon: -89.23537, category: "roadside-oddity",
+      access: "roadside", description: "", source: null, website: null },
+  ];
+
+  const report = checkBatch(incoming, existing);
+  assert.equal(report.slugCollisions.length, 2, "both collisions must be found");
+  assert.ok(report.slugCollisions[0].includes("Put-in-Bay"));
+
+  // Fifteen hundred miles apart, so proximity would never have caught these.
+  assert.equal(report.nearbyExisting.length, 0);
+
+  assert.throws(() => reportBatch("test", report), /slug collisions/);
+
+  // A clean batch passes.
+  const clean = checkBatch(
+    [{ name: "Something Entirely New", city: "Nowhere", state: "WI",
+       lat: 45, lon: -90, category: "roadside-oddity", access: "open",
+       description: "", source: null, website: null }],
+    existing,
+  );
+  assert.equal(clean.slugCollisions.length, 0);
+  assert.doesNotThrow(() => reportBatch("clean", clean));
+
+  // The same name twice inside one batch is also a collision.
+  const twice = checkBatch(
+    [
+      { name: "Gravity Hill", city: "A", state: "WI", lat: 45, lon: -90,
+        category: "folklore", access: "roadside", description: "", source: null, website: null },
+      { name: "Gravity Hill", city: "B", state: "WI", lat: 44, lon: -91,
+        category: "folklore", access: "roadside", description: "", source: null, website: null },
+    ],
+    [],
+  );
+  assert.equal(twice.duplicateSlugsWithin.length, 1);
+  assert.throws(() => reportBatch("twice", twice));
+});

@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    /*
+      The scripts in scripts/ are .mts and import each other by full filename,
+      because that is what Node requires at runtime. Without this flag tsc
+      rejects the extension and the only way to satisfy both is to stop the
+      test suite importing the import tooling — which is exactly the code most
+      worth testing, since a bug there silently rewrites the database.
+    */
+    "allowImportingTsExtensions": true,
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

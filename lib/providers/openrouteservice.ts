@@ -204,6 +204,21 @@ export function createOpenRouteServiceProvider(apiKey: string): RoutingProvider 
             // OddWay rather than handing the traveller to another app.
             instructions: true,
             instructions_format: "text",
+            /*
+              How far the router may look for a road near each point.
+
+              The default is a few hundred metres, and a geocoded city centre
+              does not always land on tarmac — Orlando's resolved to a spot
+              beside a lake, so every route touching the fourth-largest city in
+              Florida failed outright. The traveller saw "the routing service is
+              unavailable" and had no way to know the fix was to type a
+              different address.
+
+              5km is generous but harmless: it only widens the search for a
+              starting road, it does not move the route. A point genuinely
+              nowhere near a road still fails, and now says so properly.
+            */
+            radiuses: coordinates.map(() => 5000),
           }),
           signal,
         },
@@ -312,6 +327,20 @@ async function providerError(
     }
     return new RoutingProviderError(
       "The routing service couldn't use one of those locations. Try a nearby town instead.",
+      422,
+    );
+  }
+
+  /*
+    404 from the directions endpoint does not mean the service is down. It
+    means the router could not find a road near one of the points — error 2010,
+    "Could not find routable point". Reporting that as an outage tells somebody
+    to come back later when what they actually need is a different address, and
+    it sends whoever maintains this looking at the wrong thing entirely.
+  */
+  if (status === 404) {
+    return new RoutingProviderError(
+      "We couldn't find a road near one of those places. Try a nearby town, or a street address.",
       422,
     );
   }

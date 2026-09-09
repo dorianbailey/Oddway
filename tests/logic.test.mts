@@ -671,3 +671,47 @@ test("a batch check catches the collision that overwrote two stops", async () =>
   assert.equal(twice.duplicateSlugsWithin.length, 1);
   assert.throws(() => reportBatch("twice", twice));
 });
+
+test("a routing failure is described by its cause, not as an outage", () => {
+  /*
+    Every route through Orlando failed for weeks and reported "the routing
+    service is unavailable". It was available the whole time — the city's
+    geocoded point landed beside a lake, and the router could not find a road
+    near it.
+
+    The distinction matters in both directions. A traveller told the service is
+    down waits; a traveller told we could not find a road near that place types
+    a different address and carries on. And whoever maintains this goes looking
+    at the provider's status page instead of at one bad coordinate.
+  */
+  function describe(status: number, detail = ""): { message: string; code: number } {
+    if (status === 401 || status === 403) return { message: "credentials", code: 500 };
+    if (status === 429) return { message: "quota", code: 429 };
+    if (status === 400) {
+      return /2004|exceed|maximum|limit/i.test(detail)
+        ? { message: "too long", code: 422 }
+        : { message: "couldn't use one of those locations", code: 422 };
+    }
+    if (status === 404) {
+      return { message: "couldn't find a road near one of those places", code: 422 };
+    }
+    return { message: "unavailable", code: 502 };
+  }
+
+  // The Orlando case.
+  const notRoutable = describe(404, '{"error":{"code":2010,"message":"Could not find routable point"}}');
+  assert.match(notRoutable.message, /road near/);
+  assert.equal(notRoutable.code, 422, "the traveller can fix this, so not a 5xx");
+  assert.doesNotMatch(notRoutable.message, /unavailable/);
+
+  // A genuine outage still reads as one.
+  assert.match(describe(503).message, /unavailable/);
+  assert.equal(describe(503).code, 502);
+  assert.match(describe(500).message, /unavailable/);
+
+  // And the other cases keep their own meanings.
+  assert.equal(describe(429).code, 429);
+  assert.equal(describe(401).code, 500);
+  assert.match(describe(400, "code 2004 exceeds maximum").message, /too long/);
+  assert.match(describe(400, "invalid").message, /locations/);
+});

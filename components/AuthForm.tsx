@@ -9,6 +9,7 @@ import {
   checkNameShape,
   describeProfileError,
   isNameTaken,
+  NAME_TAKEN,
 } from "@/lib/display-names";
 
 type Mode = "signin" | "signup" | "forgot";
@@ -176,7 +177,7 @@ export function AuthForm() {
         how you end up signed in, nameless, and unable to do anything.
       */
       if (await isNameTaken(trimmed)) {
-        throw new Error("Somebody already has that name. Pick another.");
+        throw new Error(NAME_TAKEN);
       }
 
       /*
@@ -211,7 +212,9 @@ export function AuthForm() {
       }
 
       setNotice(
-        "Check your email for a confirmation link, then sign in to finish setting up.",
+        "Check your email for a confirmation link, then sign in to finish " +
+          "setting up. It often lands in spam or junk, so look there before " +
+          "assuming it did not arrive.",
       );
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Something went wrong.");
@@ -295,9 +298,7 @@ export function AuthForm() {
             {nameStatus === "checking" ? (
               <span className="text-ink-soft">Checking…</span>
             ) : nameStatus === "taken" ? (
-              <span className="text-[#8c2f22]">
-                Somebody already has that name.
-              </span>
+              <span className="text-[#8c2f22]">{NAME_TAKEN}</span>
             ) : nameStatus === "free" ? (
               <span className="text-ink-soft">That one is free.</span>
             ) : null}

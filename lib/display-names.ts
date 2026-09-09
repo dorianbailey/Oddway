@@ -14,6 +14,16 @@ import { getBrowserSupabase } from "./supabase-browser";
  * accounts sharing one means neither can be told from the other, forever.
  */
 
+/**
+ * What a person sees when a name is gone.
+ *
+ * Defined here rather than written out at each of the three places that need
+ * it — the live check, the signup submit and the claim-a-name form — because
+ * three copies of a sentence drift, and one of them ends up saying something
+ * about a unique constraint.
+ */
+export const NAME_TAKEN = "Sorry, that name is already taken.";
+
 export const MIN_LENGTH = 2;
 export const MAX_LENGTH = 40;
 
@@ -75,7 +85,7 @@ export async function isNameTaken(raw: string): Promise<boolean> {
  */
 export function describeProfileError(message: string): string {
   if (/duplicate key|already exists|profiles_display_name_unique/i.test(message)) {
-    return "Somebody already has that name. Pick another.";
+    return NAME_TAKEN;
   }
   return message;
 }

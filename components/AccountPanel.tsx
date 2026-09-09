@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { PhotoUploadForm } from "./PhotoUploadForm";
 import { AvatarUpload } from "./AvatarUpload";
@@ -10,6 +10,7 @@ import {
   checkNameShape,
   describeProfileError,
   isNameTaken,
+  NAME_TAKEN,
 } from "@/lib/display-names";
 import { DeleteAccount } from "./DeleteAccount";
 
@@ -35,6 +36,29 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [nameStatus, setNameStatus] = useState<"idle" | "checking" | "free" | "taken">("idle");
+
+  /*
+    The same live check the signup form does.
+
+    This form appears when an account exists but has no name — which happens
+    whenever email confirmation is on, since the account is made before the
+    session. Somebody arriving here has already been through signup once, and
+    finding out their name is taken only after pressing the button would be a
+    second disappointment for the same reason.
+  */
+  useEffect(() => {
+    const trimmed = name.trim();
+    if (!checkNameShape(trimmed).ok) {
+      const clear = setTimeout(() => setNameStatus("idle"), 0);
+      return () => clearTimeout(clear);
+    }
+    const timer = setTimeout(async () => {
+      setNameStatus("checking");
+      setNameStatus((await isNameTaken(trimmed)) ? "taken" : "free");
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [name]);
 
   async function signOut() {
     const supabase = getBrowserSupabase();
@@ -58,7 +82,7 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
       if (!screened.clean) throw new Error("Pick a different display name.");
 
       if (await isNameTaken(trimmed)) {
-        throw new Error("Somebody already has that name. Pick another.");
+        throw new Error(NAME_TAKEN);
       }
 
       const {
@@ -110,8 +134,18 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
           maxLength={40}
           value={name}
           onChange={(e) => setName(e.target.value)}
+          aria-describedby="claim-availability"
           className="mt-5 w-full rounded-[3px] border border-contour/60 bg-paper px-3 py-2.5 text-ink focus:border-route focus:outline-none"
         />
+        <span id="claim-availability" aria-live="polite" className="mt-1 block text-[0.9rem]">
+          {nameStatus === "checking" ? (
+            <span className="text-ink-soft">Checking…</span>
+          ) : nameStatus === "taken" ? (
+            <span className="text-[#8c2f22]">{NAME_TAKEN}</span>
+          ) : nameStatus === "free" ? (
+            <span className="text-ink-soft">That one is free.</span>
+          ) : null}
+        </span>
         {error ? (
           <p role="alert" className="mt-4 border-l-2 border-[#8c2f22] pl-3 text-[0.95rem]">
             {error}
@@ -119,7 +153,7 @@ export function AccountPanel({ userId, isAdmin, avatarUrl, bio, email, displayNa
         ) : null}
         <button
           type="submit"
-          disabled={busy}
+          disabled={busy || nameStatus === "taken"}
           className="mt-6 rounded-[3px] bg-route px-6 py-2.5 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)] disabled:opacity-60"
         >
           {busy ? "Saving…" : "Save name"}

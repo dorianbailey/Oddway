@@ -434,6 +434,20 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   memorial: "weird-history",
   "oddities-museum": "museums",
 
+
+  /*
+    Iowa. "fossils" covers gorges and collecting preserves — places you walk
+    into rather than institutions, so roadside rather than museums.
+    "lost-communities" is abandoned townsites, which is history.
+  */
+  fossils: "roadside-oddities",
+  "hidden-gardens": "roadside-oddities",
+  "hidden-interiors": "roadside-oddities",
+  "historic-rides": "roadside-oddities",
+  "mechanical-oddities": "roadside-oddities",
+  "urban-oddities": "roadside-oddities",
+  "lost-communities": "weird-history",
+
   // UFOs
   ufo: "ufos",
 };

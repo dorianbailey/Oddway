@@ -448,6 +448,53 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "urban-oddities": "roadside-oddities",
   "lost-communities": "weird-history",
 
+
+  /*
+    Georgia. Two decided by the stop rather than the word:
+      controversial-monuments  Stone Mountain's carving, which is history rather
+                               than a thing you pull over to enjoy
+      time-capsules            the Crypt of Civilization, sealed until 8113
+  */
+  "archaeological-mysteries": "folklore",
+  "archaeological-sites": "weird-history",
+  "battlefield-history": "weird-history",
+  "cemetery-monuments": "weird-history",
+  "civil-war-history": "weird-history",
+  "colonial-ruins": "weird-history",
+  "controversial-monuments": "weird-history",
+  "folk-history": "weird-history",
+  "historic-landscapes": "weird-history",
+  "institutional-history": "weird-history",
+  "literary-sites": "weird-history",
+  "mansion-ruins": "weird-history",
+  "military-landscapes": "weird-history",
+  "military-monuments": "weird-history",
+  "remote-history": "weird-history",
+  "rock-art": "weird-history",
+  "strange-mansions": "weird-history",
+  "swamp-history": "weird-history",
+  "time-capsules": "weird-history",
+  "underground-history": "weird-history",
+  "war-damaged-history": "weird-history",
+  "local-traditions": "folklore",
+  "money-oddities": "museums",
+  "aquatic-oddities": "roadside-oddities",
+  "automotive-oddities": "roadside-oddities",
+  "dark-sky": "roadside-oddities",
+  "giant-art": "roadside-oddities",
+  "giant-objects": "roadside-oddities",
+  "giant-trees": "roadside-oddities",
+  "mineral-springs": "roadside-oddities",
+  "mountain-oddities": "roadside-oddities",
+  "roadside-art": "roadside-oddities",
+  "roadside-classics": "roadside-oddities",
+  "strange-architecture": "roadside-oddities",
+  "strange-landscapes": "roadside-oddities",
+  "strange-monuments": "roadside-oddities",
+  "strange-statues": "roadside-oddities",
+  "swamp-oddities": "roadside-oddities",
+  "weird-weapons": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

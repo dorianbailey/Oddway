@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { getStops } from "@/lib/stops";
+import { countStates, countStops, countUnverified } from "@/lib/stops";
 
 export const revalidate = 3600;
 
@@ -19,9 +19,11 @@ export default async function AboutPage() {
     long out of date by the time anybody noticed. A number that reads itself
     from the index cannot go stale.
   */
-  const stops = await getStops();
-  const states = new Set(stops.map((stop) => stop.state)).size;
-  const unverified = stops.filter((stop) => !stop.verifiedAt).length;
+  const [total, states, unverified] = await Promise.all([
+    countStops(),
+    countStates(),
+    countUnverified(),
+  ]);
 
   return (
     <>
@@ -49,7 +51,7 @@ export default async function AboutPage() {
 
           <h2>Where this is up to</h2>
           <p>
-            {stops.length.toLocaleString()} places across {states} states, every
+            {total.toLocaleString()} places across {states} states, every
             one with a description, and route search and the map both working.
             Type two towns into{" "}
             <Link href="/#plan">plan a trip</Link> and you get what is actually

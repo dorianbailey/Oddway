@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CATEGORIES } from "@/lib/categories";
-import { getStops, getStatesWithCounts } from "@/lib/stops";
+import { getStopSlugs, getStatesWithCounts } from "@/lib/stops";
 import { getArticles } from "@/lib/articles";
 import { getTrips } from "@/lib/trips";
 import { getArtists } from "@/lib/artists";
@@ -23,7 +23,7 @@ export const revalidate = 3600;
 const SITE = "https://taketheoddway.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [stops, states] = await Promise.all([getStops(), getStatesWithCounts()]);
+  const [stops, states] = await Promise.all([getStopSlugs(), getStatesWithCounts()]);
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE, changeFrequency: "weekly", priority: 1 },

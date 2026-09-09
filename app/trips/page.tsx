@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { getTrips } from "@/lib/trips";
-import { getStops } from "@/lib/stops";
+import { getStopsBySlugs } from "@/lib/stops";
 import { stateName } from "@/lib/us-states";
 
 export const revalidate = 300;
@@ -15,7 +15,12 @@ export const metadata: Metadata = {
 
 export default async function TripsPage() {
   const trips = getTrips();
-  const stops = await getStops();
+  /*
+    Every stop the trips between them mention, and nothing else. This page was
+    reading the entire index to show a handful of cards per trip.
+  */
+  const mentioned = [...new Set(trips.flatMap((trip) => trip.stops))];
+  const stops = await getStopsBySlugs(mentioned);
   const bySlug = new Map(stops.map((stop) => [stop.slug, stop]));
 
   return (

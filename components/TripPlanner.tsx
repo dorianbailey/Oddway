@@ -22,6 +22,9 @@ interface TripPlannerProps {
   fallbackStops: Stop[];
   /** Every stop, plotted on the map until a route narrows it down. */
   allStops?: MapStop[];
+  /** Totals for the empty state, so the whole index need not be shipped. */
+  stopCount?: number;
+  stateCount?: number;
 }
 
 interface TripResult {
@@ -68,7 +71,34 @@ const REFINE_DEBOUNCE_MS = 500;
  * The heavy lifting happens server-side in /api/trip — this component never
  * sees an API key and never talks to a provider directly.
  */
-export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
+export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: TripPlannerProps) {
+  /*
+    The whole index used to travel inside this page's HTML so the overview map
+    could draw. That was a megabyte of markup on the homepage, growing with
+    every state — a page that got slower as the project got better.
+
+    Now the counts come as two numbers and the pins are fetched after paint
+    from an endpoint the CDN can cache. Nobody looks at the map before the page
+    has drawn, so filling it a moment later costs nothing anybody notices.
+  */
+  const [pins, setPins] = useState<MapStop[] | undefined>(allStops);
+
+  useEffect(() => {
+    if (allStops) return;
+    let cancelled = false;
+    fetch("/api/pins")
+      .then((r) => r.json())
+      .then((data) => {
+        if (!cancelled) setPins(data.pins as MapStop[]);
+      })
+      .catch(() => {
+        // The map falls back to the recommended few, which is a reasonable
+        // overview on its own.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [allStops]);
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState<TripResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -256,8 +286,9 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
     answer to that than a general overview.
   */
   // Honest numbers for the empty state, from the index we already loaded.
-  const totalStops = allStops?.length ?? fallbackStops.length;
-  const statesCovered = new Set((allStops ?? fallbackStops).map((s) => s.state)).size;
+  const totalStops = stopCount ?? pins?.length ?? fallbackStops.length;
+  const statesCovered =
+    stateCount ?? new Set((pins ?? fallbackStops).map((s) => s.state)).size;
 
   /*
     Reveal by spreadRank, read by route position.
@@ -276,7 +307,7 @@ export function TripPlanner({ fallbackStops, allStops }: TripPlannerProps) {
     searchResults: visibleResults,
     savedTrip,
     fallbackStops,
-    allStops,
+    allStops: pins,
   });
   const hasSearched = status === "done" && result !== null;
 

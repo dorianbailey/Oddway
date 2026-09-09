@@ -5,7 +5,7 @@ import { LoadTripButton } from "@/components/LoadTripButton";
 import { MapSection } from "@/components/MapSection";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
-import { getStops } from "@/lib/stops";
+import { getStopsBySlugs } from "@/lib/stops";
 import { getTrip, getTrips } from "@/lib/trips";
 import { distanceKm } from "@/lib/trip-order";
 import { stateName } from "@/lib/us-states";
@@ -43,8 +43,9 @@ export default async function TripPage({ params }: TripPageProps) {
   const trip = getTrip(slug);
   if (!trip) notFound();
 
-  const all = await getStops();
-  const bySlug = new Map(all.map((stop) => [stop.slug, stop]));
+  // Only the stops this trip names, rather than the whole index.
+  const named = await getStopsBySlugs(trip.stops);
+  const bySlug = new Map(named.map((stop) => [stop.slug, stop]));
 
   // Order comes from the file, not the database. The order is the route.
   const stops = trip.stops

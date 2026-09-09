@@ -2,7 +2,12 @@ import { ExploreCategories } from "@/components/ExploreCategories";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { TripPlanner } from "@/components/TripPlanner";
-import { getCategoryCounts, getRecommendedStops, getStopPins } from "@/lib/stops";
+import {
+  countStates,
+  countStops,
+  getCategoryCounts,
+  getRecommendedStops,
+} from "@/lib/stops";
 
 /*
   Revalidate rather than prerender once.
@@ -15,17 +20,27 @@ import { getCategoryCounts, getRecommendedStops, getStopPins } from "@/lib/stops
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [recommended, allStops, categoryCounts] = await Promise.all([
+  /*
+    Counts rather than the index itself. getStopPins used to be called here and
+    the result serialised into the page, which put every stop into the HTML.
+    The map fetches them from /api/pins after paint instead.
+  */
+  const [recommended, categoryCounts, stopCount, stateCount] = await Promise.all([
     getRecommendedStops(3),
-    getStopPins(),
     getCategoryCounts(),
+    countStops(),
+    countStates(),
   ]);
 
   return (
     <>
       <Hero />
 
-      <TripPlanner fallbackStops={recommended} allStops={allStops} />
+      <TripPlanner
+        fallbackStops={recommended}
+        stopCount={stopCount}
+        stateCount={stateCount}
+      />
 
       <HowItWorks />
 

@@ -1,4 +1,4 @@
-import type { CategorySlug, Stop } from "@/types/oddway";
+import type { CategorySlug, Stop, MapStop } from "@/types/oddway";
 import { DEMO_STOPS } from "./mock-data";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
@@ -88,6 +88,93 @@ const fetchStops = unstable_cache(
 );
 
 export const getStops = cache(fetchStops);
+
+/**
+ * Map pins, fetched as pins rather than sliced out of the whole index.
+ *
+ * getStopPins used to call getStops and drop most of the columns. That worked
+ * until the index passed about 2,500 stops, at which point the full record set
+ * crossed 3.2MB — and Next silently refuses to cache anything over 2MB.
+ *
+ * Nothing failed. Nothing warned, outside the build log. The cache simply
+ * stopped storing anything, so every page that touched the stop list did a
+ * full read of the entire index on every request, and the site went from
+ * quick to three seconds a page as the project got better.
+ *
+ * Asking for eight columns instead of twenty keeps this comfortably inside the
+ * limit, so it caches again. The lesson is that a cache which fails by doing
+ * nothing is worse than one that throws.
+ */
+const fetchStopPins = unstable_cache(
+  async (): Promise<MapStop[]> => {
+    const supabase = getSupabase();
+    if (!supabase) {
+      return DEMO_STOPS.map(({ id, name, slug, category, latitude, longitude, city, state }) => ({
+        id, name, slug, category, latitude, longitude, city, state,
+      }));
+    }
+
+    const PAGE = 1000;
+    const rows: Array<Record<string, unknown>> = [];
+    for (let offset = 0; ; offset += PAGE) {
+      const { data, error } = await supabase
+        .from("stops")
+        .select("id, name, slug, category, latitude, longitude, city, state")
+        .order("name")
+        .range(offset, offset + PAGE - 1);
+
+      if (error) {
+        console.error("Supabase getStopPins failed:", error.message);
+        return [];
+      }
+      rows.push(...data);
+      if (data.length < PAGE) break;
+    }
+
+    return rows as unknown as MapStop[];
+  },
+  ["stops:pins"],
+  { revalidate: 300, tags: ["stops"] },
+);
+
+/**
+ * Totals, counted by the database rather than by loading every row.
+ *
+ * The homepage wants two numbers. Reading four thousand full records to call
+ * .length on them was the reason a count cost a 3.2MB transfer.
+ */
+const fetchStopTotals = unstable_cache(
+  async (): Promise<{ stops: number; states: number }> => {
+    const supabase = getSupabase();
+    if (!supabase) {
+      return { stops: DEMO_STOPS.length, states: new Set(DEMO_STOPS.map((s) => s.state)).size };
+    }
+
+    const { count } = await supabase
+      .from("stops")
+      .select("id", { count: "exact", head: true });
+
+    /*
+      States still need the column, but one column across four thousand rows is
+      a few tens of kilobytes rather than three megabytes.
+    */
+    const states = new Set<string>();
+    const PAGE = 1000;
+    for (let offset = 0; ; offset += PAGE) {
+      const { data, error } = await supabase
+        .from("stops")
+        .select("state")
+        .range(offset, offset + PAGE - 1);
+      if (error || !data) break;
+      for (const row of data) states.add(row.state as string);
+      if (data.length < PAGE) break;
+    }
+
+    return { stops: count ?? 0, states: states.size };
+  },
+  ["stops:totals"],
+  { revalidate: 300, tags: ["stops"] },
+);
 
 /**
  * Stops, plus whether the load actually worked.
@@ -187,13 +274,74 @@ export async function getStopBySlug(slug: string): Promise<Stop | null> {
  * descriptions to the browser to draw dots on a map is a waste of everyone's
  * bandwidth.
  */
-export async function getStopPins(): Promise<
-  Array<Pick<Stop, "id" | "name" | "slug" | "category" | "latitude" | "longitude" | "city" | "state">>
-> {
-  const stops = await getStops();
-  return stops.map(({ id, name, slug, category, latitude, longitude, city, state }) => ({
-    id, name, slug, category, latitude, longitude, city, state,
-  }));
+export async function getStopPins(): Promise<MapStop[]> {
+  return fetchStopPins();
+}
+
+/**
+ * Every slug, for the sitemap and for prerendering.
+ *
+ * One column across four thousand rows rather than every column: the sitemap
+ * and generateStaticParams both wanted a list of slugs and were reading the
+ * entire index to get one.
+ */
+export const getStopSlugs = unstable_cache(
+  async (): Promise<Array<{ slug: string; verifiedAt: string | null }>> => {
+    const supabase = getSupabase();
+    if (!supabase) {
+      return DEMO_STOPS.map((s) => ({ slug: s.slug, verifiedAt: s.verifiedAt }));
+    }
+
+    const PAGE = 1000;
+    const rows: Array<{ slug: string; verified_at: string | null }> = [];
+    for (let offset = 0; ; offset += PAGE) {
+      const { data, error } = await supabase
+        .from("stops")
+        .select("slug, verified_at")
+        .order("slug")
+        .range(offset, offset + PAGE - 1);
+      if (error || !data) break;
+      rows.push(...(data as typeof rows));
+      if (data.length < PAGE) break;
+    }
+    return rows.map((r) => ({ slug: r.slug, verifiedAt: r.verified_at }));
+  },
+  ["stops:slugs"],
+  { revalidate: 300, tags: ["stops"] },
+);
+
+/**
+ * Full records for a named handful of stops.
+ *
+ * Trips name their stops in a file, so a trip page wants twelve records, not
+ * four thousand. It was loading the whole index and building a lookup map to
+ * find them — which was the single largest read on the site and, at 3.2MB,
+ * too big for Next to cache at all.
+ */
+export async function getStopsBySlugs(slugs: string[]): Promise<Stop[]> {
+  if (slugs.length === 0) return [];
+
+  const supabase = getSupabase();
+  if (!supabase) {
+    const wanted = new Set(slugs);
+    return DEMO_STOPS.filter((stop) => wanted.has(stop.slug));
+  }
+
+  const { data, error } = await supabase
+    .from("stops")
+    .select("*")
+    .in("slug", slugs);
+
+  if (error || !data) {
+    console.error("Supabase getStopsBySlugs failed:", error?.message);
+    return [];
+  }
+  return (data as StopRow[]).map(toStop);
+}
+
+/** How many entries admit they are unverified. Used on the about page. */
+export async function countUnverified(): Promise<number> {
+  return (await getStopSlugs()).filter((s) => !s.verifiedAt).length;
 }
 
 /**
@@ -211,32 +359,54 @@ export async function getRecommendedStops(
   count = 3,
   today = new Date(),
 ): Promise<Stop[]> {
-  const stops = await getStops();
-  const eligible = stops.filter((stop) => stop.description?.trim());
-  const pool = eligible.length >= count ? eligible : stops;
+  const supabase = getSupabase();
+  if (!supabase) return DEMO_STOPS.slice(0, count);
 
-  if (pool.length === 0) return [];
+  const { stops: total } = await fetchStopTotals();
+  if (total === 0) return [];
 
-  // Stable order first, so the rotation is reproducible run to run.
-  const ordered = [...pool].sort((a, b) => a.id.localeCompare(b.id));
+  /*
+    The rotation is unchanged — the same three all day, moving on tomorrow —
+    but it now reads three rows instead of the whole index.
 
+    Ordering by id in the database gives the same stable sequence the old
+    in-memory sort did, so the offset lands on the same stops. Loading four
+    thousand records to take three off the top was the reason the homepage
+    could not use a cache.
+  */
   const day = Math.floor(
     Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()) /
       86_400_000,
   );
-  const start = (day * count) % ordered.length;
+  const start = ((day * count) % total + total) % total;
 
-  return Array.from(
-    { length: Math.min(count, ordered.length) },
-    (_, i) => ordered[(start + i) % ordered.length],
-  );
+  const { data, error } = await supabase
+    .from("stops")
+    .select("*")
+    .not("description", "is", null)
+    .order("id")
+    .range(start, start + count - 1);
+
+  if (error || !data) return [];
+
+  /*
+    Near the end of the table the window runs off the edge, so the remainder
+    comes from the beginning. Without this the last few days of each cycle
+    would show fewer than three.
+  */
+  if (data.length < count) {
+    const { data: wrapped } = await supabase
+      .from("stops")
+      .select("*")
+      .not("description", "is", null)
+      .order("id")
+      .range(0, count - data.length - 1);
+    return [...(data as StopRow[]), ...((wrapped ?? []) as StopRow[])].map(toStop);
+  }
+
+  return (data as StopRow[]).map(toStop);
 }
 
-/** A small set for the homepage, to show what results look like. */
-export async function getFeaturedStops(limit = 3): Promise<Stop[]> {
-  const stops = await getStops();
-  return stops.slice(0, limit);
-}
 
 /**
  * Every state we hold stops in, with counts, ordered by name.
@@ -245,31 +415,82 @@ export async function getFeaturedStops(limit = 3): Promise<Stop[]> {
  * only ever offers states that actually have something in them. An empty
  * option is a dead end.
  */
-export async function getStatesWithCounts(): Promise<
-  Array<{ code: string; count: number }>
-> {
-  const stops = await getStops();
-  const counts = new Map<string, number>();
+export const getStatesWithCounts = unstable_cache(
+  async (): Promise<Array<{ code: string; count: number }>> => {
+    const supabase = getSupabase();
+    const counts = new Map<string, number>();
 
-  for (const stop of stops) {
-    counts.set(stop.state, (counts.get(stop.state) ?? 0) + 1);
-  }
+    if (!supabase) {
+      for (const stop of DEMO_STOPS) {
+        counts.set(stop.state, (counts.get(stop.state) ?? 0) + 1);
+      }
+      return [...counts.entries()]
+        .map(([code, count]) => ({ code, count }))
+        .sort((a, b) => a.code.localeCompare(b.code));
+    }
 
-  return [...counts.entries()]
-    .map(([code, count]) => ({ code, count }))
-    .sort((a, b) => a.code.localeCompare(b.code));
-}
+    /*
+      One column rather than all of them. Counting states by loading every
+      field of every stop is what pushed this past the cache limit.
+    */
+    const PAGE = 1000;
+    for (let offset = 0; ; offset += PAGE) {
+      const { data, error } = await supabase
+        .from("stops")
+        .select("state")
+        .range(offset, offset + PAGE - 1);
+      if (error || !data) break;
+      for (const row of data) {
+        const code = row.state as string;
+        counts.set(code, (counts.get(code) ?? 0) + 1);
+      }
+      if (data.length < PAGE) break;
+    }
+
+    return [...counts.entries()]
+      .map(([code, count]) => ({ code, count }))
+      .sort((a, b) => a.code.localeCompare(b.code));
+  },
+  ["stops:states"],
+  { revalidate: 300, tags: ["stops"] },
+);
 
 /** How many stops sit in each category, for the explore index. */
-export async function getCategoryCounts(): Promise<
-  Partial<Record<CategorySlug, number>>
-> {
-  const stops = await getStops();
-  return stops.reduce<Partial<Record<CategorySlug, number>>>((counts, stop) => {
-    counts[stop.category] = (counts[stop.category] ?? 0) + 1;
-    return counts;
-  }, {});
-}
+export const getCategoryCounts = unstable_cache(
+  async (): Promise<Partial<Record<CategorySlug, number>>> => {
+    const supabase = getSupabase();
+    const counts = new Map<CategorySlug, number>();
+
+    const tally = (rows: ReadonlyArray<{ category: string }>) => {
+      for (const row of rows) {
+        const key = row.category as CategorySlug;
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+    };
+
+    if (!supabase) {
+      tally(DEMO_STOPS);
+    } else {
+      // One column. Counting categories by loading every field of every stop
+      // is what kept this out of the cache.
+      const PAGE = 1000;
+      for (let offset = 0; ; offset += PAGE) {
+        const { data, error } = await supabase
+          .from("stops")
+          .select("category")
+          .range(offset, offset + PAGE - 1);
+        if (error || !data) break;
+        tally(data as Array<{ category: string }>);
+        if (data.length < PAGE) break;
+      }
+    }
+
+    // The same shape as before: a plain object keyed by category.
+    return Object.fromEntries(counts) as Partial<Record<CategorySlug, number>>;
+  },
+  ["stops:category-counts"],
+  { revalidate: 300, tags: ["stops"] },
+);
 
 function withinPaddedBounds(
   stop: Stop,
@@ -285,4 +506,20 @@ function withinPaddedBounds(
     stop.latitude >= south - p &&
     stop.latitude <= north + p
   );
+}
+
+
+/**
+ * How many stops, and how many states they cover.
+ *
+ * Separate from getStopPins because the homepage only ever wanted two numbers
+ * out of it. Calling the pins function for a length put the whole index into
+ * the page's HTML — a megabyte of markup to render "3,908 places".
+ */
+export async function countStops(): Promise<number> {
+  return (await fetchStopTotals()).stops;
+}
+
+export async function countStates(): Promise<number> {
+  return (await fetchStopTotals()).states;
 }

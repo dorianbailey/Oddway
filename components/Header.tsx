@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -9,6 +8,7 @@ import {
   getServerCollapsed,
   subscribeToCollapse,
 } from "@/lib/scroll-collapse";
+import { HeaderAccount } from "./HeaderAccount";
 import { OddWayLogo } from "./OddWayLogo";
 import { cx } from "@/lib/cx";
 
@@ -38,17 +38,7 @@ function prefersReducedMotion(): boolean {
   );
 }
 
-interface HeaderProps {
-  /*
-    Passed down from the layout rather than fetched here. The header renders on
-    every page, and having it ask who is signed in would mean a round trip per
-    page load plus an avatar that pops in after the fact.
-  */
-  avatarUrl?: string | null;
-  displayName?: string | null;
-}
-
-export function Header({ avatarUrl, displayName }: HeaderProps) {
+export function Header() {
   const isScrolled = useSyncExternalStore(
     subscribeToCollapse,
     getCollapsed,
@@ -151,38 +141,7 @@ export function Header({ avatarUrl, displayName }: HeaderProps) {
           page — because an empty space here would be a worse answer to "where
           do I log in" than a quiet icon.
         */}
-        <Link
-          href="/account"
-          aria-label={displayName ? `Your account, ${displayName}` : "Sign in"}
-          className="shrink-0 rounded-full transition-opacity hover:opacity-80"
-        >
-          {avatarUrl ? (
-            <Image
-              src={avatarUrl}
-              alt=""
-              width={36}
-              height={36}
-              unoptimized
-              className="h-9 w-9 rounded-full border border-brass/40 object-cover"
-            />
-          ) : (
-            <span
-              aria-hidden="true"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-brass/40 text-paper"
-            >
-              {displayName ? (
-                <span className="font-display text-[0.95rem] font-bold">
-                  {displayName.slice(0, 1).toUpperCase()}
-                </span>
-              ) : (
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <circle cx="12" cy="8.5" r="3.5" />
-                  <path d="M5 20c0-3.6 3.1-5.5 7-5.5s7 1.9 7 5.5" strokeLinecap="round" />
-                </svg>
-              )}
-            </span>
-          )}
-        </Link>
+        <HeaderAccount />
       </div>
 
       <div

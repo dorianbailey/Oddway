@@ -14,7 +14,7 @@ import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
 import { formatAccess, formatCoordinates } from "@/lib/format";
-import { getStopBySlug, getStops } from "@/lib/stops";
+import { getStopBySlug, getStopSlugs } from "@/lib/stops";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,8 +29,9 @@ export const revalidate = 300;
 
 /** Prerender the stops known at build time; the rest render on request. */
 export async function generateStaticParams() {
-  const stops = await getStops();
-  return stops.map((stop) => ({ slug: stop.slug }));
+  // Slugs only. Reading every column of every stop to list their slugs was
+  // the single largest read in the build.
+  return (await getStopSlugs()).map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({

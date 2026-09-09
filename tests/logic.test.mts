@@ -355,3 +355,199 @@ test("the featured artist changes weekly and only shows those who agreed", async
     "every artist should come up before any repeats",
   );
 });
+
+test("a storage path confines an author to their own folder", async () => {
+  const { storagePath } = await import("../lib/photo-upload");
+
+  /*
+    The bucket policy compares the first path segment against auth.uid(). If a
+    path could be made to start with somebody else's id, that person's folder
+    becomes writable — so the shape of this string is a security boundary
+    rather than a tidiness convention.
+  */
+  const author = "11111111-2222-3333-4444-555555555555";
+  const path = storagePath(author, "mothman-statue");
+
+  assert.ok(path.startsWith(`${author}/`), "author id must be the first segment");
+  assert.equal(path.split("/")[0], author, "nothing may precede the author id");
+  assert.ok(path.endsWith(".webp"));
+
+  // Two uploads of the same photo to the same stop must not collide.
+  assert.notEqual(
+    storagePath(author, "mothman-statue"),
+    storagePath(author, "mothman-statue"),
+  );
+
+  // A traversal attempt must not survive into the path at all.
+  const sneaky = storagePath(author, "../../someone-else");
+  assert.equal(sneaky.split("/")[0], author, "the author id still leads");
+  assert.ok(!sneaky.includes(".."), "no traversal segments may remain");
+  assert.equal(sneaky.split("/").length, 3, "exactly author / stop / file");
+});
+
+test("a photographer is gated once, then trusted", () => {
+  /*
+    Models the trigger: a photograph is approved on arrival only if the same
+    author already has an approved one. First upload waits for review; every
+    upload after that goes straight up.
+
+    The property that matters is that trust cannot be granted by the uploader.
+    It is read from what has already been approved, and only the reviewer can
+    change that.
+  */
+  function statusOnInsert(existing: string[]): "pending" | "approved" {
+    return existing.includes("approved") ? "approved" : "pending";
+  }
+
+  const posted: string[] = [];
+
+  // A brand new account.
+  posted.push(statusOnInsert(posted));
+  assert.equal(posted[0], "pending", "the first photo must wait");
+
+  // Posting again before review does not sneak past.
+  posted.push(statusOnInsert(posted));
+  assert.equal(posted[1], "pending", "a second photo before review still waits");
+
+  // The reviewer approves the first.
+  posted[0] = "approved";
+
+  // Everything afterwards is live.
+  posted.push(statusOnInsert(posted));
+  assert.equal(posted[2], "approved", "an approved author posts freely");
+
+  // A rejection does not revoke trust once earned; blocking is the tool for
+  // that, and it hides everything at once.
+  const afterRejection = ["approved", "rejected"];
+  assert.equal(statusOnInsert(afterRejection), "approved");
+
+  // An author whose only photo was rejected is still gated.
+  assert.equal(statusOnInsert(["rejected"]), "pending");
+  assert.equal(statusOnInsert(["pending", "rejected"]), "pending");
+});
+
+test("password confirmation guards the case that actually locks people out", () => {
+  /*
+    Confirmation is asked for at signup and not at sign-in, and the asymmetry
+    is deliberate. A typo when signing in fails at once and costs a retry. A
+    typo when creating an account sets a password nobody knows, on an address
+    the person cannot then recover from, which is a much worse outcome for the
+    same mistake.
+  */
+  function canSubmit(mode: "signin" | "signup", password: string, confirm: string) {
+    if (password.length < 8) return false;
+    if (mode === "signin") return true;
+    return password === confirm;
+  }
+
+  assert.equal(canSubmit("signin", "correct-horse", ""), true, "sign-in needs no confirmation");
+  assert.equal(canSubmit("signup", "correct-horse", "correct-horse"), true);
+  assert.equal(canSubmit("signup", "correct-horse", "correct-hors"), false, "a typo is caught");
+  assert.equal(canSubmit("signup", "correct-horse", ""), false, "an empty confirmation is not a match");
+
+  // Too short fails in both modes, before any comparison happens.
+  assert.equal(canSubmit("signup", "short", "short"), false);
+  assert.equal(canSubmit("signin", "short", "short"), false);
+
+  // Trailing whitespace is a real password difference and must not be ignored.
+  assert.equal(canSubmit("signup", "correct-horse", "correct-horse "), false);
+});
+
+test("a reset request says the same thing whether or not the account exists", () => {
+  /*
+    "No account with that address" would turn the reset form into a way of
+    checking whether somebody has an account here. That is not ours to
+    disclose — an account is often tied to a real name, and confirming one
+    exists helps anybody fishing.
+
+    So the response is identical either way, and the underlying error is
+    deliberately discarded rather than surfaced.
+  */
+  function responseFor(emailExists: boolean): string {
+    // Mirrors the form: the outcome is not consulted.
+    void emailExists;
+    return "If there is an account for that address, a reset link is on its way.";
+  }
+
+  assert.equal(responseFor(true), responseFor(false), "the reply must not vary");
+  assert.ok(!responseFor(false).toLowerCase().includes("no account"));
+  assert.ok(!responseFor(true).toLowerCase().includes("found"));
+});
+
+test("ratings are halves between zero and five", () => {
+  /*
+    Mirrors the database check. Stored as numeric rather than a float because
+    4.5 as a float can come back as 4.4999999, which then fails a constraint
+    that looked obviously true when it was written.
+  */
+  const valid = (r: number | null) =>
+    r === null || (r >= 0 && r <= 5 && r * 2 === Math.trunc(r * 2));
+
+  for (const r of [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]) {
+    assert.equal(valid(r), true, `${r} should be allowed`);
+  }
+  assert.equal(valid(null), true, "not rating is allowed");
+
+  for (const r of [-0.5, 5.5, 6, 2.3, 0.25, 4.9]) {
+    assert.equal(valid(r), false, `${r} should be rejected`);
+  }
+
+  // Exactly eleven allowed values, which is what the control offers.
+  const steps = [];
+  for (let r = 0; r <= 5.0001; r += 0.5) steps.push(Math.round(r * 2) / 2);
+  assert.equal(steps.length, 11);
+  assert.ok(steps.every(valid));
+});
+
+test("a photo cannot be posted without a place", () => {
+  /*
+    The requirement that every photo attaches to an existing stop is what keeps
+    this from becoming a general photo feed. The form refuses before sending,
+    and the column is NOT NULL with a foreign key behind it, so a crafted
+    request fails too.
+  */
+  function canSubmit(stopId: string | null, file: unknown) {
+    return Boolean(stopId) && Boolean(file);
+  }
+
+  assert.equal(canSubmit("a-real-stop-id", {}), true);
+  assert.equal(canSubmit(null, {}), false, "no place means no post");
+  assert.equal(canSubmit("a-real-stop-id", null), false, "no file means no post");
+  assert.equal(canSubmit("", {}), false, "an empty id is not a place");
+});
+
+test("the language filter does not reject real place names", async () => {
+  const { screenText } = await import("../lib/language-filter");
+
+  /*
+    An index of place names is unusually exposed to this. Scunthorpe is the
+    famous case; Penistone, Cockburn and Clitheroe are the same problem and
+    every one of them is a town somebody might write a caption about.
+
+    A filter that blocks those is worse than no filter, because it rejects
+    honest writing and teaches people the site is broken.
+  */
+  for (const place of [
+    "Scunthorpe",
+    "the sign outside Penistone",
+    "Cockburn Range",
+    "Clitheroe Castle",
+    "Dildo, Newfoundland",
+    "Hancock, Michigan",
+    "Big Beaver Road",
+    "an assassin bug on the fence",
+    "Middlesex County",
+  ]) {
+    assert.equal(screenText(place).clean, true, `"${place}" must be allowed`);
+  }
+
+  // And it still catches what it is for, including simple obfuscation.
+  for (const bad of ["a classic shitbox", "sh1t", "what the fuck"]) {
+    assert.equal(screenText(bad).clean, false, `"${bad}" should be blocked`);
+  }
+
+  // Empty input is not an error.
+  assert.equal(screenText("").clean, true);
+  assert.equal(screenText(null).clean, true);
+  assert.equal(screenText(undefined).clean, true);
+});

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { getCurrentProfile } from "@/lib/supabase-server";
+import { avatarUrl } from "@/lib/photos";
 import { UnitsProvider } from "@/components/UnitsProvider";
 import { fraktur, karla, sourceSerif } from "./fonts";
 import "./globals.css";
@@ -41,9 +43,15 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  /*
+    Fetched once, here, so the header can show who is signed in without every
+    page paying for its own lookup or the avatar appearing a beat late.
+  */
+  const profile = await getCurrentProfile();
+
   return (
     <html lang="en" className={`${sourceSerif.variable} ${karla.variable} ${fraktur.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
@@ -74,7 +82,10 @@ export default function RootLayout({
         </div>
 
         <UnitsProvider>
-          <Header />
+          <Header
+          avatarUrl={avatarUrl(profile?.avatar_path ?? null)}
+          displayName={profile?.display_name ?? null}
+        />
 
           {/*
             The sheet: content on paper, laid over the dark ground. The padding

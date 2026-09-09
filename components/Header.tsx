@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -25,6 +26,7 @@ const NAV_LINKS = [
   { href: "/trips", label: "Trips" },
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Artists" },
+  { href: "/photos", label: "Photos" },
   { href: "/about", label: "About" },
 ] as const;
 
@@ -36,7 +38,17 @@ function prefersReducedMotion(): boolean {
   );
 }
 
-export function Header() {
+interface HeaderProps {
+  /*
+    Passed down from the layout rather than fetched here. The header renders on
+    every page, and having it ask who is signed in would mean a round trip per
+    page load plus an avatar that pops in after the fact.
+  */
+  avatarUrl?: string | null;
+  displayName?: string | null;
+}
+
+export function Header({ avatarUrl, displayName }: HeaderProps) {
   const isScrolled = useSyncExternalStore(
     subscribeToCollapse,
     getCollapsed,
@@ -134,10 +146,43 @@ export function Header() {
         </Link>
 
         {/*
-          Balances the button so the nameplate sits in the middle of the bar.
-          Hidden from assistive technology: it is spacing, not content.
+          The account button, balancing the menu button so the nameplate stays
+          centred. When nobody is signed in it is still a link — to the sign-in
+          page — because an empty space here would be a worse answer to "where
+          do I log in" than a quiet icon.
         */}
-        <span aria-hidden="true" className="w-9 shrink-0" />
+        <Link
+          href="/account"
+          aria-label={displayName ? `Your account, ${displayName}` : "Sign in"}
+          className="shrink-0 rounded-full transition-opacity hover:opacity-80"
+        >
+          {avatarUrl ? (
+            <Image
+              src={avatarUrl}
+              alt=""
+              width={36}
+              height={36}
+              unoptimized
+              className="h-9 w-9 rounded-full border border-brass/40 object-cover"
+            />
+          ) : (
+            <span
+              aria-hidden="true"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-brass/40 text-paper"
+            >
+              {displayName ? (
+                <span className="font-display text-[0.95rem] font-bold">
+                  {displayName.slice(0, 1).toUpperCase()}
+                </span>
+              ) : (
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <circle cx="12" cy="8.5" r="3.5" />
+                  <path d="M5 20c0-3.6 3.1-5.5 7-5.5s7 1.9 7 5.5" strokeLinecap="round" />
+                </svg>
+              )}
+            </span>
+          )}
+        </Link>
       </div>
 
       <div
@@ -164,6 +209,18 @@ export function Header() {
             className="mt-4 block rounded-[3px] bg-route px-4 py-3 text-center font-semibold text-paper capitalize transition-colors hover:bg-[var(--color-route-hover)]"
           >
             Plan a trip
+          </Link>
+
+          {/*
+            Below the main list and visually quieter. An account is needed for
+            one optional thing; everything else on the site works without it,
+            and the menu should say so by its arrangement.
+          */}
+          <Link
+            href="/account"
+            className="mt-3 block rounded-[3px] border border-brass/30 px-4 py-3 text-center text-[0.95rem] text-paper capitalize transition-colors hover:bg-white/10"
+          >
+            Account
           </Link>
         </nav>
       </div>

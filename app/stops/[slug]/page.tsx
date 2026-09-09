@@ -6,6 +6,9 @@ import { OpeningHours } from "@/components/OpeningHours";
 import { OpenNowBadge } from "@/components/OpenNowBadge";
 import { PageHero } from "@/components/PageHero";
 import { SourceLink } from "@/components/SourceLink";
+import { StopPhotos } from "@/components/StopPhotos";
+import { getStopPhotos } from "@/lib/photos";
+import { getCurrentProfile } from "@/lib/supabase-server";
 import { StructuredData } from "@/components/StructuredData";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
@@ -61,6 +64,9 @@ export default async function StopPage({ params }: PageProps) {
   const stop = await getStopBySlug(slug);
 
   if (!stop) notFound();
+
+  const photos = await getStopPhotos(stop.id);
+  const viewer = await getCurrentProfile();
 
   const category = getCategory(stop.category);
 
@@ -218,6 +224,13 @@ export default async function StopPage({ params }: PageProps) {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 sm:pb-20">
+        {/*
+          Photographs before directions. Somebody deciding whether to make the
+          detour wants to see what is actually there before working out how to
+          get to it.
+        */}
+        <StopPhotos photos={photos} isAdmin={viewer?.is_admin ?? false} />
+
         <Directions stop={stop} />
       </div>
     </>

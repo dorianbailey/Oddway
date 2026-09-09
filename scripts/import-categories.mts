@@ -495,6 +495,18 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "swamp-oddities": "roadside-oddities",
   "weird-weapons": "roadside-oddities",
 
+
+  /*
+    Texas. "animals" covers a bat colony under a bridge and a bat cave — things
+    you turn up at dusk to watch, so roadside rather than a museum.
+  */
+  animals: "roadside-oddities",
+  dinosaurs: "roadside-oddities",
+  "odd-gardens": "roadside-oddities",
+  "folk-culture": "folklore",
+  outlaws: "weird-history",
+  pirates: "folklore",
+
   // UFOs
   ufo: "ufos",
 };

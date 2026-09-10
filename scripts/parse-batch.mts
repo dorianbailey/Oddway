@@ -100,8 +100,13 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       Case is ignored and ampersands allowed for the same reason: "Indigenous
       history" and "rock art & expedition history" are perfectly good category
       names and rejecting them over a capital letter helps nobody.
+
+      Slashes appear too, as a compound: "memorial / mining history", or an
+      access of "open / seasonal". The first half is taken in both cases —
+      whoever wrote it put the more important one first, and the schema only
+      has room for one.
     */
-    const catLine = lines.find((l) => /^[a-z0-9 &-]+ \| [a-z][a-z -]*$/i.test(l));
+    const catLine = lines.find((l) => /^[a-z0-9 &/-]+ \| [a-z][a-z /\u2014-]*$/i.test(l));
     const cityLine = lines.find((l) => /,\s*([A-Z]{2}|[A-Z][a-z]+( [A-Z][a-z]+)?)$/.test(l));
 
     if (!coords || !catLine || !cityLine) {
@@ -136,9 +141,17 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
     };
 
     const [latRaw, lonRaw] = coords.split(",");
-    const [rawCategoryText, rawAccess] = catLine.split("|").map((v) => v.trim());
+    const [rawCategoryText, rawAccessText] = catLine.split("|").map((v) => v.trim());
+    /*
+      A compound keeps its first half: "open / seasonal" is open. An em dash
+      does the same job — "limited — verify reopening" is limited, and the
+      caveat belongs in the description where a traveller will read it.
+    */
+    const rawAccess = rawAccessText.split(/[/\u2014]/)[0].trim();
     // "ghost town" and "ghost-town" are the same category.
     const rawCategory = rawCategoryText
+      .split("/")[0]
+      .trim()
       .toLowerCase()
       // "rock art & expedition history" becomes rock-art-expedition-history.
       .replace(/\s*&\s*/g, "-")

@@ -31,20 +31,22 @@ scavenged frames, on whatever was going.
 
 The 814 in the name is the area code.
 
-## Why he is the first artist here
+## Why He Is The First Artist Here
 
 Because the subjects keep wandering into this index's territory without being
 asked to.
 
-There is a **Lake Erie Monster** on stickers and shirts. There is a **Lake Erie
-Alligator**, which sounds like an invention and is not entirely — alligators
-turn up in the lake most summers, released pets that will not survive the
-winter, and the local papers report them with a mixture of alarm and delight
-every time.
+Bailey's work is deeply rooted in the place he calls home, and that sometimes
+leads him into territory that feels a little unusual.
 
-None of that is cryptid art in the sense of a careful reconstruction from
-eyewitness accounts. It is a place drawing its own monsters, which is what
-almost every entry in this index started out as.
+You might recognise his Bailey's Bigfoot logo before you recognise him. It is
+his signature trademark, but he also pays tribute to the Lake Erie Monster on
+stickers and shirts. There is even a callout to the Lake Erie Alligator, which
+sounds like an invention but isn't entirely made up — alligators have
+occasionally turned up in this freshwater lake.
+
+His connection to Lake Erie goes beyond the strange and unexpected. One of his
+latest pieces is a tribute to Misery Bay at Presque Isle State Park.
 
 ## The other things
 
@@ -55,11 +57,18 @@ He also does graphic design for local businesses, and is explicit on his site
 about why — so that a small business in Erie can have something that is not
 clip art.
 
-## Worth knowing
+## Worth Knowing
 
-Runs are limited and things sell out. The Freeport Yacht Club items in
-particular go on pre-order and then close.
+Many of his projects are produced in limited quantities, and some items are
+available only through pre-orders. Original pieces are hard to come by, so if
+you have the opportunity, grab it.
+
+The work is part of a larger connection to the Erie area — local places,
+stories, discarded materials and everyday observations as the raw material.
+Whether it is found art, photography, design or a slightly strange creature
+from the shores of Lake Erie, the common thread is the same: make something
+that feels connected to where it came from.
 
 If you are driving the Erie shoreline, this is a good stop to make before you
-go: the Vampire's Crypt and the Harborcreek dinosaurs are both within twenty
-minutes, and neither of them sells stickers.
+go. The Vampire's Crypt and the Harborcreek dinosaurs are both within twenty
+minutes.

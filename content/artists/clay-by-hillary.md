@@ -1,5 +1,5 @@
 ---
-name: Hillary DeWeese
+name: Hillary Deweese
 summary: Polymer clay curiosities from Baltimore County, including a small standing army of Mothmen with red eyes and very serious eyebrows.
 location: Baltimore County, Maryland
 medium: Hand-sculpted polymer clay
@@ -26,7 +26,7 @@ links:
     href: https://www.tiktok.com/@claybyhillary
 ---
 
-Hillary DeWeese has been making what she calls "cute lil guys" out of polymer
+Hillary Deweese has been making what she calls "cute lil guys" out of polymer
 clay since she was about seven. Clay By Hillary in its current shape only
 started in 2024, which makes the thirty-odd years in between a long
 apprenticeship in something she was doing anyway.
@@ -41,8 +41,10 @@ Because of Motthew.
 The Mothman pins are small, black, red-eyed and unreasonably expressive —
 somewhere between a moth and a very tired owl, with eyebrows doing most of the
 work. They come as pins, as earrings, as necklaces and as little seated figures
-on their own dishes. She refers to restocking them as building "a Motthew
-army", which is the correct attitude.
+on their own dishes.
+
+They are called Motthew, after her husband Matthew. When she restocks, she
+calls it building a Motthew army.
 
 Point Pleasant is about six hours from Baltimore, and this index has a long
 piece about the thirteen months in 1966 and 1967 when a whole town was watching

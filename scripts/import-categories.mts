@@ -679,6 +679,17 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "speed-history": "weird-history",
   "space-science": "museums",
 
+
+  /*
+    North Dakota. "border-oddities" is the International Peace Garden, which
+    straddles the Manitoba line and has a building with a door in each country.
+  */
+  "astronomical-oddities": "roadside-oddities",
+  "border-oddities": "roadside-oddities",
+  "industrial-art": "roadside-oddities",
+  "film-oddities": "weird-history",
+  "sacred-history": "weird-history",
+
   // UFOs
   ufo: "ufos",
 };

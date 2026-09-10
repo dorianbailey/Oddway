@@ -42,8 +42,22 @@ export interface Artist {
    * Required, and profiles without it are never shown. Featuring somebody's
    * work without asking is the kind of favour nobody wants doing for them, and
    * the cost of being wrong falls entirely on them.
+   *
+   * It also covers the words. An artist who has agreed to be listed has not
+   * necessarily agreed to a description of their work written by somebody
+   * else — worth their reading it first, and worth more than that for anybody
+   * who has said publicly how they feel about how such text gets written.
    */
   permission: boolean;
+  /**
+   * Position in the rotation.
+   *
+   * Explicit rather than alphabetical, because the order artists are featured
+   * in is an editorial decision — somebody who has just agreed to it should
+   * not wait until the letter Y comes round. Lower goes first; ties fall back
+   * to the name so the order is never ambiguous.
+   */
+  featureOrder: number;
   html: string;
 }
 
@@ -70,6 +84,10 @@ function parse(fileName: string): Artist {
     image: data.image ? String(data.image) : undefined,
     imageCredit: data.imageCredit ? String(data.imageCredit) : undefined,
     permission: data.permission === true,
+    featureOrder:
+      typeof data.featureOrder === "number"
+        ? data.featureOrder
+        : Number.MAX_SAFE_INTEGER,
     html: marked.parse(content, { async: false }) as string,
   };
 }
@@ -85,7 +103,10 @@ export function getArtists(): Artist[] {
   return files
     .map(parse)
     .filter((artist) => artist.permission)
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort(
+      (a, b) =>
+        a.featureOrder - b.featureOrder || a.name.localeCompare(b.name),
+    );
 }
 
 export function getArtist(slug: string): Artist | null {
@@ -93,22 +114,92 @@ export function getArtist(slug: string): Artist | null {
 }
 
 /**
+ * The Wednesday that the current feature week began, in Eastern time.
+ *
+ * Eastern rather than UTC because that is where the site is run from and when
+ * a person would expect the change to happen. Doing it properly means the
+ * switch stays at nine in the morning through the clocks changing, rather than
+ * drifting to eight or ten for half the year.
+ *
+ * Intl is used to read the Eastern wall clock for a given instant, which is
+ * the only way to get this right without a timezone library.
+ */
+function easternParts(at: Date): { year: number; month: number; day: number; hour: number; weekday: number } {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    weekday: "short",
+    hour12: false,
+  });
+
+  const parts = Object.fromEntries(
+    formatter.formatToParts(at).map((p) => [p.type, p.value]),
+  );
+
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return {
+    year: Number(parts.year),
+    month: Number(parts.month),
+    day: Number(parts.day),
+    // 24 comes back for midnight in some environments.
+    hour: Number(parts.hour) % 24,
+    weekday: weekdays.indexOf(parts.weekday as string),
+  };
+}
+
+/**
+ * How many feature weeks have passed since the rotation began.
+ *
+ * Counted from Wednesday 9 September 2026 at nine in the morning Eastern,
+ * which is the week Douglas Bailey was first featured. Anything before that
+ * anchor returns zero rather than a negative, so the first artist stays put
+ * rather than the list running backwards.
+ */
+function weeksSinceAnchor(now: Date): number {
+  const { year, month, day, hour, weekday } = easternParts(now);
+
+  /*
+    Days back to the most recent Wednesday. Before nine on a Wednesday the
+    week has not turned over yet, so it counts as the previous one — which is
+    what somebody looking at the site at eight in the morning would expect.
+  */
+  let back = (weekday - 3 + 7) % 7;
+  if (weekday === 3 && hour < 9) back = 7;
+
+  const thisWeek = Date.UTC(year, month - 1, day) - back * 86_400_000;
+  const anchor = Date.UTC(2026, 8, 9); // 9 September 2026
+
+  return Math.max(0, Math.round((thisWeek - anchor) / (7 * 86_400_000)));
+}
+
+/**
  * This week's featured artist.
  *
- * Derived from the date rather than stored, so nothing has to run on a
- * schedule and the choice is identical on every server. Weeks are counted from
- * the Unix epoch in UTC, which means the change happens at midnight UTC on a
- * Thursday — arbitrary, but consistent, and nobody has to remember to do it.
+ * Derived from the date rather than stored, so nothing runs on a schedule and
+ * every server picks the same person. Changes every Wednesday at nine in the
+ * morning Eastern, working down the list in featureOrder and starting again at
+ * the top once it reaches the end.
  */
 export function getFeaturedArtist(today = new Date()): Artist | null {
   const artists = getArtists();
   if (artists.length === 0) return null;
 
-  const days = Math.floor(
-    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()) /
-      86_400_000,
-  );
-  const week = Math.floor(days / 7);
+  return artists[weeksSinceAnchor(today) % artists.length];
+}
 
-  return artists[week % artists.length];
+/** When the feature next changes. Useful for saying so on the page. */
+export function nextRotation(today = new Date()): Date {
+  const { year, month, day, hour, weekday } = easternParts(today);
+
+  let forward = (3 - weekday + 7) % 7;
+  if (forward === 0 && hour >= 9) forward = 7;
+
+  // Nine Eastern is 13:00 or 14:00 UTC depending on the season; building the
+  // date this way lets the runtime work that out rather than guessing.
+  const target = new Date(Date.UTC(year, month - 1, day + forward, 13, 0, 0));
+  return target;
 }

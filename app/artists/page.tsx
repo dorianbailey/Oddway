@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { getArtists, getFeaturedArtist } from "@/lib/artists";
+import { getArtists, getFeaturedArtist, nextRotation } from "@/lib/artists";
 
 export const revalidate = 3600;
 
@@ -38,6 +38,19 @@ export default function ArtistsPage() {
               <section className="mb-16 border-b border-contour/40 pb-14">
                 <p className="font-body text-[0.75rem] tracking-[0.2em] text-ink-soft uppercase">
                   This week
+                </p>
+                {/*
+                  Saying when it changes turns a static-looking page into
+                  something with a rhythm — and tells an artist waiting their
+                  turn when to look.
+                */}
+                <p className="mt-2 text-[0.9rem] text-ink-soft">
+                  Changes {new Intl.DateTimeFormat("en-US", {
+                    timeZone: "America/New_York",
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                  }).format(nextRotation())} at 9am Eastern
                 </p>
 
                 <div className="mt-6 grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
@@ -103,22 +116,49 @@ export default function ArtistsPage() {
             <ul className="mt-8 divide-y divide-contour/30 border-y border-contour/30">
               {artists.map((artist) => (
                 <li key={artist.slug} className="py-6">
-                  <h3 className="text-title">
-                    <Link
-                      href={`/artists/${artist.slug}`}
-                      className="underline-offset-4 hover:text-route hover:underline"
-                    >
-                      {artist.name}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 max-w-[68ch] text-ink-soft">
-                    {artist.summary}
-                  </p>
-                  {artist.medium || artist.location ? (
-                    <p className="mt-2 text-[0.9rem] text-ink-soft">
-                      {[artist.medium, artist.location].filter(Boolean).join(" · ")}
-                    </p>
-                  ) : null}
+                  {/*
+                    A thumbnail beside each name. The list was text only, which
+                    read as thin with two artists and would read as a directory
+                    with fifteen — and these are people whose work is the point.
+                  */}
+                  <div className="flex gap-5">
+                    {artist.image ? (
+                      <Link
+                        href={`/artists/${artist.slug}`}
+                        className="shrink-0"
+                        aria-hidden="true"
+                        tabIndex={-1}
+                      >
+                        <Image
+                          src={artist.image}
+                          alt=""
+                          width={220}
+                          height={220}
+                          sizes="110px"
+                          className="h-[6.5rem] w-[6.5rem] border border-contour/45 object-cover transition-opacity hover:opacity-90"
+                        />
+                      </Link>
+                    ) : null}
+
+                    <div>
+                      <h3 className="text-title">
+                        <Link
+                          href={`/artists/${artist.slug}`}
+                          className="underline-offset-4 hover:text-route hover:underline"
+                        >
+                          {artist.name}
+                        </Link>
+                      </h3>
+                      <p className="mt-1 max-w-[62ch] text-ink-soft">
+                        {artist.summary}
+                      </p>
+                      {artist.medium || artist.location ? (
+                        <p className="mt-2 text-[0.9rem] text-ink-soft">
+                          {[artist.medium, artist.location].filter(Boolean).join(" · ")}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>

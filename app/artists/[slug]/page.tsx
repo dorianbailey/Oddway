@@ -82,7 +82,16 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
 
         {artist.links.length > 0 ? (
           <section className="mt-12 border-t border-contour/40 pt-8">
-            <h2 className="text-title">Support Their Work</h2>
+            {/*
+              Not everybody sells online. Heading a list of one Instagram
+              account "Support Their Work" promises a shop that is not there,
+              and sends somebody looking for a buy button that does not exist.
+            */}
+            <h2 className="text-title">
+              {artist.links.some((link) => /shop|store|etsy|buy/i.test(link.label))
+                ? "Support Their Work"
+                : "Find Their Work"}
+            </h2>
             <p className="mt-2 max-w-[52ch] text-ink-soft">
               These go straight to {artist.name}. OddWay takes nothing and has
               no arrangement with anyone listed here.

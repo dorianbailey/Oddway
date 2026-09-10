@@ -80,7 +80,7 @@ function PlacePicker({
         });
       },
       () => setLocating(false),
-      { timeout: 10_000 },
+      { timeout: 30_000, maximumAge: 300_000 },
     );
   }
 

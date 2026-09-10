@@ -4,9 +4,20 @@ summary: One or two sentences for the index and the featured card.
 location: Asheville, NC
 medium: Linocut and screenprint
 
-# Required. Profiles without this are never shown, anywhere.
-# Featuring somebody's work without asking is the sort of favour nobody wants
-# doing for them, and if it goes wrong the cost falls entirely on them.
+# Where this artist sits in the rotation. Lower goes first.
+#
+# The feature changes every Wednesday at 9am Eastern and works down this list,
+# starting again at the top when it reaches the end. Give a new artist the next
+# number after the highest already in use, and they will come up in turn.
+featureOrder: 2
+
+# Required. A profile without this is never shown — not in the list, not
+# featured, not in the sitemap.
+#
+# It stays in the file rather than being assumed because it is the one fact
+# about an artist that is not on their website: whether they said yes. Set it
+# to false while a page is being drafted or checked, and the whole profile
+# stays invisible until somebody deliberately changes it.
 permission: true
 
 # Order here is the order shown. Put the shop first.

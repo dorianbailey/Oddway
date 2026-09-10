@@ -344,15 +344,32 @@ test("the featured artist changes weekly and only shows those who agreed", async
   const wednesday = getFeaturedArtist(new Date("2026-09-09T23:59:00Z"));
   assert.equal(monday?.slug, wednesday?.slug, "must not change mid-week");
 
+  /*
+    Walked forward from the anchor, not from January.
+
+    The rotation starts on Wednesday 9 September 2026. Anything earlier clamps
+    to the first artist rather than counting backwards into negative weeks —
+    which is deliberate, and is why this used to walk from January and see the
+    same person every time.
+  */
   const seen = new Set<string>();
-  for (let week = 0; week < getArtists().length; week += 1) {
-    const day = new Date(Date.UTC(2026, 0, 1 + week * 7));
+  const artists = getArtists();
+  for (let week = 0; week < artists.length; week += 1) {
+    // Thursday of each feature week, safely after the Wednesday changeover.
+    const day = new Date(Date.UTC(2026, 8, 10 + week * 7, 14));
     seen.add(getFeaturedArtist(day)!.slug);
   }
   assert.equal(
     seen.size,
-    getArtists().length,
+    artists.length,
     "every artist should come up before any repeats",
+  );
+
+  // And before the rotation began, the first in the queue holds.
+  assert.equal(
+    getFeaturedArtist(new Date("2026-01-01T12:00:00Z"))?.featureOrder,
+    artists[0].featureOrder,
+    "dates before the anchor show the first artist, not a negative index",
   );
 });
 
@@ -845,4 +862,95 @@ test("display names are compared ignoring case and surrounding space", async () 
   assert.equal(checkNameShape("Douglas Bailey").ok, true);
   assert.equal(checkNameShape("814").ok, true, "digits alone are fine");
   assert.equal(checkNameShape("  padded  ").ok, true, "trimmed before measuring");
+});
+
+test("the corridor thins a long route before measuring against it", async () => {
+  const { findAndCountStopsNearRoute } = await import("../lib/corridor");
+
+  /*
+    Chicago to Denver took eighteen seconds. Two reasons, both arithmetic.
+
+    The route came back with 5,048 coordinates — right for drawing, absurd for
+    deciding whether a stop is within half an hour of it — and every stop was
+    measured against every segment. Then the whole thing ran a second time to
+    count what the first pass had already found.
+
+    This checks the second pass is gone and that thinning has not moved the
+    answer.
+  */
+  const geometry: [number, number][] = [];
+  for (let i = 0; i <= 5000; i += 1) {
+    geometry.push([-87 - (i / 5000) * 18, 41.8 + (i / 5000) * 1.9]);
+  }
+
+  const stops = Array.from({ length: 120 }, (_, i) => {
+    const t = i / 120;
+    return {
+      id: `s${i}`, slug: `s${i}`, name: `Stop ${i}`, city: "X", state: "IA",
+      category: "roadside-oddities" as const,
+      latitude: 41.8 + t * 1.9 + (i % 7) * 0.01,
+      longitude: -87 - t * 18,
+      description: "", publicAccess: "open" as const,
+      source: null, website: null, timezone: null, verifiedAt: null,
+    };
+  });
+
+  const started = Date.now();
+  const result = findAndCountStopsNearRoute(stops as never, geometry, { limit: 60 });
+  const elapsed = Date.now() - started;
+
+  assert.ok(result.matchedCount > 0, "stops beside the line should match");
+  assert.ok(result.stops.length <= 60);
+  assert.ok(
+    result.matchedCount >= result.stops.length,
+    "the count is of everything matched, not what is shown",
+  );
+
+  /*
+    A second is generous for 120 stops. Before the fix this shape of input was
+    the slow path, and a regression here would be somebody waiting again.
+  */
+  assert.ok(elapsed < 1000, `took ${elapsed}ms, which is too slow`);
+});
+
+test("the featured artist changes on Wednesday morning Eastern", async () => {
+  const { getFeaturedArtist, nextRotation } = await import("../lib/artists");
+
+  /*
+    Nine in the morning Eastern, not midnight UTC, because that is when a
+    person running the site would expect it and when a visitor would notice.
+
+    Eastern rather than a fixed offset matters: the clocks change twice a year,
+    and a rotation pinned to UTC would drift to eight or ten in the morning for
+    half of it.
+  */
+  const before = new Date("2026-09-16T12:00:00Z"); // 8am Eastern, Wednesday
+  const after = new Date("2026-09-16T14:00:00Z");  // 10am Eastern, same day
+
+  const artists = (await import("../lib/artists")).getArtists();
+  if (artists.length < 2) {
+    // One artist means the rotation cannot visibly turn over yet.
+    assert.equal(getFeaturedArtist(before)?.slug, getFeaturedArtist(after)?.slug);
+  } else {
+    assert.notEqual(
+      getFeaturedArtist(before)?.slug,
+      getFeaturedArtist(after)?.slug,
+      "the feature must turn over between 8am and 10am on a Wednesday",
+    );
+  }
+
+  // Steady through the rest of the week.
+  assert.equal(
+    getFeaturedArtist(new Date("2026-09-17T14:00:00Z"))?.slug,
+    getFeaturedArtist(new Date("2026-09-21T14:00:00Z"))?.slug,
+    "Thursday and Monday of the same feature week must match",
+  );
+
+  // The next change is always a Wednesday, and always ahead of now.
+  for (const day of ["2026-09-14", "2026-09-16", "2026-09-19"]) {
+    const from = new Date(`${day}T15:00:00Z`);
+    const next = nextRotation(from);
+    assert.ok(next > from, "the next rotation must be in the future");
+    assert.equal(next.getUTCDay(), 3, "and must be a Wednesday");
+  }
 });

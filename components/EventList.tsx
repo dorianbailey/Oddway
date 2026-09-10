@@ -86,7 +86,7 @@ export function EventList({ events }: { events: OddEvent[] }) {
         setLocating(false);
         setLocationError("Couldn't get your location.");
       },
-      { timeout: 10_000 },
+      { timeout: 30_000, maximumAge: 300_000 },
     );
   }
 

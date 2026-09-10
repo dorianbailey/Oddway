@@ -101,7 +101,7 @@ export function Directions({ stop }: DirectionsProps) {
           "Couldn't get your location. Type where you're starting from instead.",
         );
       },
-      { timeout: 10_000 },
+      { timeout: 30_000, maximumAge: 300_000 },
     );
   }
 

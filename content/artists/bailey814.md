@@ -3,6 +3,7 @@ name: Douglas Bailey
 summary: A self-taught mixed-media artist working in found and reclaimed materials on the Lake Erie shoreline, whose subjects include a lake monster, a Lake Erie alligator and a fairly tired-looking Bigfoot.
 location: Erie, Pennsylvania
 medium: Mixed media, found and reclaimed materials, graphic design
+featureOrder: 1
 permission: true
 
 # Supplied by the artist. Hosted here rather than linked from his shop, so

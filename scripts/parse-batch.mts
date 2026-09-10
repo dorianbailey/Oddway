@@ -279,15 +279,10 @@ export function checkBatch(
 ): BatchReport {
   const bySlug = new Map(existing.map((s) => [s.slug, s]));
 
-  /*
-    Both slug conventions are tested, because this project has used two — one
-    turning an apostrophe into a dash, one removing it — and a duplicate
-    horseshoe crab once walked straight between them.
-  */
   const slugCollisions: string[] = [];
   for (const stop of incoming) {
     /*
-      Both conventions are tried, but a name is only reported once. Most names
+      Both slug conventions are tried, but a name is reported once. Most names
       produce the same slug either way, so reporting per variant would list
       every collision twice and make a count of two look like four.
     */
@@ -340,14 +335,14 @@ export function checkBatch(
  * acceptable.
  *
  * A slug collision is always wrong: it silently rewrites somebody else's stop.
- * Proximity is a question rather than a verdict — two things can share a car
- * park — so those are printed and left to a person.
+ * Proximity and similar names are questions rather than verdicts — two things
+ * can share a car park — so those are printed and left to a person.
  */
 export function reportBatch(label: string, report: BatchReport): void {
   const { slugCollisions, nearbyExisting, internalDuplicates, duplicateSlugsWithin } = report;
 
   console.log(`\n  ${label}`);
-  console.log(`    slug collisions:       ${slugCollisions.length}`);
+  console.log(`    slug collisions:        ${slugCollisions.length}`);
   console.log(`    duplicate slugs within: ${duplicateSlugsWithin.length}`);
   console.log(`    near an existing stop:  ${nearbyExisting.length}`);
   console.log(`    near each other:        ${internalDuplicates.length}`);
@@ -364,4 +359,90 @@ export function reportBatch(label: string, report: BatchReport): void {
         `overwrite the existing stop rather than insert a new one.`,
     );
   }
+}
+
+const ARTICLES = new Set(["the", "and", "for", "with"]);
+
+/**
+ * Words too common to make a match interesting on their own.
+ *
+ * Used to judge whether an overlap is worth reporting, not to remove words
+ * before comparing. Removing them first was the first attempt at this, and it
+ * compared two names on different bases: "Ghost Town Museum" lost every word
+ * it had while "Ghost Town Wild West Museum" kept two, so they shared nothing
+ * and the duplicate this exists to catch went through anyway.
+ */
+const COMMON_WORDS = new Set([
+  "museum", "monument", "memorial", "park", "site", "historic", "historical",
+  "national", "state", "county", "city", "town", "village", "center", "centre",
+  "tour", "tours", "ghost", "old", "new", "great", "trail", "house", "hall",
+  "world", "worlds", "largest", "smallest", "original",
+]);
+
+function nameWords(name: string): string[] {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 2 && !ARTICLES.has(w));
+}
+
+/**
+ * Incoming stops whose names look like something already in the same state.
+ *
+ * Three states running, a duplicate slipped past both the slug check and the
+ * position check, because the stop was already in the index under a different
+ * name AND with a scan coordinate wrong by hundreds of metres:
+ *
+ *   Ghost Town Museum       vs Ghost Town Wild West Museum        1.4km
+ *   Vulture City Ghost Town vs Vulture Mine Tours / Vulture City   978m
+ *   Sasquatch Outpost       vs Sasquatch Outpost & Encounter...    686m
+ *
+ * Every one has the same shape: one place written at two lengths, so the
+ * shorter name's words are a subset of the longer one's. That is what this
+ * looks for.
+ *
+ * Deliberately noisy. It asks a question rather than passing a verdict, and a
+ * few false flags a state is a fair price for the ones both other checks miss.
+ */
+export function similarlyNamed(
+  incoming: ParsedStop[],
+  existing: ExistingStop[],
+): string[] {
+  const flags: string[] = [];
+  const sameState = existing.filter((e) => e.state === incoming[0]?.state);
+
+  for (const stop of incoming) {
+    const mine = nameWords(stop.name);
+    if (mine.length === 0) continue;
+
+    for (const other of sameState) {
+      const theirs = nameWords(other.name);
+      if (theirs.length === 0) continue;
+
+      const [shorter, longer] =
+        mine.length <= theirs.length ? [mine, theirs] : [theirs, mine];
+      const longerSet = new Set(longer);
+      if (!shorter.every((word) => longerSet.has(word))) continue;
+
+      /*
+        A match made only of common words needs length to be worth reporting.
+        "Ghost Town Museum" is three words and worth a look; "Old Park" is two
+        and would flag every county park in the state.
+      */
+      const hasDistinctive = shorter.some((word) => !COMMON_WORDS.has(word));
+      if (!hasDistinctive && shorter.length < 3) continue;
+
+      const metres = Math.round(
+        metresBetween(stop.lat, stop.lon, other.latitude, other.longitude),
+      );
+      flags.push(
+        `"${stop.name}" / existing "${other.name}" — shared: ${shorter.join(" ")} — ${metres}m apart`,
+      );
+    }
+  }
+
+  return flags;
 }

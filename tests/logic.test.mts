@@ -954,3 +954,55 @@ test("the featured artist changes on Wednesday morning Eastern", async () => {
     assert.equal(next.getUTCDay(), 3, "and must be a Wednesday");
   }
 });
+
+test("a duplicate hidden by a bad coordinate is caught by name", async () => {
+  const { similarlyNamed } = await import("../scripts/parse-batch.mts");
+
+  /*
+    Three real cases, from Colorado, Arizona and Colorado again. In each the
+    stop was already in the index under a different name and with a scan
+    coordinate wrong by hundreds of metres — so the slug check saw two
+    different slugs and the position check saw two different places.
+
+    Only the names gave it away, and only when a person read them.
+  */
+  const existing = [
+    { slug: "ghost-town-wild-west-museum", name: "Ghost Town Wild West Museum",
+      city: "Colorado Springs", state: "CO", latitude: 38.8339, longitude: -104.8467 },
+    { slug: "sasquatch-outpost", name: "Sasquatch Outpost",
+      city: "Bailey", state: "CO", latitude: 39.4033, longitude: -105.4822 },
+  ];
+
+  const incoming = [
+    { name: "Ghost Town Museum", city: "Colorado Springs", state: "CO",
+      lat: 38.84057, lon: -104.86065, category: "museums", access: "limited",
+      description: "", source: null, website: null },
+    { name: "Sasquatch Outpost & Sasquatch Encounter Discovery Museum",
+      city: "Bailey", state: "CO", lat: 39.40605, lon: -105.47505,
+      category: "cryptids", access: "limited",
+      description: "", source: null, website: null },
+  ];
+
+  const flags = similarlyNamed(incoming, existing);
+  assert.equal(flags.length, 2, "both should be flagged");
+  assert.ok(flags.some((f) => f.includes("Ghost Town Museum")));
+  assert.ok(flags.some((f) => f.includes("Sasquatch")));
+
+  // Two genuinely different places in one state must not flag.
+  const different = similarlyNamed(
+    [{ name: "Bishop Castle", city: "Rye", state: "CO", lat: 38.0, lon: -105.0,
+       category: "roadside-oddities", access: "open",
+       description: "", source: null, website: null }],
+    existing,
+  );
+  assert.equal(different.length, 0, "unrelated names must stay quiet");
+
+  // And a name made only of noise words cannot match everything.
+  const noise = similarlyNamed(
+    [{ name: "The Old State Park", city: "X", state: "CO", lat: 38, lon: -105,
+       category: "roadside-oddities", access: "open",
+       description: "", source: null, website: null }],
+    existing,
+  );
+  assert.equal(noise.length, 0, "a name of only common words identifies nothing");
+});

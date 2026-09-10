@@ -797,6 +797,18 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "media-history": "weird-history",
   "new-age-lore": "folklore",
 
+
+  /*
+    Alaska. "transportation-ruins" is the Last Train to Nowhere — three
+    locomotives rusting in the tundra outside Nome, hauled north for a railway
+    that was never finished.
+  */
+  "cultural-landmarks": "roadside-oddities",
+  "gold-rush-history": "weird-history",
+  "homestead-history": "weird-history",
+  "transportation-ruins": "weird-history",
+  "unfinished-infrastructure": "weird-history",
+
   // UFOs
   ufo: "ufos",
 };

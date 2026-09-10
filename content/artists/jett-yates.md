@@ -3,7 +3,7 @@ name: Jett Yates
 summary: Watercolour, ink and gouache cryptids from Lexington, Kentucky, by somebody who has gone and stood in most of the places first.
 location: Lexington, Kentucky
 medium: Watercolour, ink and gouache
-featureOrder: 5
+featureOrder: 3
 permission: true
 
 image: /images/artists/jett-yates.webp

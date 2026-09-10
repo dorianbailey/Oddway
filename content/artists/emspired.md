@@ -2,7 +2,7 @@
 name: Emily Crabtree Stephens
 summary: Folklore, nature, illustration and horror, worked through diverse mediums and bold colour until the line between reality and fantasy stops being clear.
 medium: Illustration, painting, mixed media
-featureOrder: 3
+featureOrder: 5
 permission: true
 
 image: /images/artists/emspired-collage.webp

@@ -764,6 +764,27 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "trail-landmark": "weird-history",
   badlands: "roadside-oddities",
 
+
+  /*
+    Colorado. "ancestral-pueblo" is the Mesa Verde cliff dwellings — filed as
+    weird history rather than roadside, since every one of them is a ticketed
+    ranger-led climb rather than somewhere you pull over and look.
+  */
+  "ancestral-pueblo": "weird-history",
+  "ghost-town-history": "weird-history",
+  "geology-history": "weird-history",
+  "archaeology-museum": "museums",
+  "fossil-dinosaur": "museums",
+  "strange-collection": "museums",
+  "strange-museum": "museums",
+  "haunted-paranormal": "haunted",
+  "ufo-paranormal": "ufos",
+  "fossil-geology": "roadside-oddities",
+  "geology-archaeology": "roadside-oddities",
+  "geology-oddity": "roadside-oddities",
+  "geology-overlook": "roadside-oddities",
+  "unusual-architecture": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

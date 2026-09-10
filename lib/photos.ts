@@ -351,3 +351,47 @@ export async function getAccounts(): Promise<AccountSummary[]> {
     };
   });
 }
+
+
+export interface Suggestion {
+  id: string;
+  kind: string;
+  stopSlug: string | null;
+  category: string | null;
+  message: string;
+  email: string | null;
+  handled: boolean;
+  createdAt: string;
+}
+
+/**
+ * Suggestions, newest first.
+ *
+ * Returns nothing unless the caller is an administrator, because the policy
+ * that permits reading this table checks that. Everybody else can write one
+ * and read none, which is the point — a suggestion may carry an email address
+ * and belongs to the person who sent it.
+ */
+export async function getSuggestions(): Promise<Suggestion[]> {
+  const supabase = await getServerSupabase();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
+    .from("suggestions")
+    .select("id, kind, stop_slug, category, message, email, handled, created_at")
+    .order("created_at", { ascending: false })
+    .limit(200);
+
+  if (error || !data) return [];
+
+  return (data as Array<Record<string, unknown>>).map((row) => ({
+    id: row.id as string,
+    kind: row.kind as string,
+    stopSlug: (row.stop_slug as string | null) ?? null,
+    category: (row.category as string | null) ?? null,
+    message: row.message as string,
+    email: (row.email as string | null) ?? null,
+    handled: Boolean(row.handled),
+    createdAt: row.created_at as string,
+  }));
+}

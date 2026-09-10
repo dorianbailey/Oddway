@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { ReviewQueue } from "@/components/ReviewQueue";
-import { getAccounts, getHiddenPhotos, getPendingPhotos } from "@/lib/photos";
+import { getAccounts, getHiddenPhotos, getPendingPhotos, getSuggestions } from "@/lib/photos";
 import { AccountList } from "@/components/AccountList";
+import { SuggestionList } from "@/components/SuggestionList";
 import { HiddenPhotos } from "@/components/HiddenPhotos";
 import { getCurrentProfile } from "@/lib/supabase-server";
 
@@ -27,6 +28,7 @@ export default async function ReviewPage() {
   const photos = await getPendingPhotos();
   const hidden = await getHiddenPhotos();
   const accounts = await getAccounts();
+  const suggestions = await getSuggestions();
 
   return (
     <>
@@ -46,6 +48,16 @@ export default async function ReviewPage() {
           decision — a decision was made — but a reversible action needs
           somewhere to reverse it from.
         */}
+        <section className="mt-16 border-t border-contour/40 pt-10">
+          <h2 className="text-section">Suggestions</h2>
+          <p className="mt-3 mb-8 max-w-[56ch] text-ink-soft">
+            What people have written in about &mdash; new places, corrections,
+            somewhere that has closed. Marking one handled keeps it as a record
+            rather than removing it.
+          </p>
+          <SuggestionList suggestions={suggestions} />
+        </section>
+
         <section className="mt-16 border-t border-contour/40 pt-10">
           <h2 className="text-section">Hidden</h2>
           <p className="mt-3 mb-8 max-w-[52ch] text-ink-soft">

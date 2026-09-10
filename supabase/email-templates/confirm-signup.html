@@ -33,7 +33,7 @@
           </td>
         </tr>
         <tr>
-          <td style="padding:24px 32px;">
+          <td style="padding:24px 32px 8px;">
             <a href="{{ .ConfirmationURL }}"
                style="display:inline-block;background:#8a6d1f;color:#f2ede1;text-decoration:none;padding:14px 28px;border-radius:3px;font-family:Helvetica,Arial,sans-serif;font-weight:600;font-size:16px;">
               Confirm my email
@@ -41,17 +41,14 @@
           </td>
         </tr>
         <tr>
-          <td style="padding:0 32px 32px;font-size:14px;line-height:1.6;color:#5c5a52;">
-            <p style="margin:0 0 12px;">
-              If the button does not work, paste this into your browser:
-            </p>
-            <p style="margin:0 0 20px;word-break:break-all;font-size:13px;color:#8a6d1f;">
-              {{ .ConfirmationURL }}
-            </p>
-            <p style="margin:0;">
-              If you did not sign up for anything, ignore this and nothing
-              happens. The link expires on its own.
-            </p>
+          <td style="padding:0 32px 24px;font-size:14px;line-height:1.6;color:#5c5a52;">
+            <p style="margin:0;"><a href="{{ .ConfirmationURL }}" style="color:#8a6d1f;">Didn&rsquo;t work? Click here.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 32px 32px;font-size:14px;line-height:1.6;color:#5c5a52;border-top:1px solid #d5cfc0;">
+            <p style="margin:0 0 10px;">If you did not sign up for anything, ignore this and nothing happens. The link expires on its own.</p>
+            <p style="margin:0;">Still stuck? <a href="https://taketheoddway.com/suggest?kind=other" style="color:#8a6d1f;">Tell us</a> and we will sort it out.</p>
           </td>
         </tr>
       </table>

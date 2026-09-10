@@ -1,0 +1,63 @@
+<!--
+  Confirmation email, sent when somebody signs up.
+
+  Written as a short letter rather than a notification. Supabase's default
+  reads "Follow this link to confirm your user", which is accurate and sounds
+  like a database vendor — and the person receiving it has just signed up to
+  an index of roadside monsters.
+
+  Inline styles throughout because email clients strip stylesheets, and a
+  table for layout because Outlook still does not do flexbox.
+-->
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#12171a;padding:32px 16px;font-family:Georgia,'Times New Roman',serif;">
+  <tr>
+    <td align="center">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#e8e3d7;border-radius:3px;">
+        <tr>
+          <td style="padding:32px 32px 8px;">
+            <p style="margin:0;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#5c5a52;font-family:Helvetica,Arial,sans-serif;">
+              Take the OddWay
+            </p>
+            <h1 style="margin:16px 0 0;font-size:28px;line-height:1.2;color:#12171a;">
+              One click and you are in
+            </h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 32px 0;font-size:16px;line-height:1.6;color:#3d3b35;">
+            <p style="margin:0 0 16px;">
+              Confirm this address and your account is ready. An account is only
+              needed for one thing — adding photos of the places you have been.
+              Everything else on the site works without one.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:24px 32px;">
+            <a href="{{ .ConfirmationURL }}"
+               style="display:inline-block;background:#8a6d1f;color:#f2ede1;text-decoration:none;padding:14px 28px;border-radius:3px;font-family:Helvetica,Arial,sans-serif;font-weight:600;font-size:16px;">
+              Confirm my email
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 32px 32px;font-size:14px;line-height:1.6;color:#5c5a52;">
+            <p style="margin:0 0 12px;">
+              If the button does not work, paste this into your browser:
+            </p>
+            <p style="margin:0 0 20px;word-break:break-all;font-size:13px;color:#8a6d1f;">
+              {{ .ConfirmationURL }}
+            </p>
+            <p style="margin:0;">
+              If you did not sign up for anything, ignore this and nothing
+              happens. The link expires on its own.
+            </p>
+          </td>
+        </tr>
+      </table>
+      <p style="max-width:520px;margin:20px auto 0;font-size:13px;color:#6e6a60;font-family:Helvetica,Arial,sans-serif;">
+        taketheoddway.com &middot; Strange stops along your route
+      </p>
+    </td>
+  </tr>
+</table>

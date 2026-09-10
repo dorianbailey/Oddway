@@ -666,6 +666,19 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "waterfall-trail": "roadside-oddities",
   "wwii-incarceration-history": "weird-history",
 
+
+  /*
+    Utah. "land-art" is the Spiral Jetty and the Sun Tunnels — enormous works
+    made of the desert itself, which people drive hours of dirt road to stand
+    next to. Roadside in the sense that matters.
+  */
+  "dinosaur-attractions": "roadside-oddities",
+  "hot-springs": "roadside-oddities",
+  "land-art": "roadside-oddities",
+  "slot-canyons": "roadside-oddities",
+  "speed-history": "weird-history",
+  "space-science": "museums",
+
   // UFOs
   ufo: "ufos",
 };

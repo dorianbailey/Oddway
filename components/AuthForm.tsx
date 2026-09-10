@@ -81,6 +81,17 @@ export function AuthForm() {
   const [displayName, setDisplayName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [nameStatus, setNameStatus] = useState<"idle" | "checking" | "free" | "taken">("idle");
+  /*
+    Which address the "already registered" notice belongs to, rather than a
+    boolean cleared by an effect.
+
+    Clearing a flag when the email changes reads naturally and is the wrong
+    tool: it costs a second render every keystroke. Storing the address the
+    notice was raised for means it stops applying the moment somebody types a
+    different one, with no effect and no extra render.
+  */
+  const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
+  const existingAccount = registeredEmail !== null && registeredEmail === email;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -190,8 +201,46 @@ export function AuthForm() {
         throw new Error("Pick a different display name.");
       }
 
-      const { data, error } = await supabase.auth.signUp({ email, password });
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          /*
+            Land on the account page rather than the homepage.
+
+            Somebody clicking a confirmation link is halfway through signing
+            up, and dropping them at the front door means finding their way to
+            the account page to pick a name — which is a step nobody should
+            have to work out. This takes them to the form they were going to
+            fill in anyway.
+          */
+          emailRedirectTo: `${window.location.origin}/account`,
+        },
+      });
       if (error) throw new Error(error.message);
+
+      /*
+        Supabase does not error when an email is already registered. It returns
+        a user with an empty identities array instead, which is a deliberate
+        choice on their part: telling a stranger which addresses have accounts
+        is how you enumerate a user list.
+
+        Saying so anyway is a real trade. It leaks that an address is
+        registered to anybody who guesses it, and in exchange somebody who
+        forgot they already signed up is told plainly instead of waiting for a
+        confirmation email that never arrives — which is what has been
+        happening. For a site where the account does nothing but attach a name
+        to photographs, the second matters more than the first.
+      */
+      const alreadyRegistered =
+        data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0;
+
+      if (alreadyRegistered) {
+        setBusy(false);
+        setError(null);
+        setRegisteredEmail(email);
+        return;
+      }
 
       /*
         The profile row is created here rather than by a database trigger,
@@ -424,6 +473,42 @@ export function AuthForm() {
         >
           Back to signing in
         </button>
+      ) : null}
+
+      {/*
+        Its own block rather than an error string, because this is not a
+        mistake — it is somebody who already has an account and has forgotten.
+        What they need is the two ways forward, not a red line.
+      */}
+      {existingAccount ? (
+        <div
+          role="alert"
+          className="mt-5 border-l-2 border-route pl-3 text-[0.95rem] text-ink"
+        >
+          <p className="font-semibold">There is already an account on that address.</p>
+          <p className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+            <button
+              type="button"
+              onClick={() => {
+                setMode("signin");
+                setRegisteredEmail(null);
+              }}
+              className="font-semibold text-route underline underline-offset-4"
+            >
+              Sign in instead
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMode("forgot");
+                setRegisteredEmail(null);
+              }}
+              className="font-semibold text-route underline underline-offset-4"
+            >
+              Forgotten the password
+            </button>
+          </p>
+        </div>
       ) : null}
 
       {error ? (

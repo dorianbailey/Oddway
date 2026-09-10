@@ -286,3 +286,68 @@ export async function getHiddenPhotos(): Promise<PendingPhoto[]> {
     };
   });
 }
+
+
+export interface AccountSummary {
+  id: string;
+  displayName: string;
+  avatarUrl: string | null;
+  bio: string | null;
+  blocked: boolean;
+  isAdmin: boolean;
+  createdAt: string;
+  approved: number;
+  pending: number;
+  rejected: number;
+}
+
+/**
+ * Every account, with what each has posted.
+ *
+ * Returns nothing unless the caller is an administrator — not because this
+ * function checks, but because the policy allowing pending and rejected
+ * photographs to be read checks. One rule, in one place.
+ *
+ * Note what is absent: email addresses. Those live in auth.users, which the
+ * public key cannot read at all, and exposing them would mean a function
+ * running with elevated rights for the sake of a column nobody needs to browse.
+ * The dashboard has them if you need one.
+ */
+export async function getAccounts(): Promise<AccountSummary[]> {
+  const supabase = await getServerSupabase();
+  if (!supabase) return [];
+
+  const { data: profiles, error } = await supabase
+    .from("profiles")
+    .select("id, display_name, avatar_path, bio, blocked, is_admin, created_at")
+    .order("created_at", { ascending: false });
+
+  if (error || !profiles) return [];
+
+  const { data: photos } = await supabase
+    .from("stop_photos")
+    .select("author_id, status");
+
+  const tally = new Map<string, { approved: number; pending: number; rejected: number }>();
+  for (const row of (photos ?? []) as Array<{ author_id: string; status: string }>) {
+    const counts = tally.get(row.author_id) ?? { approved: 0, pending: 0, rejected: 0 };
+    if (row.status === "approved") counts.approved += 1;
+    else if (row.status === "pending") counts.pending += 1;
+    else counts.rejected += 1;
+    tally.set(row.author_id, counts);
+  }
+
+  return (profiles as Array<Record<string, unknown>>).map((p) => {
+    const counts = tally.get(p.id as string) ?? { approved: 0, pending: 0, rejected: 0 };
+    return {
+      id: p.id as string,
+      displayName: p.display_name as string,
+      avatarUrl: avatarUrl((p.avatar_path as string | null) ?? null),
+      bio: (p.bio as string | null) ?? null,
+      blocked: Boolean(p.blocked),
+      isAdmin: Boolean(p.is_admin),
+      createdAt: p.created_at as string,
+      ...counts,
+    };
+  });
+}

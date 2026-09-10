@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { ReviewQueue } from "@/components/ReviewQueue";
-import { getHiddenPhotos, getPendingPhotos } from "@/lib/photos";
+import { getAccounts, getHiddenPhotos, getPendingPhotos } from "@/lib/photos";
+import { AccountList } from "@/components/AccountList";
 import { HiddenPhotos } from "@/components/HiddenPhotos";
 import { getCurrentProfile } from "@/lib/supabase-server";
 
@@ -25,6 +26,7 @@ export default async function ReviewPage() {
 
   const photos = await getPendingPhotos();
   const hidden = await getHiddenPhotos();
+  const accounts = await getAccounts();
 
   return (
     <>
@@ -51,6 +53,16 @@ export default async function ReviewPage() {
             anything here can go back up.
           </p>
           <HiddenPhotos photos={hidden} />
+        </section>
+
+        <section className="mt-16 border-t border-contour/40 pt-10">
+          <h2 className="text-section">All User Profiles</h2>
+          <p className="mt-3 mb-8 max-w-[56ch] text-ink-soft">
+            {accounts.length} account{accounts.length === 1 ? "" : "s"}. Blocking
+            hides everything an account has posted and stops it uploading again;
+            nothing is deleted and it can be undone.
+          </p>
+          <AccountList accounts={accounts} />
         </section>
       </div>
     </>

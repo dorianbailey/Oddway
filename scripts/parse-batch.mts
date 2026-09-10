@@ -88,7 +88,20 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       Digits are allowed in a category because "route-66" is one, and the
       pattern that excluded them lost thirteen Illinois stops.
     */
-    const catLine = lines.find((l) => /^[a-z0-9-]+ \| [a-z][a-z -]*$/.test(l));
+    /*
+      Categories arrive hyphenated in most batches and spaced in others —
+      "ghost-town" against "ghost town". Both are read, and the spaces are
+      turned into hyphens below so the mapping only has to know one spelling.
+
+      Montana came in spaced and this pattern rejected 106 of its 120 stops.
+      They were not lost, because the parser refuses rather than skipping, but
+      an import that fails outright over a space is worth avoiding.
+
+      Case is ignored and ampersands allowed for the same reason: "Indigenous
+      history" and "rock art & expedition history" are perfectly good category
+      names and rejecting them over a capital letter helps nobody.
+    */
+    const catLine = lines.find((l) => /^[a-z0-9 &-]+ \| [a-z][a-z -]*$/i.test(l));
     const cityLine = lines.find((l) => /,\s*([A-Z]{2}|[A-Z][a-z]+( [A-Z][a-z]+)?)$/.test(l));
 
     if (!coords || !catLine || !cityLine) {
@@ -123,7 +136,13 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
     };
 
     const [latRaw, lonRaw] = coords.split(",");
-    const [rawCategory, rawAccess] = catLine.split("|").map((v) => v.trim());
+    const [rawCategoryText, rawAccess] = catLine.split("|").map((v) => v.trim());
+    // "ghost town" and "ghost-town" are the same category.
+    const rawCategory = rawCategoryText
+      .toLowerCase()
+      // "rock art & expedition history" becomes rock-art-expedition-history.
+      .replace(/\s*&\s*/g, "-")
+      .replace(/\s+/g, "-");
     const access = ACCESS_ALIASES[rawAccess] ?? rawAccess;
 
     const name = lines[0].replace(/^\d+\.\s*/, "").trim();

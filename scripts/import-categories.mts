@@ -507,6 +507,74 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   outlaws: "weird-history",
   pirates: "folklore",
 
+
+  /*
+    Nebraska. "natural-phenomena" is the sandhill crane migration at Rowe
+    Sanctuary — half a million birds on one stretch of river every March, which
+    is a thing you turn up for rather than an institution.
+  */
+  "ancient-history": "weird-history",
+  "black-history": "weird-history",
+  "cultural-history": "weird-history",
+  "fossil-history": "weird-history",
+  "historic-sites": "weird-history",
+  "road-history": "weird-history",
+  "trail-history": "weird-history",
+  "underground-railroad": "weird-history",
+  "wartime-history": "weird-history",
+  "paranormal-lore": "haunted",
+  "natural-phenomena": "roadside-oddities",
+  "scenic-geology": "roadside-oddities",
+  waterfalls: "roadside-oddities",
+  "wartime-oddities": "roadside-oddities",
+
+
+  /*
+    Montana, which arrived with spaced category names and a lot of them.
+
+    Two worth explaining. "rockhounding" is Crystal Park, where you dig for
+    quartz yourself, so a place rather than a collection. "animal-legend" is
+    the Shep Memorial at Fort Benton — a dog who met every train for five and a
+    half years waiting for an owner who had died.
+  */
+  "adaptive-reuse": "weird-history",
+  "art-history": "weird-history",
+  battlefield: "weird-history",
+  "cold-war-history": "weird-history",
+  "disaster-history": "weird-history",
+  "environmental-history": "weird-history",
+  "expedition-history": "weird-history",
+  "forest-service-history": "weird-history",
+  "grave-site": "weird-history",
+  "historic-bridge": "weird-history",
+  "historic-district": "weird-history",
+  "historic-mission": "weird-history",
+  "historic-theater": "weird-history",
+  "historic-village": "weird-history",
+  "indigenous-art": "weird-history",
+  "landmark-history": "weird-history",
+  "local-history": "weird-history",
+  "mining-history": "weird-history",
+  "regional-history": "weird-history",
+  "rock-art-expedition-history": "weird-history",
+  "western-history": "weird-history",
+
+  "animal-legend": "folklore",
+
+  "aviation-museum": "museums",
+  "dinosaur-museum": "museums",
+  "history-museum": "museums",
+  "machinery-museum": "museums",
+  "technology-museum": "museums",
+
+  "ancient-forest": "roadside-oddities",
+  "badlands-geology": "roadside-oddities",
+  "fossil-country": "roadside-oddities",
+  "geological-landmark": "roadside-oddities",
+  "outdoor-art": "roadside-oddities",
+  rockhounding: "roadside-oddities",
+  "sacred-art": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

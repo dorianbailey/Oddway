@@ -1,3 +1,4 @@
+import { US_STATES } from "../lib/us-states";
 import { readFileSync } from "node:fs";
 
 /**
@@ -37,12 +38,17 @@ const ACCESS_ALIASES: Record<string, string> = {
 };
 const VALID_ACCESS = new Set(["open", "limited", "roadside", "private", "closed"]);
 
-/** Spelled-out states, since batches vary. */
-const STATE_NAMES: Record<string, string> = {
-  alabama: "AL", illinois: "IL", louisiana: "LA", maine: "ME",
-  mississippi: "MS", "north carolina": "NC", "south carolina": "SC",
-  tennessee: "TN", wisconsin: "WI",
-};
+/**
+ * Spelled-out state names to their codes.
+ *
+ * Built from the site's own list rather than maintained here. A hand-written
+ * lookup had nine states in it and rejected all 126 Wyoming stops for the
+ * crime of writing "Wyoming" — which is a batch failing over a fact the
+ * application already knows.
+ */
+const STATE_NAMES: Record<string, string> = Object.fromEntries(
+  Object.entries(US_STATES).map(([code, name]) => [name.toLowerCase(), code]),
+);
 
 export interface ParsedStop {
   name: string;

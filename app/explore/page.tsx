@@ -5,9 +5,14 @@ import { PageHero } from "@/components/PageHero";
 import { StopCard } from "@/components/StopCard";
 import { CATEGORIES, getCategory } from "@/lib/categories";
 import { DataUnavailable } from "@/components/DataUnavailable";
-import { getStatesWithCounts, loadStops } from "@/lib/stops";
+import {
+  countStops,
+  findStops,
+  getCategoryCounts,
+  getStatesWithCounts,
+} from "@/lib/stops";
 import { isKnownState, stateName } from "@/lib/us-states";
-import type { CategorySlug, Stop } from "@/types/oddway";
+import type {CategorySlug} from "@/types/oddway";
 
 interface ExplorePageProps {
   searchParams: Promise<{ state?: string; category?: string; q?: string; page?: string }>;
@@ -48,29 +53,58 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
   const selectedCategory = normaliseCategory(category);
   const query = (q ?? "").trim();
 
-  const [{ stops: allStops, unavailable }, states] = await Promise.all([
-    loadStops(),
-    getStatesWithCounts(),
-  ]);
-
-  const categoryCounts = allStops.reduce<Record<string, number>>(
-    (counts, stop) => {
-      counts[stop.category] = (counts[stop.category] ?? 0) + 1;
-      return counts;
-    },
-    {},
-  );
-
-  const stops = allStops.filter((stop) => {
-    if (selectedState && stop.state !== selectedState) return false;
-    if (selectedCategory && stop.category !== selectedCategory) return false;
-    if (query && !matchesQuery(stop, query)) return false;
-    return true;
-  });
-
   const sections = selectedCategory
     ? CATEGORIES.filter((c) => c.slug === selectedCategory)
     : CATEGORIES;
+
+  const PREVIEW_PER_CATEGORY = 6;
+  const PER_PAGE = 24;
+  const currentPage = Math.max(1, Number(page) || 1);
+
+  /*
+    Fetched per section, by the database, rather than pulling every stop and
+    filtering here.
+
+    This page used to load all five thousand records — about three and a half
+    megabytes — to render twenty-four cards, on every request, and took four
+    seconds doing it while the homepage took eighty milliseconds.
+
+    In overview mode that is seven small queries running together, six rows
+    each. With a category chosen it is one query for the page being looked at.
+    Either way the count comes back with the rows, so pagination needs no
+    second trip.
+  */
+  const [states, sectionResults] = await Promise.all([
+    getStatesWithCounts(),
+    Promise.all(
+      sections.map((category) =>
+        findStops({
+          state: selectedState,
+          category: category.slug,
+          query,
+          limit: selectedCategory ? PER_PAGE : PREVIEW_PER_CATEGORY,
+          offset: selectedCategory ? (currentPage - 1) * PER_PAGE : 0,
+        }),
+      ),
+    ),
+  ]);
+
+  const bySection = new Map(
+    sections.map((category, i) => [category.slug, sectionResults[i]]),
+  );
+
+  const matchedTotal = sectionResults.reduce((sum, r) => sum + r.total, 0);
+
+  /*
+    Unavailable means the database answered with nothing at all, which is an
+    outage rather than a filter that matched nothing. Distinguishing them
+    matters: one deserves an apology and the other a suggestion.
+  */
+  const unavailable = matchedTotal === 0 && !selectedState && !selectedCategory && !query;
+
+  const categoryCounts = await getCategoryCounts();
+  // The whole index, for "showing 24 of 5,314" — a count, not a fetch.
+  const totalStops = await countStops();
 
   /*
     Two shapes, because browsing and drilling in are different jobs.
@@ -82,14 +116,9 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
 
     With a category chosen it becomes a list, and lists paginate.
   */
-  const PREVIEW_PER_CATEGORY = 6;
-  const PER_PAGE = 24;
-
-  const currentPage = Math.max(1, Number(page) || 1);
   const pageCount = selectedCategory
-    ? Math.max(1, Math.ceil(stops.length / PER_PAGE))
+    ? Math.max(1, Math.ceil(matchedTotal / PER_PAGE))
     : 1;
-  const pageStart = (Math.min(currentPage, pageCount) - 1) * PER_PAGE;
 
   /** Keeps the other filters when building a link. */
   function withParams(next: Record<string, string | number | undefined>) {
@@ -132,8 +161,8 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
             selectedState={selectedState}
             selectedCategory={selectedCategory}
             query={query}
-            total={allStops.length}
-            matched={stops.length}
+            total={totalStops}
+            matched={matchedTotal}
           />
         </div>
       </div>
@@ -141,7 +170,7 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         {unavailable ? (
           <DataUnavailable />
-        ) : stops.length === 0 ? (
+        ) : matchedTotal === 0 ? (
           <p className="border-l-2 border-contour pl-4 text-lede text-ink-soft">
             Nothing matches that.{" "}
             <Link href="/explore" className="underline underline-offset-4">
@@ -151,9 +180,9 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
           </p>
         ) : (
           sections.map((category) => {
-            const matches = stops.filter(
-              (stop) => stop.category === category.slug,
-            );
+            const result = bySection.get(category.slug);
+            const matches = result?.stops ?? [];
+            const matchCount = result?.total ?? 0;
             if (matches.length === 0) return null;
 
             return (
@@ -184,10 +213,7 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
                 </p>
 
                 <ul className="mt-8 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-                  {(selectedCategory
-                    ? matches.slice(pageStart, pageStart + PER_PAGE)
-                    : matches.slice(0, PREVIEW_PER_CATEGORY)
-                  ).map((stop) => (
+                  {matches.map((stop) => (
                     <li key={stop.id} className="flex">
                       <StopCard stop={stop} />
                     </li>
@@ -195,13 +221,19 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
                 </ul>
 
                 {/* Overview mode: a way through to the rest of the section. */}
-                {!selectedCategory && matches.length > PREVIEW_PER_CATEGORY ? (
+                {!selectedCategory && matchCount > PREVIEW_PER_CATEGORY ? (
                   <p className="mt-8">
                     <Link
                       href={withParams({ category: category.slug })}
                       className="font-semibold text-route underline underline-offset-4"
                     >
-                      See all {matches.length} {category.label.toLowerCase()}
+                      {/*
+                        matchCount, not matches.length. The page now fetches
+                        six per section, so matches.length is always six and
+                        "See all 6" reads as though six is the total.
+                      */}
+                      See all {matchCount.toLocaleString()}{" "}
+                      {category.label.toLowerCase()}
                     </Link>
                   </p>
                 ) : null}
@@ -254,13 +286,6 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
   );
 }
 
-/** Name, town, state and description all count as a match. */
-function matchesQuery(stop: Stop, query: string): boolean {
-  const needle = query.toLowerCase();
-  return [stop.name, stop.city, stop.state, stateName(stop.state), stop.description]
-    .filter(Boolean)
-    .some((field) => field!.toLowerCase().includes(needle));
-}
 
 function normaliseState(value: string | undefined): string | null {
   if (!value) return null;

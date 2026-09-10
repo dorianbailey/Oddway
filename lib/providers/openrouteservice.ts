@@ -339,8 +339,23 @@ async function providerError(
     it sends whoever maintains this looking at the wrong thing entirely.
   */
   if (status === 404) {
+    /*
+      Two different failures arrive as a 404 and the provider does not reliably
+      distinguish them: a point with no road near it, and two points with no
+      road between them.
+
+      The second is common in a way that only became obvious once Hawaii was in
+      the index. Lanai City to Kula fails not because either place is remote,
+      but because they are on different islands — and telling somebody to try a
+      nearby town is useless advice when no town on Lanai connects to Maui.
+
+      So the message covers both, and names the island case, because that is
+      the one somebody cannot solve by typing more carefully.
+    */
     return new RoutingProviderError(
-      "We couldn't find a road near one of those places. Try a nearby town, or a street address.",
+      "We couldn't find a road route between those two places. They may not be " +
+        "connected by road — that is true of Hawaii's islands and some of Alaska — " +
+        "or one of them may be too far from a road to start from.",
       422,
     );
   }

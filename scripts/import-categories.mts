@@ -748,6 +748,22 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "novelty-architecture": "roadside-oddities",
   "volcanic-landscapes": "roadside-oddities",
 
+
+  /*
+    Wyoming, which is mostly Yellowstone, the Oregon Trail and ghost towns.
+  */
+  "abandoned-homestead": "weird-history",
+  "aviation-ruin": "weird-history",
+  "fort-ruins": "weird-history",
+  "historic-fort": "weird-history",
+  "historic-mine": "weird-history",
+  "historic-mining-town": "weird-history",
+  "historic-ruin": "weird-history",
+  prison: "weird-history",
+  "stagecoach-station": "weird-history",
+  "trail-landmark": "weird-history",
+  badlands: "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

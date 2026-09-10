@@ -536,3 +536,78 @@ export async function countStops(): Promise<number> {
 export async function countStates(): Promise<number> {
   return (await fetchStopTotals()).states;
 }
+
+
+export interface StopSearch {
+  state?: string | null;
+  category?: CategorySlug | null;
+  query?: string;
+  limit?: number;
+  offset?: number;
+}
+
+/**
+ * Stops matching a filter, counted and paged by the database.
+ *
+ * The explore page used to load every stop and filter in JavaScript. That is
+ * fine at a few hundred rows and indefensible at five thousand: three and a
+ * half megabytes fetched on every request to show twenty-four cards, and a
+ * page that took four seconds while the homepage took eighty milliseconds.
+ *
+ * Postgres can do all of this. The count comes back in the same round trip as
+ * the rows, so a page knows both what to show and how many pages there are
+ * without a second query.
+ */
+export async function findStops(
+  options: StopSearch = {},
+): Promise<{ stops: Stop[]; total: number }> {
+  const { state, category, query, limit = 24, offset = 0 } = options;
+
+  const supabase = getSupabase();
+  if (!supabase) {
+    const needle = (query ?? "").toLowerCase();
+    const matched = DEMO_STOPS.filter((stop) => {
+      if (state && stop.state !== state) return false;
+      if (category && stop.category !== category) return false;
+      if (needle) {
+        const haystack = [stop.name, stop.city, stop.state, stop.description]
+          .filter(Boolean).join(" ").toLowerCase();
+        if (!haystack.includes(needle)) return false;
+      }
+      return true;
+    });
+    return { stops: matched.slice(offset, offset + limit), total: matched.length };
+  }
+
+  let request = supabase
+    .from("stops")
+    .select(STOP_COLUMNS, { count: "exact" })
+    .order("name");
+
+  if (state) request = request.eq("state", state);
+  if (category) request = request.eq("category", category);
+
+  if (query) {
+    /*
+      Commas and parentheses separate the clauses in PostgREST's or() syntax,
+      so a search for "Bunyan, Paul" would be read as two filters rather than
+      one phrase. Stripping them is cruder than escaping, and it cannot turn a
+      search into a different query by accident.
+    */
+    const needle = query.replace(/[,()*]/g, " ").trim();
+    if (needle) {
+      request = request.or(
+        `name.ilike.%${needle}%,city.ilike.%${needle}%,description.ilike.%${needle}%`,
+      );
+    }
+  }
+
+  const { data, error, count } = await request.range(offset, offset + limit - 1);
+
+  if (error) {
+    console.error("Supabase findStops failed:", error.message);
+    return { stops: [], total: 0 };
+  }
+
+  return { stops: (data as StopRow[]).map(toStop), total: count ?? 0 };
+}

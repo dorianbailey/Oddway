@@ -710,14 +710,14 @@ test("a routing failure is described by its cause, not as an outage", () => {
         : { message: "couldn't use one of those locations", code: 422 };
     }
     if (status === 404) {
-      return { message: "couldn't find a road near one of those places", code: 422 };
+      return { message: "couldn't find a road route between those two places", code: 422 };
     }
     return { message: "unavailable", code: 502 };
   }
 
-  // The Orlando case.
+  // The Orlando case, and the Hawaii case, which arrive identically.
   const notRoutable = describe(404, '{"error":{"code":2010,"message":"Could not find routable point"}}');
-  assert.match(notRoutable.message, /road near/);
+  assert.match(notRoutable.message, /road route between/);
   assert.equal(notRoutable.code, 422, "the traveller can fix this, so not a 5xx");
   assert.doesNotMatch(notRoutable.message, /unavailable/);
 

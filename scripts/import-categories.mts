@@ -731,6 +731,23 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "optical-oddities": "roadside-oddities",
   "roadside-geography": "roadside-oddities",
 
+
+  /*
+    California. "prehistoric" is the La Brea Tar Pits, which is a museum built
+    around an active excavation — filed as a museum because that is what you
+    walk into.
+  */
+  "abandoned-modernism": "weird-history",
+  "abandoned-places": "weird-history",
+  "old-west": "weird-history",
+  "dark-museums": "museums",
+  prehistoric: "museums",
+  "odd-theaters": "roadside-oddities",
+  "ancient-trees": "roadside-oddities",
+  "immersive-art": "roadside-oddities",
+  "novelty-architecture": "roadside-oddities",
+  "volcanic-landscapes": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

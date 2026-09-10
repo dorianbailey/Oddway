@@ -690,6 +690,47 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "film-oddities": "weird-history",
   "sacred-history": "weird-history",
 
+
+  /*
+    Hawaii and South Dakota.
+
+    Three worth explaining. "indigenous-engineering" is the fishponds — walled
+    coastal enclosures built centuries ago and still holding fish, which is
+    engineering rather than a ruin. "sacred-sites" and "sacred-landscape" cover
+    heiau and Bear Butte, places of active worship rather than exhibits, and
+    both keep their descriptions' guidance about how to behave there.
+  */
+  "animal-history": "weird-history",
+  "geographic-history": "weird-history",
+  "geothermal-history": "weird-history",
+  "indigenous-culture": "weird-history",
+  "indigenous-engineering": "weird-history",
+  "industrial-cultural-history": "weird-history",
+  "memorial-history": "weird-history",
+  "monumental-history": "weird-history",
+  "preserved-history": "weird-history",
+  "relocated-history": "weird-history",
+  "royal-history": "weird-history",
+  "sacred-landscape": "weird-history",
+  "sacred-sites": "weird-history",
+
+  "folklore-nature": "folklore",
+  "survival-lore": "folklore",
+  "mining-paranormal": "haunted",
+  "roadside-cryptids": "cryptids",
+
+  "art-museums": "museums",
+  "fossil-museums": "museums",
+
+  "caves-geology": "roadside-oddities",
+  "engineered-landscape": "roadside-oddities",
+  "geology-engineering": "roadside-oddities",
+  "geothermal-oddities": "roadside-oddities",
+  "historic-lookouts": "roadside-oddities",
+  "monumental-art": "roadside-oddities",
+  "optical-oddities": "roadside-oddities",
+  "roadside-geography": "roadside-oddities",
+
   // UFOs
   ufo: "ufos",
 };

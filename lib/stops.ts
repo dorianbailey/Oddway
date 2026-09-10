@@ -235,16 +235,29 @@ export async function getStopsNearBounds(
     query = query.in("category", categories);
   }
 
-  const { data, error } = await query;
+  /*
+    Paged, because PostgREST caps a response at 1,000 rows without saying so.
 
-  if (error) {
-    console.error("Supabase getStopsNearBounds failed:", error.message);
-    return [...DEMO_STOPS].filter((stop) =>
-      withinPaddedBounds(stop, west, south, east, north),
-    );
+    A wide bounding box across a dense region will pass that, and the failure
+    would be a route quietly missing stops rather than an error — the same
+    shape as the bug that had the whole site reading only its first thousand
+    entries. It has not happened yet: Chicago to Denver is 283 stops today.
+    It will.
+  */
+  const PAGE = 1000;
+  const rows: unknown[] = [];
+  for (let offset = 0; ; offset += PAGE) {
+    const { data, error } = await query.range(offset, offset + PAGE - 1);
+    if (error) {
+      console.error("Supabase getStopsNearBounds failed:", error.message);
+      return [...DEMO_STOPS].filter((stop) =>
+        withinPaddedBounds(stop, west, south, east, north),
+      );
+    }
+    rows.push(...data);
+    if (data.length < PAGE) break;
   }
-
-  return data.map(toStop);
+  return (rows as StopRow[]).map(toStop);
 }
 
 /** One stop by its URL slug, or null if there isn't one. */

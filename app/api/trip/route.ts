@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { countStopsNearRoute, findStopsNearRoute } from "@/lib/corridor";
+import { findAndCountStopsNearRoute } from "@/lib/corridor";
 import {
   geocodeCached,
   getRoutingProvider,
@@ -83,6 +83,23 @@ export async function POST(request: Request) {
     // precise distance work. Keeps the corridor query viable as the index grows.
     const stops = await getStopsNearBounds(route.bounds, categories);
 
+    /*
+      One pass, not two.
+
+      This used to call findStopsNearRoute and then countStopsNearRoute, which
+      measured every stop against the route twice — once to pick sixty and
+      again to count how many there were. Chicago to Denver took eighteen
+      seconds, almost all of it doing the same geometry a second time.
+
+      More stops travel than the page shows at first, so revealing another
+      batch costs no routing call.
+    */
+    const corridor = findAndCountStopsNearRoute(stops, route.geometry, {
+      maxDetourMinutes,
+      categories,
+      limit: 300,
+    });
+
     return NextResponse.json({
       query: { origin: from.label, destination: to.label, categories, maxDetourMinutes },
       route,
@@ -94,21 +111,7 @@ export async function POST(request: Request) {
         spread set travels with the first response and the page reveals from
         it, in rank order, so each batch still covers the whole drive.
       */
-      stops: findStopsNearRoute(stops, route.geometry, {
-        maxDetourMinutes,
-        categories,
-        limit: 300,
-      }),
-      /*
-        The total before the display limit, so the page can say how many were
-        left out. Boston to Philadelphia matches over two hundred and sixty;
-        showing sixty without saying so would make a busy corridor look like a
-        thin one.
-      */
-      matchedCount: countStopsNearRoute(stops, route.geometry, {
-        maxDetourMinutes,
-        categories,
-      }),
+      ...corridor,
       attribution: provider.attribution,
     });
   } catch (error) {

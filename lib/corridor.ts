@@ -75,12 +75,27 @@ export function findStopsNearRoute(
   // A LineString needs at least two positions.
   if (geometry.length < 2) return [];
 
-  const route = lineString(geometry);
 
   const candidates =
     categories.length > 0
       ? stops.filter((stop) => categories.includes(stop.category))
       : stops;
+
+  /*
+    Thin the line before measuring against it.
+
+    A thousand-mile route comes back with five thousand coordinates, which is
+    exactly right for drawing but absurd for deciding whether a stop is within
+    half an hour of it. Every stop was being measured against every segment:
+    283 stops against 5,048 points, twice over, which is around three million
+    distance calculations and eighteen seconds of them.
+
+    Dropping to roughly every fourth point moves the measured line by tens of
+    metres on a corridor thirty minutes wide. The route drawn on the map is
+    untouched — this thinner copy exists only for the arithmetic.
+  */
+  const measuringLine = thinLine(geometry);
+  const route = lineString(measuringLine);
 
   const matching = candidates
     .map((stop) => {
@@ -104,6 +119,35 @@ export function findStopsNearRoute(
     .filter((stop) => stop.detourMinutes <= maxDetourMinutes);
 
   return spreadAlongRoute(matching, limit);
+}
+
+/**
+ * The corridor and its size, from a single pass.
+ *
+ * countStopsNearRoute ran the whole calculation again — every point-to-line
+ * distance over every stop in the bounding box — to produce a number the first
+ * pass already knew. On Chicago to Denver that was several thousand stops
+ * measured twice, and the request took eighteen seconds.
+ *
+ * Doing the work once and returning both is the entire fix.
+ */
+export function findAndCountStopsNearRoute(
+  stops: Stop[],
+  geometry: [number, number][],
+  options: CorridorOptions = {},
+): { stops: RoutedStop[]; matchedCount: number } {
+  const { limit = DEFAULT_LIMIT, ...rest } = options;
+
+  // Everything that matches, before the display limit.
+  const all = findStopsNearRoute(stops, geometry, {
+    ...rest,
+    limit: Number.POSITIVE_INFINITY,
+  });
+
+  return {
+    stops: all.length <= limit ? all : spreadAlongRoute(all, limit),
+    matchedCount: all.length,
+  };
 }
 
 /**
@@ -140,6 +184,30 @@ export function countStopsNearRoute(
  *
  * Under the limit this does nothing at all, which is the common case.
  */
+/**
+ * Drops points from a line until it is a manageable length.
+ *
+ * Keeps the first and last, and takes an even sample between. Not a proper
+ * simplification — it does not preserve corners the way Douglas-Peucker would
+ * — but the corridor test asks "is this within thirty minutes of the road",
+ * and a road that has moved forty metres does not change that answer.
+ */
+function thinLine(points: [number, number][]): [number, number][] {
+  const MAX_POINTS = 1_200;
+  if (points.length <= MAX_POINTS) return points;
+
+  const step = Math.ceil(points.length / MAX_POINTS);
+  const thinned: [number, number][] = [];
+  for (let i = 0; i < points.length; i += step) thinned.push(points[i]);
+
+  // The end matters: dropping it would shorten the corridor near the
+  // destination, which is where somebody is most likely to be looking.
+  const last = points[points.length - 1];
+  if (thinned[thinned.length - 1] !== last) thinned.push(last);
+
+  return thinned;
+}
+
 function spreadAlongRoute(stops: RoutedStop[], limit: number): RoutedStop[] {
   const byPosition = (a: RoutedStop, b: RoutedStop) =>
     a.routePositionKm - b.routePositionKm;

@@ -96,13 +96,40 @@ export function RouteSearch({
       },
       (error) => {
         setLocating(false);
+        /*
+          Each failure gets its own sentence, because they need different
+          things from the person. "Couldn't get your location" for all three
+          left somebody who had denied permission waiting for it to work, and
+          somebody indoors on a desktop retrying forever.
+        */
         setLocationError(
           error.code === error.PERMISSION_DENIED
-            ? "Location permission was denied. Type a starting point instead."
-            : "Couldn't get your location. Type a starting point instead.",
+            ? "Location permission was denied. You can allow it in your browser settings, or type a starting point."
+            : error.code === error.TIMEOUT
+              ? "That took too long. Try again, or type a starting point."
+              /*
+                POSITION_UNAVAILABLE with permission already granted almost
+                always means the operating system's own location service is
+                off, not the browser's. On macOS that setting lives in Privacy
+                and Security and is quietly turned off by some updates, so
+                pointing at the browser would send somebody looking in the
+                wrong place entirely.
+              */
+              : "Your device didn't return a location. Check location services are on in your system settings, or type a starting point.",
         );
       },
-      { timeout: 10_000, maximumAge: 60_000 },
+      /*
+        Thirty seconds, not ten.
+
+        A laptop with no GPS locates itself from nearby wifi networks, and that
+        can take fifteen or twenty seconds on a first attempt — long enough
+        that a ten-second limit was reporting failure on requests that were
+        about to succeed.
+
+        maximumAge lets a fix from the last five minutes be reused, which makes
+        a second attempt instant.
+      */
+      { timeout: 30_000, maximumAge: 300_000 },
     );
   }
 

@@ -785,6 +785,18 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "geology-overlook": "roadside-oddities",
   "unusual-architecture": "roadside-oddities",
 
+
+  /*
+    Arizona. "new-age-lore" is the Sedona vortexes — filed as folklore, which
+    is where a belief about a place belongs whether or not it is true.
+  */
+  "botanical-oddities": "roadside-oddities",
+  "neon-oddities": "roadside-oddities",
+  "spiritual-sites": "roadside-oddities",
+  "law-enforcement-oddities": "weird-history",
+  "media-history": "weird-history",
+  "new-age-lore": "folklore",
+
   // UFOs
   ufo: "ufos",
 };

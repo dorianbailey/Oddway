@@ -45,3 +45,4 @@ next-env.d.ts
 *-batch.json
 *.bak
 stops-manifest.csv
+stops-audit.csv

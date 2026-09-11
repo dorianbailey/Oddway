@@ -272,9 +272,26 @@ for (const { stop, was, metres } of updates) {
 
 // -------------------------------------------------------------------- SQL
 
+/*
+  The slug written to SQL must be the slug that matched, not a fresh one.
+
+  Matching uses both conventions the project has used; slugify() only produces
+  the first. When an existing row was created under the other one — Durant's
+  peanut was world-s-largest-peanut, not worlds-largest-peanut — the check
+  correctly called it an update and the insert then wrote a slug that collided
+  with nothing. Two Durant peanuts, 70 m apart, and a count one too high.
+
+  An update writes the incumbent slug. Renaming a live page breaks every link
+  to it, so the slug belongs to whoever arrived first even when the newer name
+  is better.
+*/
+const slugFor = new Map<(typeof zoned)[number], string>();
+for (const stop of inserts) slugFor.set(stop, slugify(stop.name));
+for (const { stop, was } of updates) slugFor.set(stop, was.slug);
+
 const values = zoned.map((s) => "  (" + [
   sqlString(s.name),
-  sqlString(slugify(s.name)),
+  sqlString(slugFor.get(s) ?? slugify(s.name)),
   sqlString(s.category),
   s.lat,
   s.lon,

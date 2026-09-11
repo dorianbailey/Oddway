@@ -177,6 +177,12 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "architectural-anomaly": "roadside-oddities",
   "observation-tower": "roadside-oddities",
   "bell-tower": "roadside-oddities",
+  /* Added for the Missouri batch. */
+  mills: "roadside-oddities",
+  geography: "roadside-oddities",
+  "historic-infrastructure": "weird-history",
+  "prehistoric-history": "weird-history",
+  "worlds-fair-history": "weird-history",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

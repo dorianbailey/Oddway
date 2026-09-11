@@ -1,0 +1,885 @@
+OddWay — Missouri Complete
+127 Missouri stops
+Stops 1–127
+Prepared September 9, 2026
+
+Access key: open = normally accessible during posted/public hours; limited = seasonal, scheduled, ticketed, cemetery-hours, appointment-only, or check-ahead access; roadside = view from a safe lawful public area; private = private property, do not enter without permission; seasonal = primarily accessible during a defined season; view-only = observe from a lawful public viewpoint and do not enter the feature.
+
+Research note: Round Spring Cave is intentionally excluded because the National Park Service lists it closed for the entire 2026 season. Bonne Terre Mine is also excluded because its operator currently lists the mine as closed. Round Spring itself remains included as a public surface stop.
+
+1. Missouri State Penitentiary Tours
+Jefferson City, MO
+38.57350, -92.16070
+dark-history | limited
+Opened in 1836 and closed in 2004, the Missouri State Penitentiary preserves cell blocks, yards and the former gas chamber from one of the country's oldest major prisons west of the Mississippi. Scheduled history tours and paranormal investigations make the enormous complex a particularly strong OddWay stop.
+Source: https://missouripentours.com/
+
+2. Missouri State Penitentiary Museum
+Jefferson City, MO
+38.57204, -92.16358
+dark-history | limited
+This museum complements the nearby prison complex with photographs, artifacts, inmate-made objects and displays interpreting daily life inside the Missouri State Penitentiary. It gives travelers a lower-intensity way to explore the prison's history before or after a scheduled tour.
+Source: https://missouripentours.com/museum/
+
+3. Lemp Mansion
+St. Louis, MO
+38.59317, -90.21581
+paranormal | limited
+The mansion of St. Louis's once-powerful Lemp brewing family is tied to a series of deaths and suicides that helped create one of the city's best-known haunted-house legends. The restored property operates as an inn and event venue and periodically offers ghost-focused experiences.
+Source: https://www.lempmansion.com/
+
+4. Pythian Castle
+Springfield, MO
+37.22143, -93.26868
+paranormal | limited
+Built in the early twentieth century for the Knights of Pythias and later used by the U.S. military, this fortress-like building has accumulated prison, military and paranormal lore. Public access is through scheduled tours, events and selected paranormal programs rather than unrestricted walk-in exploration.
+Source: https://www.pythiancastle.com/
+
+5. The Elms Hotel & Spa Paranormal Tour
+Excelsior Springs, MO
+39.33686, -94.22600
+paranormal | limited
+The historic Elms has survived fires, Prohibition-era intrigue and decades as a mineral-water resort, giving the hotel a deep supply of stories about unusual activity. The property has offered scheduled paranormal tours that explore its darker legends and hidden spaces.
+Source: https://www.hyatt.com/destination-by-hyatt/en-US/mkcdc-the-elms-hotel-and-spa
+
+6. Beattie Mansion
+St. Joseph, MO
+39.77500, -94.85980
+paranormal | limited
+This 1850s mansion is one of St. Joseph's best-known paranormal investigation locations. The privately operated property offers scheduled tours and extended investigations, so OddWay travelers should reserve rather than simply arriving and entering.
+Source: https://www.thebeattiemansion.com/
+
+7. Vaile Victorian Mansion
+Independence, MO
+39.10758, -94.41713
+weird-history | limited
+Built in 1881, the ornate Second Empire mansion contains elaborate interiors, unusual architectural details and stories surrounding the Vaile family. Seasonal tours make it a strong combination of Gilded Age excess, local tragedy and Victorian atmosphere.
+Source: https://vailemansion.org/
+
+8. Glore Psychiatric Museum
+St. Joseph, MO
+39.77639, -94.80839
+medical-history | limited
+Housed in a former state hospital building, the Glore traces the history of psychiatric treatment through reconstructed devices, patient art, medical equipment and institutional artifacts. Its displays range from early treatment methods to more modern mental-health history and are unusually specific rather than generic museum material.
+Source: https://www.stjosephmuseum.org/glore-psychiatric-museum
+
+9. Haunted Castle House
+Brumley, MO
+38.09046, -92.48272
+paranormal | limited
+The turreted Castle House has been used as a residence and medical property and is promoted around its long-running paranormal reputation. Tours and investigations are reservation-based, so it should be treated as a scheduled private attraction rather than a walk-up abandoned site.
+Source: https://hauntedcastlehouse.com/
+
+10. Emmaus Asylum
+Marthasville, MO
+38.64380, -90.99267
+paranormal | limited
+This historic property is operated as a dedicated paranormal investigation venue with overnight and scheduled access. The site gives OddWay a legitimate routeable haunted-location stop without encouraging entry into an abandoned or unauthorized structure.
+Source: https://www.emmausasylum.com/
+
+11. Ozark Spooklight
+Joplin, MO
+37.08445, -94.51345
+folklore | roadside
+The Ozark or Hornet Spooklight is a long-running borderland legend involving a mysterious light reported along rural roads southwest of Joplin. Modern explanations point toward distant vehicle headlights, but the story remains one of Missouri's classic supernatural roadside traditions; stay on public roads and never enter adjacent private fields.
+Source: https://www.atlasobscura.com/places/ozark-spooklight
+
+12. Jim the Wonder Dog Memorial Garden
+Marshall, MO
+39.12157, -93.19733
+folklore | open
+Jim was a Llewellin setter celebrated in the 1930s for apparently understanding complex spoken commands, predicting events and identifying objects he had not been trained to recognize. A public memorial garden in downtown Marshall preserves the story of the dog whose abilities became local legend.
+Source: http://www.jimthewonderdog.org/
+
+13. Jesse James Home Museum
+St. Joseph, MO
+39.75580, -94.84510
+crime-history | limited
+Jesse James was shot and killed in this St. Joseph house in 1882 by Robert Ford. The preserved home contains artifacts and interpretation focused on James's final days, making it one of Missouri's most concrete locations tied to the outlaw's life and death.
+Source: https://stjosephmuseum.org/jesse-james-home/
+
+14. Jesse James Birthplace & Farm Museum
+Kearney, MO
+39.39222, -94.32052
+crime-history | limited
+The James family farm preserves the birthplace and childhood setting of outlaw Jesse James. Museum exhibits and the historic house place the famous robbery stories within the larger history of the James family, slavery, guerrilla warfare and post-Civil War Missouri.
+Source: https://jessejamesmuseum.org/
+
+15. Jesse James Bank Museum
+Liberty, MO
+39.24697, -94.41926
+crime-history | limited
+The former Clay County Savings Association building was the target of an 1866 daylight robbery often associated with the James-Younger gang, although the exact identities of the robbers remain debated. The museum preserves the bank interior and the story of one of the earliest major postwar outlaw raids.
+Source: https://jessejamesmuseum.org/jesse-james-bank-museum/
+
+16. Jesse James Grave
+Kearney, MO
+39.36747, -94.36426
+crime-history | limited
+Jesse James's remains were ultimately reinterred in Mount Olivet Cemetery beneath a family marker after first being buried at the James farm. The grave is a routeable endpoint to the outlaw's story and should be visited respectfully during lawful cemetery hours.
+Source: https://www.atlasobscura.com/places/jesse-james-grave
+
+17. Odd Fellows Home / Belvoir Winery
+Liberty, MO
+39.22581, -94.40661
+paranormal | limited
+The former Odd Fellows complex included an orphanage, hospital, nursing home and cemetery, creating a large institutional landscape with a substantial paranormal reputation. The property is privately operated; public access is limited to business hours, events and authorized ghost tours rather than entry into closed buildings.
+Source: https://www.atlasobscura.com/places/odd-fellows-home
+
+18. Lemp Family Tomb
+St. Louis, MO
+38.68973, -90.22461
+cemetery-oddities | limited
+The Lemp family mausoleum in Bellefontaine Cemetery holds members of the brewing dynasty whose tragedies helped fuel the haunted reputation of the Lemp Mansion. It is a useful companion stop to the mansion and can be visited respectfully under cemetery rules.
+Source: https://www.atlasobscura.com/places/the-lemp-family-tomb
+
+19. Old St. Ferdinand Shrine
+Florissant, MO
+38.79639, -90.33389
+religious-history | limited
+This historic Catholic complex preserves an 1819 convent, 1821 church and other early buildings connected with St. Rose Philippine Duchesne. Religious artifacts, frontier history and the unusually old surviving structures make it a distinctive stop in suburban St. Louis.
+Source: http://www.oldstferdinandshrine.com/
+
+20. Queen Tombstone
+Charleston, MO
+36.94011, -89.35138
+cemetery-oddities | limited
+A striking grave marker in the Charleston area depicts a crowned woman and has generated local curiosity far beyond an ordinary headstone. The stop is valuable as cemetery folk art, but visitors should stay on established paths and treat the burial ground respectfully.
+Source: https://www.atlasobscura.com/places/grave-of-the-queen
+
+21. Grave of David Rice Atchison
+Plattsburg, MO
+39.55818, -94.44455
+weird-history | limited
+Senator David Rice Atchison is buried beneath a monument that repeats the long-running claim that he was 'president for one day' during the 1849 presidential transition. Historians do not regard him as an actual U.S. president, but the story remains one of Missouri's most durable political-history oddities.
+Source: https://www.atlasobscura.com/places/david-rice-atchison-grave
+
+22. Far West Temple Site
+Kingston, MO
+39.67160, -94.13070
+religious-history | open
+Far West was an important Latter-day Saint settlement in the 1830s before conflict forced its residents from the area. Cornerstones from the planned temple remain on the preserved site, creating a quiet but highly specific religious-history stop.
+Source: https://history.churchofjesuschrist.org/subsection/historic-sites/missouri/far-west?lang=eng
+
+23. Burial Place of Chief Pontiac
+St. Louis, MO
+38.62456, -90.19037
+weird-history | roadside
+A plaque near the former colonial village area marks the traditional St. Louis burial place of Odawa leader Pontiac, who was killed in 1769. The exact burial history is not perfectly documented, but the marker anchors an important and often-overlooked part of regional Native and colonial history.
+Source: https://www.atlasobscura.com/places/burial-place-of-chief-pontiac
+
+24. Marconnott Mausoleum / Mount Olive Mummy
+St. Louis, MO
+38.53439, -90.29188
+cemetery-oddities | limited
+The Marconnott mausoleum became locally famous because a naturally mummified body was once visible through a glass panel. The coffin is no longer displayed for public viewing, but the mausoleum and story remain part of Mount Olive Cemetery's unusual history; visit respectfully.
+Source: https://www.atlasobscura.com/places/mount-olive-mummy
+
+25. Meramec Caverns
+Stanton, MO
+38.24155, -91.09224
+caves | limited
+Meramec Caverns is a large commercial cave system beneath the Ozark hills that has drawn Route 66 travelers for generations. Guided tours pass through extensive limestone rooms and formations, with the attraction also trading heavily on regional Jesse James lore.
+Source: https://www.americascave.com/
+
+26. Fantastic Caverns
+Springfield, MO
+37.28800, -93.35962
+caves | limited
+Fantastic Caverns is toured in passenger vehicles rather than on foot, making it one of the few ride-through show caves in the United States. Visitors travel through large passages filled with flowstone, columns and other formations on scheduled guided tours.
+Source: https://fantasticcaverns.com/
+
+27. Mark Twain Cave
+Hannibal, MO
+39.68875, -91.33166
+caves | limited
+Known to Samuel Clemens as a boy and later woven into The Adventures of Tom Sawyer, Mark Twain Cave is Missouri's oldest continuously operating show cave. Guided tours explore its maze-like passages while connecting the geology directly to Hannibal's literary history.
+Source: https://www.marktwaincave.com/
+
+28. Cameron Cave
+Hannibal, MO
+39.68851, -91.33175
+caves | seasonal
+Cameron Cave is the less-developed companion to Mark Twain Cave and is toured by lantern rather than permanent electric lighting. Its narrow maze-like passages provide a noticeably different experience from the neighboring commercial tour route.
+Source: https://www.marktwaincave.com/
+
+29. Onondaga Cave
+Leasburg, MO
+38.06120, -91.22718
+caves | seasonal
+Onondaga Cave contains a dense concentration of stalactites, stalagmites, flowstone and large rooms beneath its namesake state park. Missouri State Parks offers scheduled guided tours during the 2026 cave season.
+Source: https://mostateparks.com/key-location/onondaga-cave
+
+30. Cathedral Cave
+Leasburg, MO
+38.05644, -91.24099
+caves | seasonal
+Cathedral Cave is a separate cave system inside Onondaga Cave State Park, reached on a more limited guided-tour schedule. The route includes undeveloped passages and the large formation known as the Cathedral Bell.
+Source: https://mostateparks.com/page/onondaga-cave-state-park/cathedral-cave
+
+31. Fisher Cave
+Sullivan, MO
+38.22731, -91.08430
+caves | seasonal
+Fisher Cave lies beneath Meramec State Park and is opened for naturalist-led tours during the park's cave season. The tour follows an active cave environment with streams, wildlife and varied limestone formations rather than a heavily commercialized interior.
+Source: https://mostateparks.com/page/meramec-state-park/fisher-cave
+
+32. Ozark Caverns
+Kaiser, MO
+38.05459, -92.58354
+caves | seasonal
+Ozark Caverns is an undeveloped cave at Lake of the Ozarks State Park where tours rely on hand-held lanterns instead of installed electric lighting. Angel Showers, a formation created by water falling from the cave ceiling, is one of its signature features.
+Source: https://mostateparks.com/page/lake-ozarks-state-park/ozark-caverns
+
+33. Bridal Cave
+Camdenton, MO
+38.02353, -92.79193
+caves | limited
+Bridal Cave is a long-running Lake of the Ozarks show cave known for dramatic formations and an underground chapel where weddings are performed. Guided tours make it an easy routeable cave stop rather than an adventure-caving location.
+Source: https://bridalcave.com/
+
+34. Jacob's Cave
+Versailles, MO
+38.33529, -92.83582
+caves | limited
+Jacob's Cave offers guided walking tours through a large Ozark cavern filled with reflective pools, columns and other formations. The cave has operated as a tourist attraction for decades and remains a dependable central-Missouri subterranean stop.
+Source: http://www.jacobscave.com/
+
+35. Talking Rocks Cavern
+Branson West, MO
+36.67727, -93.37743
+caves | limited
+Talking Rocks Cavern descends through a tightly packed collection of cave formations near Branson West. Guided tours use stairs and walkways to reach richly decorated rooms that feel very different from Missouri's larger horizontal cave systems.
+Source: https://talkingrockscavern.com/
+
+36. Smallin Civil War Cave
+Ozark, MO
+37.05123, -93.18681
+caves | limited
+Smallin Cave has a massive entrance and a human history tied to Native use, settlement and Civil War-era stories. Guided tours combine geology with regional history, and seasonal lantern programs go deeper into the cave's folklore.
+Source: https://smallincave.com/
+
+37. Bluff Dwellers Cave
+Noel, MO
+36.51883, -94.48699
+caves | limited
+Discovered in the 1920s and opened as a show cave soon afterward, Bluff Dwellers Cave preserves extensive speleothems and archaeological context from the Ozarks. Guided tours operate from the privately run cave complex outside Noel.
+Source: https://bluffdwellerscave.com/
+
+38. Lost Canyon Cave & Nature Trail
+Ridgedale, MO
+36.53713, -93.24746
+caves | limited
+Lost Canyon is explored by self-driven golf cart along a constructed nature trail that passes waterfalls, rock formations and a cave containing an underground bar. It is highly developed, but the unusual cave-drive format earns it a place in the OddWay database.
+Source: https://topoftherock.com/top-of-the-rock/
+
+39. Marvel Cave
+Branson, MO
+36.66708, -93.33842
+caves | limited
+Marvel Cave was the original attraction around which Silver Dollar City developed and contains one of the largest cave entrance rooms in North America. Theme-park admission includes scheduled cave tours that descend hundreds of feet below the surface before returning visitors by cable train.
+Source: https://www.silverdollarcity.com/theme-park/attractions/rides/marvel-cave/
+
+40. Devil's Icebox Entrance
+Columbia, MO
+38.87089, -92.32663
+caves | open
+A boardwalk in Rock Bridge Memorial State Park leads to the dramatic sinkhole and cave entrance known as the Devil's Icebox. Wild-cave tours are suspended, so OddWay should route visitors only to the lawful surface trail and entrance-viewing area.
+Source: https://mostateparks.com/key-location/devils-icebox-entrance
+
+41. Ha Ha Tonka Castle Ruins
+Camdenton, MO
+37.97608, -92.76985
+ruins | open
+The stone ruins of an early twentieth-century mansion crown a bluff above the Lake of the Ozarks after the building was destroyed by fire in 1942. Public trails and overlooks let travelers explore the stabilized exterior ruins without trespassing.
+Source: https://mostateparks.com/key-location/castle-ruins
+
+42. Ha Ha Tonka Natural Bridge
+Camdenton, MO
+37.97446, -92.76325
+geology | open
+This massive natural limestone bridge is one of several karst features concentrated inside Ha Ha Tonka State Park. A maintained trail reaches the arch and makes it an easy addition to the nearby castle ruins and spring.
+Source: https://mostateparks.com/park/ha-ha-tonka-state-park
+
+43. Ha Ha Tonka Colosseum
+Camdenton, MO
+37.97482, -92.76312
+geology | open
+The Colosseum is a huge collapsed sinkhole, roughly 150 feet deep, created by the same karst processes that shaped Ha Ha Tonka's caves and natural bridge. The feature is reached from a signed state-park trail rather than by entering the collapse itself.
+Source: https://mostateparks.com/park/ha-ha-tonka-state-park
+
+44. Ha Ha Tonka Spring
+Camdenton, MO
+37.97388, -92.76720
+springs | open
+A large blue spring emerges at the base of the Ha Ha Tonka bluffs and feeds a clear stream toward the lake. Boardwalks and trails connect the spring with the park's other geological features and historic ruins.
+Source: https://mostateparks.com/park/ha-ha-tonka-state-park
+
+45. Elephant Rocks State Park
+Belleview, MO
+37.65179, -90.68980
+geology | open
+Enormous rounded granite boulders stand in rows and clusters that resemble a train of circus elephants. A paved loop trail threads among the 1.5-billion-year-old rocks and past traces of the area's quarrying history.
+Source: https://mostateparks.com/park/elephant-rocks-state-park
+
+46. Engine House Ruin
+Graniteville, MO
+37.65586, -90.68472
+industrial-ruins | open
+Stone walls from a nineteenth-century railroad engine house survive among the granite landscape near Elephant Rocks. The ruin is a compact industrial-history counterpart to the park's better-known natural formations.
+Source: https://mostateparks.com/key-location/engine-house-ruins
+
+47. Johnson's Shut-Ins
+Middle Brook, MO
+37.53913, -90.83806
+geology | open
+The East Fork of the Black River is squeezed through resistant volcanic rock here, creating chutes, potholes and cascades known as shut-ins. Designated public access makes this one of Missouri's most dramatic routeable geological stops.
+Source: https://mostateparks.com/park/johnsons-shut-ins-state-park
+
+48. Taum Sauk Mountain High Point
+Ironton, MO
+37.57119, -90.72932
+geology | open
+A short trail leads to the highest natural point in Missouri at Taum Sauk Mountain. The high point itself is subtle, but the surrounding St. Francois Mountains are among the oldest exposed mountain rocks in North America.
+Source: https://mostateparks.com/key-location/high-point
+
+49. Mina Sauk Falls
+Ironton, MO
+37.56250, -90.74086
+waterfalls | open
+Mina Sauk Falls drops in a series of cascades down Taum Sauk Mountain and is generally considered Missouri's tallest waterfall. Its flow is seasonal, so the rugged trail is most rewarding after wet weather.
+Source: https://mostateparks.com/park/taum-sauk-mountain-state-park
+
+50. The Pinnacles
+Sturgeon, MO
+39.13476, -92.32347
+geology | open
+A narrow limestone ridge rises sharply between two creeks at this Boone County park, creating fins, cracks and elevated scrambling routes unusual for central Missouri. Visitors should stay on established public access and use caution on exposed rock.
+Source: https://www.atlasobscura.com/places/the-pinnacles
+
+51. Bennett Spring Natural Tunnel
+Lebanon, MO
+37.70383, -92.84013
+geology | open
+A natural rock tunnel along a Bennett Spring State Park trail creates a compact cave-like passage through the Ozark limestone. It is a good surface-geology stop for travelers who do not want a scheduled commercial cave tour.
+Source: https://www.atlasobscura.com/places/bennett-spring-natural-tunnel
+
+52. Devil's Honeycomb
+Ste. Genevieve, MO
+37.81069, -90.71542
+geology | open
+Wind, water and erosion have carved a sandstone wall into a honeycomb of cavities along a trail in the Hawn State Park area. The texture is striking at close range and fits OddWay's preference for routeable natural features with a clear physical object to find.
+Source: https://www.atlasobscura.com/places/devils-honeycomb
+
+53. Portuguese Point
+Montreal, MO
+37.90726, -92.09794
+geology | open
+Portuguese Point is an exposed Ozark overlook with dramatic rock shelves above the surrounding river-and-lake country. Its unusual name and rugged stone viewpoint make it a worthwhile short geological detour when conditions are safe.
+Source: https://www.atlasobscura.com/places/portuguese-point
+
+54. Greer Spring
+Alton, MO
+36.78661, -91.34753
+springs | open
+Greer Spring is one of the largest springs in the Ozarks, releasing an enormous volume of clear water that quickly forms a substantial stream. A roughly one-mile trail descends from the public parking area to the spring branch.
+Source: https://mdc.mo.gov/discover-nature/places/greer-spring
+
+55. Roaring River Spring
+Cassville, MO
+36.59131, -93.83241
+springs | open
+A deep blue spring emerges from a cavernous opening beneath a cliff and forms the headwaters of Roaring River. The spring is immediately accessible inside the state park and pairs natural geology with the park's historic trout-hatchery landscape.
+Source: https://mostateparks.com/park/roaring-river-state-park
+
+56. Montauk Springs
+Salem, MO
+37.46032, -91.68320
+springs | open
+Multiple large springs rise inside Montauk State Park and combine to form the headwaters of the Current River. Trails and historic mill features make the spring area a strong natural-history stop rather than simply a fishing destination.
+Source: https://mostateparks.com/park/montauk-state-park
+
+57. Alley Spring & Mill
+Eminence, MO
+37.15394, -91.44430
+mills | open
+A vivid blue spring flows beside the red Alley Mill, one of the most recognizable historic structures in the Ozark National Scenic Riverways. The combination of karst hydrology and preserved milling machinery makes this a high-value OddWay stop.
+Source: https://www.nps.gov/ozar/learn/historyculture/alley-mill.htm
+
+58. Big Spring
+Van Buren, MO
+36.95304, -90.99310
+springs | open
+Big Spring pours hundreds of millions of gallons of water into the Current River system and is among the largest springs in the United States. Public trails and overlooks allow travelers to see the immense blue-green discharge safely from the riverways park.
+Source: https://www.nps.gov/ozar/learn/nature/big-spring.htm
+
+59. Blue Spring
+Eminence, MO
+37.16687, -91.16437
+springs | open
+Blue Spring is famous for its intense sapphire color and exceptional depth. A foot trail from the conservation-area access leads to the spring, which is protected from swimming and other disturbance.
+Source: https://mdc.mo.gov/discover-nature/places/blue-spring-natural-area
+
+60. Welch Spring Hospital Ruins
+Akers, MO
+37.39459, -91.57628
+ruins | open
+Ruins of a stone hospital stand beside Welch Spring, where an early twentieth-century doctor promoted cave air as a treatment for respiratory illness. The failed medical venture left an unusually photogenic wall directly beside a major Ozark spring.
+Source: https://www.nps.gov/places/welch-spring.htm
+
+61. Rocky Falls
+Eminence, MO
+37.09490, -91.21018
+waterfalls | open
+Rocky Falls spills over billion-year-old rhyolite in a broad stair-step cascade. The National Scenic Riverways site is reached by road and short foot access, making the unusual volcanic geology especially easy to visit.
+Source: https://www.nps.gov/places/rocky-falls.htm
+
+62. Grand Gulf State Park
+Thayer, MO
+36.54415, -91.64499
+geology | open
+Grand Gulf is a collapsed cave system often described as Missouri's 'Little Grand Canyon.' Visitors can view the deep chasm from rim trails and, when conditions allow, descend designated routes into portions of the natural feature.
+Source: https://mostateparks.com/park/grand-gulf-state-park
+
+63. Graham Cave
+Danville, MO
+38.90556, -91.57528
+archaeology | open
+Excavations at Graham Cave revealed evidence of human occupation stretching back thousands of years. A public trail leads to the broad sandstone shelter, while interpretation explains the archaeological importance of the site without encouraging disturbance.
+Source: https://mostateparks.com/park/graham-cave-state-park
+
+64. Pickle Springs Natural Area
+Ste. Genevieve, MO
+37.80170, -90.30150
+geology | open
+Pickle Springs protects an extraordinary concentration of sandstone arches, slot-like passages, hoodoos and weathered rock forms. The Trail Through Time loops through the natural area and gives OddWay several strange formations within one routeable stop.
+Source: https://mdc.mo.gov/discover-nature/places/pickle-springs-natural-area
+
+65. Castor River Shut-Ins
+Fredericktown, MO
+37.56882, -90.15506
+geology | open
+The Castor River squeezes through Missouri's only known pink-granite shut-ins, creating cascades over exposed 1.5-billion-year-old rock. Missouri Department of Conservation provides a public trailhead and a one-mile loop to the formation.
+Source: https://mdc.mo.gov/discover-nature/places/natural-areas/castor-river-shut-ins
+
+66. Edward 'Ted' and Pat Jones-Confluence Point
+West Alton, MO
+38.81607, -90.11953
+geography | open
+A short trail reaches the point where the Missouri River meets the Mississippi, allowing visitors to stand at one of the most consequential river junctions in North America. Seasonal flooding can affect access, so current state-park conditions should be checked before routing.
+Source: https://mostateparks.com/park/edward-ted-and-pat-jones-confluence-point-state-park
+
+67. Wild Horses of Shannon County
+Eminence, MO
+37.17214, -91.30052
+folklore-nature | open
+Several small herds of free-roaming horses live on public lands around the Current and Jacks Fork rivers and have become a distinctive part of Shannon County folklore. Sightings are not guaranteed; travelers should observe from a distance and never feed, chase or block the horses.
+Source: https://www.nps.gov/ozar/learn/nature/wild-horses.htm
+
+68. Round Spring
+Eminence, MO
+37.28255, -91.40764
+springs | open
+Round Spring rises in a nearly circular blue basin and flows directly toward the Current River. The spring itself remains a valid public stop even though Round Spring Cave is closed for the 2026 season, so OddWay should route only to the spring area.
+Source: https://www.nps.gov/places/round-spring.htm
+
+69. Klepzig Mill
+Eminence, MO
+37.12650, -91.19852
+mills | open
+Klepzig Mill is a small historic turbine mill beside Rocky Creek in the Ozark National Scenic Riverways. The remote structure, shut-ins and creek setting create a strong backroad OddWay stop, but access roads can be rough after bad weather.
+Source: https://www.nps.gov/places/klepzig-mill.htm
+
+70. Hodgson Water Mill
+Sycamore, MO
+36.70971, -92.26641
+mills | roadside
+Hodgson Mill stands dramatically at the base of a bluff beside a powerful spring that once drove milling machinery. The privately owned building is best treated as a roadside exterior/photo stop unless current access information specifically permits more.
+Source: https://www.explorewestplains.com/hodgson-mill/
+
+71. Jolly Mill
+Pierce City, MO
+36.89596, -94.07028
+mills | limited
+Jolly Mill survives from the vanished community of Jollification and has served at different times as a mill and distillery. The restored mill stands inside a public park with seasonal grinding demonstrations and an unusual local history tied to Civil War-era violence and Ozark folklore.
+Source: https://www.atlasobscura.com/places/jolly-mill
+
+72. Dillard Mill State Historic Site
+Davisville, MO
+37.71774, -91.20683
+mills | limited
+The red Dillard Mill preserves early twentieth-century milling machinery beside Huzzah Creek in a remarkably intact rural setting. Guided access to the building is scheduled, while the surrounding historic-site grounds provide a scenic public stop.
+Source: https://mostateparks.com/park/dillard-mill-state-historic-site
+
+73. Bollinger Mill & Burfordville Covered Bridge
+Burfordville, MO
+37.36830, -89.80272
+mills | limited
+A four-story brick gristmill stands directly beside Missouri's oldest surviving covered bridge, creating one of the state's best preserved transportation-and-industry pairings. The bridge is pedestrian-only and the mill interior is available through scheduled tours.
+Source: https://mostateparks.com/park/bollinger-mill-state-historic-site
+
+74. Locust Creek Covered Bridge
+Laclede, MO
+39.79194, -93.23444
+historic-infrastructure | open
+Built in 1868, Locust Creek Covered Bridge is one of only a handful of surviving covered bridges in Missouri. The preserved wooden structure no longer carries vehicles but remains open to pedestrians within the state historic site.
+Source: https://mostateparks.com/key-location/locust-creek-covered-bridge
+
+75. Mastodon State Historic Site
+Imperial, MO
+38.37905, -90.38467
+prehistoric-history | open
+Archaeological work here linked Clovis stone tools with mastodon remains, providing important evidence that humans and mastodons overlapped in North America. The museum and trail system interpret both the Ice Age animals and the archaeological discoveries made at the site.
+Source: https://mostateparks.com/park/mastodon-state-historic-site
+
+76. Thousand Hills State Park Petroglyphs
+Kirksville, MO
+40.18866, -92.64074
+archaeology | open
+A protected shelter displays Native American petroglyphs carved into exposed rock as many as roughly 1,500 years ago. The site is open for self-guided viewing during park hours, and visitors must remain on the observation walkway.
+Source: https://mostateparks.com/key-location/petroglyph-siteshelter
+
+77. Washington State Park Petroglyphs
+De Soto, MO
+38.08365, -90.67390
+archaeology | open
+Washington State Park preserves the largest known concentration of petroglyphs in Missouri, associated with Mississippian-era ceremonial activity. Two protected viewing areas near the north entrance allow public access without walking on or touching the carvings.
+Source: https://mostateparks.com/page/washington-state-park/petroglyphs
+
+78. Iliniwek Village State Historic Site
+Wayland, MO
+40.42967, -91.55861
+archaeology | open
+This state historic site preserves the location of a large Illinois Indian village recorded by French explorers in the seventeenth century. Trails and interpretation overlook the Mississippi floodplain while protecting the archaeological resources below ground.
+Source: https://mostateparks.com/park/iliniwek-village-state-historic-site
+
+79. Osage Village State Historic Site
+Harwood, MO
+37.98128, -94.20664
+archaeology | open
+The site preserves archaeological remains of a major Osage village occupied in the late eighteenth and early nineteenth centuries. A public trail and interpretive signs provide access while the village remains themselves stay protected beneath the ground.
+Source: https://mostateparks.com/park/osage-village-state-historic-site
+
+80. Towosahgy State Historic Site
+East Prairie, MO
+36.69333, -89.23556
+archaeology | open
+Towosahgy preserves the earthworks and village area of a Mississippian mound-building community in Missouri's Bootheel. The surviving mounds and plaza can be viewed from the public historic-site grounds without disturbing archaeological deposits.
+Source: https://mostateparks.com/park/towosahgy-state-historic-site
+
+81. Battle of Island Mound State Historic Site
+Butler, MO
+38.23654, -94.43955
+military-history | open
+This site commemorates an 1862 Civil War fight in which the 1st Kansas Colored Volunteer Infantry engaged Confederate guerrillas before Black soldiers were formally accepted into federal service nationwide. The landscape is preserved with trails, interpretation and memorial elements.
+Source: https://mostateparks.com/park/battle-island-mound-state-historic-site
+
+82. Fort Davidson Ruins
+Pilot Knob, MO
+37.61982, -90.64003
+military-ruins | open
+The earthen remains of Fort Davidson mark the center of the 1864 Battle of Pilot Knob, where Union defenders fought a much larger Confederate force before evacuating and destroying their powder magazine. The fort outline and crater remain visible on the public historic-site grounds.
+Source: https://mostateparks.com/key-location/fort-davidson-ruins
+
+83. Missouri Mines State Historic Site
+Park Hills, MO
+37.83778, -90.50861
+industrial-history | limited
+The former St. Joe Minerals mill complex preserves massive industrial buildings and machinery from Missouri's lead-mining region. A museum inside the old powerhouse displays minerals, mining equipment and the history of an industry that reshaped the St. Francois Mountains.
+Source: https://mostateparks.com/park/missouri-mines-state-historic-site
+
+84. City Museum
+St. Louis, MO
+38.63300, -90.20010
+architectural-oddities | limited
+City Museum turns a former shoe factory into a maze of tunnels, salvaged architecture, giant slides, rooftop structures and outsider-art environments. It functions less like a conventional museum than a building-sized interactive sculpture assembled from pieces of the city itself.
+Source: https://citymuseum.org/
+
+85. Laclede's Landing Wax Museum
+St. Louis, MO
+38.63079, -90.18425
+museums | limited
+This old-school wax museum packs historical figures, celebrities, horror characters and intentionally uncanny tableaux into a downtown St. Louis building. Its dated theatrical atmosphere is part of the appeal for travelers seeking something stranger than a polished modern attraction.
+Source: https://stlwaxmuseum.com/
+
+86. World Chess Hall of Fame & World's Largest Chess Piece
+St. Louis, MO
+38.64430, -90.26115
+museums | open
+The World Chess Hall of Fame combines rotating art and history exhibitions with a monumental Staunton king standing outside the building. The giant chess piece is Guinness-recognized and can be seen independently of the free museum galleries.
+Source: https://worldchesshof.org/plan-your-visit/
+
+87. Miniature Museum of Greater St. Louis
+St. Louis, MO
+38.58150, -90.26650
+museums | limited
+Room boxes, dollhouses and intricate miniature environments fill this specialized museum devoted entirely to tiny-scale craftsmanship. The obsessive level of detail makes it a strong OddWay collection stop rather than a general local-history museum.
+Source: https://www.atlasobscura.com/places/miniature-museum-of-greater-st-louis
+
+88. Kansas City Library Community Bookshelf
+Kansas City, MO
+39.10230, -94.58390
+architectural-oddities | roadside
+The parking garage of the Kansas City Public Library is disguised behind a row of enormous book spines selected with community input. The oversized titles turn an otherwise utilitarian downtown structure into one of Missouri's most recognizable pieces of literary street architecture.
+Source: https://kclibrary.org/community-bookshelf
+
+89. National Museum of Toys and Miniatures
+Kansas City, MO
+39.03120, -94.58190
+museums | limited
+This museum holds an enormous collection of historic toys alongside exceptionally detailed fine-scale miniatures. Mechanical toys, dollhouses and tiny decorative arts make the collection especially well suited to OddWay's niche-museum category.
+Source: https://toyandminiaturemuseum.org/
+
+90. Arabia Steamboat Museum
+Kansas City, MO
+39.10940, -94.58150
+weird-history | limited
+The museum displays thousands of remarkably preserved objects recovered from the steamboat Arabia, which sank in the Missouri River in 1856 and was excavated from a field more than a century later. Everyday cargo survives in such quantity that the collection feels like a sealed nineteenth-century store brought back to life.
+Source: https://www.1856.com/
+
+91. Museum of Osteopathic Medicine
+Kirksville, MO
+40.19266, -92.58748
+medical-history | limited
+Located at A.T. Still University, this museum documents the origins of osteopathic medicine in Kirksville through instruments, papers and unusual anatomical and medical displays. The collection also preserves buildings and artifacts associated with founder Andrew Taylor Still.
+Source: https://www.atsu.edu/museum-of-osteopathic-medicine
+
+92. National Cookie Cutter Historical Museum
+Joplin, MO
+37.08727, -94.54965
+museums | limited
+Thousands of cookie cutters document changing holidays, advertising, manufacturing and domestic life inside the Joplin History & Mineral Museum complex. It is one of those hyper-specific collections that fits OddWay better than a broad regional museum.
+Source: https://www.joplinmo.org/550/Joplin-History-Mineral-Museum
+
+93. Pigs Aloft Museum
+Linn, MO
+38.46639, -91.77147
+museums | limited
+Where Pigs Fly Farm contains a huge collection of pig-related objects alongside a working rescue farm. The organization describes it as America's only pig museum, making the property a deliberately eccentric collection stop with current weekend public hours.
+Source: https://wherepigsflyfarm.com/
+
+94. Missouri Meerschaum Corn Cob Pipe Museum
+Washington, MO
+38.56174, -91.01377
+industrial-oddities | limited
+Missouri Meerschaum has manufactured corn-cob pipes in Washington since the nineteenth century. Its small museum and shop interpret the unusual local industry beside the still-active factory, while factory production areas themselves are not a public tour.
+Source: https://corncobpipe.com/
+
+95. Veterinary Museum of Missouri
+Jefferson City, MO
+38.58409, -92.21694
+medical-history | limited
+The Missouri Veterinary Medical Foundation preserves thousands of veterinary artifacts, including historic surgical tools, animal dentistry equipment, medicines and unusual specimens. It is the first U.S. museum dedicated solely to veterinary medicine and currently operates by posted weekday hours with appointments recommended.
+Source: https://www.visitmo.com/things-to-do/missouri-veterinary-medical-foundation-museum
+
+96. Ralph Foster Museum
+Point Lookout, MO
+36.61874, -93.24151
+museums | limited
+The College of the Ozarks museum contains a sprawling collection of Ozarks material, but its most unexpected object is the original modified automobile used by the Clampett family on The Beverly Hillbillies. Firearms, antiques, natural history and regional collections surround the pop-culture centerpiece.
+Source: https://www.rfostermuseum.com/
+
+97. Bonniebrook Home & Museum / Kewpie Museum
+Walnut Shade, MO
+36.77200, -93.22013
+art-history | seasonal
+Bonniebrook preserves the home landscape of illustrator Rose O'Neill, creator of the Kewpie characters. A reconstructed house, museum, grave site and artwork collection make the property a strange intersection of cartoon history, Ozark landscape and early twentieth-century art.
+Source: https://roseoneill.org/
+
+98. Walt Disney Hometown Museum
+Marceline, MO
+39.71585, -92.94779
+museums | limited
+Housed in Marceline's restored Santa Fe depot, the museum focuses on Walt Disney's childhood connection to the town through family letters, photographs and personal artifacts. It also preserves material from the Midget Autopia attraction that Disney later donated to Marceline.
+Source: https://www.waltdisneymuseum.org/
+
+99. Nicholas-Beazley Aviation Museum
+Marshall, MO
+39.09823, -93.19692
+aviation-history | limited
+This museum at the Marshall airport documents the locally based Nicholas-Beazley Airplane Company and its surprisingly ambitious early aircraft designs. Original aircraft, engines and cockpit displays make it a focused aviation-history stop with a strong Missouri connection.
+Source: https://www.nicholasbeazley.org/
+
+100. 66 Drive-In Theatre
+Carthage, MO
+37.17436, -94.36889
+route-66 | seasonal
+Opened in 1949 and restored in the 1990s, the 66 Drive-In preserves its original neon sign, screen and classic Route 66 setting. The theater operates seasonally, so travelers should check the current movie schedule rather than assuming a screening is available every night.
+Source: https://www.nps.gov/places/66-drive-in.htm
+Website: http://66drivein.com/
+
+101. Sliced Bread Innovation Center
+Chillicothe, MO
+39.78795, -93.55152
+weird-history | limited
+The restored former Chillicothe Baking Company building celebrates the town where commercially machine-sliced bread was first sold in 1928. Exhibits turn an everyday supermarket item into a surprisingly specific piece of technological and advertising history.
+Source: https://www.thehomeofslicedbread.com/
+
+102. World's Largest Spool of Thread
+Hamilton, MO
+39.74491, -93.99494
+roadside-oddities | roadside
+A 22-foot spool outside the Missouri Quilt Museum is wrapped with more than one million yards of thread. Visitors can photograph the oversized sewing landmark and, when museum programs permit, contribute additional thread to the ever-growing display.
+Source: https://www.missouriquiltmuseum.com/about-5
+
+103. Precious Moments Chapel & Gardens
+Carthage, MO
+37.11181, -94.34520
+architectural-oddities | limited
+Artist Samuel J. Butcher transformed his famous teardrop-eyed Precious Moments characters into an elaborate chapel covered with murals, stained glass and monumental devotional scenes. The surrounding gardens and statues create a uniquely immersive branded religious-art environment.
+Source: https://preciousmomentschapel.org/
+
+104. Laumeier Sculpture Park
+St. Louis, MO
+38.55093, -90.41510
+public-art | open
+More than 100 acres of woods and lawns hold large-scale contemporary sculptures, including monumental works that can be walked around and through. The free outdoor collection makes an easy OddWay cluster of strange objects rather than a single conventional gallery visit.
+Source: https://www.laumeiersculpturepark.org/
+
+105. Eros Bendato
+St. Louis, MO
+38.62650, -90.19330
+public-art | open
+Igor Mitoraj's enormous bandaged bronze head lies on its side in Citygarden, turning a fragment of classical-looking anatomy into a surreal downtown landmark. The sculpture is outdoors and can be viewed freely during public garden access.
+Source: https://www.citygardenstl.org/
+
+106. Turtle Playground
+St. Louis, MO
+38.63150, -90.29240
+public-art | open
+A family of gigantic concrete turtles forms an outdoor playground near Forest Park, with shells large enough for visitors to climb and sit on. The sculptures were designed as both public art and functional play structures, making the site stranger than a standard city playground.
+Source: https://www.atlasobscura.com/places/turtle-playground
+
+107. The Awakening II
+Chesterfield, MO
+38.64594, -90.59967
+public-art | open
+A 70-foot aluminum giant appears to claw his way out of the earth in Chesterfield Central Park, with separate hands, head, knee and foot emerging from the ground. The installation is a second casting of Seward Johnson's famous The Awakening and is freely viewable in the park.
+Source: https://www.chesterfield.mo.us/the-awakening.html
+
+108. Thomas Jefferson's Original Tombstone
+Columbia, MO
+38.94615, -92.32830
+weird-history | open
+Thomas Jefferson's original gravestone was given to the University of Missouri by his descendants in the nineteenth century and now stands on Francis Quadrangle. The odd relocation puts a major presidential funerary artifact hundreds of miles from Jefferson's actual grave at Monticello.
+Source: https://www.atlasobscura.com/places/thomas-jeffersons-original-tombstone
+
+109. 1904 World's Fair Flight Cage
+St. Louis, MO
+38.63667, -90.29220
+worlds-fair-history | open
+Built for the 1904 Louisiana Purchase Exposition, the enormous free-flight cage survived the fair and became a foundational exhibit of the St. Louis Zoo. The restored structure remains in active use, giving travelers a rare surviving piece of World's Fair architecture that still serves its original purpose.
+Source: https://stlzoo.org/about/history
+
+110. St. Louis Water Intake Towers
+St. Louis, MO
+38.75849, -90.17684
+industrial-oddities | view-only
+Two castle-like stone intake towers rise directly from the Mississippi River near the Old Chain of Rocks Bridge. They are no longer used for water collection and are not open for public entry, but they can be safely viewed from the pedestrian bridge.
+Source: https://www.stlouis-mo.gov/government/departments/planning/cultural-resources/preservation-plan/The-Victorian-City-Utilities-Structures.cfm
+
+111. Whispering Arch at Union Station
+St. Louis, MO
+38.62813, -90.20804
+acoustic-oddities | open
+A curved arch inside historic Union Station carries whispers from one side to the other, allowing two people standing far apart to hear each other clearly. The simple acoustic trick is hidden within one of the city's grandest railroad-era interiors.
+Source: https://www.atlasobscura.com/places/whispering-arch-st-louis-union-station
+
+112. Hall of Waters
+Excelsior Springs, MO
+39.34189, -94.22236
+medical-history | limited
+This monumental Art Deco building once collected multiple types of mineral water under one roof and contained baths, treatment rooms, pools and a famously long water bar. Some areas remain closed or restricted, but museum and visitor spaces preserve the strange history of Excelsior Springs as a medical-water resort.
+Source: https://www.lewisandclark.travel/listing/hall-of-waters/
+
+113. Bothwell Lodge State Historic Site
+Sedalia, MO
+38.79444, -93.22250
+architectural-oddities | limited
+This sprawling Arts-and-Crafts lodge was built over natural caves, which were incorporated into the house as an early form of passive cooling. Guided tours climb through the unusually layered interior while the surrounding grounds remain open on a broader schedule.
+Source: https://mostateparks.com/key-location/bothwell-lodge
+
+114. Red Oak II
+Carthage, MO
+37.21296, -94.27792
+outsider-art | limited
+Artist Lowell Davis rebuilt a version of his vanished hometown by relocating and restoring old rural buildings on his property outside Carthage. The result is a deliberately recreated ghost town filled with vintage structures, roadside art and a surreal sense of displaced history.
+Source: https://www.atlasobscura.com/places/red-oak-ii
+
+115. BoatHenge
+Columbia, MO
+38.81860, -92.38580
+outsider-art | roadside
+Six fiberglass boats stand vertically in the Missouri River bottoms in a tongue-in-cheek imitation of Stonehenge. The folk-art installation appeared in 1993 and has repeatedly survived floods, making it one of central Missouri's best roadside oddities.
+Source: https://www.lewisandclark.travel/listing/boathenge/
+
+116. Canoehenge
+Leasburg, MO
+38.05530, -91.21960
+outsider-art | limited
+More than 100 retired canoes are stacked into a Stonehenge-inspired structure at an Ozark river resort near Onondaga Cave State Park. Because it sits on resort property, travelers should follow current visitor rules rather than treating it as unrestricted public land.
+Source: https://www.atlasobscura.com/places/canoehenge
+
+117. Hubble Space Telescope Replica
+Marshfield, MO
+37.33855, -92.90710
+roadside-oddities | roadside
+A one-quarter-scale, roughly 1,200-pound replica of the Hubble Space Telescope stands near the Webster County Courthouse in astronomer Edwin Hubble's hometown. The outdoor monument turns a complex spacecraft into an easy roadside science-history stop.
+Source: https://www.visitmo.com/in-the-spotlight/route-66
+
+118. Route 66 Neon Park
+St. Robert, MO
+37.82119, -92.14786
+route-66 | open
+A collection of restored and recreated neon signs preserves the look of businesses that once lined Missouri's stretch of Route 66. The outdoor display is especially effective after dark and gives travelers a concentrated dose of Mother Road visual history.
+Source: https://www.atlasobscura.com/places/route-66-neon-park
+
+121. Maxie, the World's Largest Goose
+Sumner, MO
+39.65339, -93.24603
+roadside-oddities | roadside
+Maxie is a roughly 40-foot-tall Canada goose sculpture with a wingspan of more than 60 feet, built as a monument to Sumner's identity as a goose-hunting and migration town. The giant bird stands in a public park and is an easy northern-Missouri photo stop.
+Source: https://goosefestival.com/
+
+122. World's Largest Amoco Sign
+St. Louis, MO
+38.63296, -90.30447
+roadside-oddities | roadside
+A towering Amoco sign near Forest Park rises far above the surrounding streets, a survivor of an era when oversized petroleum advertising dominated American roadsides. The sign remains visible from public areas and works best as a quick exterior stop.
+Source: https://www.atlasobscura.com/places/worlds-largest-amoco-sign
+
+123. Uranus Sideshow Museum & Fudge Factory
+St. Robert, MO
+37.82873, -92.10544
+roadside-oddities | open
+The intentionally absurd Uranus complex combines Route 66 humor with a real sideshow museum containing two-headed animals, circus artifacts, oddities and live performers. The attraction is operating year-round and is one of Missouri's clearest modern examples of deliberately weird roadside tourism.
+Source: https://www.uranusmissouri.com/attractions/uranus-sideshow-museum/
+
+124. Gary's Gay Parita
+Paris Springs, MO
+37.19435, -93.67932
+route-66 | limited
+This lovingly recreated 1930s Sinclair station became internationally known through the hospitality of the late Gary Turner and remains a major Route 66 pilgrimage stop. Vintage pumps, signs, vehicles and roadside memorabilia recreate the atmosphere of the Mother Road's service-station era.
+Source: https://garysgayparita.com/
+
+125. Boots Court Motel
+Carthage, MO
+37.17830, -94.31440
+route-66 | limited
+Built in 1939, Boots Court is a streamlined Route 66 motor court known for its neon, architecture and association with travelers including Clark Gable. The restored property functions as a motel, so exterior viewing is easy while rooms are for registered guests unless tours or events say otherwise.
+Source: https://bootscourt66.com/
+
+126. Wagon Wheel Motel
+Cuba, MO
+38.06450, -91.39540
+route-66 | limited
+The Wagon Wheel has served Route 66 travelers since the 1930s and preserves stone cottages, vintage neon and a classic motor-court layout. It remains an operating motel, making it a rare roadside landmark where travelers can actually stay in the historic property.
+Source: https://wagonwheel66.com/
+
+127. Route 66 State Park / Times Beach
+Eureka, MO
+38.50575, -90.59092
+route-66 | open
+The park occupies land once belonging to Times Beach, a Route 66 community evacuated after dioxin contamination and later demolished. Its visitor center interprets both the Mother Road and the extraordinary environmental history of the vanished town, while park trails cross portions of the former street grid.
+Source: https://mostateparks.com/park/route-66-state-park
+

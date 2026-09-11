@@ -36,10 +36,21 @@ export default async function SuggestPage({ searchParams }: SuggestPageProps) {
                 ? `Know a ${category.label.toLowerCase().replace(/s$/, "")} stop we've missed?`
                 : "Tell us what we've got wrong"}
           </h1>
+          {/*
+            This used to say "plenty of it is still unverified", which was true
+            of a few hundred rows left over from the original map-data scan.
+            Those have all since been written up or removed, so the sentence
+            became false — and a page asking people to correct the index is a
+            bad place to be wrong about the index.
+
+            What is still true is the part that actually matters to somebody
+            standing outside a closed door: a citation is not a visit.
+          */}
           <p className="mt-6 max-w-[62ch] text-lede text-[#cfc9bb]">
-            Most of this index was assembled from public map data and then
-            researched by hand. Plenty of it is still unverified, and places
-            close, move and change their hours without telling anybody.
+            Every entry here was researched by hand and says where its facts
+            came from. That is not the same as standing outside the door:
+            places close, move and change their hours without telling anybody,
+            and nobody here has been to all of them.
           </p>
         </PageHero>
 

@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 .import-cache
 *.zip
+
+*-batch.json
+*.bak
+stops-manifest.csv

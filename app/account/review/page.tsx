@@ -7,6 +7,8 @@ import { AccountList } from "@/components/AccountList";
 import { SuggestionList } from "@/components/SuggestionList";
 import { HiddenPhotos } from "@/components/HiddenPhotos";
 import { getCurrentProfile } from "@/lib/supabase-server";
+import { AdvertiserList } from "@/components/AdvertiserList";
+import { getAdvertisers } from "@/lib/advertisers-admin";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +31,7 @@ export default async function ReviewPage() {
   const hidden = await getHiddenPhotos();
   const accounts = await getAccounts();
   const suggestions = await getSuggestions();
+  const advertisers = await getAdvertisers();
 
   return (
     <>
@@ -42,6 +45,33 @@ export default async function ReviewPage() {
       </PageHero>
       <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-16">
         <ReviewQueue photos={photos} />
+
+        {/*
+          Advertisers directly under the photo queue, because both are the same
+          job: somebody has sent something in and it is not on the site until
+          you have looked at it. Paying does not skip the queue.
+        */}
+        <section className="mt-16 border-t border-contour/40 pt-10">
+          <h2 className="text-section">Advertising</h2>
+          {/*
+            "No waiting to be looked at" was what the count produced at zero,
+            which reads as a different sentence entirely. Worth the extra
+            variable to say it properly.
+          */}
+          <p className="mt-3 mb-8 max-w-[56ch] text-ink-soft">
+            {(() => {
+              const waiting = advertisers.filter(
+                (a) => a.status === "pending" && a.submitted,
+              ).length;
+              return waiting === 0
+                ? "Nothing waiting."
+                : `${waiting} waiting to be looked at.`;
+            })()}{" "}
+            Approving puts a banner on the site within a minute; taking one down
+            keeps their details so it can go back up.
+          </p>
+          <AdvertiserList advertisers={advertisers} />
+        </section>
 
         {/*
           Hidden photographs, below the queue. They are not waiting for a

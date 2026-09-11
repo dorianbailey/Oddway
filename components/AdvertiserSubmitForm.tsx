@@ -75,7 +75,13 @@ export function AdvertiserSubmitForm({
         body.set("latitude", values.latitude.trim());
         body.set("longitude", values.longitude.trim());
       }
-      body.set("banner", prepared.blob, "banner.webp");
+      /*
+        Named after whatever the canvas actually produced. Calling a PNG
+        "banner.webp" is how the type and the filename end up disagreeing, and
+        the server trusts the type.
+      */
+      const extension = prepared.blob.type === "image/png" ? "png" : "webp";
+      body.set("banner", prepared.blob, `banner.${extension}`);
 
       const response = await fetch("/api/advertise/submit", {
         method: "POST",

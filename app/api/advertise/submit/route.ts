@@ -91,16 +91,37 @@ export async function POST(request: Request) {
     );
   }
 
-  // The browser sends webp; anything else did not come from our form.
-  if (banner.type !== "image/webp") {
-    return NextResponse.json({ error: "Unsupported image format." }, { status: 400 });
+  /*
+    The three formats the bucket accepts, rather than webp alone.
+
+    preparePhoto asks the canvas for webp, but a browser that cannot encode it
+    returns a PNG and says nothing — Safari did this for years. Insisting on
+    webp meant those visitors got "unsupported image format" for a file we had
+    just produced ourselves, with no way to succeed.
+
+    The type still has to be one we allow: the bucket enforces the same list,
+    so anything else would be rejected a moment later anyway, with a worse
+    message.
+  */
+  const ALLOWED: Record<string, string> = {
+    "image/webp": "webp",
+    "image/jpeg": "jpg",
+    "image/png": "png",
+  };
+  const extension = ALLOWED[banner.type];
+
+  if (!extension) {
+    return NextResponse.json(
+      { error: "That image format is not supported. JPEG, PNG or WebP work." },
+      { status: 400 },
+    );
   }
 
-  const path = `${row.id}/${Date.now()}.webp`;
+  const path = `${row.id}/${Date.now()}.${extension}`;
 
   const { error: uploadError } = await supabase.storage
     .from("ad-banners")
-    .upload(path, banner, { contentType: "image/webp", upsert: false });
+    .upload(path, banner, { contentType: banner.type, upsert: false });
 
   if (uploadError) {
     console.error("Banner upload failed:", uploadError.message);

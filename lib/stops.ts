@@ -299,25 +299,25 @@ export async function getStopPins(): Promise<MapStop[]> {
  * entire index to get one.
  */
 export const getStopSlugs = unstable_cache(
-  async (): Promise<Array<{ slug: string; verifiedAt: string | null }>> => {
+  async (): Promise<Array<{ slug: string; verifiedAt: string | null; source: string | null }>> => {
     const supabase = getSupabase();
     if (!supabase) {
-      return DEMO_STOPS.map((s) => ({ slug: s.slug, verifiedAt: s.verifiedAt }));
+      return DEMO_STOPS.map((s) => ({ slug: s.slug, verifiedAt: s.verifiedAt, source: s.source }));
     }
 
     const PAGE = 1000;
-    const rows: Array<{ slug: string; verified_at: string | null }> = [];
+    const rows: Array<{ slug: string; verified_at: string | null; source: string | null }> = [];
     for (let offset = 0; ; offset += PAGE) {
       const { data, error } = await supabase
         .from("stops")
-        .select("slug, verified_at")
+        .select("slug, verified_at, source")
         .order("slug")
         .range(offset, offset + PAGE - 1);
       if (error || !data) break;
       rows.push(...(data as typeof rows));
       if (data.length < PAGE) break;
     }
-    return rows.map((r) => ({ slug: r.slug, verifiedAt: r.verified_at }));
+    return rows.map((r) => ({ slug: r.slug, verifiedAt: r.verified_at, source: r.source }));
   },
   ["stops:slugs"],
   { revalidate: 300, tags: ["stops"] },
@@ -355,6 +355,37 @@ export async function getStopsBySlugs(slugs: string[]): Promise<Stop[]> {
 /** How many entries admit they are unverified. Used on the about page. */
 export async function countUnverified(): Promise<number> {
   return (await getStopSlugs()).filter((s) => !s.verifiedAt).length;
+}
+
+/** Travel guides covering the same ground as OddWay. Mirrors lib/sources.ts. */
+const COMPETING_GUIDES = [
+  "atlasobscura.com",
+  "roadsideamerica.com",
+  "onlyinyourstate.com",
+  "thrillist.com",
+  "tripadvisor.com",
+  "yelp.com",
+  "mapcarta.com",
+];
+
+/**
+ * How many entries rest entirely on a rival travel guide.
+ *
+ * Less a failure than an admission: for these, nobody else has written the
+ * place up. lib/sources.ts already renders them as an unlinked credit, so a
+ * reader can see where a claim came from without us handing over the click —
+ * but a guide's write-up is weaker than the place's own site or the agency
+ * that manages it, and saying how many there are is more honest than not.
+ *
+ * Counted rather than written down, for the same reason as everything else on
+ * that page. The unverified figure sat at 25 for months, became 1,120 in a
+ * single evening when an import forgot a column, and nothing noticed because
+ * nothing errored.
+ */
+export async function countAggregatorSourced(): Promise<number> {
+  return (await getStopSlugs()).filter((s) =>
+    COMPETING_GUIDES.some((guide) => (s.source ?? "").includes(guide)),
+  ).length;
 }
 
 /**

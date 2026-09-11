@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { countStates, countStops, countUnverified } from "@/lib/stops";
+import { countAggregatorSourced, countStops } from "@/lib/stops";
 
 export const revalidate = 3600;
 
@@ -18,11 +18,23 @@ export default async function AboutPage() {
     search and map "are the next things to land" — both true when written and
     long out of date by the time anybody noticed. A number that reads itself
     from the index cannot go stale.
+
+    The unverified count used to sit here and made exactly that mistake in the
+    other direction: it was honest at 25, then an import forgot to set a column
+    and it read 1,120 for a day, claiming of a thousand freshly researched
+    stops that we could not verify them. It is now zero, which says nothing.
+    What is still true, and still worth admitting, is how many entries rest on
+    a rival guide because nobody else ever wrote the place up.
+
+    The state count is written out rather than counted. countStates() reads
+    distinct values from the state column, and the District of Columbia is one
+    of them, so this page said "51 states" from the moment DC went in. The map
+    is finished and cannot grow past fifty-one, so a live number here buys
+    nothing and only risks saying something untrue again.
   */
-  const [total, states, unverified] = await Promise.all([
+  const [total, guideOnly] = await Promise.all([
     countStops(),
-    countStates(),
-    countUnverified(),
+    countAggregatorSourced(),
   ]);
 
   return (
@@ -51,9 +63,9 @@ export default async function AboutPage() {
 
           <h2>Where this is up to</h2>
           <p>
-            {total.toLocaleString()} places across {states} states, every
-            one with a description, and route search and the map both working.
-            Type two towns into{" "}
+            {total.toLocaleString()} places across every state and the
+            District of Columbia, every one with a description, and route
+            search and the map both working. Type two towns into{" "}
             <Link href="/#plan">plan a trip</Link> and you get what is actually
             on the way.
           </p>
@@ -66,20 +78,22 @@ export default async function AboutPage() {
 
           <h2>How the index is built</h2>
           <p>
-            By hand, entry by entry. Roughly three hundred stops came from a
-            scan of OpenStreetMap; everything since has been researched a state
-            at a time, because a keyword search finds things whose names contain
-            the keyword and misses the Albatwitch at Chickies Rock entirely.
+            By hand, entry by entry. Roughly three hundred stops began as a scan
+            of OpenStreetMap and have since been rewritten one at a time; every
+            entry after that was researched a state at a time, because a keyword
+            search finds things whose names contain the keyword and misses the
+            Albatwitch at Chickies Rock entirely.
           </p>
           <p>
             Every entry cites where its facts came from. Where that source is a
             rival travel guide we credit it by name without linking, so you can
-            check it without us handing them the click.{" "}
+            check it without us handing them the click — and for{" "}
             <strong>
-              {unverified} entries say plainly that we could not verify them.
+              {guideOnly.toLocaleString()} entries that guide is the only thing
+              anybody has ever written about the place.
             </strong>{" "}
-            That is deliberate: an honest gap is worth more than a confident
-            guess, and the{" "}
+            That is worth saying out loud: a citation is not the same as
+            standing there, and the{" "}
             <Link href="/suggest?kind=correction">suggestion box</Link> exists
             because somebody standing outside a museum that shut two years ago
             knows something the index does not.

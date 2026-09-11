@@ -185,6 +185,11 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "worlds-fair-history": "weird-history",
   /* Added for the Kansas batch. */
   "historic-trails": "weird-history",
+  /* Added for the Minnesota batch. */
+  "commercial-oddities": "roadside-oddities",
+  "technology-history": "museums",          // its only use is the Pavek Museum of Broadcasting
+  "agricultural-history": "weird-history",
+  "funerary-art": "roadside-oddities",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

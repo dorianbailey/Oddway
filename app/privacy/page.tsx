@@ -30,16 +30,48 @@ export default function PrivacyPage() {
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
         <div className="article max-w-[68ch]">
           <p className="text-lede">
-            Browsing OddWay needs no account. There is no advertising, no
-            tracking pixels and no analytics service watching you read. Fonts
-            and images are served from our own domain, so loading a page does
-            not report anything to a third party.
+            Browsing OddWay needs no account. There are no tracking pixels and
+            no analytics service watching you read. Fonts and images are served
+            from our own domain, so loading a page does not report anything to
+            a third party.
+          </p>
+
+          <h2>Advertising</h2>
+          <p>
+            Some slots on the site are paid for. They are labelled{" "}
+            <strong>Advertisement</strong> and they are not an ad network: there is no
+            third-party script, no cookie, no pixel and no page view reported to
+            anybody. A sponsor slot is a name, a sentence and a link, written
+            into the site the same way a trip is.
+          </p>
+          <p>
+            That means an advertiser learns nothing about you unless you click
+            their advert, at which point you are on their website and their
+            privacy policy applies rather than ours. We do not tell them who
+            clicked, because we do not know.
+          </p>
+          <p>
+            Advertisers pay through Stripe and give us a business name, a
+            website, a description and an image. If you are the advertiser
+            rather than the reader, that is the data we hold about you, and you
+            can have it removed by asking.
+          </p>
+          <p>
+            If OddWay ever moves to a real advertising network this page will
+            change first, and say so plainly, because that would be a different
+            arrangement entirely.
           </p>
 
           <h2>If you make an account</h2>
+          {/*
+            This said an account existed for one reason. The bucket list made
+            that two, and a privacy page that undercounts what it holds is the
+            worst page on the site to be wrong on.
+          */}
           <p>
-            An account exists for one reason: adding photos of places you have
-            been. Nothing else on the site requires one.
+            An account does two things: it lets you post photos of places you
+            have been, and it keeps a bucket list of places you mean to get to.
+            Nothing else on the site requires one.
           </p>
           <p>We store:</p>
           <ul>
@@ -60,6 +92,12 @@ export default function PrivacyPage() {
             <li>
               <strong>A bio and a profile picture</strong>, if you add them.
               Both are public.
+            </li>
+            <li>
+              <strong>Your bucket list</strong> — which stops you have saved,
+              and when. This is private. There is no sharing, no public view and
+              no count shown anywhere; the database will not return another
+              account&rsquo;s list even if asked.
             </li>
           </ul>
 
@@ -125,7 +163,15 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Resend</strong> — sends us an email when a suggestion
-              arrives.
+              arrives, and sends advertisers the link they need after paying.
+            </li>
+            <li>
+              <strong>Stripe</strong> — takes payment for advertising, and only
+              for that. Card details are entered on Stripe&rsquo;s own pages and
+              never touch ours; we hold an email address, a customer reference
+              and a subscription reference, which is what tells us whether an
+              advertisement is still paid for. Nobody browsing the site is sent
+              to Stripe or known to them.
             </li>
             <li>
               <strong>OpenRouteService and OpenFreeMap</strong> — routing and
@@ -141,9 +187,10 @@ export default function PrivacyPage() {
           <p>You can delete any photo you have posted from your account page.</p>
           <p>
             You can also delete the whole account, from the bottom of the same
-            page. That removes your profile, every photo you have posted and the
-            image files themselves. It asks once to be sure and then does it
-            immediately — no email, no waiting on us, and no undo.
+            page. That removes your profile, your bucket list, every photo you
+            have posted and the image files themselves. It asks once to be sure
+            and then does it immediately — no email, no waiting on us, and no
+            undo.
           </p>
           <p>
             If something goes wrong partway through, the page says so and

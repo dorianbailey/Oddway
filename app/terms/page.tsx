@@ -35,11 +35,18 @@ export default function TermsPage() {
             without telling anyone, roads shut, and seasonal sites keep their
             own calendars.
           </p>
+          {/*
+            This said "around 24 entries say plainly that we could not verify
+            them". That was true, then a cleanup took it to zero, and the
+            sentence stayed. A number written into a page is a number that goes
+            stale; the point it was making does not need one.
+          */}
           <p>
-            Where an entry says it is on private land, or that a trail is closed,
-            or that access is by arrangement, take that seriously. Around 24
-            entries in the index say plainly that we could not verify them.
-            Nothing here is permission to go anywhere.
+            Where an entry says it is on private land, or that a trail is
+            closed, or that access is by arrangement, take that seriously. Every
+            entry cites a source, and a source is not the same as somebody
+            having stood there this month. Nothing here is permission to go
+            anywhere.
           </p>
 
           <h2>Posting photos</h2>
@@ -84,12 +91,53 @@ export default function TermsPage() {
             something and discuss it than leave it up while we decide.
           </p>
 
+          <h2>Advertising</h2>
+          <p>
+            Some slots are paid for. They are labelled{" "}
+            <strong>Advertisement</strong>, they link out with a paid-link
+            marker, and they are the only paid placement on the site.
+          </p>
+          <p>
+            Advertising is a monthly subscription taken through Stripe and can
+            be cancelled at any time from the receipt Stripe sends. A cancelled
+            advertisement runs to the end of the month already paid for and then
+            stops; we do not pro-rate part months in either direction.
+          </p>
+          <p>
+            Nothing goes up without being looked at. We can decline or remove an
+            advertisement — for a misleading claim, for a business we are not
+            willing to put in front of somebody planning a drive, or for an
+            image that does not belong on the site — and we refund the month if
+            we do. An advertiser is responsible for what is on their own
+            website, and we do not check it.
+          </p>
+          <p>
+            <strong>
+              Nothing in the index is there because somebody paid for it.
+            </strong>{" "}
+            Not a stop, not an event, not a trip, and not a featured artist. A
+            business cannot buy a listing, buy a better position in a search
+            result, or buy the removal of an entry about itself — though it can
+            correct one, like anybody else, through the{" "}
+            <Link href="/suggest?kind=correction">suggestion box</Link>.
+          </p>
+          <p>
+            We do not check a sponsor&rsquo;s claims about their own business
+            and we are not responsible for what happens on their website. A
+            sponsor slot is advertising and should be read as advertising.
+          </p>
+
           <h2>Accounts</h2>
           <p>
             Aged 13 and over. One person per account. Do not use somebody
             else&rsquo;s name, and do not pick a display name meant to
             impersonate a person or a place — it cannot be changed later, which
             is a good reason to think about it once.
+          </p>
+          <p>
+            An account also keeps a bucket list, which is private to you. We do
+            not publish it, and we do not use it to decide what anybody else
+            sees.
           </p>
 
           <h2>If something here is yours</h2>

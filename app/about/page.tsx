@@ -131,6 +131,21 @@ export default async function AboutPage() {
             links straight to their shop. We take nothing and have no
             arrangement with anyone listed.
           </p>
+          {/*
+            Said once, plainly, on the page that makes the claim the rest of
+            the site rests on. A reader who sees an advert next to a stop will
+            wonder whether the stop was bought, and the answer needs to be
+            somewhere they can find it.
+          */}
+          <p>
+            Some slots on the site are paid for and say{" "}
+            <strong>Sponsor</strong> on them.{" "}
+            <strong>
+              Nothing in the index is there because somebody paid.
+            </strong>{" "}
+            Not a stop, not an event, not a trip, not an artist. If that ever
+            changes it will be said here first.
+          </p>
           <p>
             And <Link href="/photos">photographs from people who went</Link>.
           </p>

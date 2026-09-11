@@ -29,6 +29,7 @@ const NAV_LINKS = [
   { href: "/artists", label: "Artists" },
   { href: "/photos", label: "Photos" },
   { href: "/about", label: "About" },
+  { href: "/advertise", label: "Advertise with us" },
 ] as const;
 
 /** Matches the media query the rest of the site honours. */

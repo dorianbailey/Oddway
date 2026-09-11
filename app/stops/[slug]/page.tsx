@@ -13,6 +13,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
 import { AddToBucketListButton } from "@/components/AddToBucketListButton";
+import { BannerAd } from "@/components/BannerAd";
 import { categoryLabel, getCategory } from "@/lib/categories";
 import { formatAccess, formatCoordinates } from "@/lib/format";
 import { getStopBySlug, getStopSlugs } from "@/lib/stops";
@@ -240,6 +241,13 @@ export default async function StopPage({ params }: PageProps) {
         <StopPhotos photos={photos} isAdmin={viewer?.is_admin ?? false} />
 
         <Directions stop={stop} />
+
+        {/*
+          Below the directions, which is the last thing somebody needs from
+          this page. Anywhere above it would sit between a traveller and the
+          practical detail they came for.
+        */}
+        <BannerAd className="mt-14" />
       </div>
     </>
   );

@@ -511,6 +511,13 @@ const values = zoned.map((s) => "  (" + [
   sqlString(s.access),
   s.source ? sqlString(s.source) : "null",
   sqlString(s.zone),
+  /*
+    Every state file before this one set verified_at, and the about page counts
+    the rows where it is null to say how many entries admit they are
+    unverified. Omitting it once put 1,095 researched stops into that count and
+    made the page say something untrue about them.
+  */
+  "now()",
 ].join(", ") + ")").join(",\n");
 
 const sql = `-- ${state}: ${zoned.length} researched stops.
@@ -530,7 +537,7 @@ const sql = `-- ${state}: ${zoned.length} researched stops.
 
 insert into public.stops
   (name, slug, category, latitude, longitude, city, state, description,
-   public_access, source, timezone)
+   public_access, source, timezone, verified_at)
 values
 ${values}
 on conflict (slug) do update set
@@ -540,7 +547,8 @@ on conflict (slug) do update set
   description   = excluded.description,
   public_access = excluded.public_access,
   source        = excluded.source,
-  timezone      = excluded.timezone;
+  timezone      = excluded.timezone,
+  verified_at   = excluded.verified_at;
 `;
 
 if (!existsSync("supabase")) mkdirSync("supabase");

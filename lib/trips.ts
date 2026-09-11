@@ -26,6 +26,20 @@ export interface Trip {
   /** Where it starts and ends, in words. */
   startsAt?: string;
   endsAt?: string;
+  /**
+   * You park once and walk the rest.
+   *
+   * Set by the author rather than inferred from how close the stops are. A
+   * threshold would have to guess, and it would guess wrong in both
+   * directions: two stops a mile apart across a canyon are not a walk, and a
+   * historic district that happens to be strung along three miles of one
+   * street is. The person writing the trip knows which it is.
+   *
+   * The trip page reads this to say how long the walk takes instead of how
+   * many miles of driving it is — Pioche end to end is under a mile, which
+   * the mileage line rendered as "roughly 1 miles".
+   */
+  onFoot?: boolean;
   html: string;
 }
 
@@ -47,6 +61,7 @@ function parse(fileName: string): Trip {
     days: data.days ? Number(data.days) : undefined,
     startsAt: data.startsAt ? String(data.startsAt) : undefined,
     endsAt: data.endsAt ? String(data.endsAt) : undefined,
+    onFoot: data.onFoot === true,
     html: marked.parse(content, { async: false }) as string,
   };
 }

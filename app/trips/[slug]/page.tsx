@@ -65,6 +65,24 @@ export default async function TripPage({ params }: TripPageProps) {
     straightLineKm += distanceKm(stops[i - 1]!, stops[i]!);
   }
 
+  /*
+    A walking trip measured in miles reads as nothing at all. Pioche end to
+    end is nine tenths of a mile, which this line rendered as "roughly 1
+    miles" — wrong number, wrong unit, wrong plural.
+
+    Walking pace is taken as 70 metres a minute, which is an unhurried pace on
+    the flat and about right for the steep main streets these routes actually
+    use. It counts the walking only: an afternoon spent on this includes the
+    time inside the museums, which is most of it, and the prose says so.
+  */
+  const miles = straightLineKm * 0.621371;
+  const rounded = Math.round(miles);
+  const walkingMinutes = Math.max(5, Math.round(straightLineKm * 1000 / 70 / 5) * 5);
+
+  const scale = trip.onFoot
+    ? `${walkingMinutes} minutes of walking, end to end`
+    : `roughly ${rounded} ${rounded === 1 ? "mile" : "miles"} point to point`;
+
   return (
     <>
       {/*
@@ -119,9 +137,10 @@ export default async function TripPage({ params }: TripPageProps) {
         </p>
         <p className="mt-4 text-[0.95rem] text-[#cfc9bb]">
           {stops.length} stops
+          {trip.onFoot ? " · on foot" : ""}
           {trip.days ? ` · ${trip.days} days` : ""}
           {states.length > 0 ? ` · ${states.map(stateName).join(", ")}` : ""}
-          {` · roughly ${Math.round(straightLineKm * 0.621)} miles point to point`}
+          {` · ${scale}`}
         </p>
       </PageHero>
 
@@ -177,11 +196,18 @@ export default async function TripPage({ params }: TripPageProps) {
 
           <aside>
             <div className="sticky top-40 rounded-[4px] border border-contour/45 bg-paper-raised p-6">
-              <h2 className="text-title">Take This Trip</h2>
+              <h2 className="text-title">
+                {trip.onFoot ? "Take This Walk" : "Take This Trip"}
+              </h2>
               <p className="mt-3 text-[0.95rem] text-ink-soft">
-                Loads all {stops.length} stops into the planner, where you can
-                add your own start and finish, reorder them, and hand the whole
-                route to Google Maps.
+                {trip.onFoot
+                  ? `Loads all ${stops.length} stops into the planner. Handing a
+                     walking route to Google Maps still works — it will just
+                     offer to drive you between doors that are sixty feet
+                     apart, so the list is more use than the directions.`
+                  : `Loads all ${stops.length} stops into the planner, where you
+                     can add your own start and finish, reorder them, and hand
+                     the whole route to Google Maps.`}
               </p>
               <div className="mt-5">
                 <LoadTripButton stops={stops as never} />

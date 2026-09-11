@@ -68,11 +68,70 @@ const STATE_TIMEZONE: Record<string, string> = {
     encoded in a timestamp.
   */
   NV: "America/Los_Angeles",
+
+  /*
+    Kansas and Oregon each have a handful of towns on Mountain time, all of
+    them listed in TOWN_TIMEZONE above. The rest of both states takes the
+    default.
+  */
+  KS: "America/Chicago",
+  OR: "America/Los_Angeles",
 };
 
-/** Towns that are legally outside their state's zone. */
+/**
+ * Towns that are legally outside their state's zone.
+ *
+ * Listed by name rather than derived from a line on a map, because the
+ * boundaries follow county lines: 49 CFR 71.7 puts four Kansas counties on
+ * Mountain time and 71.9 does the same for most of Malheur County, Oregon.
+ * A longitude rule would get Cheyenne County, Kansas wrong — it borders
+ * Colorado on the west and Nebraska on the north and is still Central, so you
+ * can enter Mountain time from three of its four sides.
+ */
 const TOWN_TIMEZONE: Record<string, string> = {
   "NV:west wendover": "America/Denver",
+
+  /*
+    Kansas: Sherman, Wallace, Greeley and Hamilton counties, all four on the
+    Colorado line. Every other county in the state is Central.
+  */
+  "KS:goodland": "America/Denver",      // Sherman
+  "KS:kanorado": "America/Denver",
+  "KS:edson": "America/Denver",
+  "KS:ruleton": "America/Denver",
+  "KS:sharon springs": "America/Denver", // Wallace
+  "KS:wallace": "America/Denver",
+  "KS:weskan": "America/Denver",
+  "KS:tribune": "America/Denver",        // Greeley
+  "KS:horace": "America/Denver",
+  "KS:syracuse": "America/Denver",       // Hamilton
+  "KS:coolidge": "America/Denver",
+  "KS:kendall": "America/Denver",
+
+  /*
+    Oregon: the northern four fifths of Malheur County, which runs on Boise
+    time because that is where its shopping, schools and jobs are. The line
+    sits at about 42.597 N; everything below it is empty desert, so every
+    named community in the county is on the Mountain side.
+  */
+  "OR:ontario": "America/Boise",
+  "OR:nyssa": "America/Boise",
+  "OR:vale": "America/Boise",
+  "OR:adrian": "America/Boise",
+  "OR:jordan valley": "America/Boise",
+  "OR:harper": "America/Boise",
+  "OR:juntura": "America/Boise",
+  "OR:brogan": "America/Boise",
+  "OR:westfall": "America/Boise",
+  "OR:ironside": "America/Boise",
+  "OR:riverside": "America/Boise",
+  "OR:jamieson": "America/Boise",
+  "OR:willowcreek": "America/Boise",
+  "OR:annex": "America/Boise",
+  "OR:arock": "America/Boise",
+  "OR:rome": "America/Boise",
+  "OR:danner": "America/Boise",
+  "OR:malheur city": "America/Boise",
 };
 
 /**
@@ -85,12 +144,10 @@ const SPLIT_STATES: Record<string, string> = {
   FL: "panhandle west of the Apalachicola is Central",
   ID: "ten northern counties are Pacific, the rest Mountain, at about 45.5 N",
   IN: "most counties Eastern, some northwest and southwest Central",
-  KS: "four western counties Mountain",
   KY: "split Eastern and Central",
   MI: "four western Upper Peninsula counties Central",
   ND: "Mountain towns listed by name, on county borders",
   NE: "panhandle Mountain, rest Central, at about -101",
-  OR: "most Pacific, most of Malheur County Mountain",
   SD: "the Missouri River at about -100.5, which keeps Pierre Central",
   TN: "split Eastern and Central",
   TX: "El Paso and Hudspeth Mountain, rest Central, at about -104.9",
@@ -301,7 +358,22 @@ if (SPLIT_STATES[state]) {
 
 const zoned = categorised.map((s) => ({ ...s, ...timezoneFor(s) }));
 const overridden = zoned.filter((s) => s.zone !== s.secondOpinion);
-console.log(`  timezone:    ${STATE_TIMEZONE[state]} for all ${zoned.length}`);
+/*
+  Report what was actually assigned, not the state default. The first version
+  printed the default "for all N" regardless, so a town override fired and the
+  summary still claimed every stop was on the state's clock — a check that
+  cannot show its own work is not a check.
+*/
+const zoneTally = new Map<string, number>();
+for (const s of zoned) zoneTally.set(s.zone, (zoneTally.get(s.zone) ?? 0) + 1);
+console.log(
+  `  timezone:    ${[...zoneTally].sort((a, b) => b[1] - a[1]).map(([z, n]) => `${z} ${n}`).join("   ")}`,
+);
+for (const s of zoned) {
+  if (s.zone !== STATE_TIMEZONE[state]) {
+    console.log(`      ${s.zone.padEnd(20)} ${s.name} (${s.city}) — listed town, not the state default`);
+  }
+}
 if (overridden.length) {
   console.log(`  tz-lookup disagreed on ${overridden.length}, overruled by the state rule:`);
   for (const s of overridden) console.log(`      ${s.secondOpinion.padEnd(20)} ${s.name} (${s.city})`);

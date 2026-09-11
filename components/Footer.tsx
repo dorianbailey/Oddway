@@ -5,7 +5,12 @@ import { UnitToggle } from "./UnitToggle";
 const FOOTER_LINKS = [
   { href: "/explore", label: "Explore" },
   { href: "/events", label: "Events" },
-  { href: "/trips", label: "Road trips" },
+  /*
+    "Road trips" until the walking trips arrived. The page now holds both, and
+    a link that names only half of what it leads to is the sort of small
+    inaccuracy that survives for years because nothing breaks.
+  */
+  { href: "/trips", label: "Trips" },
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Odd artists" },
   { href: "/about", label: "About" },

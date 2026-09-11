@@ -126,9 +126,17 @@ export default async function TripPage({ params }: TripPageProps) {
       />
 
       <PageHero>
+        {/*
+          The breadcrumb names the section the trip actually belongs to. It
+          said "Road trips" above every page, which reads oddly above a walk
+          through a town three streets long.
+        */}
         <p className="text-[0.95rem] text-[#cfc9bb]">
-          <Link href="/trips" className="underline underline-offset-4">
-            Road trips
+          <Link
+            href={trip.onFoot ? "/trips#on-foot" : "/trips#driving"}
+            className="underline underline-offset-4"
+          >
+            {trip.onFoot ? "Walking trips" : "Road trips"}
           </Link>
         </p>
         <h1 className="mt-4 max-w-[22ch] text-hero">{trip.title}</h1>

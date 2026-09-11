@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { countAggregatorSourced, countStops } from "@/lib/stops";
+import { getTrips } from "@/lib/trips";
 
 export const revalidate = 3600;
 
@@ -36,6 +37,15 @@ export default async function AboutPage() {
     countStops(),
     countAggregatorSourced(),
   ]);
+
+  /*
+    Counted for the same reason as everything else here. This paragraph said
+    "Fifteen road trips" and there were seventeen files, two of which are
+    walks rather than drives.
+  */
+  const trips = getTrips();
+  const drives = trips.filter((t) => !t.onFoot).length;
+  const walks = trips.filter((t) => t.onFoot).length;
 
   return (
     <>
@@ -107,8 +117,10 @@ export default async function AboutPage() {
 
           <h2>What else is here</h2>
           <p>
-            <Link href="/trips">Fifteen road trips</Link>, written as routes
-            rather than lists.{" "}
+            <Link href="/trips#driving">{drives} road trips</Link>, written as
+            routes rather than lists, and{" "}
+            <Link href="/trips#on-foot">{walks} walking trips</Link> through
+            towns where everything is on one street.{" "}
             <Link href="/stories">Case studies</Link> on why every state has a
             gravity hill, what happens to a museum built by one person, and how
             two towns eight miles apart both hold a world&rsquo;s largest

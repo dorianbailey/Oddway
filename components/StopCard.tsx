@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { tripStore } from "@/lib/trip-store";
-import { useTrip } from "./TripSummary";
+import { AddToBucketListButton } from "./AddToBucketListButton";
+import { AddToTripButton } from "./AddToTripButton";
 import { OpenNowBadge } from "./OpenNowBadge";
 import { categoryLabel } from "@/lib/categories";
 import { cx } from "@/lib/cx";
@@ -35,9 +35,6 @@ interface StopCardProps {
  * does not shift when the list re-renders and the server and client agree on
  * hydration. Four values is enough to look hand-placed without any card
  * tilting far enough to be annoying.
- *
- * The trip state is local for now. When trips become real, replace `added`
- * with a value from the trip store and call the store from `toggle`.
  */
 export function StopCard({ stop }: StopCardProps) {
   // Shared store, so the card and the trip panel can never disagree.
@@ -46,8 +43,6 @@ export function StopCard({ stop }: StopCardProps) {
     .split("")
     .reduce((total, character) => total + character.charCodeAt(0), 0) % TILTS.length;
 
-  const trip = useTrip();
-  const added = trip.some((item) => item.id === stop.id);
   const { units } = useUnits();
 
   return (
@@ -122,19 +117,20 @@ export function StopCard({ stop }: StopCardProps) {
           </div>
         </dl>
 
-        <button
-          type="button"
-          onClick={() => tripStore.toggle(stop)}
-          className={cx(
-            "mt-5 w-full rounded-[3px] border px-4 py-2.5 font-semibold transition-colors",
-            added
-              ? "border-pine bg-pine text-paper hover:bg-pine-deep"
-              : "border-pine bg-transparent text-pine hover:bg-lichen/50",
-          )}
-        >
-          {added ? "Remove from trip" : "Add to trip"}
-          <span className="sr-only"> — {stop.name}</span>
-        </button>
+        {/*
+          Two different questions, so two buttons.
+
+          "Add to trip" is about this weekend and lives in the browser.
+          "Add to bucket list" is about one day and lives in your account. The
+          trip button stays the loud one: it is what the page is for, and a
+          bucket list you cannot act on today should not compete with a route
+          you are planning now.
+
+          The trip button used to be a copy of AddToTripButton inlined here,
+          which meant two places to change and two chances to drift.
+        */}
+        <AddToTripButton stop={stop} className="mt-5" />
+        <AddToBucketListButton stop={stop} className="mt-2.5" />
       </div>
     </article>
   );

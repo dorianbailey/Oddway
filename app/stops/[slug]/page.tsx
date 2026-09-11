@@ -12,6 +12,7 @@ import { getCurrentProfile } from "@/lib/supabase-server";
 import { StructuredData } from "@/components/StructuredData";
 import { Directions } from "@/components/Directions";
 import { AddToTripButton } from "@/components/AddToTripButton";
+import { AddToBucketListButton } from "@/components/AddToBucketListButton";
 import { categoryLabel, getCategory } from "@/lib/categories";
 import { formatAccess, formatCoordinates } from "@/lib/format";
 import { getStopBySlug, getStopSlugs } from "@/lib/stops";
@@ -209,7 +210,13 @@ export default async function StopPage({ params }: PageProps) {
             />
           </div>
 
+          {/*
+            Two questions, two buttons, same order as the cards in the index.
+            The trip is about this weekend and lives in the browser; the bucket
+            list is about one day and lives in your account.
+          */}
           <AddToTripButton stop={stop} className="mt-6" />
+          <AddToBucketListButton stop={stop} className="mt-2.5" />
 
           {/*
             Stays inside OddWay. The handoff to a native maps app lives in the

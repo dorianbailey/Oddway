@@ -133,7 +133,19 @@ export default async function AboutPage() {
           </p>
           <p>
             And <Link href="/photos">photographs from people who went</Link>.
-            An account is needed to post one and for nothing else.
+          </p>
+          {/*
+            This said an account was needed to post a photo "and for nothing
+            else", which was true until the bucket list arrived. A sentence
+            that quietly stops being true is the thing this page keeps getting
+            wrong, so it now names both and nothing more.
+          */}
+          <p>
+            An account does two things and no others: it lets you post a photo,
+            and it keeps a <Link href="/account">bucket list</Link> of places
+            you mean to get to. The list is private — there is no sharing, no
+            public view, and nobody else can see it. Everything else here works
+            signed out.
           </p>
         </div>
       </div>

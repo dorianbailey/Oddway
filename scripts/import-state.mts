@@ -26,7 +26,7 @@ import {
   parseBatch, checkBatch, similarlyNamed, slugVariants, slugify, metresBetween,
   type ParsedStop, type ExistingStop,
 } from "./parse-batch.mts";
-import { normaliseCategories } from "./import-categories.mts";
+import { normaliseCategories, CATEGORY_ALIASES } from "./import-categories.mts";
 
 /**
  * The zone each state is legally in.
@@ -105,6 +105,47 @@ function timezoneFor(stop: ParsedStop): { zone: string; secondOpinion: string } 
   const byState = STATE_TIMEZONE[stop.state];
   if (byState) return { zone: byState, secondOpinion };
   return { zone: secondOpinion, secondOpinion };
+}
+
+/**
+ * The bucket a new category spelling most resembles.
+ *
+ * Scored on shared words against the 570-odd spellings already in the map, so
+ * "historic-ranches" lands near "historic-houses" and "ufo-roadside" near
+ * "ufo-lore". It is a suggestion to check, not a decision to trust.
+ */
+function suggestBucket(category: string): string {
+  const words = (v: string) => v.split(/[^a-z0-9]+/).filter(Boolean);
+  const mine = new Set(words(category));
+
+  /*
+    Every alias votes, weighted by how much of its name it shares with this
+    one, and the bucket with the highest total wins.
+
+    Two other scorings were tried and were worse. Picking the single closest
+    alias sent "historic-ranches" to roadside-oddities on the strength of one
+    "ranch" match, when thirty other historic-* spellings all say
+    weird-history. Weighting rare words more heavily, so "ufo" counted for
+    more than "roadside", fixed nothing and moved "archaeology-lore" out of
+    folklore.
+
+    On the three batches whose answers are known this gets about eleven of
+    fifteen right. It is a starting point to read, not an answer to paste
+    unchecked — the four it misses are the ones where a distinctive word like
+    "ufo" or "cryptid" carries the meaning and the rest of the name does not.
+  */
+  const votes = new Map<string, number>();
+  for (const [alias, bucket] of Object.entries(CATEGORY_ALIASES)) {
+    const theirs = words(alias);
+    if (!theirs.length) continue;
+    const shared = theirs.filter((w) => mine.has(w));
+    if (!shared.length) continue;
+    const weight = shared.join("").length / new Set([...mine, ...theirs]).size;
+    votes.set(bucket, (votes.get(bucket) ?? 0) + weight);
+  }
+
+  const ranked = [...votes].sort((a, b) => b[1] - a[1]);
+  return ranked[0]?.[0] ?? "roadside-oddities";
 }
 
 const sqlString = (value: string) => "'" + value.replace(/'/g, "''") + "'";
@@ -204,9 +245,41 @@ console.log(`\n  parsed ${stops.length} stops from ${input}`);
 
 /*
   normaliseCategories mutates in place and throws on anything unmapped, which
-  is the point. An unrecognised category must never quietly become a stop
+  is the point — an unrecognised category must never quietly become a stop
   nobody can filter to.
+
+  But it throws on the first one, so a batch with seven new spellings takes
+  seven runs to find them all, and each fix has to come from somewhere else.
+  Every batch brings a few. So they are all collected here, with the bucket
+  each one most resembles, printed as lines to paste straight into
+  CATEGORY_ALIASES.
+
+  The suggestion is a starting point, not an answer. Read it before pasting:
+  the seven buckets are a real editorial decision and a wrong guess puts a
+  stop under a filter nobody would look in.
 */
+const distinct = [...new Set(stops.map((s) => s.category))];
+const unmapped: string[] = [];
+for (const category of distinct) {
+  try {
+    normaliseCategories([{ category, name: "probe" }]);
+  } catch {
+    unmapped.push(category);
+  }
+}
+
+if (unmapped.length) {
+  console.error(`\n  ${unmapped.length} categories have no mapping. Add these to`);
+  console.error(`  CATEGORY_ALIASES in scripts/import-categories.mts, checking each one:\n`);
+  for (const category of unmapped) {
+    const example = stops.find((s) => s.category === category)!;
+    console.error(`  ${JSON.stringify(category)}: ${JSON.stringify(suggestBucket(category))},`
+      + `   // ${stops.filter((s) => s.category === category).length} stops, e.g. ${example.name}`);
+  }
+  console.error("");
+  process.exit(1);
+}
+
 const changedCategories = normaliseCategories(stops);
 const categorised = stops;
 

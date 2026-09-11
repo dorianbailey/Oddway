@@ -104,6 +104,20 @@ export const CATEGORY_ALIASES: Record<string, string> = {
     optical-oddities is roadside-oddities, route-66 is roadside-oddities,
     outlaws is weird-history, archaeological-mysteries is folklore.
   */
+  /*
+    Added for the New Mexico batch, each following the spelling already here:
+    ufo-* is ufos, historic-houses is weird-history, trail-history is
+    weird-history, homestead-history is weird-history, *-oddities is
+    roadside-oddities, and emigrant-inscriptions — the same thing El Morro is —
+    is weird-history.
+  */
+  "ufo-roadside": "ufos",
+  "historic-homes": "weird-history",
+  "historic-ranches": "weird-history",
+  "route-history": "weird-history",
+  "border-history": "weird-history",
+  "historic-graffiti": "weird-history",
+  "natural-spectacle": "roadside-oddities",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

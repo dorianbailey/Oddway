@@ -1,0 +1,1124 @@
+OddWay — New Mexico Complete
+160 New Mexico stops
+Stops 1–160
+Prepared September 10, 2026
+
+Access key: open = normally accessible during posted/public hours; limited = seasonal, scheduled, ticketed, cemetery-hours, appointment-only, culturally sensitive, military/security-dependent, weather/road-dependent, private-access-dependent, or check-ahead access; roadside = view from a safe lawful public area; private = private property, do not enter without permission; seasonal = primarily accessible during a defined season; view-only = observe from a lawful public viewpoint and do not enter restricted structures, property, infrastructure, or culturally closed areas.
+
+Research note: This set prioritizes places with a real, routable location and an OddWay-specific reason to stop. Paranormal and UFO claims are described as lore, reports, or alleged events rather than fact. Active military, archaeological, sacred, cemetery, railroad, tribal, national-park, and private sites are labeled conservatively. First-party, government, museum, preservation, or local-tourism sources are used wherever practical; competitor/discovery sources are retained only when a stronger primary source was not readily available. Coordinates are rounded to five decimal places and are intended as routable stop pins, not permission to cross private land or enter restricted areas.
+
+Current-access exclusions/checks made for this September 2026 list: Sunspot Solar Observatory is excluded because the observatory, visitor center, grounds and nearby trails are closed indefinitely after the January 2026 mercury leak. Roswell Museum, Goddard Planetarium and the Anderson Museum of Contemporary Art are excluded from normal routing because of flood-recovery closures. El Camino Real Historic Trail Site is excluded because its current visitor page says it is temporarily closed until further notice. White Sands' Interdune Boardwalk is excluded because of its current closure. Lincoln's San Juan Church is not used as an active stop because of the posted structural/safety closure. Kasha-Katuwe Tent Rocks is retained as limited/reservation-dependent, Trinity Site as an extremely limited open-house stop, and White Sands Missile Range Museum as security-dependent.
+
+1. International UFO Museum & Research Center
+Roswell, NM
+33.39430, -104.52220
+ufo-history | open
+Roswell's best-known UFO museum centers on the 1947 Roswell Incident and the decades of documents, witness accounts, photographs and popular culture that followed it. The museum treats the city's defining UFO story as the main attraction rather than a side exhibit.
+Source: https://www.roswellufomuseum.com/
+
+2. Roswell UFO Spacewalk
+Roswell, NM
+33.39416, -104.52183
+outsider-art | open
+Artist Larry Welz built this black-light walk-through from recycled, found and donated materials, turning a downtown storefront into a glowing alien landscape. It is part UFO attraction, part handmade art environment.
+Source: https://www.roswellufospacewalk.com/
+
+3. Alien Zone Area 51
+Roswell, NM
+33.39505, -104.52218
+ufo-roadside | open
+A downtown alien-themed photo attraction fills staged rooms with saucers, extraterrestrials and deliberately campy Roswell scenery. It is a separate stop from the UFO museum and one of the city's strongest pieces of roadside alien kitsch.
+Source: https://www.roswellufomuseum.com/area-attractions
+
+4. Miniatures & Curious Collections Museum
+Roswell, NM
+33.39678, -104.52334
+odd-museums | limited
+This small museum preserves elaborate miniatures alongside rotating displays of objects considered unusual, antique or simply interesting. Its collection grew from Roswell's Los Pocos Locos Miniature Society and is intentionally broader than a conventional dollhouse museum.
+Source: https://www.miniaturesandcuriouscollectionsmuseum.org/
+
+5. Walker Aviation Museum
+Roswell, NM
+33.30195, -104.52944
+aviation-history | limited
+Inside the Roswell Air Center terminal, this museum preserves artifacts and photographs from Roswell Army Air Field and Walker Air Force Base. The setting is especially fitting because the modern airport occupies the former military base.
+Source: https://www.wafbmuseum.org/
+
+6. McBride Museum at New Mexico Military Institute
+Roswell, NM
+33.40902, -104.52268
+military-history | limited
+The New Mexico Military Institute museum preserves uniforms, weapons, photographs and institutional history from one of the country's unusual state-supported military schools. Visitors should check campus access and museum hours before arriving.
+Source: https://www.nmmi.edu/mcbride-museum/
+
+7. Roswell Space Toy Museum
+Roswell, NM
+33.39654, -104.52217
+odd-museums | open
+Vintage rockets, robots and space toys from the 1930s through the 1960s fill this downtown museum. The collection shows how science fiction and the Space Age were packaged for children long before Roswell's modern alien tourism boom.
+Source: https://www.roswell-nm.gov/1817/Museum-Day-Roswell-2026
+
+8. UFO McDonald's
+Roswell, NM
+33.40188, -104.52242
+roadside-oddity | open
+Roswell's downtown McDonald's is shaped and decorated to resemble a flying saucer, complete with space-themed exterior details. It is a functioning restaurant, but the building itself has become part of the city's alien-roadside landscape.
+Source: https://www.newmexico.org/places-to-visit/southeast/roswell/
+
+9. Alleged UFO Skip Site
+Corona, NM
+33.95219, -105.33121
+ufo-history | limited
+BLM identifies a lawful public-land hiking access point connected with an alleged 1947 UFO 'skip' or crash story near Corona. Vehicle approaches used historically cross private property, so OddWay should route only to the BLM access and never across ranch land.
+Source: https://www.blm.gov/visit/alleged-ufo-skip-site
+
+10. Bottomless Lakes State Park
+Roswell, NM
+33.32450, -104.33200
+geology | open
+A chain of deep sinkholes filled with green-blue water gave rise to the 'bottomless' name east of Roswell. The lakes are actually measurable, but their steep-sided geology and unusual desert setting made the legend stick.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/bottomless-lakes-state-park/
+
+11. World's Largest Pistachio
+Alamogordo, NM
+32.81282, -105.99143
+roadside-oddity | open
+A giant concrete pistachio rises outside PistachioLand as an intentionally oversized monument to the local nut crop. The sculpture is one of southern New Mexico's most recognizable classic roadside photo stops.
+Source: https://pistachioland.com/
+
+12. New Mexico Museum of Space History
+Alamogordo, NM
+32.92111, -105.92111
+space-history | open
+This hillside museum traces rockets, satellites, early spaceflight and New Mexico's unusually deep connection to missile testing and space exploration. Its International Space Hall of Fame makes it more than a local aerospace collection.
+Source: https://nmspacemuseum.org/
+
+13. Toy Train Depot
+Alamogordo, NM
+32.91412, -105.96101
+odd-museums | limited
+A former railroad depot houses model trains, railroad artifacts and miniature layouts, preserving Alamogordo's rail history at a much smaller scale. Operating hours are limited, so it is best treated as a check-ahead museum stop.
+Source: https://toytraindepot.org/
+
+14. Shroud Exhibit and Museum
+Alamogordo, NM
+32.92695, -105.95730
+religious-mysteries | limited
+This unusual museum examines the Shroud of Turin through a life-size research photograph, historical material and a VP-8 image-analysis display. The original shroud is not here; the attraction focuses on the scientific and religious mystery surrounding it.
+Source: https://shroudnm.com/
+
+15. White Sands National Park Visitor Center & Dunes
+Alamogordo, NM
+32.77908, -106.17119
+geologic-oddities | open
+The world's largest gypsum dunefield creates a landscape that resembles snow despite lying in the Chihuahuan Desert. Dunes Drive begins at the historic visitor center and leads directly into miles of brilliant white gypsum.
+Source: https://www.nps.gov/whsa/
+
+16. Alkali Flat Trail
+Alamogordo, NM
+32.79840, -106.23370
+geologic-oddities | limited
+This strenuous loop crosses the heart of White Sands where the gypsum dunes are largest and the developed landscape disappears. The route is exposed, waterless and occasionally affected by missile-range closures, so conditions must be checked before hiking.
+Source: https://www.nps.gov/whsa/planyourvisit/alkali-flat-trail.htm
+
+17. White Sands Missile Range Museum
+White Sands Missile Range, NM
+32.38473, -106.47841
+military-history | limited
+Missiles, rockets and testing hardware document the history of the enormous White Sands range, including weapons development and early American space work. The museum is inside an active military installation, so current security and entry rules apply.
+Source: https://history.army.mil/Army-Museum-Enterprise/Find-an-Army-Museum/White-Sands-Missile-Range-Museum/
+
+18. Trinity Site Ground Zero
+White Sands Missile Range, NM
+33.67728, -106.47538
+nuclear-history | limited
+A lava-rock obelisk marks ground zero of the July 16, 1945 Trinity test, the world's first detonation of a nuclear weapon. Public access is extremely limited; in 2026 the announced open house is October 17.
+Source: https://home.army.mil/wsmr/index.php/contact/public-affairs-office/trinity-site-open-house
+
+19. Old Apple Barn & Giant Apple Boy
+High Rolls, NM
+32.95232, -105.82415
+roadside-oddity | open
+A 12-foot handmade Apple Boy waves above this mountain roadside store, a deliberately modern take on the fiberglass giants of older American highways. The barn itself is packed with local foods, antiques and souvenir oddities.
+Source: https://www.oldapplebarn.com/
+
+20. Mexican Canyon Trestle
+Cloudcroft, NM
+32.96373, -105.74768
+railroad-history | roadside
+This preserved 1899 wooden railroad trestle once carried trains up the steep Sacramento Mountains toward Cloudcroft. A lawful highway overlook gives travelers a clear view without entering the historic structure.
+Source: https://www.fs.usda.gov/recarea/lincoln/recarea/?recid=34212
+
+21. Three Rivers Petroglyph Site
+Three Rivers, NM
+33.34423, -106.00738
+rock-art | limited
+More than 21,000 Jornada Mogollon petroglyphs cover the basalt ridge here, including animals, human figures and complex geometric designs. Visitors must stay on established access routes and never touch or damage the rock art.
+Source: https://www.blm.gov/visit/three-rivers-petroglyph-site
+
+22. Valley of Fires Recreation Area
+Carrizozo, NM
+33.68480, -105.92001
+volcanic-geology | open
+A black lava flow cuts across the Tularosa Basin like a frozen river of rock. The Malpais Nature Trail lets visitors walk directly over a flow created roughly 5,000 years ago, an unusually young landscape by geologic standards.
+Source: https://www.blm.gov/visit/valley-fires-recreation-area
+
+23. White Oaks Historic Ghost Town
+White Oaks, NM
+33.74646, -105.73420
+ghost-towns | open
+White Oaks boomed after gold discoveries in the late nineteenth century, then faded when the railroad bypassed it. Historic buildings and a tiny surviving community make it a living ghost-town landscape rather than an abandoned ruin field.
+Source: https://www.newmexico.org/places-to-visit/ghost-towns/white-oaks/
+
+24. Smokey Bear Historical Park
+Capitan, NM
+33.54536, -105.57265
+weird-history | open
+The real black bear cub who became the living symbol of Smokey Bear is buried here in his hometown region. Exhibits connect the 1950 Capitan Gap fire, the rescued cub and the national wildfire-prevention icon that grew from his story.
+Source: https://www.emnrd.nm.gov/sfd/smokey-bear-historical-park/
+
+25. Fort Stanton Historic Site
+Fort Stanton, NM
+33.49574, -105.52205
+dark-history | limited
+Fort Stanton's unusually intact parade ground has served as an Army post, tuberculosis hospital, CCC camp and World War II internment site for German sailors. Those overlapping uses give the complex one of the stranger institutional histories in New Mexico.
+Source: https://www.dca.nm.gov/historic-sites/fort-stanton
+
+26. Lincoln County Courthouse Museum
+Lincoln, NM
+33.49274, -105.38366
+outlaw-history | limited
+Billy the Kid escaped from this former courthouse in 1881 after killing two deputies, making the building one of the most concrete surviving sites in the Lincoln County War story. It remains part of the state-run Lincoln Historic Site.
+Source: https://www.dca.nm.gov/historic-sites/lincoln
+
+27. Tunstall Store
+Lincoln, NM
+33.49250, -105.38305
+outlaw-history | limited
+Merchant John Tunstall's store survives from the violent Lincoln County War era and still contains period material tied to the conflict. Tunstall's killing helped ignite the feud that made Billy the Kid nationally famous.
+Source: https://www.dca.nm.gov/historic-sites/lincoln
+
+28. The Torreon at Lincoln
+Lincoln, NM
+33.49218, -105.38236
+frontier-history | limited
+This round stone defensive tower is one of Lincoln's oldest surviving structures and was used by residents as a refuge during raids. Its compact fortified form is a stark contrast to the adobe commercial buildings along the main street.
+Source: https://www.dca.nm.gov/historic-sites/lincoln
+
+29. Billy the Kid Grave
+Fort Sumner, NM
+34.40349, -104.19483
+outlaw-history | limited
+Billy the Kid is buried in the old Fort Sumner cemetery beneath a heavily protected grave marker. The site has become a pilgrimage point for outlaw history, but it remains an active historic cemetery and should be visited respectfully.
+Source: https://www.newmexico.org/places-to-visit/regions/southeast/fort-sumner/
+
+30. Billy the Kid Museum
+Fort Sumner, NM
+34.47136, -104.24576
+odd-museums | open
+This long-running private museum holds firearms, photographs, saddles and frontier artifacts connected with Billy the Kid and the surrounding region. Its dense, old-school collection feels closer to a roadside cabinet of curiosities than a polished state museum.
+Source: https://www.billythekidmuseumfortsumner.com/
+
+31. Bosque Redondo Memorial at Fort Sumner Historic Site
+Fort Sumner, NM
+34.40233, -104.19618
+dark-history | limited
+The memorial interprets the forced removal and imprisonment of Navajo and Mescalero Apache people at Bosque Redondo in the 1860s. It is an essential, sobering counterpart to the outlaw tourism found elsewhere around Fort Sumner.
+Source: https://www.dca.nm.gov/historic-sites/bosque-redondo-memorial-at-fort-sumner-historic-site
+
+32. Blackwater Draw National Historic Landmark
+Portales, NM
+34.27830, -103.31950
+archaeology | seasonal
+Excavations at Blackwater Draw helped define the Clovis culture through mammoth remains, stone tools and deeply layered evidence of human occupation. The outdoor archaeological site has seasonal hours separate from the university museum in Portales.
+Source: https://www.bwdarchaeology.com/
+
+33. Blackwater Draw Museum
+Portales, NM
+34.17637, -103.34710
+archaeology | limited
+This Eastern New Mexico University museum displays material from the Blackwater Draw excavations and explains why 'Clovis' became a foundational term in North American archaeology. It is a separate indoor stop from the excavation site itself.
+Source: https://www.bwdarchaeology.com/
+
+34. Norman Petty Recording Studios
+Clovis, NM
+34.40452, -103.22120
+music-history | limited
+Norman Petty's small studio is where Buddy Holly, Roy Orbison and other early rock performers recorded in the 1950s. The original equipment and room survive, but access is generally by appointment rather than ordinary walk-in hours.
+Source: https://normanpettystudios.com/
+
+35. Norman & Vi Petty Rock 'n' Roll Museum
+Clovis, NM
+34.40403, -103.20495
+music-history | limited
+This downtown collection interprets the Clovis recording scene through instruments, photographs and material connected with Norman Petty and the musicians who worked with him. It complements the original studio without duplicating the same visitor experience.
+Source: https://www.cityofclovis.org/parks-and-recreation/museums/
+
+36. Blue Swallow Motel
+Tucumcari, NM
+35.17187, -103.71642
+route-66 | roadside
+One of Route 66's best-preserved neon motels still operates beneath its famous blue-swallow sign. Travelers can appreciate the exterior from public areas, but guest spaces remain private unless staying at the property.
+Source: https://blueswallowmotel.com/
+
+37. Tee Pee Curios
+Tucumcari, NM
+35.17170, -103.71480
+route-66 | open
+A concrete teepee entrance and vintage neon mark this surviving Route 66 curio shop. The building began as a gas station and now functions as a compact piece of roadside architecture and souvenir culture.
+Source: https://tee-pee-curios.square.site/
+
+38. New Mexico Route 66 Museum
+Tucumcari, NM
+35.16997, -103.74190
+odd-museums | limited
+Vintage cars, signs, photographs and memorabilia document New Mexico's stretch of Route 66 inside the convention-center complex. It gives useful context for the surviving motels and neon scattered across Tucumcari.
+Source: https://nmroute66museum.org/
+
+39. Tucumcari Historical Museum
+Tucumcari, NM
+35.16904, -103.72585
+odd-museums | limited
+An old school building is crowded with regional objects ranging from ranching equipment and military material to household artifacts. The eclectic room-by-room display makes it substantially stranger than a conventional single-theme history museum.
+Source: https://tucumcarinm.com/museums/
+
+40. Tucumcari Railroad Museum
+Tucumcari, NM
+35.17072, -103.72689
+railroad-history | limited
+The restored depot and railroad collection preserve the transportation system that shaped Tucumcari before and during the Route 66 era. Rail artifacts and the trackside setting make the building itself part of the exhibit.
+Source: https://www.tucumcarirailroadmuseum.org/
+
+41. Mesalands Dinosaur Museum
+Tucumcari, NM
+35.17345, -103.72396
+paleontology | open
+Full-size dinosaur skeletons, fossils and active paleontology work fill this college museum. The collection is particularly strong in fossils from the surrounding high plains, making it more than a generic dinosaur display.
+Source: https://www.mesalands.edu/community/dinosaur-museum/
+
+42. Route 66 Monument
+Tucumcari, NM
+35.17146, -103.74294
+roadside-oddity | open
+Tom Coffin's sculptural Route 66 monument uses the rear half of a classic car rising from a stylized roadway. It sits outside the convention center and functions as one of Tucumcari's easiest roadside photo stops.
+Source: https://tucumcarinm.com/
+
+43. Cuervo Ghost Town
+Cuervo, NM
+35.05695, -104.40770
+ghost-towns | roadside
+I-40 cut through this former Route 66 railroad settlement, leaving abandoned houses and commercial ruins on both sides of the highway. Most structures are private or unstable, so OddWay should route to lawful public roads only and never encourage entry.
+Source: https://www.newmexico.org/places-to-visit/ghost-towns/
+
+44. Route 66 Auto Museum
+Santa Rosa, NM
+34.94434, -104.70272
+odd-museums | open
+Dozens of restored classic cars, hot rods, signs and Route 66 memorabilia fill this roadside museum. The collection fits Santa Rosa's position as one of the better-preserved automobile-culture stops on the historic highway.
+Source: https://www.route66automuseum.com/
+
+45. Blue Hole
+Santa Rosa, NM
+34.94045, -104.68284
+natural-oddities | open
+An artesian spring forms an almost perfectly round, deep blue pool in the middle of high-desert Santa Rosa. Its constant clear water and depth make it a nationally known diving site as well as a natural roadside oddity.
+Source: https://www.santarosanm.gov/blue-hole
+
+47. Clayton Lake Dinosaur Trackway
+Clayton, NM
+36.57315, -103.30480
+paleontology | limited
+Hundreds of dinosaur footprints are exposed in sandstone beside Clayton Lake, including tracks left by several different kinds of dinosaurs. The trackway is reached by a short trail and is one of the clearest in-place fossil stops in the state.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/clayton-lake-state-park-and-dinosaur-trackways/
+
+48. Capulin Volcano National Monument
+Capulin, NM
+36.78110, -103.97105
+volcanic-geology | limited
+A paved road spirals toward the rim of an extinct cinder cone rising abruptly from the plains. Weather, vehicle restrictions and seasonal conditions can affect summit access even when the monument itself is open.
+Source: https://www.nps.gov/cavo/
+
+49. Fort Union National Monument
+Watrous, NM
+35.90722, -105.00952
+ruins | open
+Massive adobe wall fragments trace the footprint of the largest nineteenth-century military fort in the Southwest. The wind-scoured ruins preserve a strangely skeletal military landscape on the open plains.
+Source: https://www.nps.gov/foun/
+
+50. St. James Hotel
+Cimarron, NM
+36.51056, -104.91574
+paranormal | limited
+This 1870s hotel leans heavily into stories of gunfighters, violent deaths and reported paranormal activity. It remains a functioning hotel, so hauntings should be presented as property lore and access limited to public or booked areas.
+Source: https://www.exstjames.com/
+
+51. Dawson Cemetery
+Dawson, NM
+36.65532, -104.76777
+dark-history | limited
+Rows of white crosses mark victims of catastrophic coal-mine explosions that devastated the company town of Dawson in 1913 and 1923. Access may be restricted and permission requirements can change, so travelers must obey gates and posted rules.
+Source: https://www.newmexico.org/places-to-visit/ghost-towns/dawson/
+
+52. Carlsbad Caverns National Park
+Carlsbad, NM
+32.17533, -104.44350
+caves | limited
+Carlsbad Caverns contains an enormous underground chamber system formed in Permian limestone, including the famous Big Room. Timed entry and cave conditions make this a reservation/check-ahead stop rather than an unrestricted roadside attraction.
+Source: https://www.nps.gov/cave/
+
+53. Living Desert Zoo & Gardens State Park
+Carlsbad, NM
+32.44173, -104.25336
+natural-history | open
+This hilltop state park concentrates Chihuahuan Desert plants and animals into a walkable collection overlooking Carlsbad. Its mountain lions, reptiles, native plants and unusual desert adaptations give it a strong regional natural-history fit.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/living-desert-zoo-and-gardens-state-park/
+
+54. Sitting Bull Falls
+Carlsbad, NM
+32.24326, -104.69736
+natural-oddities | limited
+A spring-fed waterfall and clear pools appear unexpectedly in a dry canyon west of Carlsbad. Seasonal water conditions, fire restrictions and capacity limits can affect access, making it a check-ahead desert-oasis stop.
+Source: https://www.fs.usda.gov/recarea/lincoln/recarea/?recid=34238
+
+55. Recycled Roadrunner
+Las Cruces, NM
+32.29342, -106.81586
+outsider-art | open
+A giant roadrunner sculpture built largely from discarded shoes, electronics, metal and other trash stands at the I-10 rest area west of Las Cruces. Its recycled construction turns a familiar state bird into one of New Mexico's strangest public artworks.
+Source: https://www.newmexico.org/things-to-do/road-trips/enchantedeight/roadside-oddities/
+
+56. World's Largest Chile Pepper
+Las Cruces, NM
+32.31186, -106.80762
+roadside-oddity | roadside
+A roughly 47-foot chile pepper towers beside a motel in Las Cruces as an exaggerated tribute to southern New Mexico's chile culture. It can be photographed from lawful public or customer-access areas without entering private guest spaces.
+Source: https://www.newmexico.org/things-to-do/road-trips/enchantedeight/roadside-oddities/
+
+57. Zuhl Museum
+Las Cruces, NM
+32.28222, -106.74735
+odd-museums | limited
+New Mexico State University displays petrified wood, fossils and polished mineral specimens from the Zuhl collection in a museum that feels halfway between geology lab and gemstone gallery. Campus hours should be checked before visiting.
+Source: https://zuhlmuseum.nmsu.edu/
+
+58. New Mexico Farm & Ranch Heritage Museum
+Las Cruces, NM
+32.29843, -106.74093
+odd-museums | open
+This large state museum combines agricultural machinery, livestock, historic buildings and exhibits on thousands of years of farming in the Rio Grande valley. Working animals and outdoor structures make it more immersive than a standard history museum.
+Source: https://nmfarmandranchmuseum.org/
+
+59. Taylor-Mesilla Historic Site
+Mesilla, NM
+32.27395, -106.80062
+historic-homes | limited
+The restored Taylor home preserves an unusually rich collection of New Mexican, Mexican and borderlands art assembled by J. Paul and Mary Daniels Taylor. State-site hours and guided access can vary.
+Source: https://www.dca.nm.gov/historic-sites/taylor-mesilla
+
+60. Mesilla Plaza
+Mesilla, NM
+32.27422, -106.80083
+weird-history | open
+This compact plaza has witnessed territorial politics, stagecoach traffic and the trial of Billy the Kid. Its surviving adobe streetscape makes nineteenth-century borderland history unusually tangible in the middle of a modern metro area.
+Source: https://www.mesillanm.gov/
+
+61. Basilica of San Albino
+Mesilla, NM
+32.27404, -106.80031
+religious-history | limited
+The present church anchors Mesilla Plaza on a site associated with parish life since the 1850s. Its twin towers and borderlands history make it one of the strongest architectural landmarks in the historic district; visitors should respect worship services.
+Source: https://sanalbino.org/
+
+62. Double Eagle Restaurant Ghost Lore
+Mesilla, NM
+32.27448, -106.80059
+paranormal | limited
+The historic adobe property is associated with a long-running local legend about two young lovers killed there and later reported as apparitions. It is an operating restaurant, so OddWay should present the story as lore and respect normal business access.
+Source: https://www.doubleeagleonline.com/
+
+63. La Posta de Mesilla
+Mesilla, NM
+32.27461, -106.80099
+route-history | open
+A nineteenth-century stagecoach stop evolved into a sprawling restaurant filled with historic rooms, tropical birds and borderlands memorabilia. The building's layered stagecoach and commercial history makes the property a destination beyond the meal itself.
+Source: https://www.laposta-de-mesilla.com/
+
+64. Pat Garrett Grave
+Las Cruces, NM
+32.30120, -106.78546
+outlaw-history | limited
+Sheriff Pat Garrett, best known for killing Billy the Kid, is buried in the Masonic Cemetery in Las Cruces. The grave is a legitimate outlaw-history stop but should be treated with normal cemetery etiquette and lawful visiting hours.
+Source: https://www.lascruces.gov/
+
+65. Pat Garrett Death Site Marker
+Las Cruces, NM
+32.36620, -106.71715
+outlaw-history | roadside
+A simple desert marker preserves the approximate place connected with Pat Garrett's 1908 killing east of Las Cruces. The site lies near modern development and private land, so visitors should remain at the lawful marker/access point.
+Source: https://www.hmdb.org/m.asp?m=51917
+
+66. Dripping Springs Natural Area Historic Ruins
+Las Cruces, NM
+32.32957, -106.57521
+ruins | limited
+Ruins of the Van Patten Mountain Camp and later sanatorium sit below the Organ Mountains beside a spring-fed canyon. The blend of resort remains, health-history ruins and dramatic geology makes this one of southern New Mexico's strongest OddWay hikes.
+Source: https://www.blm.gov/visit/dripping-springs-natural-area
+
+67. La Cueva Rock Shelter
+Las Cruces, NM
+32.33495, -106.58333
+archaeology | limited
+This rock shelter shows evidence of human use stretching back thousands of years and later became associated with the eccentric hermit Giovanni Maria Agostini. It is reached on foot from the Dripping Springs area; artifacts must never be disturbed.
+Source: https://www.blm.gov/visit/la-cueva
+
+68. Prehistoric Trackways National Monument
+Las Cruces, NM
+32.37248, -106.89744
+paleontology | limited
+The Robledo Mountains preserve an enormous concentration of fossil footprints and trackways from the Permian Period. Roads become high-clearance/4WD beyond the lower access, so travelers need to match the route to current vehicle conditions.
+Source: https://www.blm.gov/visit/prehistoric-trackways-national-monument
+
+69. Kilbourne Hole Volcanic Crater
+La Mesa, NM
+31.97013, -106.95000
+volcanic-geology | limited
+This broad maar crater was blasted into the desert by explosive interaction between magma and groundwater. Remote dirt-road access and weather can make the last approach difficult, and collecting or off-road damage should never be encouraged.
+Source: https://www.blm.gov/visit/kilbourne-hole-volcanic-crater
+
+70. Fort Selden Historic Site
+Radium Springs, NM
+32.50550, -106.91835
+ruins | limited
+Adobe ruins preserve a frontier fort where Buffalo Soldiers and other U.S. Army units served in the nineteenth century. The exposed walls and desert setting make the former post feel more skeletal than reconstructed military sites.
+Source: https://www.dca.nm.gov/historic-sites/fort-selden
+
+71. Space Murals Museum
+Organ, NM
+32.42631, -106.60253
+space-history | limited
+A large painted space mural marks a small museum devoted to NASA, rockets and aerospace memorabilia along U.S. 70. Its handmade roadside feel sets it apart from the larger institutional space museums elsewhere in the state.
+Source: https://www.newmexico.org/things-to-do/road-trips/enchantedeight/roadside-oddities/
+
+72. Deming Luna Mimbres Museum
+Deming, NM
+32.26835, -107.75862
+odd-museums | open
+The former armory holds everything from Mimbres pottery and frontier objects to vehicles, dolls and military material. Its unusually broad, crowded collection makes it a classic small-town cabinet-of-curiosities museum.
+Source: https://www.lunacountyhistoricalsociety.com/
+
+73. Rockhound State Park
+Deming, NM
+32.18645, -107.61033
+rockhounding | open
+Unlike most parks, Rockhound historically encouraged visitors to search designated areas for jasper, quartz and other minerals under current state rules. The park's identity is built directly around the geology underfoot.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/rockhound-state-park/
+
+74. City of Rocks State Park
+Faywood, NM
+32.59090, -107.97448
+geologic-oddities | open
+Volcanic rock columns weathered into narrow lanes and clusters that resemble a miniature stone city. Trails and campsites weave directly between the formations, making the geologic illusion the core of the park.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/city-of-rocks-state-park/
+
+75. Pancho Villa State Park
+Columbus, NM
+31.82787, -107.64045
+border-history | open
+This state park preserves the site of Camp Furlong and interprets Pancho Villa's 1916 raid on Columbus, the last major armed invasion of the continental United States. Military vehicles and border history make the story unusually concrete.
+Source: https://www.emnrd.nm.gov/spd/find-a-park/pancho-villa-state-park/
+
+76. Shakespeare Ghost Town Tours
+Lordsburg, NM
+32.32556, -108.73833
+ghost-towns | limited
+A privately preserved mining and stagecoach settlement retains old buildings, cemetery stories and frontier lore south of Lordsburg. Access is by scheduled tour or event; do not enter the property outside authorized times.
+Source: https://shakespeareghostown.com/
+
+77. Gila Cliff Dwellings National Monument
+Gila Hot Springs, NM
+33.22722, -108.27056
+archaeology | limited
+Mogollon people built rooms inside natural caves high above the Gila River around the late 1200s. The steep trail, weather and occasional closures make it a check-ahead destination, while the dwellings themselves must be treated as protected archaeological resources.
+Source: https://www.nps.gov/gicl/
+
+78. Western New Mexico University Museum
+Silver City, NM
+32.77770, -108.28333
+odd-museums | limited
+WNMU holds one of the largest permanent collections of prehistoric Mimbres pottery in the world, alongside regional archaeology and history. Campus and museum schedules make it a limited-hours stop.
+Source: https://museum.wnmu.edu/
+
+79. Mogollon Historic District
+Mogollon, NM
+33.39673, -108.79423
+ghost-towns | limited
+A narrow mountain road reaches this former mining town where weathered buildings still crowd the canyon. Mogollon is partly inhabited and partly historic, so visitors should remain on public streets and respect private property.
+Source: https://www.newmexico.org/places-to-visit/ghost-towns/mogollon/
+
+80. Catwalk National Recreation Trail
+Glenwood, NM
+33.37638, -108.83537
+industrial-ruins | limited
+Metal walkways cling to a narrow canyon where a pipeline once carried water to mining operations. Flood damage and reconstruction have changed the trail over time, so current Forest Service conditions should be checked before driving in.
+Source: https://www.fs.usda.gov/recarea/gila/recarea/?recid=2029
+
+81. Fort Bayard National Historic Landmark
+Santa Clara, NM
+32.79762, -108.15110
+dark-history | limited
+This former military post later became a major tuberculosis hospital, leaving a large campus of institutional buildings near Silver City. Tours and legal access vary, so travelers should not wander into closed or unsafe structures.
+Source: https://www.fortbayard.org/
+
+82. Spaceport America Visitor Center
+Truth or Consequences, NM
+33.13363, -107.25274
+space-history | limited
+The Geronimo Trail Visitor Center serves as a public information and departure point for scheduled Spaceport America tours. It is the correct public-facing stop for travelers who have not received authorization to enter the secure spaceport itself.
+Source: https://www.spaceportamerica.com/visit/
+
+83. Spaceport America
+Truth or Consequences, NM
+32.99028, -106.97583
+space-history | limited
+The commercial spaceport in the Jornada del Muerto has hosted Virgin Galactic operations and other aerospace testing. It is a closed, secure facility; entry requires prior authorization or a scheduled guided tour.
+Source: https://www.spaceportamerica.com/visit/
+
+84. Geronimo Springs Museum
+Truth or Consequences, NM
+33.12889, -107.25331
+odd-museums | limited
+This regional museum mixes Indigenous artifacts, pioneer objects, local hot-springs history and material from the construction of Elephant Butte Dam. Its broad collection reflects the unusually layered history around Truth or Consequences.
+Source: https://www.geronimospringsmuseum.com/
+
+85. Pioneer Store Museum
+Chloride, NM
+33.33789, -107.67969
+ghost-towns | limited
+A remarkably intact 1880s general store survives in the tiny mining settlement of Chloride with shelves of old merchandise and equipment. It is one of the best-preserved interior time capsules among New Mexico's ghost-town stops.
+Source: https://www.pioneerstoremuseum.com/
+
+86. Lake Valley Historic Townsite
+Lake Valley, NM
+32.72034, -107.56872
+ghost-towns | limited
+BLM manages the remains of this former silver-mining boomtown, including preserved and stabilized buildings along the old main street. The site has posted operating days and hours rather than unrestricted access.
+Source: https://www.blm.gov/visit/lake-valley-historic-townsite
+
+87. Black Range Museum
+Hillsboro, NM
+32.92072, -107.56594
+odd-museums | limited
+This small museum interprets the mining, ranching and frontier history of Hillsboro and the Black Range through local artifacts and photographs. Limited community-run hours make it a check-ahead stop.
+Source: https://www.blackrangemuseum.org/
+
+88. Elephant Butte Dam
+Elephant Butte, NM
+33.15362, -107.19248
+engineering-history | view-only
+The massive early twentieth-century dam transformed the Rio Grande and created New Mexico's largest reservoir. Travelers can view the structure from lawful public areas, but dam infrastructure and restricted zones should never be entered.
+Source: https://www.usbr.gov/uc/albuq/water/elephant-butte/
+
+89. Very Large Array
+Socorro, NM
+34.07875, -107.61828
+science-oddities | limited
+Twenty-seven giant radio antennas spread across the Plains of San Agustin and move along railroad tracks to change the telescope's configuration. The visitor route makes one of America's most recognizable scientific landscapes accessible without entering operations areas.
+Source: https://public.nrao.edu/visit/very-large-array/
+
+90. New Mexico Bureau of Geology Mineral Museum
+Socorro, NM
+34.06627, -106.90528
+odd-museums | limited
+Minerals, meteorites and mining specimens fill this free museum at New Mexico Tech. Fluorescent displays and unusual regional crystals make it an especially strong stop for geology-focused OddWay routes.
+Source: https://geoinfo.nmt.edu/museum/
+
+91. Socorro UFO Incident Site
+Socorro, NM
+34.03886, -106.88176
+ufo-history | roadside
+Police officer Lonnie Zamora reported seeing an egg-shaped craft and two figures outside Socorro in 1964, creating one of the most studied UFO cases in U.S. history. The original area is not a formal attraction, so this is a conservative roadside-history pin only.
+Source: https://www.socorronm.org/attractions/socorro-ufo-landing-site/
+
+92. Kelly Ghost Town
+Magdalena, NM
+34.10720, -107.19872
+ghost-towns | limited
+Remains of the Kelly mining district lie in the hills south of Magdalena, including the recognizable mine headframe and ruins. Access crosses a mix of public and private land, so current signs, gates and permissions must be respected.
+Source: https://www.newmexico.org/places-to-visit/ghost-towns/kelly/
+
+93. Fort Craig Historic Site
+San Antonio, NM
+33.62108, -107.13780
+ruins | open
+Adobe and stone foundations trace one of the largest frontier forts in the Southwest, a key Civil War and Buffalo Soldier site along the Rio Grande. BLM maintains a self-guided trail through the legal public-access area.
+Source: https://www.blm.gov/visit/fort-craig-historic-site
+
+94. Bosque del Apache National Wildlife Refuge
+San Antonio, NM
+33.80478, -106.89092
+natural-spectacle | open
+Seasonal concentrations of sandhill cranes and snow geese can turn the refuge into an enormous moving wall of birds at dawn and dusk. The auto loop and viewing decks make the spectacle accessible without disturbing wildlife habitat.
+Source: https://www.fws.gov/refuge/bosque-del-apache
+
+95. New Mexico Mining Museum
+Grants, NM
+35.14769, -107.85109
+odd-museums | open
+Visitors descend into a recreated underground uranium mine beneath this Grants museum, surrounded by equipment and interpretation from the region's atomic-age mining boom. The subterranean exhibit gives the museum an unusually immersive industrial-history angle.
+Source: https://newmexicominingmuseum.org/
+
+96. Ice Cave & Bandera Volcano
+Grants, NM
+34.99320, -108.08060
+volcanic-geology | seasonal
+One trail climbs the rim of an extinct cinder cone while another descends to a lava tube where ice can persist through the heat of summer. The privately operated attraction normally closes for part of winter.
+Source: https://banderavolcano.squarespace.com/
+
+97. La Ventana Natural Arch
+Grants, NM
+34.87270, -107.89005
+geologic-oddities | open
+One of New Mexico's largest natural arches cuts through sandstone at the edge of El Malpais. A short BLM trail reaches the viewpoint without requiring travelers to cross fragile lava terrain.
+Source: https://www.blm.gov/visit/la-ventana-natural-arch
+
+98. Sandstone Bluffs Overlook
+Grants, NM
+34.94538, -107.83781
+geologic-oddities | open
+A high sandstone rim overlooks black lava flows and distant volcanic cones across El Malpais. The contrast between pale cliff and dark lava creates one of the clearest overviews of the volcanic landscape.
+Source: https://www.nps.gov/elma/planyourvisit/sandstone-bluffs.htm
+
+99. El Calderon Trailhead
+Grants, NM
+34.96973, -108.00314
+volcanic-geology | limited
+This trail crosses lava tubes, cinder cones and collapsed volcanic terrain on the north side of El Malpais. Cave access can be restricted seasonally to protect bats, so travelers should check current NPS conditions.
+Source: https://www.nps.gov/elma/planyourvisit/el-calderon-area.htm
+
+100. El Morro Inscription Rock
+Ramah, NM
+35.03896, -108.34998
+historic-graffiti | open
+For centuries, travelers carved names and messages into the sandstone poolside cliff at El Morro, leaving Indigenous petroglyphs, Spanish inscriptions and American emigrant signatures layered together. The inscriptions are protected and must never be touched or added to.
+Source: https://www.nps.gov/elmo/
+
+101. Atsinna Pueblo Trail
+Ramah, NM
+35.03677, -108.35078
+archaeology | limited
+A trail climbs above El Morro to the remains of Atsinna, a large ancestral Pueblo community built around the late 1200s. Rim conditions and weather can close the route even when lower monument trails remain open.
+Source: https://www.nps.gov/elmo/planyourvisit/trails.htm
+
+102. A:shiwi A:wan Museum & Heritage Center
+Zuni, NM
+35.06872, -108.84929
+indigenous-culture | limited
+This Pueblo of Zuni tribal museum interprets A:shiwi history and culture from a Zuni perspective rather than through an outside collection. Visitors should follow community photography, access and cultural rules while in Zuni.
+Source: https://www.ashiwi-museum.org/
+
+103. El Rancho Hotel
+Gallup, NM
+35.52847, -108.74207
+route-66 | open
+Built as lodging for movie stars working on Westerns, El Rancho fills its lobby and rooms with names, photographs and memorabilia from Hollywood's Southwest era. It remains a functioning hotel as well as a Route 66 landmark.
+Source: https://www.elranchohotelgallup.com/
+
+104. El Morro Theatre
+Gallup, NM
+35.52828, -108.74286
+architectural-oddities | limited
+Gallup's restored 1928 theater preserves a historic marquee and Pueblo Revival details along Route 66. Show schedules determine interior access, but the exterior remains a visible piece of the city's neon-era streetscape.
+Source: https://www.gallupnm.gov/221/El-Morro-Theatre
+
+105. Red Rock Park Museum
+Gallup, NM
+35.53592, -108.64906
+odd-museums | limited
+The museum at Red Rock Park combines regional archaeology, geology and cultural interpretation beneath towering red sandstone cliffs. Its setting makes the surrounding landscape part of the museum experience.
+Source: https://www.gallupnm.gov/273/Red-Rock-Park
+
+106. Aztec Ruins National Monument
+Aztec, NM
+36.83682, -107.99992
+archaeology | open
+A remarkably intact ancestral Pueblo great house includes original roofs, T-shaped doorways and a reconstructed Great Kiva. Despite the modern name 'Aztec,' the site was built by ancestral Pueblo peoples, not the Aztec civilization of Mexico.
+Source: https://www.nps.gov/azru/
+
+107. Aztec Museum & Pioneer Village
+Aztec, NM
+36.82085, -107.99215
+odd-museums | limited
+Historic buildings, farm equipment, household collections and a reconstructed pioneer village sit together behind the local museum. The mix gives visitors a dense, old-fashioned overview of the San Juan Basin after the ancestral Pueblo era.
+Source: https://www.aztecmuseum.org/
+
+108. Salmon Ruins Museum
+Bloomfield, NM
+36.70240, -108.02770
+archaeology | limited
+A Chacoan great house and later homestead are interpreted together at Salmon Ruins, creating an unusual overlap of ancient architecture and nineteenth-century settler history. The museum and archaeological grounds operate on posted hours.
+Source: https://www.salmonruins.com/
+
+109. Bolack Museum of Fish & Wildlife
+Farmington, NM
+36.72894, -108.22186
+odd-museums | limited
+This private museum displays a vast taxidermy collection assembled by rancher and former governor Tom Bolack, including animals from around the world. Its scale and old-school presentation make it one of the state's stranger collection museums.
+Source: https://www.bolackmuseum.com/
+
+110. Bolack Electromechanical Museum
+Farmington, NM
+36.72940, -108.22240
+odd-museums | limited
+A second Bolack collection focuses on antique engines, electrical equipment, vehicles, farm machinery and mechanical devices. It is distinct from the wildlife museum and generally requires advance arrangements or event-day access.
+Source: https://www.bolackmuseum.com/
+
+111. Bisti/De-Na-Zin Wilderness — Bisti Trailhead
+Farmington, NM
+36.30331, -108.11518
+badlands | limited
+Hoodoos, petrified wood and eroded clay hills create one of New Mexico's most alien-looking landscapes. The Bisti trailhead is the lawful routable entry; roads are unpaved, cell service is minimal and fossils or cultural objects must not be collected.
+Source: https://www.blm.gov/visit/bisti-de-na-zin-wilderness
+
+112. Ah-Shi-Sle-Pah Wilderness
+Nageezi, NM
+36.16255, -107.91645
+badlands | limited
+Soft gray-green badlands hide caprock hoodoos and dinosaur-age fossils across a remote BLM wilderness. There are no formal trails or water, making navigation and weather planning essential.
+Source: https://www.blm.gov/visit/ah-shi-sle-pah-wilderness
+
+113. Crow Canyon Petroglyphs
+Largo Canyon, NM
+36.54701, -107.61667
+rock-art | limited
+Navajo petroglyph panels and defensive pueblito sites lie deep in Largo Canyon on BLM land. High-clearance four-wheel drive is recommended, washes can become dangerous, and visitors must never touch rock art or remove artifacts.
+Source: https://www.blm.gov/visit/crow-canyon-petroglyphs
+
+114. Shiprock Roadside Viewpoints
+Shiprock, NM
+36.68750, -108.83680
+sacred-landscape | view-only
+The volcanic neck known as Shiprock rises dramatically from Navajo Nation land and holds deep cultural significance to Diné people. Climbing and unauthorized approach are inappropriate; OddWay should route only to lawful public-road viewpoints and respect all tribal restrictions.
+Source: https://www.newmexico.org/places-to-visit/regions/northwest/shiprock/
+
+115. Pueblo Bonito
+Nageezi, NM
+36.06072, -107.96136
+archaeology | limited
+Pueblo Bonito is Chaco Canyon's largest and most famous great house, with hundreds of rooms arranged around monumental plazas and kivas. Road and weather conditions can limit access to Chaco, and all archaeological protections apply.
+Source: https://www.nps.gov/chcu/
+
+116. Chetro Ketl
+Nageezi, NM
+36.05982, -107.95509
+archaeology | limited
+This enormous Chacoan great house preserves distinctive masonry, colonnade remnants and a great kiva just east of Pueblo Bonito. It is a separate trail destination, not merely another room inside the same ruin.
+Source: https://www.nps.gov/chcu/
+
+117. Pueblo del Arroyo
+Nageezi, NM
+36.06186, -107.96721
+archaeology | limited
+Built near Chaco Wash, Pueblo del Arroyo includes a rare tri-wall structure and represents a later phase of Chacoan construction. The site has its own parking/trail access within the canyon loop.
+Source: https://www.nps.gov/chcu/
+
+118. Una Vida
+Nageezi, NM
+36.03646, -107.90803
+archaeology | limited
+One of Chaco's earlier great houses sits near the visitor-center area and is reached by a quieter trail with nearby petroglyphs. The lower visitation makes it a distinct experience from Pueblo Bonito.
+Source: https://www.nps.gov/chcu/
+
+119. Casa Rinconada
+Nageezi, NM
+36.05503, -107.95569
+archaeology | limited
+This massive isolated great kiva is one of Chaco Canyon's most striking ceremonial structures. Visitors approach on designated paths and should not enter restricted archaeological areas.
+Source: https://www.nps.gov/chcu/
+
+120. Hungo Pavi
+Nageezi, NM
+36.03445, -107.92663
+archaeology | limited
+Hungo Pavi preserves a Chacoan great house beside the canyon road, with standing masonry that can be examined from a short trail. It is a legitimate separate site rather than an artificial subdivision of a larger ruin.
+Source: https://www.nps.gov/chcu/
+
+121. Kin Kletso
+Nageezi, NM
+36.06513, -107.96998
+archaeology | limited
+This compact 'Yellow House' west of Pueblo Bonito represents a later architectural style in Chaco Canyon. It is reached on the Peñasco Blanco backcountry trail; visitors may walk around the roped site but not enter it.
+Source: https://www.nps.gov/chcu/learn/historyculture/places.htm
+
+122. Angel Peak Scenic Area
+Bloomfield, NM
+36.52095, -107.79280
+badlands | limited
+A pale sandstone pinnacle rises above eroded badlands filled with hoodoos, petrified wood and fossil-bearing layers. BLM warns that the unpaved access road can become impassable when wet and recommends high clearance.
+Source: https://www.blm.gov/visit/angel-peak-scenic-area
+
+123. Tinkertown Museum
+Sandia Park, NM
+35.16901, -106.36739
+outsider-art | seasonal
+Ross Ward spent decades building an enormous hand-carved miniature town, animated circus and collection of eccentric objects inside walls studded with bottles. The museum is seasonal and in 2026 operates during its posted spring-through-fall season.
+Source: https://www.tinkertownmuseum.org/
+
+124. Casa Grande Trading Post & Cerrillos Turquoise Mining Museum
+Cerrillos, NM
+35.43760, -106.12531
+odd-museums | open
+A 28-room adobe trading post holds mining tools, bottles, minerals, turquoise history and a small petting zoo. The owner-built complex is part museum, rock shop and roadside curiosity on the Turquoise Trail.
+Source: https://www.casagrandetradingpost.com/
+
+125. Madrid Old Coal Mine Museum
+Madrid, NM
+35.40608, -106.15441
+industrial-history | limited
+Old mining equipment and local artifacts preserve Madrid's first life as a coal company town before it became an art community. The museum sits behind the Mine Shaft Tavern and keeps the industrial story visible amid modern shops.
+Source: https://www.themineshafttavern.com/old-coal-mine-museum
+
+126. Kasha-Katuwe Tent Rocks National Monument
+Cochiti Pueblo, NM
+35.65842, -106.42303
+geologic-oddities | limited
+Cone-shaped volcanic hoodoos and a narrow slot canyon form one of New Mexico's most distinctive landscapes. In 2026 visitation requires advance reservation and Cochiti Pueblo/BLM access procedures; travelers must follow the official route rather than GPS shortcuts through tribal land.
+Source: https://www.blm.gov/visit/kktr
+
+127. American International Rattlesnake Museum
+Albuquerque, NM
+35.09661, -106.66970
+odd-museums | open
+Live rattlesnakes and snake-related artifacts fill this compact Old Town museum, which focuses almost entirely on one famously feared group of reptiles. The narrow specialty makes it one of Albuquerque's strongest OddWay museum fits.
+Source: https://www.rattlesnakes.com/
+
+128. National Museum of Nuclear Science & History
+Albuquerque, NM
+35.06580, -106.53442
+nuclear-history | open
+Aircraft, missiles, atomic-era artifacts and exhibits on nuclear weapons and energy trace New Mexico's outsized role in the nuclear age. Outdoor hardware gives the museum an unusually physical sense of scale.
+Source: https://www.nuclearmuseum.org/
+
+129. UNM Meteorite Museum
+Albuquerque, NM
+35.08445, -106.62135
+odd-museums | limited
+The University of New Mexico maintains a small museum devoted to meteorites, including iron, stony and rare specimens from around the world. Fall 2026 public hours are limited to selected weekday windows.
+Source: https://iom.unm.edu/museum/index.html
+
+130. Wheels Museum
+Albuquerque, NM
+35.07421, -106.64876
+odd-museums | limited
+Antique vehicles, model trains, railroad artifacts and transportation memorabilia fill a volunteer-run museum in the historic Barelas rail-yard district. Its short operating windows make it a check-ahead stop.
+Source: https://wheelsmuseum.org/
+
+131. Turquoise Museum
+Albuquerque, NM
+35.08454, -106.65364
+odd-museums | open
+A museum devoted almost entirely to turquoise covers geology, mining, grading, jewelry and the stone's cultural history. The collection is housed in a castle-like building, adding another unusual layer to the niche subject.
+Source: https://turquoisemuseum.com/
+
+132. KiMo Theatre
+Albuquerque, NM
+35.08500, -106.65198
+architectural-oddities | limited
+The 1927 KiMo combines Pueblo Revival forms with Art Deco ornament in a theatrical style often called Pueblo Deco. Performances and tours determine interior access, while the ornate facade remains visible from Central Avenue.
+Source: https://www.cabq.gov/artsculture/kimo
+
+133. West Central Route 66 Visitor Center
+Albuquerque, NM
+35.06401, -106.77737
+route-66 | open
+A modern Route 66 visitor center on Albuquerque's west side uses local exhibits, public art and event space to interpret the historic highway. It works as a useful orientation stop before exploring older neon and roadside remnants.
+Source: https://www.cabq.gov/arts-culture/route-66-visitor-center
+
+134. Boca Negra Canyon
+Albuquerque, NM
+35.16100, -106.71900
+rock-art | open
+Short trails climb through volcanic boulders covered with hundreds of petroglyphs at the most developed part of Petroglyph National Monument. The site is highly accessible but the rock art remains protected cultural material.
+Source: https://www.nps.gov/petr/planyourvisit/boca-negra-canyon.htm
+
+135. Rinconada Canyon
+Albuquerque, NM
+35.12700, -106.72500
+rock-art | open
+A longer sandy trail follows the escarpment past hundreds of petroglyphs in a quieter section of the monument. Visitors must stay on the official trail and never touch, trace or chalk the images.
+Source: https://www.nps.gov/petr/planyourvisit/rinconada-canyon.htm
+
+136. Piedras Marcadas Canyon
+Albuquerque, NM
+35.18870, -106.68560
+rock-art | open
+This northern unit contains a dense concentration of petroglyphs along a volcanic escarpment reached from a neighborhood trailhead. The images remain culturally significant and protected despite the urban setting.
+Source: https://www.nps.gov/petr/planyourvisit/piedras-marcadas-canyon.htm
+
+137. Volcanoes Day Use Area
+Albuquerque, NM
+35.13060, -106.78030
+volcanic-geology | open
+Trails circle extinct cinder cones that produced the basalt escarpment now covered in Albuquerque's petroglyphs. The overlook connects the city's volcanic geology directly with the cultural landscape below.
+Source: https://www.nps.gov/petr/planyourvisit/volcanoes-day-use-area.htm
+
+138. Meow Wolf — House of Eternal Return
+Santa Fe, NM
+35.65461, -105.99698
+immersive-art | open
+A Victorian-style house opens into portals, crawl spaces, strange rooms and a sprawling interactive narrative built by artists. The attraction deliberately blurs museum, maze and surreal story world.
+Source: https://meowwolf.com/visit/santa-fe
+
+139. Loretto Chapel
+Santa Fe, NM
+35.68562, -105.93752
+religious-mysteries | open
+The chapel's famous spiral staircase rises two complete turns without an obvious central support, inspiring decades of engineering discussion and miracle lore. Modern structural explanations exist, but the mystery remains central to the visitor experience.
+Source: https://www.lorettochapel.com/
+
+140. Oldest House Museum
+Santa Fe, NM
+35.68368, -105.93710
+architectural-oddities | open
+This small adobe in the Barrio de Analco is traditionally promoted as one of the oldest surviving houses in the United States, with building fabric layered over an even older settlement landscape. The museum preserves that complicated architectural story.
+Source: https://www.oldesthousesantafe.com/
+
+141. San Miguel Chapel
+Santa Fe, NM
+35.68345, -105.93767
+religious-history | limited
+Often described as the oldest church structure in the continental United States, San Miguel preserves layers of seventeenth-century and later reconstruction. Its adobe fabric and long use make it one of Santa Fe's most tangible early colonial sites.
+Source: https://sanmiguelchapelsantafe.org/
+
+142. La Posada de Santa Fe
+Santa Fe, NM
+35.68617, -105.93280
+paranormal | limited
+The historic resort incorporates the former Staab mansion, where long-running hotel lore describes the apparition of Julia Staab. It is an operating hotel, so the paranormal story should be presented as tradition and public access kept to normal guest/visitor areas.
+Source: https://www.marriott.com/en-us/hotels/saflc-la-posada-de-santa-fe-a-tribute-portfolio-resort-and-spa/
+
+143. Taos Pueblo
+Taos, NM
+36.43889, -105.54167
+indigenous-culture | limited
+The multi-story adobe buildings of Taos Pueblo have been continuously connected with the Taos people for centuries and form a UNESCO World Heritage Site. Visitors must follow Pueblo rules on photography, closures, private areas and ceremonies without exception.
+Source: https://taospueblo.com/
+
+144. Earthship Visitor Center
+Tres Piedras, NM
+36.50728, -105.75276
+architectural-oddities | open
+The Greater World Earthship community demonstrates radically self-contained homes built with tires, bottles, passive solar systems and water recycling. The visitor center offers lawful access; surrounding residences are private and should not be entered or photographed intrusively.
+Source: https://earthship.com/visit/
+
+145. Rio Grande Gorge Bridge
+Taos, NM
+36.47625, -105.73307
+engineering-oddities | open
+A steel deck bridge crosses nearly 600 feet above the Rio Grande gorge, creating one of New Mexico's most dramatic roadside viewpoints. Use designated parking and pedestrian areas rather than stopping unsafely on the roadway.
+Source: https://www.newmexico.org/listing/rio-grande-gorge-bridge/2788/
+
+146. Puye Cliff Dwellings
+Santa Clara Pueblo, NM
+35.97363, -106.22864
+archaeology | limited
+Santa Clara Pueblo operates guided access to ancestral cliff rooms and mesa-top ruins occupied for centuries before migration to the Rio Grande valley. Tours are weather- and schedule-dependent, and Pueblo cultural rules apply throughout the visit.
+Source: https://puyecliffdwellings.com/
+
+147. Jemez Historic Site
+Jemez Springs, NM
+35.77694, -106.68611
+archaeology | limited
+The remains of Giusewa Pueblo and the seventeenth-century San José de los Jémez mission stand together in a narrow red-rock valley. The state site interprets both Pueblo continuity and the destructive pressures of Spanish missionization.
+Source: https://www.dca.nm.gov/historic-sites/jemez
+
+148. Valles Caldera National Preserve
+Jemez Springs, NM
+35.91683, -106.51957
+volcanic-geology | limited
+A vast volcanic caldera more than a dozen miles across holds grasslands, elk herds and volcanic domes inside the Jemez Mountains. Vehicle access beyond the entrance area can be seasonal or reservation-dependent.
+Source: https://www.nps.gov/vall/
+
+149. Bradbury Science Museum
+Los Alamos, NM
+35.88156, -106.29877
+nuclear-history | open
+Los Alamos National Laboratory's public museum covers Manhattan Project history, weapons science and modern laboratory research through replicas, instruments and interactive exhibits. It provides context for historic sites that remain behind security fences.
+Source: https://www.lanl.gov/museum/
+
+150. Los Alamos History Museum
+Los Alamos, NM
+35.88125, -106.30356
+nuclear-history | limited
+Historic buildings and exhibits cover the ancestral landscape, the Los Alamos Ranch School and the secret wartime laboratory that built the first atomic bombs. The museum complex helps separate documented Manhattan Project history from the town's mythology.
+Source: https://www.losalamoshistory.org/
+
+151. Fuller Lodge
+Los Alamos, NM
+35.88198, -106.30210
+architectural-history | open
+Built for the Los Alamos Ranch School before the Manhattan Project, the massive log lodge became a social center for the secret wartime community. Its rustic architecture survives at the heart of modern Los Alamos.
+Source: https://www.losalamosnm.gov/Home/All-Locations/Fuller-Lodge
+
+152. Bandelier — Tyuonyi Pueblo & Main Loop
+Los Alamos, NM
+35.77911, -106.27089
+archaeology | limited
+The main loop at Bandelier passes Tyuonyi Pueblo, cliff dwellings and rooms carved into volcanic tuff. Shuttle requirements, weather and seasonal operations can affect access to the Frijoles Canyon visitor area.
+Source: https://www.nps.gov/band/
+
+153. Bandelier — Alcove House Trail
+Los Alamos, NM
+35.78805, -106.26920
+archaeology | limited
+A trail from Frijoles Canyon climbs ladders roughly 140 feet to a ceremonial site set high in a cliff alcove. Ladder conditions and seasonal closures make it unsuitable as an always-open stop.
+Source: https://www.nps.gov/band/planyourvisit/alcove-house.htm
+
+154. Bandelier — Tsankawi Unit
+White Rock, NM
+35.86022, -106.22405
+archaeology | limited
+The detached Tsankawi unit follows worn ancestral footpaths across a mesa past cavates, petroglyphs and pueblo remains. The route is exposed and culturally sensitive, with ladders and narrow paths that can close in poor conditions.
+Source: https://www.nps.gov/band/planyourvisit/tsankawi.htm
+
+155. Coronado Historic Site — Kuaua Pueblo
+Bernalillo, NM
+35.32975, -106.55671
+archaeology | limited
+The state site preserves Kuaua Pueblo and a reconstructed kiva associated with rare painted mural fragments, alongside the history of the Coronado expedition. Kiva access is usually supervised rather than unrestricted.
+Source: https://www.dca.nm.gov/historic-sites/coronado
+
+156. Salinas Pueblo Missions — Abó
+Mountainair, NM
+34.52041, -106.24188
+archaeology | open
+Red-stone walls of a Spanish mission rise beside the remains of a large Pueblo community at Abó. The combined ruins show the collision of Indigenous life and seventeenth-century missionization more clearly than a standalone church ruin.
+Source: https://www.nps.gov/sapu/planyourvisit/abo.htm
+
+157. Salinas Pueblo Missions — Quarai
+Punta de Agua, NM
+34.59583, -106.29500
+archaeology | open
+The tall mission walls at Quarai stand among cottonwoods beside the remains of a Tiwa Pueblo community. It is a separate Salinas unit with its own trail and visitor destination rather than an extension of Abó.
+Source: https://www.nps.gov/sapu/planyourvisit/quarai.htm
+
+158. Salinas Pueblo Missions — Gran Quivira
+Mountainair, NM
+34.25957, -106.09323
+archaeology | open
+Gran Quivira is the largest of the Salinas Pueblo Missions units, combining extensive pueblo mounds with the unfinished and completed remains of Spanish mission churches. Its exposed hilltop setting makes the abandoned complex especially stark.
+Source: https://www.nps.gov/sapu/planyourvisit/gran-quivira.htm
+
+159. Pecos Pueblo & Mission
+Pecos, NM
+35.54991, -105.68939
+archaeology | open
+The ruins of Pecos Pueblo and Mission Nuestra Señora de los Ángeles de Porciúncula occupy a strategic pass once central to trade between the Plains and Rio Grande pueblos. Trails connect massive pueblo foundations, kivas and mission ruins.
+Source: https://www.nps.gov/peco/
+
+160. Forked Lightning Ranch
+Pecos, NM
+35.55037, -105.68613
+historic-ranches | limited
+Tex Austin's former dude ranch later became the home of oilman E.E. 'Buddy' Fogelson and actress Greer Garson. The ranch is part of Pecos National Historical Park but normally accessible only through scheduled ranger programs.
+Source: https://www.nps.gov/peco/planyourvisit/forked-lightning-ranch.htm
+

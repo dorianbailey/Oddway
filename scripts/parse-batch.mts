@@ -222,11 +222,27 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       continue;
     }
 
+    /*
+      A source is not always a link. Competing guides are credited by name and
+      never linked, so "Source: Atlas Obscura" has to survive as the string
+      "Atlas Obscura" rather than being discarded for failing to be a URL.
+
+      It was discarded. The line matched, the value was thrown away for not
+      starting with http, and the stop arrived with no source at all — the
+      credit gone and nothing to show it had ever been there.
+
+      A website is different and keeps the URL test, because a website that is
+      not a URL is nothing.
+    */
     const labelled = (prefix: string) => {
       const line = lines.find((l) => l.toLowerCase().startsWith(prefix));
       if (!line) return null;
-      const value = line.slice(line.indexOf(":") + 1).trim();
-      return value.startsWith("http") ? value : null;
+      return line.slice(line.indexOf(":") + 1).trim() || null;
+    };
+
+    const labelledUrl = (prefix: string) => {
+      const value = labelled(prefix);
+      return value?.startsWith("http") ? value : null;
     };
 
     const [rawCategoryText, rawAccessText] = catLine.split("|").map((v) => v.trim());
@@ -292,7 +308,7 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       description,
       source: labelled("source:") ?? labelled("folklore source:")
         ?? lines.find((l) => l.startsWith("http")) ?? null,
-      website: labelled("website:"),
+      website: labelledUrl("website:"),
     });
   }
 

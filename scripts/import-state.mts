@@ -109,6 +109,78 @@ function timezoneFor(stop: ParsedStop): { zone: string; secondOpinion: string } 
 
 const sqlString = (value: string) => "'" + value.replace(/'/g, "''") + "'";
 
+function client() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !anon) {
+    console.error("\n  Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY first:");
+    console.error("    export $(grep -E '^NEXT_PUBLIC_SUPABASE' .env.local | xargs)");
+    process.exit(1);
+  }
+  return createClient(url, anon);
+}
+
+/**
+ * Checks the live index against what the generated SQL said it would produce.
+ *
+ *   npx tsx scripts/import-state.mts --verify OK && git push
+ *
+ * Exits non-zero when the number is wrong, so it can gate the push rather than
+ * being one more thing to read and not read.
+ *
+ * Both directions are wrong and for different reasons. Short means a slug was
+ * overwritten — the count is the only signal for that, because the on-conflict
+ * clause leaves state alone and an overwritten stop keeps looking like a stop
+ * in its old state. Over means something inserted that should have updated,
+ * which is a duplicate: two Durant peanuts, 70 m apart, because a slug was
+ * matched under one convention and written under another.
+ */
+if (process.argv[2] === "--verify") {
+  const which = process.argv[3];
+  if (!which) {
+    console.error("  usage: npx tsx scripts/import-state.mts --verify <STATE>");
+    process.exit(1);
+  }
+
+  const expectedFile = join("supabase", `${which.toLowerCase()}-expected.json`);
+  if (!existsSync(expectedFile)) {
+    console.error(`  No ${expectedFile}. Generate the SQL first.`);
+    process.exit(1);
+  }
+  const expected = JSON.parse(readFileSync(expectedFile, "utf8")) as {
+    state: string; total: number; inserts: number; updates: number;
+  };
+
+  const { count, error } = await client()
+    .from("stops")
+    .select("*", { count: "exact", head: true });
+  if (error) throw new Error(error.message);
+
+  const actual = count ?? 0;
+  const drift = actual - expected.total;
+
+  console.log(`\n  expected ${expected.total}   actual ${actual}`);
+  if (drift === 0) {
+    console.log(`  ${expected.state}: ${expected.inserts} inserted, ${expected.updates} updated. Safe to push.\n`);
+    process.exit(0);
+  }
+
+  console.error(
+    drift < 0
+      ? `\n  SHORT BY ${-drift}. A slug was overwritten — a stop in another state now holds this state's content.`
+      : `\n  OVER BY ${drift}. Something inserted that should have updated, so there are duplicates.`,
+  );
+  console.error(`  Do not push. Find them with:\n`);
+  console.error(
+    drift < 0
+      ? `    select slug, name, state from stops\n` +
+        `    where verified_at > now() - interval '1 hour' and state <> '${expected.state}';\n`
+      : `    select slug, name, city, latitude, longitude from stops\n` +
+        `    where state = '${expected.state}' order by name;\n`,
+  );
+  process.exit(1);
+}
+
 const [input, state, ...rest] = process.argv.slice(2);
 if (!input || !state) {
   console.error("  usage: npx tsx scripts/import-state.mts <batch.txt> <STATE> [--existing rows.json]");
@@ -167,14 +239,7 @@ if (overridden.length) {
 async function readIndex(): Promise<ExistingStop[]> {
   if (existingFile) return JSON.parse(readFileSync(existingFile, "utf8"));
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !anon) {
-    console.error("\n  Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY first:");
-    console.error("    export $(grep -E '^NEXT_PUBLIC_SUPABASE' .env.local | xargs)");
-    process.exit(1);
-  }
-  const supabase = createClient(url, anon);
+  const supabase = client();
   const rows: ExistingStop[] = [];
   // Paged, because PostgREST truncates at 1,000 without saying so.
   for (let offset = 0; ; offset += 1000) {
@@ -337,6 +402,14 @@ if (!existsSync("supabase")) mkdirSync("supabase");
 const out = join("supabase", `${state.toLowerCase()}-stops.sql`);
 writeFileSync(out, sql);
 
+writeFileSync(
+  join("supabase", `${state.toLowerCase()}-expected.json`),
+  JSON.stringify(
+    { state, total: existing.length + inserts.length, inserts: inserts.length, updates: updates.length },
+    null, 2,
+  ),
+);
+
 console.log(`\n  wrote ${out}`);
 console.log(`\n  Next:`);
 console.log(`    1. paste ${out} into the Supabase SQL editor and run it`);
@@ -345,4 +418,7 @@ console.log(`       npx tsx scripts/refresh-site.mts`);
 console.log(`    3. /explore must read ${existing.length + inserts.length}. If it is short, a slug was overwritten:`);
 console.log(`       select slug, name, state from stops`);
 console.log(`       where verified_at > now() - interval '1 hour' and state <> '${state}';`);
-console.log(`    4. npx tsx scripts/export-data.mts && git add -A && git commit\n`);
+console.log(`    4. npx tsx scripts/import-state.mts --verify ${state}`);
+console.log(`    5. npx tsx scripts/export-data.mts && git add -A && git commit && git push`);
+console.log(`\n  Step 4 exits non-zero on a wrong count, so it can gate the push:`);
+console.log(`    npx tsx scripts/import-state.mts --verify ${state} && npx tsx scripts/export-data.mts && git add -A && git commit -m "Add ${inserts.length} ${state} stops" && git push\n`);

@@ -118,6 +118,11 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "border-history": "weird-history",
   "historic-graffiti": "weird-history",
   "natural-spectacle": "roadside-oddities",
+  /* Added for the Washington batch. */
+  "monumental-oddities": "roadside-oddities",
+  "geology-folklore": "folklore",
+  "name-oddities": "roadside-oddities",
+  "giant-roadside-art": "roadside-oddities",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

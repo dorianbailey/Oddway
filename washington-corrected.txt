@@ -1,0 +1,851 @@
+OddWay — Washington Complete
+124 Washington stops
+Stops 1–124
+Prepared September 10, 2026
+
+Access key: open = normally accessible during posted/public hours; limited = seasonal, scheduled, ticketed, cemetery-hours, appointment-only, military/security-dependent, weather/road-dependent, private-access-dependent, or check-ahead access; roadside = view from a safe lawful public area; private = private property, do not enter without permission; seasonal = primarily accessible during a defined season; view-only = observe from a lawful public viewpoint and do not enter restricted infrastructure.
+
+Research note: This set prioritizes places with a real, routable location and an OddWay-specific reason to stop. Paranormal claims are described as lore/reports rather than fact. Active military, archaeological, sacred, cemetery, railroad, border, national-park, and private sites are labeled conservatively. First-party, government, museum, preservation, or local-tourism sources are used wherever practical; competitor/discovery sources were used for research only when needed, with stronger primary sources listed whenever available. Coordinates are rounded to five decimal places and are intended as routable stop pins, not permission to cross private land or enter restricted areas.
+
+Washington-specific note: Mount St. Helens, mountain-road, cave, and ghost-town access can change quickly with snow, wildfire, washouts, gates, and seasonal closures. Hanford, military, federal-campus, research-site, cemetery, school, and private-art locations require particular attention to posted access rules. The Manis Mastodon archaeological site itself is not routed here; the public museum exhibit is used instead.
+
+1. International Mermaid Museum
+Aberdeen, WA
+46.91525, -123.97110
+odd-museums | open
+A small coastal museum devoted to mermaid folklore, art, artifacts, and ocean education. Its deliberately narrow focus makes it one of Washington's strongest true OddWay specialty museums.
+Source: https://www.mermaidmuseum.org/
+
+2. Kurt Cobain Memorial Park
+Aberdeen, WA
+46.98423, -123.80541
+music-history | open
+A small park beneath the Young Street Bridge memorializes Nirvana frontman Kurt Cobain near places associated with his youth in Aberdeen. Fans leave messages and tributes around the site.
+Source: https://www.aberdeenwa.gov/329/Kurt-Cobain-Memorial-Park
+
+3. Lady of the Sea
+Anacortes, WA
+48.51080, -122.60629
+roadside-art | open
+This large waterfront figure depicts a woman carrying a ship, blending Anacortes's maritime identity with oversized public sculpture. It stands outside and can be viewed without entering a building.
+Source: https://www.roadsideamerica.com/tip/18737
+
+4. La Merced Ship Hulk
+Anacortes, WA
+48.51167, -122.64583
+maritime-oddities | view-only
+The concrete-and-steel remains of the former schooner La Merced survive as a stationary breakwater at a working waterfront. View only from lawful public areas; the hulk is not an abandoned ship to board or explore.
+Source: https://npgallery.nps.gov/AssetDetail/NRIS/90001900
+
+5. Outback Kangaroo Farm
+Arlington, WA
+48.22507, -122.09414
+animal-oddities | limited
+A rural wildlife attraction centered on kangaroos and wallabies, with other unusual animals appearing in guided encounters. Public access is through scheduled tours rather than unrestricted wandering.
+Source: https://outbackkangaroofarm.com/
+
+6. Recycled Spirits of Iron
+Ashford, WA
+46.75616, -122.13703
+outsider-art | limited
+Artist Dan Klennert's property is filled with large sculptures assembled from salvaged machinery, scrap metal, driftwood, and discarded objects. Check current access before making a special trip because it is a private art environment.
+Source: https://www.atlasobscura.com/places/recycled-spirits-of-iron
+
+7. Frog Rock — Bainbridge Island
+Bainbridge Island, WA
+47.69572, -122.52360
+roadside-oddity | roadside
+A large roadside boulder has been painted into a wide-eyed frog for decades, creating one of Bainbridge Island's simplest and most persistent local landmarks. View from a safe lawful roadside position.
+Source: https://www.atlasobscura.com/places/frog-rock
+
+8. Pia the Peacekeeper
+Bainbridge Island, WA
+47.63895, -122.52017
+public-art | open
+Danish artist Thomas Dambo built this enormous troll from recycled and reclaimed materials near Sakai Park. It is part of the Northwest Trolls project and is reached on foot through public parkland.
+Source: https://www.nwtrolls.org/
+
+9. Acid Ball — Waypoint Park
+Bellingham, WA
+48.75074, -122.48556
+industrial-art | open
+A 430,000-pound spherical relic from Bellingham's former pulp mill was preserved and transformed into public art instead of being scrapped. Its industrial history is interpreted inside Waypoint Park.
+Source: https://cob.org/services/recreation/parks-trails/parks-guide/waypoint-park
+
+10. Buck Rogers / Flash Gordon Rocket
+Bellingham, WA
+48.75140, -122.48166
+roadside-oddity | roadside
+A retro-futurist rocket assembled from salvaged stop signs, oxygen tanks, lights, and aircraft parts still stands outside the former Rocket Donuts location. The business changed, but the rocket remains the draw.
+Source: https://www.roadsideamerica.com/tip/40234
+
+11. SPARK Museum of Electrical Invention
+Bellingham, WA
+48.75132, -122.48027
+odd-museums | open
+This museum traces electricity and radio through early scientific equipment, telegraphs, radios, and dramatic high-voltage demonstrations. Its giant Tesla-coil-style MegaZapper show gives the collection an appropriately strange edge.
+Source: https://www.sparkmuseum.org/
+
+12. Peace Arch
+Blaine, WA
+49.00209, -122.75653
+monumental-oddities | open
+A large white arch straddles the U.S.–Canada boundary as a monument to peaceful relations between the countries. The surrounding state park is public, but travelers should still respect all border and customs rules.
+Source: https://parks.wa.gov/find-parks/state-parks/peace-arch-historical-state-park
+
+13. Skystone
+Bonney Lake, WA
+47.15383, -122.19514
+archaeology | open
+A large boulder covered with cup-like depressions has long attracted speculation about Indigenous use and meaning. Interpretations vary, so the physical stone is the attraction rather than any single unproven explanation.
+Source: https://www.atlasobscura.com/places/skystone
+
+14. USS Turner Joy
+Bremerton, WA
+47.56478, -122.62177
+military-history | open
+A preserved Cold War-era destroyer is permanently moored on Bremerton's waterfront as a museum ship. Visitors can move through much of the vessel and see the cramped machinery, weapons, and living spaces of a working warship.
+Source: https://www.ussturnerjoy.org/
+
+15. Skagit-Squatch
+Burlington, WA
+48.47764, -122.32859
+cryptid-art | roadside
+A towering Sasquatch figure stands beside the highway as a deliberately oversized Pacific Northwest photo stop. It turns the region's Bigfoot mythology into a concrete routable landmark.
+Source: https://www.roadsideamerica.com/tip/59530
+
+16. Camlann Medieval Village
+Carnation, WA
+47.68882, -121.90531
+living-history | limited
+This woodland village recreates life in fourteenth-century England through historic-style buildings, crafts, meals, and costumed interpretation. It operates on scheduled event dates rather than as an always-open theme park.
+Source: http://www.camlann.org/
+
+17. Cashmere Museum & Pioneer Village
+Cashmere, WA
+47.52023, -120.45667
+odd-museums | limited
+A regional museum and reconstructed pioneer village preserve archaeological material, Indigenous artifacts, historic buildings, and local curiosities. The outdoor village gives the stop more character than a standard display-case museum.
+Source: https://www.cashmeremuseum.org/
+
+18. Shady Lady Bordello Museum
+Centralia, WA
+46.71769, -122.95334
+weird-history | limited
+A tiny museum interprets Centralia's vice-district and bordello history through period objects and local stories. Hours can be irregular, so this is a check-ahead stop rather than a guaranteed walk-in attraction.
+Source: https://www.visitcentraliachehalis.com/
+
+19. Codger Pole
+Colfax, WA
+46.87829, -117.36533
+roadside-art | open
+A 65-foot carved pole commemorates a rematch between elderly alumni of rival high-school football teams. The figures stacked along it make the monument look like a deliberately eccentric cousin of a traditional carved pole.
+Source: https://www.atlasobscura.com/places/codger-pole
+
+20. Bob the Talking Bear
+Concrete, WA
+48.53917, -121.74490
+roadside-oddity | open
+Concrete's carved wooden bear mascot talks when visitors press a button, delivering a short recorded introduction to town. The sculpture dates to 1980 and remains an active local roadside attraction.
+Source: https://www.roadsideamerica.com/tip/93282
+
+21. Drive Under Concrete High School
+Concrete, WA
+48.53200, -121.75881
+architectural-oddities | roadside
+A public road passes directly beneath part of Concrete High School, creating the unusual experience of literally driving under a school building. Stay on the road and do not treat the school grounds as a tourist facility.
+Source: https://www.roadsideamerica.com/tip/11851
+
+22. Silo Park
+Concrete, WA
+48.53658, -121.75811
+industrial-history | open
+Massive former cement silos were repainted with a giant 'WELCOME TO CONCRETE' message and preserved as the defining landmark of town. The surrounding public park provides the lawful viewing point.
+Source: https://www.cascadeloop.com/account/silo-park
+
+23. Copalis State Airport
+Copalis Beach, WA
+47.14486, -124.18925
+transportation-oddities | limited
+Washington's Copalis State Airport is a designated stretch of Pacific beach where aircraft can land on the sand when conditions allow. Tide, weather, aviation rules, and beach users make this an access-dependent stop rather than a normal runway visit.
+Source: https://wsdot.wa.gov/travel/aviation/airports-list/copalis-state
+
+24. Ape Cave
+Cougar, WA
+46.10830, -122.21140
+caves | limited
+A long lava tube created by ancient Mount St. Helens eruptions lets visitors walk underground through volcanic rock rather than limestone. Seasonal road conditions, cave conditions, and current reservation rules should be checked before visiting.
+Source: https://www.wta.org/go-hiking/hikes/ape-cave
+
+25. Dry Falls Visitor Center
+Coulee City, WA
+47.60648, -119.36470
+geology | open
+A colossal dry cliff marks the site of Ice Age flood waterfalls that once dwarfed modern Niagara Falls. The visitor center overlooks the enormous abandoned cataract and explains the catastrophic floods that carved the landscape.
+Source: https://parks.wa.gov/find-parks/state-parks/sun-lakes-dry-falls-state-park
+
+26. Grand Coulee Dam Visitor Center
+Coulee Dam, WA
+47.96001, -118.98676
+engineering-oddities | open
+One of North America's largest concrete structures spans the Columbia River here, creating an almost absurdly large piece of human engineering. The visitor center interprets the dam, hydroelectric system, and regional impacts.
+Source: https://www.usbr.gov/pn/grandcoulee/visit/
+
+27. Price Sculpture Forest
+Coupeville, WA
+48.22106, -122.65276
+outsider-art | open
+A wooded trail winds through a collection of contemporary sculptures placed among trees and ferns. The unusual forest-gallery setting makes the art feel discovered rather than displayed in a conventional museum.
+Source: https://sculptureforest.org/
+
+28. Maury Island UFO Incident Mural
+Vashon, WA
+47.42183, -122.46074
+ufo-history | open
+A public mural commemorates the controversial 1947 Maury Island UFO story, often discussed as one of the earliest modern flying-saucer cases. The art gives travelers a concrete stop tied to a story otherwise spread across the island.
+Source: https://www.seattlesouthside.com/directory/maury-island-incident-mural/
+
+29. Gehrke Windmill Garden
+Grand Coulee, WA
+47.93692, -119.01581
+folk-art | roadside
+Dozens of homemade windmills and whirligigs created by Emil Gehrke fill a yard with spinning figures and mechanical folk art. View respectfully from lawful public areas unless current access is explicitly offered.
+Source: https://www.atlasobscura.com/places/gehrke-windmill-garden
+
+30. Dick and Jane's Spot
+Ellensburg, WA
+46.99261, -120.54752
+outsider-art | view-only
+The exterior of a private home and yard is covered with bottle caps, reflectors, found objects, mosaics, and kinetic pieces created over decades. It is meant to be viewed from the public sidewalk, not entered as a museum.
+Source: https://www.atlasobscura.com/places/dick-and-janes-spot
+
+31. Satsop Cooling Towers
+Elma, WA
+46.96004, -123.47413
+industrial-ruins | view-only
+Two enormous cooling towers survive from the unfinished Satsop nuclear power project, creating one of Washington's most surreal industrial landscapes. The surrounding site is an active business park, so obey all barriers and access rules.
+Source: https://www.satsop.com/
+
+32. Earthquake Point
+Entiat, WA
+47.70846, -120.21702
+disaster-history | roadside
+A roadside marker identifies the area where an 1872 earthquake sent a huge mass of rock into the Columbia River. The stop ties a quiet modern highway to one of the Pacific Northwest's largest known historic earthquakes.
+Source: https://www.hmdb.org/
+
+33. Flying Heritage & Combat Armor Museum
+Everett, WA
+47.89948, -122.28008
+military-oddities | open
+Restored military aircraft, tanks, and armored vehicles fill this unusually machinery-heavy museum. Many objects are presented as functioning engineering artifacts rather than static replicas.
+Source: https://flyingheritage.org/
+
+34. Rucker Pyramid Tomb
+Everett, WA
+47.96292, -122.20310
+cemetery-oddities | limited
+A large stone pyramid marks the Rucker family plot in Evergreen Cemetery, looking dramatically different from the surrounding headstones. Visit only during cemetery hours and treat the site as a grave, not a climbing structure.
+Source: https://www.atlasobscura.com/places/rucker-pyramid
+
+35. Forks Timber Museum
+Forks, WA
+47.93659, -124.39408
+odd-museums | limited
+Logging equipment, pioneer artifacts, and a reconstructed fire lookout interpret the timber history of the Olympic Peninsula. The giant logging imagery and remote setting give it a strong roadside-history character.
+Source: https://www.forkstimbermuseum.org/
+
+36. John's Beachcombing Museum
+Forks, WA
+47.96252, -124.40136
+odd-museums | limited
+A private collection turns decades of beachcombing into displays of glass floats, drift material, marine debris, messages, and strange objects that washed ashore. Check current hours before making the drive.
+Source: https://johnsbeachcombingmuseum.com/
+
+37. American Camp — San Juan Island NHP
+Friday Harbor, WA
+48.46480, -123.02435
+weird-history | open
+This landscape preserves the U.S. side of the 1859 'Pig War,' an international crisis triggered after an American settler shot a British-owned pig. Trails and interpretation explain how an absurd animal dispute nearly became a military conflict.
+Source: https://www.nps.gov/sajh/learn/historyculture/the-pig-war.htm
+
+38. English Camp — San Juan Island NHP
+Friday Harbor, WA
+48.58649, -123.14908
+weird-history | open
+The British encampment from the Pig War survives with historic structures and landscaped grounds on the opposite side of San Juan Island. Together with American Camp, it preserves one of the strangest near-wars in U.S. history.
+Source: https://www.nps.gov/sajh/learn/historyculture/the-pig-war.htm
+
+39. Afterglow Vista
+Roche Harbor, WA
+48.61595, -123.14900
+cemetery-oddities | limited
+A circular stone mausoleum surrounds the graves of John S. McMillin and family beneath a deliberately symbolic open-air rotunda. The site lies within a cemetery and should be visited quietly during lawful access.
+Source: https://www.rocheharbor.com/
+
+40. The Whale Museum
+Friday Harbor, WA
+48.53576, -123.01719
+odd-museums | open
+This museum is devoted to whales of the Salish Sea, especially the region's endangered Southern Resident killer whales. Skeletons, research material, recordings, and natural-history exhibits make it more specialized than a general aquarium stop.
+Source: https://whalemuseum.org/
+
+41. Hisey Dinosaur Park
+Granger, WA
+46.33987, -120.19557
+roadside-art | open
+Granger has embraced prehistoric roadside kitsch with dinosaur sculptures spread through town, including a concentrated group at Hisey Park. The project grew from the area's connection to nearby fossil discoveries.
+Source: https://www.cityofgranger.com/
+
+42. Manhattan Project NHP — Hanford Visitor Center
+Richland, WA
+46.31856, -119.30042
+cold-war-history | open
+The visitor center interprets Hanford's role in producing plutonium for the Manhattan Project and the enormous secret industrial landscape that followed. Some associated reactor tours are subject to separate closures and reservations.
+Source: https://www.nps.gov/mapr/planyourvisit/hanford.htm
+
+43. LIGO Exploration Center
+Richland, WA
+46.45514, -119.40765
+science-oddities | limited
+The public center at the Hanford gravitational-wave observatory explains how kilometer-scale laser interferometers detect ripples in spacetime. Its location beside a working world-class physics instrument gives the stop unusual scientific scale.
+Source: https://www.ligo.caltech.edu/WA/page/lexc
+
+44. REACH Museum
+Richland, WA
+46.23616, -119.21673
+odd-museums | open
+Exhibits connect Ice Age floods, Columbia River ecology, Indigenous history, and the Hanford nuclear story. The combination of geology and atomic history makes it a useful context stop for several stranger destinations nearby.
+Source: https://visitthereach.us/
+
+45. USS Triton Sail Park
+Richland, WA
+46.34745, -119.26925
+cold-war-history | open
+The preserved sail and conning-tower structure from the nuclear submarine USS Triton stands beside the Columbia River. It memorializes a vessel famous for completing the first submerged circumnavigation of the globe.
+Source: https://portofbenton.com/community/uss-triton-sail-park/
+
+46. Coyote Canyon Mammoth Site
+Kennewick, WA
+46.15870, -119.26480
+paleontology | limited
+An active excavation preserves the remains of a Columbian mammoth discovered in the hills above the Tri-Cities. Public access is through scheduled tours or events, not independent entry onto the research site.
+Source: https://www.mcbones.org/
+
+47. Friendly Bigfoot — Espresso Chalet
+Index, WA
+47.80866, -121.56208
+cryptid-art | roadside
+A large Sasquatch figure stands beside the highway outside the Espresso Chalet, a long-running Bigfoot-themed photo stop on Stevens Pass. It converts Cascades cryptid lore into an easy, legal roadside visit.
+Source: https://www.roadsideamerica.com/tip/10490
+
+48. Jakob Two Trees
+Issaquah, WA
+47.52423, -122.03249
+public-art | open
+Thomas Dambo's giant recycled-wood troll hides along a public trail near downtown Issaquah. The sculpture combines Pacific Northwest forest imagery with Scandinavian troll folklore.
+Source: https://www.nwtrolls.org/
+
+49. U.S. Naval Undersea Museum
+Keyport, WA
+47.69927, -122.62487
+odd-museums | open
+Submarines, torpedoes, diving equipment, and deep-ocean technology fill the U.S. Navy's official undersea museum. The collection includes full-size machines that make underwater warfare and research unusually tangible.
+Source: https://navalunderseamuseum.org/
+
+50. Leavenworth Nutcracker Museum
+Leavenworth, WA
+47.59472, -120.66250
+odd-museums | open
+Thousands of nutcrackers from many periods and cultures fill a museum dedicated almost entirely to one type of object. The collection ranges from practical tools to elaborate carved figures and novelty designs.
+Source: https://nutcrackermuseum.com/
+
+51. Mima Mounds Natural Area Preserve
+Littlerock, WA
+46.90457, -123.04863
+natural-oddities | open
+Thousands of evenly spaced earthen mounds cover this protected prairie, creating a landscape whose origin has inspired competing geological and biological explanations. Stay on designated public trails to protect the fragile habitat.
+Source: https://www.dnr.wa.gov/MimaMounds
+
+52. Marsh's Free Museum
+Long Beach, WA
+46.34927, -124.05504
+odd-museums | open
+This classic roadside museum-shop mixes shells, taxidermy, arcade machines, curiosities, and the famous preserved 'Jake the Alligator Man.' It is one of Washington's strongest old-school cabinet-of-curiosities stops.
+Source: https://marshsfreemuseum.com/
+
+53. World Kite Museum
+Long Beach, WA
+46.34556, -124.05804
+odd-museums | open
+A museum devoted to kites documents their art, engineering, military uses, and cultural history. Long Beach's windy coast makes the narrow specialty feel especially tied to place.
+Source: https://www.worldkitemuseum.com/
+
+55. Nutty Narrows Bridge
+Longview, WA
+46.14147, -122.94049
+animal-oddities | open
+Longview's famous squirrel bridge was created so squirrels could cross a busy street above traffic. The original spawned additional squirrel bridges and an unusually serious civic tradition around tiny wildlife infrastructure.
+Source: https://www.atlasobscura.com/places/nutty-narrows-bridge
+
+56. Maryhill Stonehenge Memorial
+Maryhill, WA
+45.69464, -120.80565
+architectural-oddities | open
+A full-scale concrete Stonehenge replica overlooks the Columbia River, built by Sam Hill as a World War I memorial. The monument was based on an outdated interpretation of Stonehenge as a place of human sacrifice, adding another layer of strangeness.
+Source: https://www.maryhillmuseum.org/outside/stonehenge-memorial
+
+57. Maryhill Museum of Art
+Goldendale, WA
+45.67750, -120.86480
+odd-museums | open
+A grand mansion-turned-museum in a remote Columbia Gorge setting holds an eclectic mix of art, chess sets, Indigenous material, and objects associated with Queen Marie of Romania. Its collection is as unexpected as its location.
+Source: https://www.maryhillmuseum.org/
+
+58. Samuel Hill Crypt
+Maryhill, WA
+45.69360, -120.80659
+cemetery-oddities | limited
+Road-builder and Maryhill founder Samuel Hill is buried beneath a stark concrete monument near his Stonehenge memorial. The grave is a memorial site, so visit respectfully and do not climb on the structure.
+Source: https://www.maryhillmuseum.org/
+
+59. Ginkgo Petrified Forest Interpretive Center
+Vantage, WA
+46.94551, -120.01295
+paleontology | open
+One of the world's unusually diverse petrified-wood deposits is preserved above the Columbia River. Exhibits and nearby trails reveal fossilized trees from ancient forests buried by volcanic activity.
+Source: https://parks.wa.gov/find-parks/state-parks/ginkgo-petrified-forest-state-park
+
+60. Wild Horses Monument — Grandfather Cuts Loose the Ponies
+Vantage, WA
+46.96460, -119.96430
+monumental-art | limited
+A line of metal horses appears to gallop along a ridge above the Columbia River. The official trailhead requires a steep, exposed hike to reach the sculpture, so weather and footing matter.
+Source: https://www.wta.org/go-hiking/hikes/wild-horses-monument
+
+61. Boeing Future of Flight
+Mukilteo, WA
+47.92125, -122.29007
+industrial-oddities | limited
+The visitor center interprets commercial aircraft design and assembly beside Boeing's enormous Everett factory complex. Factory experiences are ticketed and operational access can change, so check current offerings.
+Source: https://www.boeingfutureofflight.com/
+
+62. Twede's Cafe — Twin Peaks Double R Diner
+North Bend, WA
+47.49517, -121.78685
+film-history | open
+The diner used as the Double R in 'Twin Peaks' remains an operating restaurant and embraces its connection to the series. It is one of the most recognizable real-world locations in the show's fictional geography.
+Source: https://twedescafe.com/
+
+63. Snoqualmie Falls — Twin Peaks Opening Location
+Snoqualmie, WA
+47.54172, -121.83768
+film-history | open
+The 268-foot waterfall appears prominently in the opening imagery of 'Twin Peaks' and towers beside the real-life Salish Lodge. Public viewpoints make it a straightforward film-location stop as well as a geological landmark.
+Source: https://www.snoqualmiefalls.com/
+
+64. DirtFish Rally School — Twin Peaks Sheriff's Station
+Snoqualmie, WA
+47.53763, -121.81151
+film-history | limited
+The former Weyerhaeuser mill property contains the building used as the Twin Peaks Sheriff's Department and Packard Sawmill setting. It is now an active rally school, so visitors should respect business operations and posted access.
+Source: https://drive.dirtfish.com/
+
+65. Ronette's Bridge
+Snoqualmie, WA
+47.52988, -121.80683
+film-history | open
+This former railroad bridge, now part of a public trail, was used for the unsettling scene in which Ronette Pulaski emerges after her ordeal in 'Twin Peaks.' The modern trail setting is far calmer than its screen appearance.
+Source: https://www.discovernorthbend.com/195/Twin-Peaks-Filming-Locations
+
+66. Fall City Roadhouse — Twin Peaks Roadhouse
+Fall City, WA
+47.56727, -121.88839
+film-history | open
+The historic roadhouse exterior appeared as a key nightlife location in the 'Twin Peaks' universe. It remains a real operating business, so it can be visited without treating the site like an abandoned set.
+Source: https://www.discovernorthbend.com/195/Twin-Peaks-Filming-Locations
+
+67. Mt Si Motel — Twin Peaks Red Diamond Motel
+North Bend, WA
+47.48386, -121.76297
+film-history | view-only
+This roadside motel supplied the exterior used for the Red Diamond Motel in 'Twin Peaks: Fire Walk with Me.' Treat it as an operating/private lodging property and view the exterior from lawful public areas unless staying there.
+Source: https://www.discovernorthbend.com/195/Twin-Peaks-Filming-Locations
+
+68. Bigfoot Family
+North Bonneville, WA
+45.63850, -121.97420
+cryptid-art | open
+A family of carved Sasquatches occupies the city's Discovery Trail network, with more Bigfoot figures scattered around town. The municipal trail plan explicitly incorporates the carvings into the public route.
+Source: https://northbonneville.net/wp-content/uploads/2019-Bonneville-Discovery-Trails-Plan.pdf
+
+69. Sharky's Shark Head Entrance
+Ocean Shores, WA
+46.97465, -124.15857
+roadside-oddity | open
+Visitors enter this coastal gift shop through the open mouth of an enormous shark facade. The deliberately theatrical storefront is one of Ocean Shores' most recognizable roadside oddities.
+Source: https://www.sharkysos.net/
+
+70. Seatco Prison Site Marker
+Bucoda, WA
+46.79306, -122.86972
+dark-history | open
+A marker recalls Washington Territory's first penitentiary, once located at Seatco before Bucoda took its current name. The original prison is gone, making the marker the lawful route point for the story.
+Source: https://www.co.thurston.wa.us/history/docs/markers/Seatco-Prison-Site.pdf
+
+71. Apollo 14 Moon Tree
+Olympia, WA
+47.03575, -122.90113
+space-history | open
+A Douglas-fir grown from seed carried around the Moon aboard Apollo 14 stands on the Washington State Capitol campus. The ordinary-looking tree has one of the strangest travel histories of any plant in the state.
+Source: https://capitol.wa.gov/discover/trees/moon-trees
+
+72. Olympic Flight Museum
+Tumwater, WA
+46.97589, -122.89779
+odd-museums | open
+Historic aircraft, helicopters, and military aviation artifacts fill a working-airfield museum south of Olympia. The collection's full-size machines make it a strong mechanical-history stop.
+Source: https://www.olympicflightmuseum.com/
+
+74. WSU Bear Center
+Pullman, WA
+46.72948, -117.13925
+animal-oddities | seasonal
+Washington State University's research center keeps grizzly bears for long-term studies of nutrition, hibernation, and physiology. There are no conventional zoo-style formal tours; public viewing opportunities depend on current seasonal conditions and center rules.
+Source: https://bearcenter.wsu.edu/visit/
+
+75. Northwest Carriage Museum
+Raymond, WA
+46.68357, -123.73283
+odd-museums | open
+A large collection of restored horse-drawn vehicles includes elegant carriages, wagons, sleighs, and working-era equipment. The narrow transportation focus makes the museum unusually immersive.
+Source: https://nwcarriagemuseum.org/
+
+76. Raymond Metal People
+Raymond, WA
+46.68645, -123.73190
+roadside-art | open
+More than 200 metal silhouettes of people and animals appear along streets, docks, and roads around Raymond. The town-scale installation turns an ordinary drive into a long scavenger hunt for welded figures.
+Source: https://www.weyerhaeuser.com/blog/see-raymond-washingtons-metal-people/
+
+77. Willapa Seaport Museum
+Raymond, WA
+46.68372, -123.73292
+odd-museums | limited
+This compact museum preserves maritime and logging history from Willapa Harbor through ship models, tools, photographs, and local artifacts. Check current opening hours before routing a trip around it.
+Source: https://www.visitwillapaharbor.com/
+
+78. Jimi Hendrix Memorial
+Renton, WA
+47.48650, -122.17400
+music-history | limited
+An elaborate granite memorial marks the grave of guitarist Jimi Hendrix at Greenwood Memorial Park. It functions as both a cemetery monument and a pilgrimage site for music fans, so cemetery etiquette applies.
+Source: https://www.greenwoodmempark.com/
+
+79. Roslyn Cafe Camel Mural
+Roslyn, WA
+47.22270, -120.99390
+film-history | open
+The camel mural on the Roslyn Cafe building appeared in the opening credits of 'Northern Exposure,' where Roslyn stood in for fictional Cicely, Alaska. The mural remains visible even as the cafe's operating status and hours change.
+Source: https://explorewashingtonstate.com/roslyn/
+
+80. Fremont Troll
+Seattle, WA
+47.65110, -122.34732
+public-art | open
+An enormous concrete troll grips a real Volkswagen Beetle beneath the Aurora Bridge. Created in 1990, it has become one of Seattle's defining pieces of deliberately strange public art.
+Source: https://fremont.com/about/fremont-troll/
+
+81. Lenin Statue
+Seattle, WA
+47.65147, -122.35130
+public-art | open
+A large bronze statue of Vladimir Lenin, originally made for Czechoslovakia, stands privately owned in the middle of Fremont. Its relocation from the former Eastern Bloc to a Seattle shopping district makes the setting intentionally jarring.
+Source: https://fremont.com/about/lenin/
+
+82. Fremont Rocket
+Seattle, WA
+47.65056, -122.35107
+roadside-art | open
+A Cold War-era aircraft tail section was transformed into a retro rocket and mounted above Fremont. The absurd reuse fits the neighborhood's long-running 'Center of the Universe' identity.
+Source: https://fremont.com/rocket/
+
+83. Waiting for the Interurban
+Seattle, WA
+47.64947, -122.34946
+public-art | open
+A group of cast-aluminum people and a dog eternally wait for a streetcar that no longer comes. Locals regularly dress and decorate the figures, making the artwork change with events and jokes.
+Source: https://fremont.com/about/waiting-for-the-interurban/
+
+84. Center of the Universe Guidepost
+Seattle, WA
+47.65040, -122.35021
+roadside-oddity | open
+A colorful signpost in Fremont points toward destinations real, fictional, nearby, and impossibly distant. It formalizes the neighborhood's tongue-in-cheek claim to be the Center of the Universe.
+Source: https://fremont.com/about/centeruniverseguidepost/
+
+85. Gum Wall
+Seattle, WA
+47.60842, -122.34038
+urban-oddities | open
+Layers of chewed gum cover brick walls beneath Pike Place Market, turning a once-unwanted habit into a constantly renewed participatory landmark. The wall has been cleaned before, only to refill.
+Source: https://www.pikeplacemarket.org/vendor/the-gum-wall/
+
+86. Hat 'n' Boots — Oxbow Park
+Seattle, WA
+47.54500, -122.32170
+roadside-oddity | open
+A giant cowboy hat and pair of boots survive from a 1950s Western-themed gas station. The rescued fiberglass structures now stand in a public park as monuments to novelty roadside architecture.
+Source: https://www.seattle.gov/parks/allparks/oxbow-park
+
+87. Ye Olde Curiosity Shop
+Seattle, WA
+47.60432, -122.34003
+odd-museums | open
+This century-old waterfront shop mixes souvenirs with long-running displays of shrunken-head lore, mummies, taxidermy, odd artifacts, and sideshow-style curiosities. It is a surviving example of the old tourist curiosity-shop tradition.
+Source: https://www.yeoldecuriosityshop.com/
+
+88. Seattle Pinball Museum
+Seattle, WA
+47.59802, -122.32487
+odd-museums | open
+Rows of playable pinball machines trace the evolution of the game across decades. Rather than viewing the collection behind glass, admission is built around actually using the machines.
+Source: https://www.seattlepinballmuseum.com/
+
+89. Beneath the Streets — Seattle Underground
+Seattle, WA
+47.60216, -122.33435
+underground-history | limited
+Guided tours enter surviving passageways beneath Pioneer Square, remnants of street-level changes after the Great Seattle Fire. Access is scheduled and controlled rather than an invitation to explore utility spaces independently.
+Source: https://www.beneath-the-streets.com/
+
+90. A Sound Garden
+Seattle, WA
+47.68546, -122.24985
+sound-art | limited
+Wind moving through tall steel towers creates changing tones at this outdoor sound sculpture on the NOAA campus. Visitors must follow current federal-campus check-in and access procedures.
+Source: https://www.seattle.gov/parks/allparks/magnuson-park/partner-organizations
+
+91. Bruce and Brandon Lee Graves
+Seattle, WA
+47.63375, -122.31587
+cemetery-history | limited
+Martial-arts icon Bruce Lee and his son Brandon Lee are buried side by side at Lake View Cemetery. The graves draw visitors from around the world, but remain an active family memorial within a cemetery.
+Source: https://lakeviewcemeteryassociation.com/
+
+92. Archie McPhee & Rubber Chicken Museum
+Seattle, WA
+47.66152, -122.34169
+odd-museums | open
+A novelty store full of bizarre toys, masks, rubber animals, and gag objects contains its own tongue-in-cheek Rubber Chicken Museum. It is essentially a functioning shop built around curated absurdity.
+Source: https://archiemcpheeseattle.com/
+
+93. Georgetown Steam Plant
+Seattle, WA
+47.54282, -122.31667
+industrial-history | limited
+A monumental early-twentieth-century power plant preserves huge turbines, generators, and an interior that feels closer to a machine cathedral than a utility building. Public access is generally through scheduled open houses or tours.
+Source: https://www.seattle.gov/city-light/in-the-community/tours-recreation-and-education/georgetown-steam-plant
+
+94. Hiram M. Chittenden Locks Fish Ladder
+Seattle, WA
+47.66565, -122.39652
+engineering-oddities | open
+The Ballard Locks combine working ship locks with a fish ladder where migrating salmon can be viewed through underwater windows. It is a rare place where major engineering and animal migration are visible in the same stop.
+Source: https://www.nws.usace.army.mil/Missions/Civil-Works/Locks-and-Dams/Chittenden-Locks/
+
+95. Frankie Feetsplinter
+Seattle, WA
+47.66851, -122.39261
+public-art | open
+A giant troll built from reclaimed wood crouches near the National Nordic Museum and Burke-Gilman Trail in Ballard. It is one of Thomas Dambo's Northwest Trolls.
+Source: https://www.nwtrolls.org/
+
+96. Bruun Idun
+Seattle, WA
+47.53110, -122.40050
+public-art | open
+Thomas Dambo's flute-playing troll hides among the trees near the shoreline in Lincoln Park. Finding the sculpture is intentionally part of the experience, and the park is open during posted hours.
+Source: https://www.nwtrolls.org/
+
+97. Northern State Recreation Area
+Sedro-Woolley, WA
+48.53340, -122.19300
+institutional-history | open
+Public trails cross portions of the former Northern State Hospital farm landscape, where agricultural and institutional remnants survive among fields and woods. Historic structures should be observed from permitted areas rather than entered.
+Source: https://www.skagitcountywa.gov/Departments/ParksAndRecreation/parks/nsra.htm
+
+98. Sequim Museum & Arts — Manis Mastodon Exhibit
+Sequim, WA
+48.08396, -123.10156
+paleontology | limited
+The museum displays actual bones and tusks from the Manis Mastodon, a roughly 13,800-year-old discovery important to the study of early human activity in North America. It provides a legitimate public alternative to visiting the protected archaeological site itself.
+Source: https://www.sequimmuseum.com/
+
+99. Mount St. Helens Visitor Center
+Silver Lake, WA
+46.29458, -122.82194
+disaster-history | open
+Exhibits, films, and landscape views explain the 1980 eruption of Mount St. Helens and the massive destruction it caused. It is the best all-season orientation point for the volcano's stranger and more remote sites.
+Source: https://parks.wa.gov/find-parks/state-parks/mount-st-helens-visitor-center
+
+100. Ape Canyon Trailhead
+Cougar, WA
+46.16553, -122.09105
+cryptid-lore | seasonal
+The trail carries the name of a 1924 story in which miners claimed that ape-like creatures attacked their cabin near Mount St. Helens. Today it is a legitimate trailhead, but seasonal snow and Forest Road closures can prevent vehicle access.
+Source: https://www.visitmtsthelens.com/business-directory/ape-canyon-trail-234/
+
+101. Bob's Java Jive
+Tacoma, WA
+47.23172, -122.46448
+roadside-oddity | limited
+A giant coffee-pot-shaped building has served as a Tacoma tavern and music venue for decades. Its exaggerated novelty architecture survives as one of the city's classic roadside landmarks.
+Source: https://www.roadsideamerica.com/story/2233
+
+102. Chihuly Bridge of Glass
+Tacoma, WA
+47.24559, -122.43530
+public-art | open
+A pedestrian bridge is packed with large-scale Dale Chihuly glass installations, including a ceiling of hundreds of colorful forms. It functions simultaneously as a public walkway and an open-air glass gallery.
+Source: https://www.museumofglass.org/bridge-of-glass
+
+103. Gospodor Monument Park
+Toledo, WA
+46.45636, -122.88469
+roadside-oddity | roadside
+Tall steel towers and monumental figures rise beside Interstate 5 in a private roadside memorial complex created by Dominic Gospodor. The safest experience is from designated lawful roadside or viewing areas; do not enter private property.
+Source: https://www.roadsideamerica.com/story/2048
+
+104. Toppenish Murals
+Toppenish, WA
+46.37582, -120.31114
+street-art | open
+Dozens of large murals across downtown depict regional history, railroads, ranching, and community life. The entire historic district functions as a dispersed outdoor gallery rather than a single attraction.
+Source: https://www.visittoppenish.com/
+
+105. Twin Sisters Rock
+Wallula, WA
+46.04260, -118.94040
+geology-folklore | limited
+Two basalt pillars rise above the Columbia River landscape and are associated with Indigenous stories recorded in multiple versions. Use the established trail and respect adjacent private land and cultural significance.
+Source: https://www.wta.org/go-hiking/hikes/twin-sisters-rock
+
+106. Museum of Un-Natural History
+Walla Walla, WA
+46.06684, -118.33981
+odd-museums | limited
+A deliberately eccentric museum mixes artist-created pseudo-artifacts, strange objects, satire, and local curiosities into a tiny cabinet of un-natural history. Its limited weekly hours make checking ahead essential.
+Source: https://wallawalla.org/things-to-do/museums-history/museum-of-un-natural-history/
+
+107. Whitman Mission National Historic Site
+Walla Walla, WA
+46.04270, -118.46500
+dark-history | open
+The site interprets the Whitman mission, the 1847 killings there, and the broader conflict and cultural disruption surrounding settlement in the region. It is a serious historic landscape rather than a paranormal attraction.
+Source: https://www.nps.gov/whmi/
+
+108. Grays Harbor Lighthouse
+Westport, WA
+46.88822, -124.11691
+maritime-history | limited
+Washington's tallest lighthouse rises inland from today's shoreline because the coast has shifted outward since it was built. Climbing access is seasonal and scheduled, while the exterior remains the landmark.
+Source: https://www.westportmaritimemuseum.com/grays-harbor-lighthouse/
+
+110. Christian Worship Center — 'Church of God-Zillah'
+Zillah, WA
+46.39770, -120.24950
+name-oddities | view-only
+The congregation's historic use of the phrase 'Church of God-Zillah' turned an ordinary denominational name into a famous Godzilla pun. It is an active church and school, so the stop is for lawful exterior viewing unless attending or invited.
+Source: https://cwczillah.org/vision.html
+
+111. Teapot Dome Service Station
+Zillah, WA
+46.40472, -120.26942
+novelty-architecture | open
+A tiny gas-station building shaped like a teapot was built in the 1920s as a visual joke about the Teapot Dome political scandal. The preserved structure is one of Washington's best examples of literal novelty architecture.
+Source: https://www.cityofzillah.us/
+
+112. Wellington Ghost Town
+Stevens Pass, WA
+47.74720, -121.12710
+ghost-towns | seasonal
+Forest trails lead to remnants of Wellington, the railroad settlement devastated by the 1910 avalanche that killed 96 people. Snow, road conditions, and deteriorated railroad structures make this a seasonal historic hike, not an abandoned-building exploration.
+Source: https://www.wta.org/go-hiking/hikes/wellington-ghost-town
+
+114. Melmont Ghost Town
+Carbonado, WA
+47.08050, -122.04780
+ghost-towns | limited
+Ruins, foundations, and traces of a former coal-mining settlement survive along a forest trail beside the Carbon River. Access can be affected by bridge and road conditions, so check the current route before going.
+Source: https://www.wta.org/go-hiking/hikes/melmont-ghost-town
+
+115. Monte Cristo Ghost Town
+Granite Falls, WA
+48.02700, -121.44470
+ghost-towns | seasonal
+A long trail reaches the remains of an isolated Cascade mining town where weather, floods, and economics defeated ambitious development. The trip is a substantial seasonal hike rather than a drive-up abandoned town.
+Source: https://www.wta.org/go-hiking/hikes/monte-cristo-143
+
+116. Fort Worden Artillery Batteries
+Port Townsend, WA
+48.13444, -122.76691
+military-ruins | open
+Concrete coastal gun batteries from the Endicott-era defense system spread across the bluffs above Puget Sound. Many exterior passages are publicly accessible, but visitors should obey barriers and avoid closed or unsafe spaces.
+Source: https://parks.wa.gov/find-parks/state-parks/fort-worden-historical-state-park
+
+117. Fort Casey Artillery Batteries
+Coupeville, WA
+48.16155, -122.67767
+military-ruins | open
+Massive concrete gun emplacements and disappearing-gun mechanisms survive above Admiralty Inlet. The fort's empty chambers and exposed machinery create a particularly atmospheric piece of coastal military history.
+Source: https://parks.wa.gov/find-parks/state-parks/fort-casey-historical-state-park
+
+118. Fort Flagler Artillery Batteries
+Nordland, WA
+48.08584, -122.70164
+military-ruins | open
+Former coastal-defense batteries, bunkers, and military buildings occupy the northern end of Marrowstone Island. Public park access makes this one of the safer ways to experience Washington's abandoned-looking fortifications.
+Source: https://parks.wa.gov/find-parks/state-parks/fort-flagler-historical-state-park
+
+119. Tokeland Hotel
+Tokeland, WA
+46.70836, -123.98454
+paranormal-lore | limited
+Washington's oldest hotel still operates near Willapa Bay and has accumulated long-running stories of unusual noises and reported hauntings. Treat those stories as lore and visit as a legitimate hotel or restaurant guest rather than as an unauthorized ghost hunt.
+Source: https://www.tokelandhotel.com/
+
+120. Fort Columbia Historical State Park
+Chinook, WA
+46.26040, -123.91860
+military-ruins | open
+Gun batteries, bunkers, and historic buildings from a former Columbia River coastal-defense installation remain spread across a wooded hillside. Public state-park access provides a legal way to explore the fort's military landscape.
+Source: https://parks.wa.gov/find-parks/state-parks/fort-columbia-historical-state-park
+
+121. Garbage Goat
+Spokane, WA
+47.66069, -117.42090
+interactive-art | open
+A steel goat created for Expo '74 uses a vacuum system to suck up small pieces of trash offered by visitors. The bizarrely functional sculpture has become one of Riverfront Park's most beloved oddities.
+Source: https://my.spokanecity.org/riverfrontspokane/sightseeing/
+
+122. Childhood Express — Big Red Wagon
+Spokane, WA
+47.66018, -117.42166
+giant-roadside-art | open
+This enormous red Radio Flyer-style wagon is a climbable public sculpture whose handle doubles as a slide. Its deliberately oversized scale turns a familiar childhood toy into part of the Riverfront Park landscape.
+Source: https://www.visitspokane.com/riverfront-park-map/
+
+123. Garland Milk Bottle
+Spokane, WA
+47.69317, -117.42532
+novelty-architecture | open
+A 1935 restaurant building is shaped like a giant milk bottle, preserving the era when businesses literally turned their products into architecture. The landmark still functions as a restaurant in the Garland District.
+Source: https://www.visitspokane.com/directory/the-milk-bottle/
+
+124. Benewah Milk Bottle — Cedar Street
+Spokane, WA
+47.65242, -117.43230
+novelty-architecture | view-only
+A second 1930s Benewah Dairy building uses the same giant milk-bottle form on Cedar Street. It survives as a National Register-listed example of literal advertising architecture; view respectfully from lawful public areas.
+Source: https://properties.historicspokane.org/property/?PropertyID=1728
+

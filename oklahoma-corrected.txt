@@ -1,0 +1,852 @@
+OddWay — Oklahoma Complete
+120 Oklahoma stops
+Stops 1–120
+Prepared September 10, 2026
+
+Access key: open = normally accessible during posted/public hours; limited = seasonal, scheduled, ticketed, cemetery-hours, appointment-only, military/security-dependent, weather/road-dependent, private-access-dependent, or check-ahead access; roadside = view from a safe lawful public area; private = private property, do not enter without permission; seasonal = primarily accessible during a defined season; view-only = observe from a lawful public viewpoint and do not enter restricted infrastructure or hazardous abandoned structures.
+
+Research note: This set prioritizes places with a real, routable location and an OddWay-specific reason to stop. Paranormal, cryptid and supernatural claims are described as lore or reported experiences rather than established fact. Active military, archaeological, sacred, cemetery, railroad, environmental-hazard and private sites are labeled conservatively. First-party, government, museum, preservation and local-tourism sources are used wherever practical; competitor/discovery sources are retained only where a stronger primary source was not readily available. Coordinates are rounded to five decimal places and are intended as routable stop pins, not permission to cross private land or enter restricted areas.
+
+1. Blue Whale of Catoosa
+Catoosa, OK
+36.19352, -95.73310
+roadside-oddity | open
+Built by Hugh Davis in the early 1970s, this huge smiling concrete whale rises from a pond beside historic Route 66. The former swimming-hole attraction has become one of Oklahoma's defining pieces of roadside Americana.
+Source: https://www.travelok.com/listings/view.profile/id.867
+
+2. Ed Galloway's Totem Pole Park
+Foyil, OK
+36.43722, -95.44806
+outsider-art | open
+Self-taught artist Ed Galloway covered a rural property with concrete folk-art structures, including a towering hand-built totem pole and an elaborate concrete fiddle house. The site is one of the state's strongest genuine outsider-art stops.
+Source: https://www.travelok.com/listings/view.profile/id.7706
+
+3. Buck Atom's Cosmic Curios on 66
+Tulsa, OK
+36.14806, -95.97365
+roadside-oddity | open
+A 21-foot Muffler Man transformed into a space cowboy stands outside this Route 66 shop, mixing Tulsa's western imagery with atomic-age kitsch. Buck Atom has become a modern Mother Road landmark rather than a surviving vintage advertisement.
+Source: https://buckatomson66.com/
+
+4. Meadow Gold Sign
+Tulsa, OK
+36.14776, -95.97468
+neon-history | roadside
+The restored Meadow Gold neon sign once advertised dairy products from a different location along Route 66. Tulsa preserved and relocated the huge rooftop sign to a dedicated plaza, where it again lights the Mother Road corridor.
+Source: https://www.cityoftulsa.org/route-66/route-66-attractions/
+
+5. Golden Driller
+Tulsa, OK
+36.13364, -95.93116
+roadside-oddity | open
+The 75-foot Golden Driller towers outside Expo Square as an oversized tribute to Oklahoma's petroleum industry. The concrete-and-plaster figure is one of the tallest free-standing statues in the United States.
+Source: https://www.travelok.com/listings/view.profile/id.2137
+
+6. Cyrus Avery Centennial Plaza
+Tulsa, OK
+36.14460, -96.00335
+route-66-history | open
+This riverfront plaza honors Tulsa businessman Cyrus Avery, a central figure in the creation and promotion of U.S. Route 66. Sculptures, plaques and views toward the historic bridge turn the highway's origin story into a physical stop.
+Source: https://www.cityoftulsa.org/route-66/route-66-attractions/
+
+7. East Meets West: Symbolic Route 66 Midpoint
+Tulsa, OK
+36.14458, -96.00320
+monumental-art | open
+The bronze East Meets West sculpture depicts a Model T encountering a horse-drawn carriage at the Arkansas River crossing, symbolizing the transition from old transportation to the automobile age. It sits within the Cyrus Avery plaza but is a distinct large-scale artwork.
+Source: https://www.hmdb.org/m.asp?m=172088
+
+8. Route 66 Rising
+Tulsa, OK
+36.16071, -95.86884
+monumental-art | roadside
+A huge stylized Route 66 shield rises beside the historic highway as a modern eastern gateway landmark. Its scale makes it function more like public sculpture than an ordinary road sign.
+Source: https://www.cityoftulsa.org/route-66/route-66-attractions/
+
+9. Route 66 Historical Village
+Tulsa, OK
+36.10835, -96.01588
+industrial-history | open
+This outdoor village gathers a restored oil derrick, locomotive, railcars and other artifacts tied to Tulsa's oil and transportation history. The collection turns an old industrial corridor into a compact open-air Route 66 museum.
+Source: https://www.route66village.com/
+
+10. Tulsa Cave House
+Tulsa, OK
+36.15710, -96.01295
+architectural-oddity | limited
+Built in the 1920s as the Cave Garden Restaurant, this deliberately grotto-like house is tied to stories of Prohibition-era drinking and a now-sealed tunnel beneath the hill. Interior tours are by appointment only.
+Source: https://www.travelok.com/listings/view.profile/id.22342
+
+11. World's Largest Praying Hands
+Tulsa, OK
+36.05206, -95.95698
+religious-oddity | open
+Two enormous bronze hands rise from the entrance area of Oral Roberts University in a monumental gesture of prayer. The sculpture's scale makes it one of Tulsa's strangest pieces of religious public art.
+Source: https://www.travelok.com/listings/view.profile/id.22675
+
+12. Quan Am Bodhisattva Statue
+Tulsa, OK
+36.13400, -95.79050
+religious-oddity | limited
+A monumental statue of Quan Am stands on the grounds of the Tam Bao Buddhist Temple in east Tulsa. Visitors should treat the temple as an active religious site and follow posted access expectations.
+Source: https://www.travelok.com/listings/view.profile/id.22633
+
+13. Meadow Gold Mack — Friendly Lumberjack
+Tulsa, OK
+36.14765, -95.97357
+roadside-oddity | roadside
+This restored-style Muffler Man stands near the Meadow Gold sign in Tulsa's growing cluster of Route 66 giants. His classic lumberjack form adds another piece of fiberglass roadside culture to the corridor.
+Source: https://www.waymarking.com/waymarks/wm1C64Q_Meadow_Gold_Mack_The_Friendly_Lumberjack_Tulsa_OK
+
+14. Cowboy Bob Muffler Man
+Tulsa, OK
+36.14810, -95.97325
+roadside-oddity | roadside
+Installed in 2025, Cowboy Bob is a 21-foot guitar-playing Muffler Man designed as a honky-tonk cowboy. He stands across Route 66 from Tulsa's other modern giants, making the block an unusually dense roadside-statue cluster.
+Source: https://www.travelok.com/listings/view.profile/id.36699
+
+15. Stay Gold Neon Sign at Circle Cinema
+Tulsa, OK
+36.15944, -95.95845
+pop-culture | roadside
+A glowing Stay Gold sign beside the historic Circle Cinema references S.E. Hinton's The Outsiders and Tulsa's connection to the film adaptation. The theater itself appeared in the movie, giving the neon a direct local pop-culture tie.
+Source: https://www.route66news.com/2022/10/19/companion-neon-sign-erected-next-to-circle-cinema-in-tulsa/
+
+16. Gold Dome
+Oklahoma City, OK
+35.49280, -97.53083
+architectural-oddity | roadside
+This 1958 geodesic bank building is wrapped in a gold-colored dome at a prominent Route 66-era intersection. Its futuristic geometry remains one of Oklahoma City's most recognizable mid-century landmarks.
+Source: https://www.travelok.com/articles/roadside-oddities-along-route-66
+
+17. Milk Bottle Grocery
+Oklahoma City, OK
+35.49420, -97.53190
+roadside-oddity | roadside
+A huge metal milk bottle sits on the roof of a tiny triangular commercial building along old Route 66. Added around 1948, the bottle turned an otherwise modest grocery into a classic roadside attention-grabber.
+Source: https://www.travelok.com/articles/roadside-oddities-along-route-66
+
+18. Giant Sonic Drink Water Tank
+Oklahoma City, OK
+35.39017, -97.26440
+roadside-oddity | roadside
+A water tank beside the Sonic at I-40 and Choctaw Road is painted and shaped to resemble an enormous Sonic soft drink. It is a modern piece of branded roadside absurdity visible from the highway corridor.
+Source: https://www.waymarking.com/waymarks/wm10B5K_Sonic_at_I_40_and_Choctaw_Rd_Choctaw_OK
+
+19. Blue Hippo
+Edmond, OK
+35.64163, -97.47835
+roadside-oddity | roadside
+The bright blue concrete hippo nicknamed Buddy has been moved around Edmond for decades and has become a local Route 66-era mascot. Its intentionally cheerful, oversized form makes it a strong quick photo stop.
+Source: https://www.travelok.com/listings/view.profile/id.26791
+
+20. Arcadia Round Barn
+Arcadia, OK
+35.66233, -97.32623
+architectural-oddity | open
+Built in 1898, this circular wooden barn survived long enough to become one of Oklahoma Route 66's signature landmarks. Its unusual round construction and restored loft make it substantially stranger than an ordinary agricultural museum.
+Source: https://www.nps.gov/places/arcadia-round-barn.htm
+
+21. POPS Giant Soda Bottle
+Arcadia, OK
+35.65822, -97.33546
+roadside-oddity | open
+A 66-foot illuminated soda bottle rises in front of POPS on Route 66. At night its programmable lights make the modern gas station and diner look like a deliberate revival of neon-era roadside spectacle.
+Source: https://pops66.com/
+
+22. OK County 66 — John's Place
+Arcadia, OK
+35.66237, -97.29262
+roadside-oddity | open
+John Hargrove's property is filled with homemade miniature versions of famous Route 66 landmarks, vintage pumps, signs and a tiny roadside theater. It functions like one person's handmade shrine to the Mother Road.
+Source: https://www.travelok.com/listings/view.profile/id.22538
+
+23. Paul McCartney Route 66 Sign
+Arcadia, OK
+35.66372, -97.29878
+pop-culture | roadside
+A roadside sign commemorates Paul McCartney's low-key 2008 trip along Route 66 and his stop in Arcadia. The marker turns a brief celebrity road trip into a permanent piece of local highway lore.
+Source: https://www.travelok.com/listings/view.profile/id.30019
+
+24. Lucille's Service Station
+Hydro, OK
+35.53718, -98.58823
+route-66-history | roadside
+This tiny former gas station is closely associated with Lucille Hamons, the Route 66 operator remembered as the Mother of the Mother Road. The preserved building remains beside the old highway even though it no longer operates as a service station.
+Source: https://www.nps.gov/places/lucille-s-service-station.htm
+
+25. Native American Muffler Man
+Calumet, OK
+35.59207, -98.11869
+roadside-oddity | open
+A rare Native American-styled fiberglass giant stands beside the Indian Trading Post & Art on Route 66. The figure formerly stood at an auto dealership and was moved to this location in 2010.
+Source: https://web1.travelok.com/ie/listings/view.profile/id.22835
+
+26. Route 66 Spaceman
+Weatherford, OK
+35.52630, -98.70934
+roadside-oddity | roadside
+A retro-futuristic spaceman figure stands along Route 66 in Weatherford, fitting the town's connection to astronaut Thomas Stafford. The sculpture turns spaceflight imagery into a classic roadside photo stop.
+Source: https://www.travelok.com/Roadside_Oddities
+
+27. The Sign on 66
+Weatherford, OK
+35.52946, -98.84547
+roadside-art | roadside
+Artist Corey Fuller's installation combines sixteen hand-painted signs into one billboard-like collage made from reclaimed wood. It deliberately recreates the visual clutter and nostalgia of old highway advertising.
+Source: https://www.travelok.com/listings/view.profile/id.30912
+
+28. Route 66 Car Wash Neon Sign
+Stroud, OK
+35.74954, -96.66911
+neon-history | roadside
+A restored-style neon car-wash sign brightens the historic Route 66 corridor in Stroud. The oversized glowing advertisement was installed through Oklahoma's Route 66 revitalization program.
+Source: https://www.travelok.com/listings/view.profile/id.37064
+
+29. Route 66 Tool Tree
+Stroud, OK
+35.74899, -96.66171
+roadside-art | roadside
+Old hand tools have been assembled into a tree-like metal sculpture outside a Route 66 hardware store. The object turns discarded work implements into a deliberately odd piece of roadside folk art.
+Source: https://www.travelok.com/listings/view.profile/id.29443
+
+30. Chrysler-Plymouth Tower & Neon Sign
+Bristow, OK
+35.83280, -96.39100
+neon-history | roadside
+A 102-foot free-standing tower once advertised a 24-hour Chrysler-Plymouth dealership and has been restored as a Route 66 landmark. TravelOK identifies it as the tallest free-standing neon advertising sign on the historic highway.
+Source: https://www.travelok.com/listings/view.profile/id.37754
+
+31. Waylan's Ku-Ku Burger
+Miami, OK
+36.88610, -94.87770
+roadside-oddity | open
+A giant yellow cuckoo bird and surviving neon mark one of the last remnants of the Ku-Ku hamburger chain. The operating restaurant preserves a particularly strange piece of mid-century fast-food roadside design.
+Source: https://www.travelok.com/listings/view.profile/id.8426
+
+32. Allen's Conoco Fillin' Station
+Commerce, OK
+36.93300, -94.87747
+route-66-history | roadside
+This compact historic gas station survives along the Route 66 alignment through Commerce. Its restored pumps, signs and tiny building preserve the visual scale of early roadside service stations.
+Source: https://www.oklahomaroute66.com/
+
+33. Mickey Mantle Memorial Statue
+Commerce, OK
+36.93329, -94.87246
+pop-culture | open
+A nine-foot bronze statue of baseball legend Mickey Mantle stands beside the high-school field in the town where he grew up. Commerce also renamed its Route 66 main street for Mantle, making the stop unusually tied to both sports and highway history.
+Source: https://www.travelok.com/listings/view.profile/id.26781
+
+34. Catoosa Route 66 Monument
+Catoosa, OK
+36.18817, -95.74598
+route-66-history | open
+Installed for the Route 66 centennial in 2026, this public monument incorporates locally chosen imagery including Catoosa's Blue Whale. It is a new physical marker of the town's long relationship with the Mother Road.
+Source: https://www.travelok.com/listings/view.profile/id.37736
+
+35. F-4 Phantom Grove Display
+Grove, OK
+36.63070, -94.76630
+aviation-history | roadside
+A retired F-4 Phantom II fighter is displayed beside the road in Grove as a memorial to people connected with the aircraft and military service. The full-size jet is an unexpectedly dramatic roadside object in northeastern Oklahoma.
+Source: https://www.travelok.com/listings/view.profile/id.27386
+
+36. Winganon Space Capsule
+Talala, OK
+36.58278, -95.65164
+roadside-oddity | roadside
+A cement mixer barrel left after a 1959 crash was later painted to resemble a NASA space capsule. The result looks like a tiny spacecraft that landed beside a rural Oklahoma highway.
+Source: https://www.travelok.com/Roadside_Oddities
+
+37. Gasquatch
+Idabel, OK
+33.92386, -94.76851
+cryptid-roadside | open
+A roughly thirty-foot Sasquatch figure towers over this combination gas station, restaurant and vintage-car display. The business leans fully into Bigfoot imagery, making it one of Oklahoma's most literal cryptid roadside stops.
+Source: https://www.gasquatch.com/
+
+38. Tin Woodsman
+Boise City, OK
+36.74128, -102.51344
+roadside-oddity | open
+A 13-foot hand-built Tin Man stands outside the Cimarron Heritage Center Museum. Created to advertise a former cafe, the folk-art figure eventually returned to the Oklahoma Panhandle and now shares the grounds with a giant dinosaur.
+Source: https://www.travelok.com/listings/view.profile/id.22834
+
+39. Cimmy the Dinosaur
+Boise City, OK
+36.74143, -102.51348
+roadside-oddity | open
+This 65-foot-long metal Apatosaurus looms outside the Cimarron Heritage Center. Cimmy was inspired by dinosaur remains recovered in Cimarron County and has become the Panhandle museum's unmistakable roadside mascot.
+Source: https://www.travelok.com/listings/view.profile/id.22833
+
+40. World's Largest Peanut
+Durant, OK
+33.99264, -96.37766
+roadside-oddity | open
+A giant peanut monument stands on the lawn of Durant City Hall as a tribute to Bryan County peanut growers and processors. Its grand title is disputed by other giant peanuts, which only improves its OddWay value.
+Source: https://www.travelok.com/listings/view.profile/id.22732
+
+41. Oklahoma's Largest Cowboy Hat
+Hennessey, OK
+36.12038, -97.89836
+roadside-oddity | open
+This enormous cowboy hat was fabricated from recycled crude-oil tanks and weighs more than six tons. Mounted at a highway travel plaza, it turns western symbolism into literal roadside shelter and sculpture.
+Source: https://www.travelok.com/listings/view.profile/id.32440
+
+42. Main Street Oil Well
+Barnsdall, OK
+36.56180, -96.16622
+industrial-oddity | roadside
+Barnsdall's famous oil well sits directly in the middle of Main Street, forcing traffic to split around working-oil-country history. The well is a compact reminder of how completely petroleum development shaped parts of Oklahoma.
+Source: https://www.travelok.com/Roadside_Oddities
+
+43. Roadside Revolver
+Atoka, OK
+34.39832, -96.12042
+roadside-oddity | roadside
+A huge revolver sculpture points skyward beside the highway in Atoka. Its exaggerated scale turns a familiar Western object into a deliberately conspicuous roadside landmark.
+Source: https://www.travelok.com/Roadside_Oddities
+
+44. Heffington Waterwheel
+Tishomingo, OK
+34.23603, -96.67934
+roadside-oddity | roadside
+A large wooden waterwheel built in 2015 has become a downtown Tishomingo photo landmark. It has also appeared in country-music media, giving the otherwise decorative structure a small pop-culture afterlife.
+Source: https://tishomingo.com/visit-tishomingo/
+
+45. East Maine Shark Bridge
+Enid, OK
+36.39578, -97.87518
+street-art | roadside
+A low-clearance railroad bridge is painted with a giant shark mouth, transforming a notorious truck hazard into a visual joke. The mural makes the bridge's warning impossible to miss even if the clearance sign is ignored.
+Source: https://visitenid.org/things-to-do/arts-culture/public-art/page/2/
+
+46. Lazy Circles in the Sky
+Enid, OK
+36.39062, -97.87750
+public-art | open
+Rust-colored steel hawks spiral upward at this gateway sculpture to downtown Enid. The title references Oklahoma! while the weathering steel echoes the color of red-tailed hawks seen over the plains.
+Source: https://visitenid.org/lazy-circles-in-the-sky/
+
+47. Spider VW Bug
+Lexington, OK
+35.02847, -97.33598
+roadside-oddity | roadside
+A Volkswagen Beetle has been transformed into an enormous spider-like roadside sculpture. The familiar car body perched on long metal legs creates exactly the kind of inexplicable highway sight OddWay is built to surface.
+Source: https://www.travelok.com/Roadside_Oddities
+
+48. Optimus Prime Statue
+Stillwater, OK
+36.11570, -97.03224
+pop-culture | roadside
+A towering handmade interpretation of Optimus Prime stands beside a Stillwater business. The metal robot turns Transformers fandom into large-scale roadside sculpture.
+Source: https://www.travelok.com/Roadside_Oddities
+
+49. Bumblebee Transformers Statue
+Stillwater, OK
+36.11657, -97.12775
+pop-culture | roadside
+A large yellow metal Bumblebee figure gives Stillwater a second oversized Transformers landmark. Its scrap-metal appearance makes the fictional robot read like industrial folk art from the road.
+Source: https://www.travelok.com/listings/view.profile/id.23048
+
+50. Butterfly on a Giant Metal Hand
+Stratford, OK
+34.78638, -96.95912
+roadside-oddity | roadside
+A huge fabricated metal hand delicately holds a butterfly outside a welding business south of Stratford. There is little context, which makes the strange contrast between heavy steel and a tiny butterfly the entire attraction.
+Source: https://www.roadsideamerica.com/tip/25390
+
+51. Tire Man
+Hobart, OK
+34.85153, -99.02222
+roadside-oddity | roadside
+A human figure assembled from stacked tires stands as an old-school roadside mascot. The rough homemade construction gives it more character than a polished modern statue.
+Source: https://www.travelok.com/Roadside_Oddities
+
+52. Jeb the Mini-Golf Muffler Man
+Broken Bow, OK
+34.16066, -94.75150
+roadside-oddity | limited
+A giant Muffler Man named Jeb watches over an Old West-themed miniature-golf course north of Broken Bow. He is part roadside giant, part attraction prop and part deliberately fabricated frontier character.
+Source: https://www.travelok.com/listings/view.profile/id.25359
+
+53. Comecos Cemetery
+Gotebo, OK
+34.96524, -99.38841
+cemetery-oddity | limited
+This tiny rural cemetery is known for unusually elaborate handmade grave decorations and concrete folk art. Visit only during lawful cemetery access and treat the site as an active burial ground rather than a novelty attraction.
+Source: https://www.travelok.com/listings/view.profile/id.30588
+
+54. Leedey Tornado Monument
+Leedey, OK
+35.87001, -99.34822
+dark-history | open
+Local children created this tornado-shaped metal memorial in 1997 to mark fifty years since the deadly 1947 Leedey tornado. Embedded objects such as a tricycle, boot and cow skull turn the disaster memorial into unusually personal public art.
+Source: https://web2.travelok.com/listings/view.profile/id.22828
+
+55. One Room Jail
+Texola, OK
+35.22040, -99.98889
+roadside-oddity | roadside
+A tiny concrete jail survives in nearly vanished Texola near the Texas line. The single-room lockup and sparse surroundings give the stop the feel of a forgotten fragment of an older Route 66 town.
+Source: https://www.travelok.com/listings/view.profile/id.28033
+
+56. Smallest National Park Landmark
+Guthrie, OK
+35.87868, -97.42629
+weird-history | open
+A 1907 clerical mistake reportedly reduced a planned 100-foot-square commemorative plot to just 100 square feet. The tiny fenced landmark behind the post office is locally promoted as the country's smallest national park, although it is not an official National Park Service unit.
+Source: https://www.travelok.com/listings/view.profile/id.25759
+
+57. El Reno Mother Road Monument
+El Reno, OK
+35.53325, -97.95563
+route-66-history | open
+A modern Route 66 monument at Wade Street and Choctaw Avenue marks El Reno's connection to the Mother Road. It adds a clear routable photo stop to a town already rich in highway and railroad history.
+Source: https://www.travelok.com/Roadside_Oddities
+
+59. Oklahoma Spook Light — Devil's Promenade Road
+Quapaw, OK
+36.94399, -94.61803
+paranormal-lore | roadside
+For generations, people have reported a mysterious moving light along rural roads near the Oklahoma-Missouri border. Explanations range from distant vehicle headlights to folklore, so OddWay should present the phenomenon as an enduring local legend rather than a proven supernatural event.
+Source: https://www.travelok.com/listings/view.profile/id.21024
+
+60. Healing Rock
+Skiatook, OK
+36.36309, -96.11370
+folklore | limited
+Local tradition has long attributed healing powers to a sandstone outcrop near Skiatook Lake. The story is the attraction; visitors should stay on permitted paths and avoid damaging or removing anything from the site.
+Source: https://www.travelok.com/Roadside_Oddities
+
+61. World's Tallest Gas Pump — Heart of Route 66 Auto Museum
+Sapulpa, OK
+35.99580, -96.12937
+roadside-oddity | open
+A 66-foot replica gasoline pump stands outside the Heart of Route 66 Auto Museum and doubles as an observation structure. Its deliberately excessive height turns the most ordinary Route 66 object into a landmark.
+Source: https://www.heartofroute66.org/
+
+62. 24 Hour Prayer Teepee
+Apache, OK
+34.89390, -98.36570
+religious-oddity | open
+A brick teepee on church grounds is kept open around the clock as a place for prayer and reflection. The permanent masonry form is an unusual reinterpretation of a Plains symbol within a Christian devotional setting.
+Source: https://www.travelok.com/listings/view.profile/id.22676
+
+63. Grave of Mister Ed
+Tahlequah, OK
+35.98884, -94.97028
+pop-culture | private
+A grave marker on private land is associated with Bamboo Harvester, the horse best known for portraying Mister Ed on television. This should be treated as a permission-only pilgrimage point, not an invitation to enter the property unannounced.
+Source: https://www.atlasobscura.com/places/grave-of-mister-ed
+
+64. Elmer McCurdy Grave
+Guthrie, OK
+35.89814, -97.40353
+dark-history | limited
+Outlaw Elmer McCurdy died in 1911, but his embalmed body spent decades being displayed by carnivals and sideshows before anyone realized it was a real corpse. He was finally buried in Summit View Cemetery in 1977 beneath concrete intended to prevent another removal.
+Source: https://www.travelok.com/listings/view.profile/id.22040
+
+65. Showmen's Rest
+Hugo, OK
+33.99864, -95.50376
+cemetery-oddity | limited
+A section of Mount Olivet Cemetery holds circus performers and workers beneath headstones decorated with elephants, tents and show-business imagery. The unusual memorials reflect Hugo's long association with traveling circuses; visit respectfully.
+Source: https://www.travelok.com/listings/view.profile/id.19347
+
+66. Geronimo Grave
+Fort Sill, OK
+34.69646, -98.37076
+indigenous-history | limited
+Apache leader Geronimo is buried in the Fort Sill Apache cemetery beneath a distinctive stone monument. The grave is on an active U.S. Army installation, so identification, gate procedures and current access rules must be checked before routing there.
+Source: https://www.army.mil/article/244620/fort_sill_cemeteries_are_final_resting_places_for_historical_figures
+
+67. Chiefs Knoll at Fort Sill
+Fort Sill, OK
+34.66952, -98.39542
+cemetery-history | limited
+Chiefs Knoll contains the graves of prominent Indigenous leaders and other historical figures connected with the Southern Plains and Fort Sill. Because it lies on an active military post and is a burial place, access should be conservative and respectful.
+Source: https://www.army.mil/article/244620/fort_sill_cemeteries_are_final_resting_places_for_historical_figures
+
+68. Pretty Boy Floyd Grave
+Akins, OK
+35.50373, -94.68030
+outlaw-history | limited
+Bank robber Charles Arthur Pretty Boy Floyd is buried in Akins Cemetery near his childhood home region. His grave remains a concrete pilgrimage point tied to one of Oklahoma's most mythologized Depression-era outlaws.
+Source: https://www.travelok.com/articles/oklahomas-legendary-outlaws
+
+69. Cain's Ballroom
+Tulsa, OK
+36.16068, -95.99314
+music-history | limited
+The former garage became one of the most important venues in western swing through Bob Wills and the Texas Playboys. The preserved dance hall still operates, carrying a century of Tulsa music history into an active venue.
+Source: https://www.cainsballroom.com/
+
+70. Tulsa Theater
+Tulsa, OK
+36.15811, -95.99539
+paranormal-lore | limited
+Opened in 1914 as Convention Hall, this ornate downtown theater has accumulated stories of unexplained sounds and apparitions alongside its music history. It remains an active venue, so paranormal claims should be treated as local lore and access follows event schedules.
+Source: https://www.travelok.com/articles/top-haunted-places-in-oklahoma
+
+71. Poncan Theatre
+Ponca City, OK
+36.70379, -97.08349
+paranormal-lore | limited
+This restored 1920s atmospheric theater is known both for its elaborate interior and for local ghost stories connected with the building. Tours and performances provide lawful access to a site that otherwise often appears in haunted-Oklahoma lists.
+Source: https://www.poncantheatre.org/
+
+72. Constantine Theater
+Pawhuska, OK
+36.66317, -96.34076
+paranormal-lore | limited
+The historic Constantine Theater preserves an ornate performance space in downtown Pawhuska and has developed a reputation for reported unexplained activity. It remains a functioning theater, so visit through scheduled events or authorized access.
+Source: https://www.travelok.com/articles/top-haunted-places-in-oklahoma
+
+73. Historic Fort Reno
+El Reno, OK
+35.53694, -98.03408
+military-history | limited
+Fort Reno began as a frontier military post in 1874 and later held German and Italian prisoners of war during World War II. Historic buildings, a cemetery and military artifacts give the site several layers of unusually concentrated history.
+Source: https://fortreno.org/
+
+74. Fort Washita Historic Site
+Durant, OK
+34.10223, -96.54689
+military-ruins | limited
+Established in 1842, Fort Washita served the frontier and later Confederate forces during the Civil War. Stone ruins and reconstructed buildings make the military landscape physically legible rather than just a marker in a field.
+Source: https://www.chickasaw.net/our-nation/locations/fort-washita.aspx
+
+75. Ritz Theater
+Shawnee, OK
+35.32756, -96.92406
+paranormal-lore | limited
+The restored downtown theater is associated with local stories of unusual sounds and apparitions. It also survives as a tangible piece of early movie-house architecture, making it useful even for travelers who are skeptical of the ghost lore.
+Source: https://www.travelok.com/articles/top-haunted-places-in-oklahoma
+
+76. The Skirvin Hilton
+Oklahoma City, OK
+35.46894, -97.51389
+paranormal-lore | limited
+Oklahoma City's historic Skirvin hotel is tied to one of the state's best-known hotel ghost legends, usually centered on a woman called Effie. The hotel is an active business, and the story should be presented as folklore rather than verified paranormal activity.
+Source: https://www.travelok.com/articles/top-haunted-places-in-oklahoma
+
+77. Beaver Dunes Park
+Beaver, OK
+36.84018, -100.51382
+paranormal-lore | open
+The sand dunes north of Beaver are sometimes promoted in regional lore as the site of unexplained disappearances and strange phenomena, including fanciful Bermuda Triangle comparisons. The real visitable landscape is a public dune park; the supernatural layer remains folklore.
+Source: https://www.travelok.com/listings/view.profile/id.406
+
+78. Ingalls Ghost Town
+Ingalls, OK
+36.10180, -96.88135
+ghost-town | roadside
+Once a hideout area for the Doolin-Dalton gang, Ingalls was the scene of a deadly 1893 shootout between lawmen and outlaws. Only fragments of the settlement remain, making it a true place-based outlaw and ghost-town stop rather than a recreated western village.
+Source: https://www.travelok.com/articles/oklahomaghosttowns
+
+79. Adamson Ghost Town
+Adamson, OK
+34.92410, -95.54710
+ghost-town | roadside
+Adamson grew around coal mining before accidents, mine closures and declining production emptied the community. Remnants of the settlement remain in the wooded hills of southeastern Oklahoma; stay on public roads and do not enter unstable mine workings or private structures.
+Source: https://www.travelok.com/articles/oklahomaghosttowns
+
+80. Boggy Depot State Park
+Atoka, OK
+34.31960, -96.30718
+lost-community | open
+Boggy Depot was once an important Choctaw Nation town, stage stop and Civil War supply point before railroads bypassed it. The modern park preserves a cemetery, archaeological traces and interpretation from a community that largely disappeared.
+Source: https://www.travelok.com/listings/view.profile/id.820
+
+81. Doaksville Archaeological Site
+Fort Towson, OK
+34.03487, -95.26987
+archaeology | limited
+Doaksville was a major nineteenth-century Choctaw Nation town and the location where Confederate Brigadier General Stand Watie surrendered in 1865. Archaeological remains lie near Fort Towson and should be visited without disturbing the protected site.
+Source: https://www.okhistory.org/about/markers.php?action=Search&county=Choctaw
+
+82. Picher Ghost Town
+Picher, OK
+36.98438, -94.83108
+industrial-ruins | view-only
+The former lead-and-zinc boomtown was largely abandoned after severe mining contamination, subsidence and a devastating 2008 tornado. It is historically compelling but environmentally hazardous; view from lawful public roads and never climb chat piles or enter abandoned structures.
+Source: https://www.travelok.com/articles/oklahomaghosttowns
+
+83. Robbers Cave State Park
+Wilburton, OK
+34.99501, -95.32688
+outlaw-lore | open
+Caves and rugged sandstone terrain in the Sans Bois Mountains are traditionally associated with outlaws including Jesse James and Belle Starr. The park gives that legend a safe, public landscape rather than directing travelers toward vague private hideout claims.
+Source: https://www.travelok.com/state-parks/robbers-cave-state-park
+
+84. Heavener Runestone Park
+Heavener, OK
+34.90010, -94.57800
+archaeology-lore | open
+A large rock bears carved characters once promoted as evidence of pre-Columbian Viking exploration in Oklahoma. Mainstream archaeology does not accept that claim, but the inscription and the history of competing interpretations make the park a strong pseudoarchaeology-and-folklore stop.
+Source: https://www.heavenerrunestonepark.com/
+
+85. Alabaster Caverns State Park
+Freedom, OK
+36.69824, -99.13333
+geology | limited
+One of the world's largest natural gypsum caves open to public touring runs beneath the plains of northwestern Oklahoma. Guided cave access and the unusual alabaster formations make it one of the state's strongest underground OddWay sites.
+Source: https://www.travelok.com/state-parks/alabaster-caverns-state-park
+
+86. Salt Plains State Park — Selenite Crystal Digging Area
+Jet, OK
+36.74314, -98.13228
+geology | seasonal
+The salt flats are famous for hourglass-shaped selenite crystals that form with trapped sand and can be dug during the legal collecting season. The stark white landscape looks more like a dried inland sea than typical Oklahoma prairie.
+Source: https://www.fws.gov/refuge/salt-plains/visit-us/activities/crystal-digging
+
+87. Gloss Mountain State Park
+Fairview, OK
+36.36301, -98.57908
+geology | open
+Selenite crystals in the mesa cap rock glint in the sun, producing the Glass versus Gloss Mountains naming story that has followed the range for generations. A steep stair-and-trail climb reaches the top of Cathedral Mountain.
+Source: https://www.travelok.com/state-parks/gloss-mountain-state-park
+
+88. Little Sahara State Park
+Waynoka, OK
+36.53352, -98.88139
+natural-oddity | open
+More than a thousand acres of shifting sand dunes create an unexpectedly desert-like landscape in northwestern Oklahoma. The park is heavily used by off-road vehicles, so pedestrians should follow current safety and access rules.
+Source: https://www.travelok.com/state-parks/little-sahara-state-park
+
+89. Black Mesa State Park
+Kenton, OK
+36.84059, -102.88152
+natural-oddity | open
+Dark volcanic rock, high-plains grassland and exceptionally dark skies make this remote Panhandle park feel unlike most of Oklahoma. It is also the practical base area for exploring the state's far western mesa country.
+Source: https://www.travelok.com/state-parks/black-mesa-state-park
+
+90. Black Mesa Summit Trailhead
+Kenton, OK
+36.96055, -102.96362
+geographic-oddity | limited
+An 8.4-mile round-trip trail climbs from this public trailhead to Oklahoma's highest point near the New Mexico border. The summit itself is remote, so the trailhead is the safer routable pin; carry water and check weather before attempting the hike.
+Source: https://www.travelok.com/listings/view.profile/id.672
+
+91. Holy City of the Wichitas
+Lawton, OK
+34.74257, -98.59034
+religious-oddity | limited
+Stone buildings and walls create a miniature biblical landscape in the Wichita Mountains, built as the setting for a long-running Easter passion play. Even outside performances, the fortress-like complex is one of Oklahoma's strangest constructed environments.
+Source: https://theholycitylawton.com/
+
+92. Parallel Forest
+Lawton, OK
+34.75070, -98.58034
+natural-oddity | open
+Thousands of red cedars were planted in eerily straight rows about six feet apart as part of erosion-control work. The perfect spacing gives an ordinary forest an unnatural visual rhythm that has also inspired local ghost stories.
+Source: https://www.fws.gov/refuge/wichita-mountains
+
+93. Collings Castle
+Davis, OK
+34.42707, -97.14729
+architectural-ruins | limited
+A hand-built stone castle from the Great Depression era clings to a steep hillside inside Turner Falls Park. Narrow openings, rough masonry and partial deterioration make it look far older than its twentieth-century construction date.
+Source: https://www.turnerfallspark.com/
+
+94. Cavanal Hill — World's Highest Hill Claim
+Poteau, OK
+35.07093, -94.67939
+geographic-oddity | open
+Cavanal Hill is locally promoted as the world's highest hill because its rise is often cited at just under the traditional 2,000-foot threshold for a mountain. The classification is promotional rather than a universal geographic rule, but the claim has become part of the place's identity.
+Source: https://www.travelok.com/listings/view.profile/id.1209
+
+95. Redbud Park Outlaw Cave
+Marlow, OK
+34.64778, -97.95099
+outlaw-lore | open
+A small cave in Redbud Park is tied by local tradition to Marlow-area outlaw stories and the Marlow brothers. The public park gives travelers a concrete, accessible anchor for legends that otherwise blur into regional folklore.
+Source: https://www.travelok.com/listings/view.profile/id.22827
+
+96. Museum of Osteology
+Oklahoma City, OK
+35.36483, -97.44184
+odd-museum | open
+Hundreds of real animal skeletons fill a museum devoted almost entirely to comparative anatomy. The dense displays of skulls, articulated skeletons and unusual species make it one of Oklahoma's clearest cabinet-of-curiosities style museums.
+Source: https://www.skeletonmuseum.com/
+
+97. Mabee-Gerrer Museum of Art — Egyptian Collection
+Shawnee, OK
+35.36607, -96.95508
+odd-museum | open
+This university museum contains an unexpectedly strong collection of Egyptian antiquities, including a mummy, alongside art and archaeological material from around the world. The Egyptian galleries give it a much stranger profile than a typical regional art museum.
+Source: https://www.mgmoa.org/
+
+98. American Pigeon Museum & Library
+Oklahoma City, OK
+35.53632, -97.47135
+odd-museum | limited
+A museum devoted to pigeons documents racing, military messenger birds, fancy breeds and the long relationship between humans and domesticated pigeons. It is one of the state's most narrowly focused specialty museums.
+Source: https://www.theamericanpigeonmuseum.org/
+
+99. American Banjo Museum
+Oklahoma City, OK
+35.46677, -97.51154
+odd-museum | open
+Hundreds of ornate banjos trace the instrument from minstrel-era history through jazz, bluegrass and modern performance. Elaborately decorated instruments and a highly specific collecting focus make the museum an unusually strong niche stop.
+Source: https://americanbanjomuseum.com/
+
+100. Oklahoma Frontier Drugstore Museum
+Guthrie, OK
+35.87819, -97.42724
+medical-history | limited
+Historic pharmacy fixtures, medicine bottles, patent remedies and equipment fill a recreated frontier drugstore environment. The displays preserve the sometimes-unsettling overlap between medicine, advertising and commerce in early Oklahoma.
+Source: https://www.okpharmheritage.com/
+
+101. Oklahoma Museum of Telephone History
+Oklahoma City, OK
+35.47104, -97.51523
+odd-museum | limited
+Switchboards, telephones, signs and telecommunications equipment document the rapidly changing technology behind everyday conversation. The specialized collection turns obsolete infrastructure into a surprisingly visual museum.
+Source: https://www.travelok.com/Roadside_Oddities
+
+102. Twister Museum
+Wakita, OK
+36.88041, -97.92468
+film-oddity | limited
+Wakita served as a major filming location for the 1996 movie Twister, and this small museum preserves props, photographs and production memorabilia. The town itself still carries visual traces of its role in the tornado film.
+Source: https://twistercountry.com/
+
+103. Toy & Action Figure Museum
+Pauls Valley, OK
+34.74012, -97.21957
+odd-museum | open
+Thousands of action figures, toys and comic-related objects fill a museum built around the visual history of modern character merchandising. Displays range from superhero collections to an enormous staged action-figure diorama.
+Source: https://www.toyandactionfiguremuseum.com/
+
+104. J.M. Davis Arms & Historical Museum
+Claremore, OK
+36.31460, -95.61503
+odd-museum | open
+The museum holds one of the world's largest privately assembled firearms collections alongside swords, outlaw artifacts, musical instruments and assorted curiosities. Its sheer density and eccentric breadth make it more cabinet collection than conventional weapons museum.
+Source: https://www.thegunmuseum.com/
+
+105. Tom Mix Museum
+Dewey, OK
+36.79832, -95.93823
+pop-culture | limited
+This museum is devoted to silent-film cowboy star Tom Mix, who worked in the Dewey area before becoming an early Hollywood western icon. Costumes, saddles, photographs and memorabilia preserve the strange bridge between real ranch culture and manufactured screen mythology.
+Source: https://www.okhistory.org/sites/tommix
+
+106. Stafford Air & Space Museum
+Weatherford, OK
+35.53889, -98.66778
+space-history | open
+Named for astronaut Thomas P. Stafford, this museum holds aircraft, rocket engines, spacecraft-related hardware and thousands of aviation artifacts. Full-scale machines and spaceflight objects make it substantially more tactile than a general science museum.
+Source: https://www.staffordmuseum.org/
+
+107. Seaba Station Motorcycle Museum
+Warwick, OK
+35.68652, -97.00026
+transportation-oddity | limited
+A restored 1920s Route 66 service station now contains dozens of motorcycles ranging from early machines to unusual custom bikes. The reuse of the roadside station makes the building and collection equally important to the stop.
+Source: https://seabastation.com/
+
+108. Oklahoma Route 66 Museum
+Clinton, OK
+35.50657, -98.98690
+route-66-history | open
+Immersive galleries move through different eras of Route 66 using vehicles, signs, music and recreated roadside environments. The museum is one of the strongest places in the state for understanding the highway beyond individual roadside photo stops.
+Source: https://www.okhistory.org/sites/visit-route-66
+
+109. National Route 66 & Transportation Museum
+Elk City, OK
+35.41220, -99.43585
+route-66-history | open
+This large museum complex interprets all eight Route 66 states through recreated scenes, vehicles and transportation exhibits. A giant roadside figure at the entrance and an old-town complex extend the experience outside the main galleries.
+Source: https://www.travelok.com/listings/view.profile/id.5284
+
+110. Chandler Route 66 Interpretive Center
+Chandler, OK
+35.70959, -96.87702
+route-66-history | open
+Housed in a former National Guard armory, the center uses video installations, unusual seating and oral-history material to interpret Route 66. Its presentation is more experiential than a conventional display-case museum.
+Source: https://www.route66interpretivecenter.org/
+
+111. No Man's Land Museum
+Goodwell, OK
+36.59471, -101.63520
+odd-museum | limited
+The museum focuses on the Oklahoma Panhandle, once widely called No Man's Land, with archaeology, fossils, agricultural material and regional artifacts. Its location near the center of the Panhandle gives context to one of the state's strangest geographic histories.
+Source: https://www.opsu.edu/no-mans-land-museum/
+
+112. Eskridge Hotel Museum
+Wynnewood, OK
+34.64294, -97.16967
+weird-history | limited
+This restored historic hotel preserves period rooms, local artifacts and the atmosphere of a small-town lodging house from another era. The building's layered commercial and community history makes it more immersive than a standard local-history room.
+Source: https://www.travelok.com/listings/search/3?city=Wynnewood
+
+113. Spiro Mounds Archaeological Center
+Spiro, OK
+35.31173, -94.56843
+archaeology | limited
+One of the most important Mississippian ceremonial centers west of the Mississippi River survives here as protected earthworks and archaeological landscape. The museum and trails interpret a complex Indigenous community; mounds and cultural resources must not be climbed, collected from or disturbed.
+Source: https://www.okhistory.org/sites/visit-spiro-mounds
+
+114. Washita Battlefield National Historic Site
+Cheyenne, OK
+35.61672, -99.68630
+dark-history | open
+The National Park Service interprets the 1868 attack by Lt. Col. George A. Custer's forces on a Southern Cheyenne village led by Peace Chief Black Kettle. Begin at the visitor center and follow designated trails to approach the landscape with appropriate historical and cultural context.
+Source: https://www.nps.gov/waba/
+
+115. Honey Springs Battlefield
+Checotah, OK
+35.52356, -95.48512
+military-history | limited
+The 1863 Battle of Honey Springs was the largest Civil War engagement in Indian Territory and involved Native, Black and white soldiers. A modern visitor center and preserved battlefield landscape interpret a conflict often omitted from standard Civil War tourism.
+Source: https://www.okhistory.org/sites/visit-honey-springs
+
+116. Fort Gibson Historic Site
+Fort Gibson, OK
+35.80399, -95.25699
+military-history | limited
+Established in 1824, Fort Gibson became a major U.S. military post on the western frontier and later figured in Indian Removal and Civil War history. Reconstructed and original-era structures make the complex a tangible counterpart to nearby archaeological and tribal-history sites.
+Source: https://www.okhistory.org/sites/fortgibson
+
+117. Fort Towson Historic Site
+Fort Towson, OK
+34.02788, -95.25634
+military-history | limited
+Founded in 1824 near the Red River borderlands, Fort Towson served the U.S. Army, the Choctaw Nation region and later Confederate forces. The site also connects directly with nearby Doaksville, where Stand Watie surrendered in 1865.
+Source: https://www.okhistory.org/sites/forttowson
+
+118. Sod House Museum
+Aline, OK
+36.47216, -98.42572
+architectural-oddity | limited
+A genuine 1894 sod house remains preserved beneath a protective structure on its original farmstead. Visitors can step inside a surviving example of the earth-built homes used by settlers where lumber was scarce.
+Source: https://www.okhistory.org/sites/visit-sod-house
+
+119. Pioneer Woman Museum & Statue
+Ponca City, OK
+36.71049, -97.06558
+monumental-art | limited
+A large bronze Pioneer Woman leads a child beside a museum devoted to the experiences and mythology of women in Oklahoma settlement history. The monumental statue and highly focused museum make the complex more distinctive than a general pioneer museum.
+Source: https://www.okhistory.org/sites/pioneerwoman
+
+120. Standing Bear Park, Museum & Monument
+Ponca City, OK
+36.68285, -97.07595
+indigenous-history | open
+This public park and museum honor Ponca Chief Standing Bear, whose 1879 federal court case affirmed that Native Americans were persons entitled to seek habeas corpus protection. A large statue and interpretive spaces make the site both a legal-history landmark and a major Indigenous cultural stop.
+Source: https://www.standingbearpark.com/
+
+2026 HOLD / EXCLUSION NOTES — NOT COUNTED IN THE 120
+
+Center of the Universe, Tulsa — held out because the downtown landmark is undergoing renovation in 2026; recheck after reopening.
+Fort Supply Historic Site — held out while listed closed by the Oklahoma Historical Society.
+Henry & Anna Overholser Mansion — held out while listed closed by the Oklahoma Historical Society.
+Pawnee Bill Ranch & Museum — held out while listed closed by the Oklahoma Historical Society.
+White Hair Memorial — held out while listed closed by the Oklahoma Historical Society.
+OKPOP Museum — not counted because it had not yet opened for normal public visitation as of this research pass.
+USS Batfish — not counted as an ordinary museum stop while the submarine remains in a temporary relocation/restoration situation.
+Aline Muffler Man — excluded because newer reporting indicates the figure left Oklahoma in 2022 despite older tourism references still circulating online.

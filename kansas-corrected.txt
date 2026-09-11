@@ -1,0 +1,737 @@
+OddWay — Kansas Complete
+106 Kansas stops
+Stops 1–106
+Prepared September 10, 2026
+
+Access key: open = normally accessible during posted/public hours; limited = seasonal, scheduled, ticketed, cemetery-hours, appointment-only, military/security-dependent, weather/road-dependent, private-access-dependent, or check-ahead access; roadside = view from a safe lawful public area; private = private property, do not enter without permission; seasonal = primarily accessible during a defined season; view-only = observe from a lawful public viewpoint and do not enter restricted infrastructure.
+
+Research note: This list was built for OddWay around real, routable places with a specific unusual, haunted, folkloric, geological, roadside, dark-history, military, outsider-art, or specialized-museum reason to stop. Paranormal material is presented as reported lore rather than established fact. Access labels are intentionally conservative. First-party, government, museum, historical-organization, and official tourism sources were preferred; competitor/discovery sources are used only where a stronger primary source was not readily available. Coordinates are route pins rounded to five decimal places and are not permission to enter private, restricted, military, cemetery, or otherwise controlled land.
+
+2. Garden of Eden
+Lucas, KS
+39.05790, -98.53515
+outsider-art | open
+Civil War veteran S.P. Dinsmoor transformed his home into a dense concrete sculpture environment filled with biblical scenes, political allegory, and handmade figures. His limestone cabin and unusual mausoleum make this one of the strongest outsider-art stops in the state.
+Source: https://gardenofedenlucas.org/
+
+3. Bowl Plaza
+Lucas, KS
+39.05898, -98.53836
+roadside-oddity | open
+Lucas turned a public restroom into a giant mosaic toilet-themed art environment, complete with sculptural plumbing references and colorful found-object details. It is functional civic infrastructure deliberately built as an absurd roadside attraction.
+Source: https://www.travelks.com/listing/bowl-plaza/15640/
+
+4. Grassroots Art Center
+Lucas, KS
+39.05756, -98.53832
+outsider-art | open
+This museum preserves Kansas folk, self-taught, and grassroots art made by people working outside conventional fine-art systems. The collection is especially useful as a gateway to the many eccentric art environments scattered across north-central Kansas.
+Source: https://www.grassrootsart.net/
+
+5. Florence Deeble Rock Garden
+Lucas, KS
+39.05852, -98.53642
+outsider-art | open
+Florence Deeble spent decades building miniature landscapes and travel memories from concrete, stone, and found material around her home. The result is a compact folk-art environment of mountains, villages, monuments, and personal geography.
+Source: https://www.grassrootsart.net/
+
+6. World's Largest Collection of the World's Smallest Versions of the World's Largest Things
+Lucas, KS
+39.05759, -98.53791
+odd-museums | seasonal
+Artist Erika Nelson created miniature versions of oversized roadside attractions from around the country, turning roadside gigantism back into tiny objects. The tongue-twisting collection functions as both museum and affectionate parody of American road-trip culture.
+Source: https://www.worldslargestthings.com/
+
+7. World's Largest Souvenir Travel Plate
+Lucas, KS
+39.05769, -98.52819
+roadside-oddity | roadside
+A giant roadside travel plate welcomes visitors on the edge of Lucas and celebrates the souvenir plates once collected on cross-country trips. Its exaggerated scale fits the town's larger tradition of deliberately strange public art.
+Source: https://www.travelks.com/listing/worlds-largest-travel-plate/18782/
+
+8. M.T. Liggett Art Environment
+Mullinville, KS
+37.58759, -99.48013
+outsider-art | open
+M.T. Liggett filled his roadside property with whirling metal sculptures, political caricatures, signs, and kinetic scrap-metal figures. The preserved environment remains one of Kansas's most confrontational and instantly recognizable folk-art landscapes.
+Source: https://mtliggettartenvironment.org/
+
+9. Big Brutus
+West Mineral, KS
+37.27348, -94.93820
+industrial-history | open
+This enormous electric mining shovel once stripped overburden from southeast Kansas coal fields and now stands preserved as a museum centerpiece. Its scale is difficult to understand until standing beneath the 16-story machine.
+Source: https://www.bigbrutus.org/
+
+10. Mushroom Rock State Park
+Marquette, KS
+38.72613, -98.02972
+caves-geology | open
+Wind and water eroded sandstone into oversized mushroom-shaped rocks balanced on narrow stems. The tiny state park is a concentrated collection of geological forms that look deliberately sculpted despite being natural.
+Source: https://ksoutdoors.gov/about-kdwp/where-we-work/state-parks/mushroom-rock
+
+11. Rock City
+Minneapolis, KS
+39.08750, -97.73167
+caves-geology | open
+More than 200 nearly spherical sandstone concretions cluster across a small landscape outside Minneapolis. Some are several meters across, creating a field of giant stone balls unlike most other Kansas geology.
+Source: https://www.rockcitypark.com/
+
+12. Monument Rocks
+Oakley, KS
+38.79326, -100.76268
+caves-geology | limited
+Towering chalk formations rise abruptly from the western Kansas plains and preserve evidence of the ancient inland sea that once covered the region. The formations are on private land opened to visitors, so access is a privilege and poor road conditions can close the route.
+Source: https://www.visitoakleyks.com/monument-rocks
+
+13. Little Jerusalem Badlands State Park
+Oakley, KS
+38.80281, -100.92820
+caves-geology | open
+White Niobrara chalk cliffs, spires, and narrow formations form a badlands landscape that looks dramatically different from the surrounding prairie. Visitors can use public overlooks and trails, while guided hikes reach more sensitive areas.
+Source: https://ksoutdoors.gov/about-kdwp/where-we-work/state-parks/little-jerusalem
+
+14. Castle Rock Badlands
+Quinter, KS
+38.86116, -100.16974
+caves-geology | limited
+Chalk spires and eroded badlands surround the isolated Castle Rock formation in western Kansas. The site is reached across private ranch roads, so visitors should only go in dry conditions and respect posted access rules.
+Source: https://www.travelks.com/things-to-do/parks-and-nature/scenic-areas/castle-rock/
+
+15. Arikaree Breaks
+St. Francis, KS
+39.91062, -101.78619
+natural-oddities | roadside
+Deep ravines and rugged loess formations cut through the far northwest corner of Kansas, producing terrain more often associated with neighboring states. Most land is private, but the breaks can be viewed from lawful public gravel roads.
+Source: https://www.travelks.com/things-to-do/parks-and-nature/scenic-areas/arikaree-breaks/
+
+16. Big Basin Prairie Preserve and St. Jacob's Well
+Ashland, KS
+37.24037, -99.98186
+natural-oddities | limited
+A broad natural sink and a smaller water-filled sinkhole known as St. Jacob's Well interrupt the prairie south of Dodge City. Local folklore and the unusual karst terrain make the preserve more than a normal scenic stop, but road and weather conditions can affect access.
+Source: https://www.travelks.com/
+
+17. Geographic Center of the Contiguous United States
+Lebanon, KS
+39.82816, -98.56956
+geographic-oddities | open
+A stone monument and tiny chapel mark the traditional geographic center of the lower 48 states. The exact mathematical definition can vary, but this rural Kansas landmark became the enduring public symbol of the nation's middle.
+Source: https://www.travelks.com/
+
+18. Mount Sunflower
+Weskan, KS
+39.02194, -102.03722
+geographic-oddities | limited
+Kansas's highest natural point is not a mountain but a subtle rise on private ranchland beside the Colorado line. The owners traditionally welcome respectful visitors, who find a sign, register, and whimsical summit markers rather than an alpine peak.
+Source: https://www.travelks.com/listing/mount-sunflower/21305/
+
+19. Kansas-Colorado-Oklahoma Tri-State Marker
+Elkhart, KS
+36.99323, -102.04204
+geographic-oddities | roadside
+A survey marker identifies the point where Kansas, Colorado, and Oklahoma meet. Reaching it requires rural roads near the edge of all three states, making the stop as much about standing on an abstract boundary as seeing a monument.
+Source: https://www.ci.elkhart.ks.us/175/Tri-State-Marker
+
+20. Four-State Lookout
+White Cloud, KS
+39.97975, -95.29953
+geographic-oddities | open
+A hilltop overlook above White Cloud is promoted for views across Kansas, Missouri, Nebraska, and, under clear conditions, toward Iowa. It is a simple public viewpoint whose appeal comes from the unusual multi-state geography.
+Source: https://www.travelks.com/
+
+21. Giant Van Gogh 'Three Sunflowers in a Vase'
+Goodland, KS
+39.33794, -101.70482
+roadside-oddity | open
+A gigantic reproduction of Van Gogh's sunflower painting stands on an approximately 80-foot easel beside the highway. It was built as part of artist Cameron Cross's international Big Easel Project and has become Goodland's signature roadside landmark.
+Source: https://www.travelks.com/
+
+22. High Plains Museum
+Goodland, KS
+39.34110, -101.70558
+odd-museums | open
+Goodland's city museum mixes regional artifacts with exhibits tied to inventions, transportation, and the unusual history of the High Plains. Its location only a short walk from the giant Van Gogh makes it a useful second OddWay stop rather than a generic local museum.
+Source: https://www.cityofgoodland.org/
+
+23. Fick Fossil and History Museum
+Oakley, KS
+39.12801, -100.86162
+odd-museums | open
+The Fick Museum combines western Kansas fossils with Vi Fick's eccentric folk art made from shark teeth, fish bones, shells, wax, and other materials. Large marine fossils are a reminder that this dry region once lay beneath the Western Interior Seaway.
+Source: https://www.visitoakleyks.com/fick-fossil-history-museum
+
+24. Buffalo Bill Cultural Center and Giant Bronze
+Oakley, KS
+39.12682, -100.86948
+roadside-oddity | open
+A twice-life-size bronze depicts Buffalo Bill Cody on horseback pursuing a buffalo near the place where local tradition says he earned his famous nickname in an 1868 hunting contest. The outdoor sculpture is accessible even when the visitor center is closed.
+Source: https://www.visitoakleyks.com/buffalo-bill-cultural-center
+
+25. Dorothy's House and Land of Oz
+Liberal, KS
+37.03436, -100.91041
+odd-museums | open
+Liberal built a replica of Dorothy Gale's Kansas home and an indoor Yellow Brick Road attraction around the state's connection to The Wizard of Oz. Guided visits lean heavily into handmade sets, memorabilia, and roadside-theater charm.
+Source: https://visitliberal.com/
+
+26. Mid-America Air Museum
+Liberal, KS
+37.03884, -100.95141
+odd-museums | open
+This city-operated museum holds one of the country's larger collections of historic aircraft, ranging from military machines to unusual civilian designs. The dense hangar presentation makes it a strong stop for aviation and mechanical-history travelers.
+Source: https://liberalairmuseum.com/
+
+27. International Pancake Day Hall of Fame
+Liberal, KS
+37.04132, -100.92400
+odd-museums | limited
+Liberal's long-running pancake race against Olney, England, has its own museum filled with racing memorabilia, frying pans, photographs, costumes, and international gifts. Outside the annual event it is generally visited by appointment.
+Source: https://visitliberal.com/international-pancake-day/
+
+28. World's Largest Czech Egg
+Wilson, KS
+38.82412, -98.47275
+roadside-oddity | open
+A 22-foot decorated kraslice stands in Wilson as a giant tribute to the community's Czech heritage. The colorful egg combines immigrant tradition with the oversized-object logic of a classic roadside attraction.
+Source: https://www.travelks.com/
+
+29. Atlas Ad Astra Missile Silo
+Wilson, KS
+38.83378, -98.43086
+military-history | limited
+A decommissioned Atlas F intercontinental ballistic missile complex has been repurposed for tours, camping, and an evolving underground adventure project. Visitors can see Cold War infrastructure that was designed to launch a nuclear missile, but advance booking is required.
+Source: https://www.atlasadastra.com/
+
+30. Big Well Museum
+Greensburg, KS
+37.60341, -99.29444
+industrial-history | open
+The museum allows visitors to descend into the enormous hand-dug municipal well completed in 1888. Exhibits also document Greensburg's destruction in the 2007 tornado and the community's reconstruction.
+Source: https://www.bigwell.org/
+
+32. World's Largest Cow Hairball
+Garden City, KS
+37.96027, -100.87081
+odd-museums | open
+The Finney County Historical Museum displays a huge trichobezoar removed from a cow's stomach at a local packing plant. Once far heavier when wet, the dried hairball remains an unusually tactile museum object and one of Kansas's strangest documented artifacts.
+Source: https://finneycounty.org/170/Historical-Museum
+
+33. Sternberg Museum of Natural History
+Hays, KS
+38.89733, -99.31582
+odd-museums | open
+The Sternberg focuses on fossils and natural history from the central plains, including dramatic marine reptiles from the ancient inland sea. Its famous 'fish-within-a-fish' fossil and extensive Cretaceous collection give it a strong prehistoric OddWay hook.
+Source: https://sternberg.fhsu.edu/
+
+34. Fort Hays State Historic Site
+Hays, KS
+38.86198, -99.34314
+frontier-history | open
+Four surviving buildings preserve part of the frontier military post associated with Buffalo Soldiers, railroad expansion, and figures such as Custer, Hickok, and Cody. The open landscape makes the fort's isolation and military role easier to understand than a conventional indoor museum.
+Source: https://www.kansashistory.gov/fort_hays
+
+35. Strataca
+Hutchinson, KS
+38.04370, -97.86755
+industrial-history | open
+Visitors descend about 650 feet into a working-area salt formation more than 275 million years old. Underground galleries combine mining history, geology, preserved film materials, and rides through former mine passages.
+Source: https://underkansas.org/
+
+36. Cosmosphere
+Hutchinson, KS
+38.06561, -97.92138
+space-history | open
+The Cosmosphere houses major American and Soviet spaceflight artifacts, including flown spacecraft and Cold War-era hardware. Its concentration of genuine space objects makes it far more than a general science museum for OddWay purposes.
+Source: https://cosmo.org/
+
+37. Little House on the Prairie Museum
+Independence, KS
+37.12487, -95.83678
+literary-history | seasonal
+The museum complex stands near the Kansas homestead associated with Laura Ingalls Wilder's family and includes a reconstructed cabin and period buildings. It ties a globally known frontier story to a specific rural Kansas landscape.
+Source: https://littlehouseontheprairiemuseum.com/
+
+38. Norman No. 1 Oil Well
+Neodesha, KS
+37.41250, -95.62778
+industrial-history | open
+A reconstructed wooden derrick marks the site of the 1892 Norman No. 1, widely recognized as the first commercially successful oil well in the Mid-Continent field. The small site represents the beginning of an industry that transformed Kansas and neighboring states.
+Source: https://www.kansashistory.gov/
+
+39. Dalton Gang Hideout and Escape Tunnel
+Meade, KS
+37.28096, -100.33710
+outlaw-history | open
+A house linked to relatives of the Dalton brothers became famous for a concealed tunnel running from the home toward a barn. Whether every outlaw story attached to it is literal or embellished, the preserved tunnel and Dalton connection make it an unusually physical piece of western folklore.
+Source: http://www.oldmeadecounty.com/hideout.htm
+
+40. Stockade Museum
+Medicine Lodge, KS
+37.27562, -98.58168
+frontier-history | open
+A reconstructed stockade and museum interpret Medicine Lodge's frontier period, regional conflict, settlement, and treaty-era history. The enclosed timber structure gives the site a distinctive physical character compared with a standard county museum.
+Source: https://www.medicinelodgestockade.org/
+
+41. Carry Nation Home
+Medicine Lodge, KS
+37.27555, -98.58179
+weird-history | open
+The preserved home of temperance activist Carry A. Nation sits beside the Stockade Museum complex. Nation became nationally famous for smashing saloons with a hatchet, giving the modest house an unusually vivid connection to American protest history.
+Source: https://www.medicinelodgestockade.org/
+
+42. Boyer Museum of Animated Carvings
+Belleville, KS
+39.82867, -97.63075
+outsider-art | seasonal
+Paul Boyer's hand-built wooden automata move through elaborate mechanical scenes powered by gears, cams, wire, and motors. The museum preserves decades of one-person engineering and folk art rather than mass-produced displays.
+Source: https://www.travelks.com/
+
+43. Pony Express Barn Museum
+Marysville, KS
+39.84166, -96.64802
+transportation-history | open
+An original 1859 stone barn served as a Pony Express home station where riders and horses could be changed. The museum preserves one of the few substantial surviving structures directly connected to the short-lived mail service.
+Source: https://www.visitmarysvilleks.org/
+
+44. Hollenberg Pony Express Station
+Hanover, KS
+39.90091, -96.84381
+transportation-history | seasonal
+Built in the late 1850s, Hollenberg Station served emigrant trails and later the Pony Express without being moved from its original site. Its survival makes it one of Kansas's strongest physical links to overland migration and the famous 18-month mail route.
+Source: https://www.kansashistory.gov/hollenberg
+
+45. Pawnee Indian Museum State Historic Site
+Republic, KS
+39.90785, -97.86100
+indigenous-history | seasonal
+The museum protects the excavated floor of a large Pawnee earth lodge from a village occupied in the late 1700s and early 1800s. Archaeology, a rare sacred bundle, and visible lodge depressions make the landscape itself part of the interpretation.
+Source: https://www.kansashistory.gov/pawnee_indian
+
+46. Kansas Barbed Wire Museum
+La Crosse, KS
+38.52468, -99.31162
+odd-museums | seasonal
+Thousands of varieties of barbed wire and fencing tools document how many different ways inventors tried to control the open plains. A subject that sounds mundane becomes a surprisingly dense museum of patents, violence, ranching, and material culture.
+Source: https://barbedwiremuseum.com/
+
+47. They Also Ran Gallery
+Norton, KS
+39.82940, -99.88927
+odd-museums | limited
+This unusual political gallery focuses not on presidents but on major-party presidential nominees who lost. Portraits and biographies turn American history toward the people who came close to the White House and then largely disappeared from popular memory.
+Source: http://www.theyalsoran.com/
+
+48. Moline Swinging Bridge
+Moline, KS
+37.36578, -96.30433
+architectural-oddities | open
+A narrow pedestrian suspension bridge crosses Wildcat Creek and is locally described as Kansas's oldest swinging bridge. Its movement underfoot and small-town park setting give it the kind of simple physical oddity that works well as a route stop.
+Source: https://www.travelks.com/
+
+49. OZ Museum
+Wamego, KS
+39.20122, -96.30530
+odd-museums | open
+Wamego's museum gathers Wizard of Oz books, film material, replicas, collectibles, and themed environments into a dedicated Oz attraction. Kansas's fictional role in the story is turned into a substantial real-world roadside destination.
+Source: https://ozmuseum.com/
+
+50. Original Pizza Hut Museum
+Wichita, KS
+37.72103, -97.28654
+odd-museums | open
+The tiny original Pizza Hut building was moved onto Wichita State University's campus and turned into a museum about the global restaurant chain that began there in 1958. It is an unusually small birthplace for an enormous commercial brand.
+Source: https://www.wichita.edu/about/wsunews/pizza_hut_museum.php
+
+51. Museum of World Treasures
+Wichita, KS
+37.68705, -97.32789
+odd-museums | open
+This eclectic museum deliberately mixes fossils, ancient objects, military history, mummies, and other artifacts rather than focusing on a single period. The breadth and cabinet-of-curiosities feel make it a stronger OddWay fit than a conventional history museum.
+Source: https://worldtreasures.org/
+
+52. Kansas Aviation Museum
+Wichita, KS
+37.63217, -97.27372
+transportation-history | open
+The museum occupies Wichita's former Art Deco municipal airport terminal and surrounds it with aircraft tied to the city's aviation industry. Visitors can explore both the historic terminal architecture and a collection of unusual airframes.
+Source: https://kansasaviationmuseum.org/
+
+53. Keeper of the Plains
+Wichita, KS
+37.69138, -97.34968
+indigenous-history | open
+Blackbear Bosin's 44-foot steel figure stands at the confluence of the Arkansas and Little Arkansas rivers. The surrounding plaza, footbridges, and scheduled fire pots make the monument one of Kansas's most distinctive large-scale public artworks.
+Source: https://www.wichita.gov/
+
+54. Old Cowtown Museum
+Wichita, KS
+37.69379, -97.36225
+living-history | open
+A collection of historic and reconstructed buildings creates a walkable 19th-century townscape covering frontier and early Wichita life. Its saloons, businesses, streets, and demonstrations offer a more immersive old-west environment than a display-case museum.
+Source: https://www.oldcowtown.org/
+
+55. Combat Air Museum
+Topeka, KS
+38.94671, -95.68446
+military-history | open
+Two hangars at Forbes Field hold dozens of military aircraft, helicopters, engines, missiles, and aviation artifacts. The volunteer-run collection spans early flight through Cold War jets and gives visitors unusually close access to large machines.
+Source: https://combatairmuseum.org/
+
+56. Brown v. Board of Education National Historical Park
+Topeka, KS
+39.03788, -95.67614
+dark-history | open
+The National Park Service preserves the former Monroe Elementary School, one of the segregated schools directly connected to the landmark Supreme Court case. The classrooms and exhibits make the legal history tangible at the place where part of it happened.
+Source: https://www.nps.gov/brvb/
+
+57. Rochester Cemetery — 'Albino Lady' Folklore
+Topeka, KS
+39.10435, -95.67988
+folklore | limited
+Rochester Cemetery is attached to a long-running Topeka legend about an 'Albino Lady' said to appear among the graves. Treat the story as local folklore rather than fact, visit only during lawful cemetery hours, and do not disturb graves or residents nearby.
+Source: https://www.visittopeka.com/
+
+58. Sallie House
+Atchison, KS
+39.56659, -95.11495
+haunted | limited
+The 19th-century house is the center of Atchison's best-known ghost story, commonly associated with a child called Sallie and decades of paranormal reports. It operates as a bookable attraction, so entry should only be through official tours or reservations.
+Source: https://visitatchison.com/highlight/sallie-house
+
+59. McInteer Villa
+Atchison, KS
+39.56334, -95.13351
+haunted | limited
+This imposing 1889 brick mansion is both a historic home and one of Atchison's established paranormal-tour locations. Stories of apparitions and unexplained activity are part of the property's visitor experience, but should be understood as reported lore rather than verified events.
+Source: https://visitatchison.com/
+
+60. Amelia Earhart Birthplace Museum
+Atchison, KS
+39.56375, -95.11448
+aviation-history | open
+The Gothic Revival house overlooking the Missouri River is the birthplace of pioneering aviator Amelia Earhart. Period rooms and personal material tie one of aviation's most enduring mysteries to a very specific Kansas home.
+Source: https://www.ameliaearhartmuseum.org/
+
+61. Amelia Earhart Hangar Museum
+Atchison, KS
+39.56846, -95.17826
+aviation-history | open
+A modern museum at Amelia Earhart Airport centers on Muriel, the world's last remaining Lockheed Electra 10-E of the same model Earhart flew on her final journey. Interactive exhibits explore her life, aircraft, navigation, and disappearance.
+Source: https://ameliaearharthangarmuseum.org/
+
+62. Mount Vernon Cemetery
+Atchison, KS
+39.54160, -95.14250
+cemetery-history | limited
+This historic cemetery contains prominent Atchison burials and sits near the giant Amelia Earhart earthwork portrait visible from above. It is a legitimate historic destination, but visitors should follow cemetery hours and treat gravesites respectfully.
+Source: https://visitatchison.com/
+
+63. Moon Marble Company
+Bonner Springs, KS
+39.05921, -94.87690
+odd-museums | open
+Moon Marble combines a toy store with live demonstrations of traditional handmade glass marbles and an enormous assortment of unusual games and toys. Watching molten glass become a finished marble gives the stop a craft-process hook beyond normal retail.
+Source: https://moonmarble.com/
+
+64. National Agricultural Center and Hall of Fame
+Bonner Springs, KS
+39.10817, -94.87368
+odd-museums | seasonal
+A large museum campus preserves historic farm machinery, rural buildings, agricultural technology, and the National Agricultural Hall of Fame. The scale and variety of obsolete machines make it a useful stop for industrial and mechanical oddities.
+Source: https://aghalloffame.com/
+
+65. Baxter Springs Heritage Center and Museum
+Baxter Springs, KS
+37.02804, -94.73335
+weird-history | open
+Baxter Springs combines Route 66, mining, Civil War, and frontier history in a town that repeatedly sat on important transportation routes. The museum is a strong context stop before visiting the town's surviving Route 66 structures.
+Source: https://baxterspringsmuseum.org/
+
+66. Baxter Springs 1930 Phillips 66 Station
+Baxter Springs, KS
+37.02593, -94.73480
+route-66 | open
+A restored cottage-style Phillips 66 station now serves as a Route 66 visitor center. The tiny station preserves the look of early automobile travel on the Kansas segment of the Mother Road.
+Source: https://www.nps.gov/places/phillips-66-service-station-baxter-springs.htm
+
+67. Rainbow Bridge
+Riverton, KS
+37.07352, -94.74083
+route-66 | roadside
+This concrete Marsh arch bridge carried old Route 66 over Brush Creek and is the last surviving bridge of its type on the historic highway in Kansas. Its compact scale and distinctive white arches make it an easy roadside architecture stop.
+Source: https://www.travelks.com/
+
+68. Old Riverton Store
+Riverton, KS
+37.07494, -94.70279
+route-66 | open
+The 1925 general store has served generations of travelers and remains one of the most authentic operating businesses on Kansas Route 66. Its groceries, deli, old building fabric, and road history give it more substance than a recreated nostalgia stop.
+Source: https://www.eislerbros.com/
+
+69. Cars on the Route
+Galena, KS
+37.08037, -94.63890
+route-66 | open
+A restored Kan-O-Tex service station displays the rusty boom truck that helped inspire Tow Mater during research for Pixar's Cars. The station links real Route 66 history with a modern pop-culture version of the road.
+Source: https://www.travelks.com/
+
+70. Gearhead Curios
+Galena, KS
+37.07553, -94.63930
+route-66 | open
+A restored 1939 filling station has been turned into a Route 66 curiosity stop filled with automotive memorabilia, art, and roadside installations. Its giant gearhead figure and preserved station architecture make it a distinct Galena stop from Cars on the Route.
+Source: https://gearheadcurios.com/
+
+71. Brown Mansion
+Coffeyville, KS
+37.01995, -95.61445
+architectural-oddities | seasonal
+Oil businessman W.P. Brown built this elaborate early-1900s mansion with ornate interiors and unusually advanced systems for its era. Local ghost stories have accumulated around the property, but its documented architecture and history are the primary reasons to visit.
+Source: https://www.coffeyville.com/
+
+72. National Orphan Train Complex
+Concordia, KS
+39.57461, -97.66150
+dark-history | open
+This museum documents the orphan-train movement that relocated tens of thousands of children from eastern cities to communities across the country. A restored Union Pacific depot and personal stories make a difficult, often complicated social history concrete.
+Source: https://orphantraindepot.org/
+
+73. Camp Concordia POW Camp Site
+Concordia, KS
+39.61167, -97.64028
+military-history | limited
+The remains and museum work at Camp Concordia preserve the site of a World War II prisoner-of-war camp that held thousands of German soldiers. Surviving structures and markers sit on the former camp landscape north of town; check current tour and access information before visiting.
+Source: https://www.travelks.com/
+
+74. Boot Hill Museum
+Dodge City, KS
+37.75351, -100.02218
+old-west | open
+Boot Hill interprets Dodge City's cattle-town and gunfighter era with historic objects, reconstructed streetscapes, and the mythology that grew around the town. It deliberately occupies the line between documented frontier history and the larger-than-life western image.
+Source: https://boothill.org/
+
+75. Santa Fe Trail Ruts
+Dodge City, KS
+37.79194, -100.19694
+historic-trails | open
+Deep parallel depressions west of Dodge City preserve wagon traffic from the Santa Fe Trail in the actual prairie surface. Seeing the route physically worn into the ground is more immediate than a marker describing where a trail once passed.
+Source: https://www.nps.gov/
+
+76. Mueller-Schmidt House — Home of Stone
+Dodge City, KS
+37.75551, -100.01554
+architectural-oddities | limited
+Built from native limestone in the 1880s, the Mueller-Schmidt House survives as one of Dodge City's most substantial early residences. Its preserved rooms offer a quieter, more authentic counterpoint to the town's saloon-and-gunfighter mythology.
+Source: https://www.visitdodgecity.org/
+
+77. Ellinwood Underground Tunnels
+Ellinwood, KS
+38.35377, -98.58082
+underground-history | limited
+Passages beneath downtown Ellinwood preserve remnants of underground storefronts, storage spaces, bath facilities, and later Prohibition-era stories. Tours are scheduled rather than freely accessible, and some sections remain beneath active private buildings.
+Source: https://www.ellinwoodchamber.com/ellinwood-underground-tunnels
+
+78. Historic Wolf Hotel
+Ellinwood, KS
+38.35377, -98.58082
+haunted | limited
+The restored 1894 Wolf Hotel is a working lodging and event property connected with Ellinwood's underground tunnel network. It also markets paranormal and history experiences, so ghost claims should be treated as part of the property's lore rather than established fact.
+Source: https://historicwolfhotel.com/
+
+79. M65 Atomic Cannon — Junction City
+Junction City, KS
+39.03813, -96.76299
+military-history | roadside
+A massive M65 'Atomic Annie' artillery piece is displayed near Fort Riley, representing the brief Cold War period when nuclear shells were designed for battlefield cannon. Its sheer size and unsettling purpose make it an unusually stark military roadside artifact.
+Source: https://home.army.mil/riley/
+
+80. First Territorial Capitol State Historic Site
+Fort Riley, KS
+39.08472, -96.76167
+dark-history | seasonal
+Kansas's first territorial legislature briefly met in this limestone building in 1855 amid the proslavery and antislavery conflict that became Bleeding Kansas. The site is inside the Fort Riley area, so visitors should review current base-entry requirements before going.
+Source: https://www.kansashistory.gov/first_territorial_capitol
+
+81. Buffalo Soldier Monument
+Fort Leavenworth, KS
+39.34597, -94.91924
+military-history | limited
+A large bronze cavalryman and surrounding memorial elements honor the Black soldiers of the 9th and 10th Cavalry and related units. Because the monument is on an active military installation, visitors without military credentials must follow Fort Leavenworth's current entry procedures.
+Source: https://home.army.mil/leavenworth/
+
+82. Quindaro Ruins Overlook
+Kansas City, KS
+39.15146, -94.65913
+archaeology | open
+The overlook faces the wooded archaeological remains of Quindaro, a Free-State river town tied to antislavery activity and the Underground Railroad. Much of the former townsite is not a normal walk-through attraction, making the public overlook the appropriate routable stop.
+Source: https://www.nps.gov/places/quindaro-townsite.htm
+
+83. Sauer Castle
+Kansas City, KS
+39.06806, -94.63389
+haunted | view-only
+This 1870s Italianate mansion has accumulated generations of ghost stories, family legends, and local fascination. It remains private property, so OddWay visitors should view it only from lawful public areas and never enter the grounds without permission.
+Source: https://www.kansascityks.com/
+
+84. Museum of Odd
+Lawrence, KS
+38.96509, -95.23094
+odd-museums | limited
+A private home houses Randy Walker's dense personal collection of sock monkeys, celebrity oddments, folk creations, unusual biological objects, and other deliberately strange material. Visits are by appointment, making it a true hosted curiosity collection rather than a walk-in museum.
+Source: https://www.atlasobscura.com/places/museum-of-odd
+
+85. The Eldridge Hotel — Haunted Lawrence Lore
+Lawrence, KS
+38.97108, -95.23631
+haunted | open
+The Eldridge stands on a site repeatedly tied to Lawrence's violent Bleeding Kansas and Civil War-era history, and later generations attached ghost stories to the hotel. The haunting is folklore, but the building's documented destruction and rebuilding give the stories a real historical setting.
+Source: https://www.explorelawrence.com/
+
+86. Stull Cemetery — 'Gateway to Hell' Folklore
+Stull, KS
+38.97142, -95.45462
+folklore | limited
+Stull Cemetery became nationally notorious through late-20th-century legends claiming the site was a supernatural gateway. Those claims are folklore, not established fact; this is an active cemetery and visitors must obey posted rules, avoid nighttime trespassing, and treat burials respectfully.
+Source: https://www.atlasobscura.com/places/stull-cemetery
+
+87. John Brown Museum State Historic Site
+Osawatomie, KS
+38.49884, -94.95957
+dark-history | open
+The preserved Adair cabin is associated with abolitionist John Brown and the violent struggle over whether Kansas would enter the Union as a free or slave state. The small museum sits directly within the landscape of Bleeding Kansas rather than treating it as distant history.
+Source: https://www.kansashistory.gov/john_brown
+
+88. Marais des Cygnes Massacre State Historic Site
+Trading Post, KS
+38.28157, -94.62091
+dark-history | open
+In 1858 proslavery men captured Free-State settlers here and shot them in a ravine, killing five. The preserved rural site contains markers and interpretation at the location of one of the final major violent episodes of Bleeding Kansas.
+Source: https://www.kansashistory.gov/marais_des_cygnes
+
+89. Mine Creek Battlefield State Historic Site
+Pleasanton, KS
+38.13500, -94.72444
+dark-history | open
+The 1864 Battle of Mine Creek was one of the largest cavalry engagements of the Civil War and unfolded across this preserved landscape. Trails and exhibits let visitors follow the terrain where a retreating Confederate army collided with pursuing Union cavalry.
+Source: https://www.kansashistory.gov/mine_creek
+
+90. Constitution Hall State Historic Site
+Lecompton, KS
+39.04541, -95.39468
+dark-history | open
+This 1850s building stood at the center of territorial political battles over slavery and Kansas statehood. The surviving wooden hall provides a direct physical setting for the constitutional struggle that helped push the country toward civil war.
+Source: https://www.kansashistory.gov/constitution_hall
+
+91. Shawnee Indian Mission Historic Site
+Fairway, KS
+39.03305, -94.62474
+indigenous-history | open
+Three surviving buildings interpret the mission school where Shawnee, Delaware, and other Native children were educated under 19th-century federal assimilation policies. The site is historically important precisely because the story includes forced cultural change as well as local settlement history.
+Source: https://fairwaykansas.org/
+
+92. Coronado Heights
+Lindsborg, KS
+38.61281, -97.70311
+architectural-oddities | open
+A WPA-era stone 'castle' crowns a hill traditionally associated with the route of Francisco Vásquez de Coronado's expedition. The historical connection is interpretive rather than a preserved expedition structure, but the isolated stone lookout is a distinctive roadside landmark.
+Source: https://www.visitlindsborg.com/
+
+93. Johnny Kaw Statue
+Manhattan, KS
+39.18013, -96.57367
+folklore | open
+The giant green Johnny Kaw figure represents a fictional Kansas folk hero invented in the 1950s as a regional answer to Paul Bunyan. His exaggerated legends involve shaping Kansas geography, fighting giant creatures, and performing impossible farm feats.
+Source: https://www.mhkprd.com/
+
+94. Goodnow House State Historic Site
+Manhattan, KS
+39.19282, -96.59551
+weird-history | open
+The stone home of Isaac and Ellen Goodnow preserves the domestic world of influential Free-State settlers and founders of Kansas educational institutions. Its small scale and original setting make territorial-era political history unusually personal.
+Source: https://www.kansashistory.gov/goodnow_house
+
+95. K-State Insect Zoo
+Manhattan, KS
+39.19517, -96.58449
+odd-museums | open
+Kansas State University keeps live insects, arachnids, and other arthropods in a converted dairy barn beside its gardens. The collection turns creatures people usually avoid into a close-range museum experience with living specimens rather than pinned displays alone.
+Source: https://www.k-state.edu/butterfly/insect-zoo/
+
+96. Eisenhower Presidential Library, Museum and Boyhood Home
+Abilene, KS
+38.91243, -97.21279
+presidential-history | open
+The complex combines Dwight D. Eisenhower's boyhood home with his presidential museum, library, and final resting place. The contrast between a modest Kansas home and a career that reached Supreme Allied Commander and the presidency gives the site unusual narrative scale.
+Source: https://www.eisenhowerlibrary.gov/
+
+97. World's Largest Belt Buckle
+Abilene, KS
+38.92017, -97.22884
+roadside-oddity | open
+A nearly 20-foot-wide steel belt buckle stands in Eisenhower Park and includes stairs that let visitors pose as if they are wearing it. The sculpture deliberately pushes Abilene's cattle-town identity into modern roadside-superlative territory.
+Source: https://www.abilenekansas.org/
+
+98. Greyhound Hall of Fame
+Abilene, KS
+38.91176, -97.21437
+odd-museums | open
+This museum documents greyhound racing, breeding, famous dogs, trophies, and the culture surrounding the sport. Its single-subject focus is unusually specific, and retired greyhounds are often part of the visitor experience.
+Source: https://www.greyhoundhalloffame.com/
+
+99. Old Abilene Town
+Abilene, KS
+38.91077, -97.21353
+old-west | seasonal
+A recreated and preserved western townscape interprets Abilene's cattle-drive era with period buildings, performances, and cowboy history. The site embraces the theatrical mythology of the Old West while remaining tied to the actual railhead town that made Abilene famous.
+Source: https://www.oldabilenetown.com/
+
+100. Museum of Independent Telephony
+Abilene, KS
+38.91126, -97.20856
+odd-museums | seasonal
+The museum traces the independent telephone industry through switchboards, early handsets, equipment, and communications technology. It is a narrowly focused collection of obsolete machines that most travelers rarely encounter outside technical archives.
+Source: https://www.dickinsoncountyhistoricalsociety.com/
+
+101. World's Largest 'I Like Ike' Button
+Abilene, KS
+38.91912, -97.21510
+roadside-oddity | open
+A six-foot convex campaign button recreates the iconic 'I Like Ike' slogan at Little Ike Park. The oversized political object turns a 1950s presidential campaign symbol into a modern roadside photo stop.
+Source: https://www.abilenekansas.org/plan-your-visit/experience-art-culture/worlds-largest-i-like-ike-button
+
+102. Home on the Range Cabin
+Athol, KS
+39.88939, -98.94717
+music-history | limited
+A preserved log cabin stands near the place where Dr. Brewster Higley wrote the poem that became 'Home on the Range.' The isolated prairie setting helps explain why the landscape itself became central to one of the best-known songs associated with the American West.
+Source: https://www.travelks.com/
+
+103. Twisted Oz Motorcycle Museum
+Augusta, KS
+37.67805, -96.98544
+odd-museums | open
+A free museum displays dozens of vintage and unusual motorcycles in a compact collection outside Wichita. The machines span different eras and styles, making it a strong mechanical-curiosity stop even for travelers who are not dedicated motorcycle enthusiasts.
+Source: https://www.twistedoz.com/
+
+104. Field Station: Dinosaurs
+Derby, KS
+37.58082, -97.24699
+roadside-oddity | seasonal
+A large outdoor attraction fills a Kansas landscape with life-size animatronic dinosaurs, fossil activities, shows, and dinosaur-themed mini golf. It is intentionally theatrical rather than a fossil museum, which gives it the feel of a modern roadside dinosaur park.
+Source: https://kansasdinos.com/
+
+105. Big Spur
+Abilene, KS
+38.93537, -97.21453
+roadside-oddity | open
+A 28-foot steel spur forms an arch outside a western-wear business on Abilene's north side. It once held a Guinness record as the world's largest spur and remains a conspicuous monument to the town's cowboy identity.
+Source: https://www.abilenekansas.org/things-to-do/big-spur
+
+106. Parker Carousel at the Dickinson County Heritage Center
+Abilene, KS
+38.91150, -97.20810
+transportation-history | seasonal
+This hand-carved C.W. Parker carousel dates to around the turn of the 20th century and survives in operating condition at the heritage center. The ornate wooden horses and portable amusement machinery connect Abilene with a once-major Kansas carousel manufacturer.
+Source: https://www.dickinsoncountyhistoricalsociety.com/
+

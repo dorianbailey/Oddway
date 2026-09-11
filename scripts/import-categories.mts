@@ -183,6 +183,8 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "historic-infrastructure": "weird-history",
   "prehistoric-history": "weird-history",
   "worlds-fair-history": "weird-history",
+  /* Added for the Kansas batch. */
+  "historic-trails": "weird-history",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

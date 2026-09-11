@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useState, type FormEvent } from "react";
+import { useCallback, useId, useState, useSyncExternalStore, type FormEvent } from "react";
+import { searchStore } from "@/lib/search-store";
 import { cx } from "@/lib/cx";
 import { PlaceField } from "./PlaceField";
 
@@ -19,13 +20,16 @@ interface FieldErrors {
 }
 
 /**
- * The route form. It validates and manages its own state but deliberately does
- * not call anything — there is no routing provider wired up yet, and showing
- * invented results would be worse than saying so.
+ * The route form.
  *
- * When the routing API lands, replace the body of `handleSubmit` with the
- * request and lift `origin`/`destination` into a shared trip store so the map
- * and the results list can read them.
+ * The two place fields are held in the search store rather than in local
+ * state. They used to be useState, which meant that opening a stop from the
+ * results and pressing back returned somebody to an empty form — they had
+ * typed where they were going and the site had forgotten.
+ *
+ * Everything else here is genuinely local: validation errors, whether
+ * geolocation is in flight, the status line. None of it is worth carrying
+ * across a navigation, and a stale error message would be worse than none.
  */
 export function RouteSearch({
   className,
@@ -36,10 +40,22 @@ export function RouteSearch({
   const originId = useId();
   const destinationId = useId();
 
-  const [origin, setOrigin] = useState("");
+  const search = useSyncExternalStore(
+    searchStore.subscribe,
+    searchStore.getSnapshot,
+    searchStore.getServerSnapshot,
+  );
+  const { origin, destination } = search;
+
+  const setOrigin = useCallback((next: string) => {
+    searchStore.set({ origin: next });
+  }, []);
+  const setDestination = useCallback((next: string) => {
+    searchStore.set({ destination: next });
+  }, []);
+
   const [locating, setLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
-  const [destination, setDestination] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<string | null>(null);
 
@@ -134,8 +150,9 @@ export function RouteSearch({
   }
 
   function handleSwap() {
-    setOrigin(destination);
-    setDestination(origin);
+    // One update, not two: writing them in turn would emit twice and briefly
+    // leave both fields holding the same place.
+    searchStore.set({ origin: destination, destination: origin });
   }
 
   return (

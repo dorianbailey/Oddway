@@ -11,6 +11,7 @@ import {
 import { HeaderAccount } from "./HeaderAccount";
 import { OddWayLogo } from "./OddWayLogo";
 import { cx } from "@/lib/cx";
+import { searchStore } from "@/lib/search-store";
 
 /**
  * Everything the header can reach.
@@ -77,6 +78,15 @@ export function Header() {
   */
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
     setMenuOpen(false);
+    /*
+      The nameplate is the one navigation that means "start again".
+
+      A route search now survives ordinary navigation — opening a stop and
+      pressing back used to wipe the form, which is most of how the site is
+      used. But that leaves no way to clear it short of reloading the page, and
+      the masthead is where people already expect to find the beginning.
+    */
+    searchStore.clear();
     if (pathname !== "/") return;
     event.preventDefault();
     window.scrollTo({

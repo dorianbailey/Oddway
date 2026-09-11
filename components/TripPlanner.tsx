@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { chooseDisplaySets } from "@/lib/display-sets";
 import { tripStore } from "@/lib/trip-store";
+import { searchStore, searchKey, PAGE_SIZE } from "@/lib/search-store";
 import { distanceKm, orderStopsFrom } from "@/lib/trip-order";
 import { CategoryFilters } from "./CategoryFilters";
 import { MapSection } from "./MapSection";
@@ -41,21 +42,10 @@ interface TripResult {
   attribution: string;
 }
 
-type Status = "idle" | "loading" | "done" | "error";
-
-interface PlannedRoute {
-  origin: string;
-  destination: string;
-}
-
 /** Sensible ceiling on how far off-route someone will realistically go. */
 const DETOUR_MIN = 5;
 const DETOUR_MAX = 120;
 const DETOUR_STEP = 5;
-const DEFAULT_DETOUR = 30;
-
-/** Stops shown at once, and how many each "show more" adds. */
-const PAGE_SIZE = 60;
 
 /**
  * Wait after a filter or slider change before re-querying. Long enough that
@@ -99,13 +89,37 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
       cancelled = true;
     };
   }, [allStops]);
-  const [status, setStatus] = useState<Status>("idle");
-  const [result, setResult] = useState<TripResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [categories, setCategories] = useState<CategorySlug[]>([]);
-  const [maxDetourMinutes, setMaxDetourMinutes] = useState(DEFAULT_DETOUR);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [planned, setPlanned] = useState<PlannedRoute | null>(null);
+  /*
+    The search lives outside this component.
+
+    All of this was useState, which meant opening a stop and pressing back
+    threw away the route, the results, the filters and the detour setting.
+    The component unmounts on navigation; a module-level store does not.
+  */
+  const search = useSyncExternalStore(
+    searchStore.subscribe,
+    searchStore.getSnapshot,
+    searchStore.getServerSnapshot,
+  );
+  const {
+    status,
+    result,
+    error,
+    categories,
+    maxDetourMinutes,
+    visibleCount,
+    planned,
+  } = search;
+
+  const setCategories = useCallback((next: CategorySlug[]) => {
+    searchStore.set({ categories: next });
+  }, []);
+  const setMaxDetourMinutes = useCallback((next: number) => {
+    searchStore.set({ maxDetourMinutes: next });
+  }, []);
+  const setVisibleCount = useCallback((next: number) => {
+    searchStore.set({ visibleCount: next });
+  }, []);
 
   /*
     The saved trip, read straight from the store.
@@ -223,20 +237,31 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
    * take exactly the same path and can never fire two overlapping requests.
    */
   const handlePlan = useCallback((origin: string, destination: string) => {
-    setPlanned({ origin, destination });
+    searchStore.set({ planned: { origin, destination } });
   }, []);
 
+  const wanted = searchKey(planned, categories, maxDetourMinutes);
+
   useEffect(() => {
-    if (!planned) return;
+    if (!planned || !wanted) return;
+    /*
+      Already answered.
+
+      Coming back from a stop page restores `planned`, which used to send this
+      effect off to re-run a search whose results were already on screen — a
+      spent routing request and a flash of "Finding stops" over correct
+      results. Comparing against the parameters that produced the current
+      result tells the two cases apart: a genuine refinement changes the key,
+      a remount does not.
+    */
+    if (searchStore.getSnapshot().resultKey === wanted) return;
 
     const timer = setTimeout(async () => {
       inFlight.current?.abort();
       const controller = new AbortController();
       inFlight.current = controller;
 
-      setStatus("loading");
-    setVisibleCount(PAGE_SIZE);
-      setError(null);
+      searchStore.set({ status: "loading", visibleCount: PAGE_SIZE, error: null });
 
       try {
         const response = await fetch("/api/trip", {
@@ -254,22 +279,29 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
         const data = await response.json();
 
         if (!response.ok) {
-          setError(data.error ?? "That search didn't work. Try again.");
-          setStatus("error");
+          searchStore.set({
+            error: data.error ?? "That search didn't work. Try again.",
+            status: "error",
+          });
           return;
         }
 
-        setResult(data as TripResult);
-        setStatus("done");
+        searchStore.set({
+          result: data as TripResult,
+          status: "done",
+          resultKey: wanted,
+        });
       } catch (caught) {
         if (caught instanceof DOMException && caught.name === "AbortError") return;
-        setError("Couldn't reach the server. Check your connection and try again.");
-        setStatus("error");
+        searchStore.set({
+          error: "Couldn't reach the server. Check your connection and try again.",
+          status: "error",
+        });
       }
     }, REFINE_DEBOUNCE_MS);
 
     return () => clearTimeout(timer);
-  }, [planned, categories, maxDetourMinutes]);
+  }, [planned, categories, maxDetourMinutes, wanted]);
 
   const hasTrip = savedTrip.length > 0;
 
@@ -396,7 +428,7 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
               </span>
               <button
                 type="button"
-                onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+                onClick={() => setVisibleCount(visibleCount + PAGE_SIZE)}
                 className="rounded-[3px] bg-route px-5 py-2 font-semibold text-paper transition-colors hover:bg-[var(--color-route-hover)]"
               >
                 Show me another{" "}

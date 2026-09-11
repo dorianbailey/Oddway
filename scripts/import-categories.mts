@@ -97,8 +97,21 @@ export const CATEGORY_ALIASES: Record<string, string> = {
     cryptids wants the cryptid and somebody browsing folklore will find it
     through the story anyway.
   */
-  "cryptid-art": "cryptids",
-  "cryptids-and-folklore": "cryptids",
+  /*
+    Added for the Nevada and Oklahoma research batches. Each follows the
+    spelling already in this map rather than a fresh judgement:
+    ufo-* is ufos, *-ruins is weird-history, cryptid-* is cryptids,
+    optical-oddities is roadside-oddities, route-66 is roadside-oddities,
+    outlaws is weird-history, archaeological-mysteries is folklore.
+  */
+  extraterrestrial: "ufos",
+  "route-66-history": "roadside-oddities",
+  "cryptid-roadside": "cryptids",
+  "optical-illusion": "roadside-oddities",
+  "outlaw-history": "weird-history",
+  "archaeology-lore": "folklore",
+  "architectural-ruins": "weird-history",
+  "cryptid-art": "cryptids",  "cryptids-and-folklore": "cryptids",
   "cryptids-and-monsters": "cryptids",
 
   "folklore-and-geology": "folklore",
@@ -808,6 +821,10 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "homestead-history": "weird-history",
   "transportation-ruins": "weird-history",
   "unfinished-infrastructure": "weird-history",
+
+
+  // Arkansas.
+  "natural-wonders": "roadside-oddities",
 
   // UFOs
   ufo: "ufos",

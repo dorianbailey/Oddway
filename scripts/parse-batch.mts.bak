@@ -50,89 +50,6 @@ const STATE_NAMES: Record<string, string> = Object.fromEntries(
   Object.entries(US_STATES).map(([code, name]) => [name.toLowerCase(), code]),
 );
 
-/**
- * Coordinates, in either shape a batch has used.
- *
- * Nine formats in, every file had written the pair on one line. Nevada's 153
- * arrived with them labelled on two:
- *
- *   Latitude: 36.17669
- *   Longitude: -115.13521
- *
- * The pair is still tried first, so nothing about the nine earlier formats
- * changes: a file that has a bare pair never reaches the labelled branch.
- *
- * Labels are read loosely — "Lat"/"Long"/"Lng", either order, colon or equals
- * — because the next file to use them will not match Nevada's spelling exactly
- * and rejecting 153 stops over "Long:" is the Montana failure again.
- *
- * Hemisphere letters are handled rather than ignored. "Longitude: 115.13521 W"
- * read as a bare number puts a Nevada stop in central China, and nothing about
- * that is visible: the row inserts, the page renders, and the stop simply never
- * appears near any route. Anything not understood returns null and the block is
- * reported as missing coordinates, which is the loud failure.
- */
-const DECIMAL = String.raw`-?\d+(?:\.\d+)?`;
-const PAIR_RE = new RegExp(
-  `^(?:coord(?:inate)?s?\\s*[:=]\\s*)?(-?\\d+\\.\\d+)\\s*,\\s*(-?\\d+\\.\\d+)$`,
-  "i",
-);
-const LAT_RE = new RegExp(`^(?:latitude|lat)\\s*[:=]\\s*(${DECIMAL})\\s*([NS])?$`, "i");
-const LON_RE = new RegExp(`^(?:longitude|long|lng|lon)\\s*[:=]\\s*(${DECIMAL})\\s*([EW])?$`, "i");
-
-function hemisphere(value: string, letter: string | undefined, negative: string): number {
-  const n = Number(value);
-  if (!letter) return n;
-  return letter.toUpperCase() === negative ? -Math.abs(n) : Math.abs(n);
-}
-
-export function readCoordinates(lines: string[]): { lat: number; lon: number } | null {
-  for (const line of lines) {
-    const pair = line.match(PAIR_RE);
-    if (pair) return { lat: Number(pair[1]), lon: Number(pair[2]) };
-  }
-
-  let lat: number | null = null;
-  let lon: number | null = null;
-  for (const line of lines) {
-    const a = line.match(LAT_RE);
-    if (a && lat === null) lat = hemisphere(a[1], a[2], "S");
-    const b = line.match(LON_RE);
-    if (b && lon === null) lon = hemisphere(b[1], b[2], "W");
-  }
-  if (lat === null || lon === null) return null;
-  return { lat, lon };
-}
-
-/**
- * Whether a coordinate could be a stop in the expected state.
- *
- * Not a bounding box — this only catches the errors that produce a number the
- * parser is perfectly happy with and a pin on the wrong continent. A dropped
- * minus sign and a swapped pair are both ordinary research slips, and both are
- * invisible afterwards: no error, no 404, just a stop that is never near
- * anybody's route.
- *
- * The Aleutians cross the antimeridian, so Alaska is the one state where a
- * positive longitude is real.
- */
-export function coordinateProblem(
-  lat: number,
-  lon: number,
-  expectedState: string,
-): string | null {
-  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return "coordinates are not numbers";
-  if (Math.abs(lat) > 90) {
-    return `latitude ${lat} is out of range — latitude and longitude may be swapped`;
-  }
-  if (Math.abs(lon) > 180) return `longitude ${lon} is out of range`;
-  if (lat === 0 && lon === 0) return "coordinates are 0, 0";
-  if (lon > 0 && expectedState !== "AK") {
-    return `longitude ${lon} is positive, which is not in ${expectedState} — a dropped minus sign?`;
-  }
-  return null;
-}
-
 export interface ParsedStop {
   name: string;
   city: string;
@@ -172,7 +89,7 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
     const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
     if (lines.length < 5) continue;
 
-    const coords = readCoordinates(lines);
+    const coords = lines.find((l) => /^-?\d+\.\d+,\s*-?\d+\.\d+$/.test(l));
     /*
       Digits are allowed in a category because "route-66" is one, and the
       pattern that excluded them lost thirteen Illinois stops.
@@ -229,6 +146,7 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       return value.startsWith("http") ? value : null;
     };
 
+    const [latRaw, lonRaw] = coords.split(",");
     const [rawCategoryText, rawAccessText] = catLine.split("|").map((v) => v.trim());
     /*
       A compound keeps its first half: "open / seasonal" is open. An em dash
@@ -253,12 +171,6 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       continue;
     }
 
-    const badCoordinate = coordinateProblem(coords.lat, coords.lon, expectedState);
-    if (badCoordinate) {
-      problems.push(`"${name}": ${badCoordinate}`);
-      continue;
-    }
-
     const [city, rawState] = cityLine.split(/,\s*(?=[^,]*$)/);
     const state = STATE_NAMES[rawState.trim().toLowerCase()] ?? rawState.trim();
     if (state !== expectedState) {
@@ -269,14 +181,7 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
     const start = lines.indexOf(catLine) + 1;
     const description = lines
       .slice(start)
-      /*
-        Labelled coordinates are excluded here as well as read above. They sit
-        before the category line in Nevada's file so they never reach this
-        slice — but a file that puts them after it would fold "Longitude:
-        -115.13521" into the prose a traveller reads, and that is the kind of
-        thing nobody notices until it is on the live site.
-      */
-      .filter((l) => !/^(https?:|source:|website:|phone:|hours:|folklore|access source|additional|background|park:|lat(itude)?\s*[:=]|lon(gitude)?\s*[:=]|lng\s*[:=]|coord(inate)?s?\s*[:=])/i.test(l))
+      .filter((l) => !/^(https?:|source:|website:|phone:|hours:|folklore|access source|additional|background|park:)/i.test(l))
       .join(" ")
       .replace(/\s+/g, " ")
       .trim();
@@ -285,8 +190,8 @@ export function parseBatch(path: string, expectedState: string): ParsedStop[] {
       name,
       city: city.trim(),
       state,
-      lat: coords.lat,
-      lon: coords.lon,
+      lat: Number(latRaw),
+      lon: Number(lonRaw),
       category: rawCategory,
       access,
       description,

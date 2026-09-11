@@ -42,6 +42,20 @@ interface TripResult {
   attribution: string;
 }
 
+/**
+ * What to call a place in the trip panel.
+ *
+ * "Use my location" fills the search field with raw coordinates, because the
+ * provider plan has no reverse geocoding. Those are the right thing to send to
+ * a router and the wrong thing to show somebody — "40.44031,-79.99589" as the
+ * name of where you live reads like a fault.
+ */
+function placeLabel(typed: string): string {
+  return /^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(typed.trim())
+    ? "Your location"
+    : typed;
+}
+
 /** Sensible ceiling on how far off-route someone will realistically go. */
 const DETOUR_MIN = 5;
 const DETOUR_MAX = 120;
@@ -286,8 +300,43 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
           return;
         }
 
+        const found = data as TripResult;
+
+        /*
+          The search already said where the trip starts and finishes.
+
+          Without this, adding a stop opened the trip panel and asked for both
+          again — after the traveller had typed them into the form at the top
+          of the same page and watched a route get drawn between them. The
+          search result carries the answer twice over: query.origin and
+          query.destination are what was typed, and the route geometry is a
+          LineString whose first and last points are where the router resolved
+          them to.
+
+          Only filled when empty, so a start chosen by hand in the trip panel
+          is not overwritten by refining the detour slider.
+        */
+        const line = found.route.geometry;
+        const first = line?.[0];
+        const last = line?.[line.length - 1];
+
+        if (!tripStore.getOrigin() && first) {
+          tripStore.setOrigin({
+            label: placeLabel(found.query.origin),
+            latitude: first[1],
+            longitude: first[0],
+          });
+        }
+        if (!tripStore.getDestination() && last) {
+          tripStore.setDestination({
+            label: placeLabel(found.query.destination),
+            latitude: last[1],
+            longitude: last[0],
+          });
+        }
+
         searchStore.set({
-          result: data as TripResult,
+          result: found,
           status: "done",
           resultKey: wanted,
         });

@@ -1,0 +1,715 @@
+OddWay — Washington, D.C. Complete
+Stops: 1–100
+Prepared: September 10, 2026
+
+ACCESS KEY
+open = generally accessible during normal public hours
+limited = tickets, tours, scheduled access, changing display status, security screening, or restricted hours may apply
+roadside = best viewed from lawful public sidewalk/road/trail space
+view-only = exterior/site can be observed, but the relevant property or interior is not open for ordinary entry
+seasonal = access depends on season or scheduled operation
+private = do not enter without explicit permission
+
+ODDWAY RESEARCH NOTE
+Every entry has a routable location and a specific OddWay reason to stop. Coordinates are wayfinding pins, not permission to enter private, military, secured, cemetery-restricted, or otherwise controlled property. Paranormal material is described as lore rather than fact. Primary, government, museum, preservation, or official local sources are used where practical; discovery/competitor sources are retained only where a stronger first-party page was not available or did not document the oddity clearly.
+
+1. Franciscan Monastery Catacombs
+Washington, DC
+38.93755, -76.98455
+religious oddity / catacombs | limited
+Beneath the Franciscan Monastery are reconstructed Holy Land shrines and catacomb-like passages that make this one of D.C.'s strangest underground religious spaces.
+Source: https://myfranciscan.org/visit/
+
+2. International Spy Museum
+Washington, DC
+38.88387, -77.02546
+espionage / museum | open
+A museum built around real espionage tradecraft, disguises, surveillance devices, covert operations, and intelligence history.
+Source: https://www.spymuseum.org/
+
+3. The Mansion on O Street
+Washington, DC
+38.90840, -77.04575
+architectural oddity / hidden rooms | limited
+A maze-like mansion filled with secret doors, hidden rooms, themed spaces, memorabilia, and deliberately confusing passageways.
+Source: https://www.omansion.com/
+
+4. The Exorcist Stairs
+Washington, DC
+38.90548, -77.07018
+film history / eerie landmark | open
+The steep Georgetown staircase made famous by the climax of The Exorcist remains a public pedestrian route and cult-film pilgrimage stop.
+Source: https://www.nps.gov/places/capital-traction-company-union-station-exorcist-steps.htm
+
+5. National Capitol Columns
+Washington, DC
+38.91040, -76.96756
+architectural ruin / relocated monument | open
+Twenty-two sandstone columns removed from the U.S. Capitol now stand in an open meadow at the National Arboretum like an abandoned classical ruin.
+Source: https://www.usna.usda.gov/discover/gardens-collections/national-capitol-columns/
+
+6. National Bonsai & Penjing Museum
+Washington, DC
+38.91202, -76.96871
+unusual museum / living collection | open
+The National Arboretum houses a museum-sized collection of miniature trees, including historically significant bonsai and penjing specimens.
+Source: https://www.bonsai-nbf.org/
+
+7. Culture House
+Washington, DC
+38.88044, -77.01197
+street art / repurposed architecture | open
+A former church covered in large-scale murals and used as an arts venue, making it one of the most visually unusual buildings in Southwest D.C.
+Source: https://www.culturehousedc.org/
+
+8. Heurich House Museum
+Washington, DC
+38.90805, -77.04450
+historic mansion / brewing history | limited
+The preserved Richardsonian mansion of brewer Christian Heurich is packed with original interiors, brewing history, and turn-of-the-century details.
+Source: https://heurichhouse.org/
+
+9. Riggs Library
+Washington, DC
+38.90728, -77.07272
+historic library / architecture | limited
+Georgetown University's ornate 19th-century Riggs Library survives as a dramatic cast-iron reading room inside Healy Hall; access is generally tied to campus events or special arrangements.
+Source: https://library.georgetown.edu/
+
+10. Space Window at Washington National Cathedral
+Washington, DC
+38.93112, -77.07163
+space relic / stained glass | open
+A stained-glass window in the National Cathedral contains an actual piece of lunar rock brought back by Apollo 11.
+Source: https://cathedral.org/discover/art-architecture/the-space-window/
+
+11. Washington Mini Monument
+Washington, DC
+38.88910, -77.03525
+miniature monument / roadside oddity | open
+Near the full-size Washington Monument is a much smaller survey marker that looks like a tiny stone version of the famous obelisk.
+Source: https://www.atlasobscura.com/places/washington-mini-monument
+
+12. FBI Spy House
+Washington, DC
+38.92424, -77.07280
+espionage history / private exterior | view-only
+A Georgetown house associated with FBI surveillance of Soviet espionage activity can be viewed from public space; do not enter or disturb the residence.
+Source: https://www.atlasobscura.com/places/fbi-spy-house
+
+13. Lincoln Memorial Undercroft
+Washington, DC
+38.88913, -77.04984
+underground / monument engineering | limited
+The enormous support structure beneath the Lincoln Memorial opened for public visitation in 2026, exposing the monument's cavernous concrete undercroft.
+Source: https://www.nps.gov/linc/planyourvisit/undercroftvisit.htm
+
+14. Kenilworth Aquatic Gardens
+Washington, DC
+38.91278, -76.94333
+wetland oddity / historic gardens | open
+A surviving tidal-marsh landscape and historic water-garden complex filled with lotus and water lilies inside the city limits.
+Source: https://www.nps.gov/keaq/
+
+15. National Building Museum
+Washington, DC
+38.89780, -77.01752
+architectural oddity / museum | open
+Its colossal Great Hall and giant Corinthian columns make the former Pension Building itself as unusual as the architecture exhibits inside.
+Source: https://www.nbm.org/
+
+16. Lincoln Book Tower
+Washington, DC
+38.89677, -77.02629
+book sculpture / Lincoln history | open
+At Ford's Theatre Center for Education and Leadership, a spiraling tower of thousands of books symbolizes the enormous literature written about Abraham Lincoln.
+Source: https://fords.org/
+
+17. Zero Milestone
+Washington, DC
+38.89511, -77.03657
+geographic marker / road history | open
+This small stone marker south of the White House was intended as the national point from which U.S. road distances would be measured.
+Source: https://www.nps.gov/places/000/zero-milestone.htm
+
+18. Old Patent Model Museum Collection
+Washington, DC
+38.89810, -77.02253
+inventions / historical oddities | open
+Smithsonian collections preserve the strange miniature working models once submitted by inventors seeking U.S. patents.
+Source: https://americanhistory.si.edu/
+
+19. Secret White House Entrance Route
+Washington, DC
+38.90010, -77.03464
+hidden infrastructure / presidential history | view-only
+A discreet service and security approach near the White House hints at the enclosed passages and controlled routes used behind the public-facing complex; observe only from lawful public space.
+Source: https://www.whitehousehistory.org/
+
+20. U.S. Capitol Summerhouse
+Washington, DC
+38.89145, -77.01063
+architectural oddity / hidden retreat | open
+Frederick Law Olmsted's red-brick grotto-like Summerhouse provides a surprisingly secluded fountain retreat on the Capitol grounds.
+Source: https://www.aoc.gov/explore-capitol-campus/grounds/summerhouse
+
+21. Foundry Branch Trolley Trestle Ruins
+Washington, DC
+38.90676, -77.07922
+abandoned infrastructure / transit history | open
+Stone and steel remnants of an old trolley route survive along the edge of Glover Archbold Park as a piece of abandoned transit infrastructure.
+Source: https://www.atlasobscura.com/places/foundry-branch-trolley-trestle
+
+22. Dumbarton Oaks
+Washington, DC
+38.91418, -77.06387
+historic estate / unusual gardens | limited
+This Georgetown estate combines Byzantine and Pre-Columbian collections with terraced gardens, hidden paths, and architectural surprises.
+Source: https://www.doaks.org/
+
+23. The Peacock Room
+Washington, DC
+38.88798, -77.02645
+art oddity / ornate interior | open
+James McNeill Whistler's intensely decorated Peacock Room is a room-sized artwork filled with blue-green ornament and gilded peacocks.
+Source: https://asia.si.edu/
+
+24. Tudor Place
+Washington, DC
+38.91149, -77.06290
+historic mansion / hidden history | limited
+A Georgetown estate tied to descendants of Martha Washington preserves unusual family collections, domestic spaces, and nearly two centuries of layered history.
+Source: https://tudorplace.org/
+
+25. Barbie Pond on Avenue Q
+Washington, DC
+38.91087, -77.03408
+folk art / neighborhood oddity | roadside
+An ever-changing front-yard installation stages dolls in elaborate seasonal scenes that have become a neighborhood landmark.
+Source: https://www.atlasobscura.com/places/barbie-pond-on-avenue-q
+
+26. Mount Zion Cemetery Underground Railroad Shelter
+Washington, DC
+38.91114, -77.05407
+cemetery / Underground Railroad history | limited
+The Mount Zion–Female Union Band cemetery complex includes a small burial vault traditionally associated with refuge for freedom seekers; visit respectfully during allowed hours.
+Source: https://www.mtzion-fubs.org/
+
+27. East Potomac Park Mini Golf
+Washington, DC
+38.87458, -77.02630
+historic recreation / roadside Americana | open
+This 1931 miniature-golf course is among the oldest continuously operating miniature-golf courses in the United States.
+Source: https://www.playdcgolf.com/
+
+28. Titanic Memorial
+Washington, DC
+38.87196, -77.01933
+maritime memorial / unusual monument | open
+A waterfront memorial erected by women commemorates men who died while helping women and children escape the Titanic.
+Source: https://www.nps.gov/places/000/titanic-memorial.htm
+
+29. Albert Einstein Memorial
+Washington, DC
+38.89240, -77.04845
+science memorial / sculpture | open
+A monumental bronze Einstein sits with manuscript papers in hand beside a star map embedded in the plaza.
+Source: https://www.nasonline.org/about-nas/visiting-nas/einstein-memorial/
+
+30. Maine Avenue Fish Market
+Washington, DC
+38.88096, -77.02833
+historic market / food history | open
+D.C.'s historic open-air fish market traces its lineage to the early 1800s and remains an unusual surviving piece of the city's working waterfront.
+Source: https://www.wharfdc.com/fish-market/
+
+31. McMillan Sand Filtration Site Ruins
+Washington, DC
+38.92463, -77.01059
+industrial ruins / waterworks | view-only
+Rows of underground filtration cells and surviving waterworks structures preserve the eerie industrial landscape of D.C.'s former McMillan filtration plant; stay in authorized public areas.
+Source: https://www.atlasobscura.com/places/mcmillan-sand-filtration-site
+
+32. Kilroy Was Here at the WWII Memorial
+Washington, DC
+38.88952, -77.04097
+hidden detail / wartime folklore | open
+Two small 'Kilroy Was Here' engravings hide within the World War II Memorial as nods to one of the war's most famous pieces of soldier graffiti.
+Source: https://www.nps.gov/wwii/
+
+33. Renwick Gallery
+Washington, DC
+38.89912, -77.04127
+art museum / unusual craft | open
+The Smithsonian's Renwick Gallery specializes in American craft and often fills its historic building with immersive and unconventional installations.
+Source: https://americanart.si.edu/visit/renwick
+
+34. Theodore Roosevelt Island
+Washington, DC
+38.89273, -77.06139
+island / memorial landscape | open
+A wooded island in the Potomac hides monumental stone tablets and a large Roosevelt statue at the center of an intentionally wild memorial landscape.
+Source: https://www.nps.gov/this/
+
+35. Library of Congress Card Catalog
+Washington, DC
+38.88674, -77.00424
+library oddity / obsolete technology | limited
+Millions of physical catalog cards survive inside the Library of Congress as a monumental pre-digital information system; public access varies by area and tour.
+Source: https://www.loc.gov/visit/
+
+36. Starship Enterprise NCC-1701 Studio Model
+Washington, DC
+38.88813, -77.01985
+science fiction relic / museum | open
+The original filming model of the USS Enterprise from Star Trek is preserved by the Smithsonian as a major artifact of television and science-fiction history.
+Source: https://airandspace.si.edu/
+
+37. Folger Shakespeare Library Reading Room
+Washington, DC
+38.88937, -77.00276
+rare books / architectural interior | limited
+The Folger's Tudor-inspired reading spaces sit above one of the world's great Shakespeare collections; some areas require tours, programs, or researcher access.
+Source: https://www.folger.edu/visit/
+
+38. St. Elizabeths Hospital Historic Campus
+Washington, DC
+38.84414, -76.99166
+asylum history / historic campus | view-only
+The landmark psychiatric-hospital campus carries layers of medical, Civil War, and institutional history; many portions remain controlled or restricted, so view only from authorized public areas.
+Source: https://www.atlasobscura.com/places/st-elizabeths-hospital
+
+39. Cedar Hill — Frederick Douglass National Historic Site
+Washington, DC
+38.86333, -76.98519
+historic home / civil rights history | limited
+Frederick Douglass's hilltop home preserves his rooms, belongings, and commanding view over Washington.
+Source: https://www.nps.gov/frdo/
+
+40. Sergeant Stubby
+Washington, DC
+38.89127, -77.02963
+animal history / museum oddity | limited
+The preserved remains of Sergeant Stubby, the decorated World War I dog, are part of the Smithsonian's military-history collections; verify current display status before visiting.
+Source: https://americanhistory.si.edu/
+
+41. Fort DeRussy
+Washington, DC
+38.96344, -77.05063
+Civil War ruins / fort | open
+Earthworks from one of Washington's Civil War defenses survive in Rock Creek Park, reclaimed by woods and trails.
+Source: https://www.nps.gov/rocr/learn/historyculture/civil-war-defenses-of-washington.htm
+
+42. Holt House
+Washington, DC
+38.92513, -77.04706
+historic ruin / mansion | view-only
+One of Washington's older surviving country houses stands within the National Zoo landscape and is generally not open as a conventional museum; view from permitted public areas.
+Source: https://www.atlasobscura.com/places/holt-house
+
+43. Basilica of the National Shrine of the Immaculate Conception
+Washington, DC
+38.93346, -77.00073
+sacred architecture / mosaics | open
+The enormous basilica contains dozens of chapels, domes, mosaics, crypt-level spaces, and stylistic variations under one roof.
+Source: https://www.nationalshrine.org/
+
+44. Halcyon House
+Washington, DC
+38.90575, -77.06809
+historic mansion / haunted lore | view-only
+This imposing Georgetown mansion has accumulated generations of ghost stories and architectural lore; it is private property, so only view from public space.
+Source: https://www.atlasobscura.com/places/halcyon-house
+
+45. House of the Temple
+Washington, DC
+38.91369, -77.03604
+fraternal architecture / esoterica | limited
+The monumental Scottish Rite headquarters combines Egyptian, classical, and Masonic symbolism in one of D.C.'s most imposing esoteric buildings.
+Source: https://scottishrite.org/headquarters/house-of-the-temple/
+
+46. Peirce Mill Spy Station
+Washington, DC
+38.94055, -77.05220
+espionage history / hidden site | view-only
+During World War II, intelligence operations used a concealed radio-monitoring site near Peirce Mill; the landscape can be visited, while any restricted structures should be observed only lawfully.
+Source: https://www.atlasobscura.com/places/peirce-mill-spy-station
+
+47. The Big Chair — Anacostia
+Washington, DC
+38.86540, -76.98969
+giant roadside object / landmark | roadside
+A huge chair in Anacostia continues the neighborhood's long-running tradition of an oversized furniture landmark.
+Source: https://www.atlasobscura.com/places/the-big-chair
+
+48. Martin's Tavern Presidential Booths
+Washington, DC
+38.90674, -77.06320
+presidential history / restaurant oddity | open
+The Georgetown tavern identifies booths associated with presidents and political figures, including the booth tied to John F. Kennedy's proposal to Jacqueline Bouvier.
+Source: https://www.martinstavern.com/
+
+49. Bare-Chested George Washington
+Washington, DC
+38.89134, -77.02994
+strange sculpture / presidential history | open
+Horatio Greenough's seated George Washington depicts the first president in a toga-like classical pose that startled 19th-century viewers.
+Source: https://americanhistory.si.edu/collections/object/nmah_463144
+
+50. Grace Hopper's Computer Bug
+Washington, DC
+38.92145, -77.06702
+computing relic / museum oddity | limited
+A moth taped into a 1947 computer log became one of computing history's most famous 'bugs'; the original log is a Smithsonian collection object and may not always be on display.
+Source: https://americanhistory.si.edu/
+
+51. Uncle Beazley
+Washington, DC
+38.93193, -77.05244
+dinosaur sculpture / pop culture | open
+A large fiberglass Triceratops created for the 1960s children's television production The Enormous Egg survives at the National Zoo.
+Source: https://nationalzoo.si.edu/
+
+52. Mary Surratt Boarding House
+Washington, DC
+38.89954, -77.02038
+assassination history / historic exterior | view-only
+The former boarding house where conspirators connected to Lincoln's assassination met survives in Chinatown; the building is privately used, so view from public space.
+Source: https://www.nps.gov/foth/learn/historyculture/mary-surratt.htm
+
+53. Old Stone House
+Washington, DC
+38.90570, -77.06030
+historic house / mistaken lore | limited
+The oldest structure on its original foundation in D.C. was once mistakenly promoted as a place where George Washington stayed, helping save it from demolition.
+Source: https://www.nps.gov/places/old-stone-house.htm
+
+54. Carnegie Library at Mount Vernon Square
+Washington, DC
+38.90265, -77.02292
+historic library / adaptive reuse | open
+D.C.'s former central Carnegie Library survives as a Beaux-Arts landmark repurposed for retail, exhibitions, and local history.
+Source: https://dchistory.org/
+
+55. Perry Belmont House / International Temple of the Order of the Eastern Star
+Washington, DC
+38.91229, -77.04133
+fraternal architecture / secret-society history | limited
+An ornate Gilded Age mansion became the international headquarters of the Order of the Eastern Star and is filled with ceremonial and architectural detail.
+Source: https://www.atlasobscura.com/places/international-temple-of-the-order-of-the-eastern-star
+
+56. Abandoned Drawbridge Control Room
+Washington, DC
+38.88736, -77.05558
+abandoned infrastructure / bridge history | view-only
+A disused bridge-control structure survives near the Potomac as a relic of movable-bridge infrastructure; observe only from legal public space.
+Source: https://www.atlasobscura.com/places/abandoned-drawbridge-control-room
+
+57. Holodomor Memorial
+Washington, DC
+38.89745, -77.00952
+dark history / memorial | open
+A sculptural wall of wheat commemorates the millions who died in the Soviet-engineered famine in Ukraine known as the Holodomor.
+Source: https://www.nps.gov/places/holodomor-memorial.htm
+
+58. Adams Memorial
+Washington, DC
+38.94736, -77.01028
+cemetery art / mysterious sculpture | limited
+Augustus Saint-Gaudens's hooded bronze figure at Rock Creek Cemetery was commissioned by Henry Adams and is intentionally untitled and enigmatic.
+Source: https://www.nps.gov/places/adams-memorial.htm
+
+59. Columbian Cannon Foundry Ruins
+Washington, DC
+38.90537, -77.07900
+industrial ruins / weapons history | open
+Stone remnants tied to a 19th-century cannon foundry survive near the C&O Canal and Georgetown's industrial corridor.
+Source: https://www.atlasobscura.com/places/columbian-cannon-foundry-ruins
+
+60. National Academy of Sciences Building
+Washington, DC
+38.89302, -77.04773
+science / unusual interior | limited
+The Academy's historic building combines scientific symbolism, murals, and architectural details, with the Einstein Memorial immediately outside.
+Source: https://www.nasonline.org/about-nas/visiting-nas/
+
+61. Portrait Monument
+Washington, DC
+38.89000, -77.00900
+unusual monument / unfinished sculpture | limited
+The Capitol's monument to Lucretia Mott, Elizabeth Cady Stanton, and Susan B. Anthony includes a conspicuously unfinished block of marble behind the figures.
+Source: https://www.aoc.gov/explore-capitol-campus/art/portrait-monument
+
+62. Watergate Steps
+Washington, DC
+38.88925, -77.05261
+forgotten infrastructure / waterfront history | open
+Broad stone steps behind the Lincoln Memorial were designed as a ceremonial landing from the Potomac, providing the literal 'water gate' long before the political scandal.
+Source: https://www.nps.gov/nama/
+
+63. Martha, the Last Passenger Pigeon
+Washington, DC
+38.89124, -77.02604
+taxidermy / extinct species | limited
+The preserved remains of Martha, the last known passenger pigeon, are held by the Smithsonian and have been displayed as a stark extinction artifact; verify current display status.
+Source: https://naturalhistory.si.edu/research/vertebrate-zoology/birds/collections-overview/martha-last-passenger-pigeon
+
+64. NIST Newton Apple Tree
+Washington, DC
+38.94190, -77.06563
+science oddity / historic tree | open
+A clone descended from a clone of Isaac Newton's famous apple tree grows on the former National Bureau of Standards campus.
+Source: https://www.nist.gov/
+
+65. Hidden K-9 at the Korean War Veterans Memorial
+Washington, DC
+38.88773, -77.04716
+hidden detail / war memorial | open
+A sharp-eyed visitor can find the image of a German shepherd worked into the memorial's mural wall among the service scenes.
+Source: https://www.nps.gov/kowa/
+
+66. Belmont-Paul Women's Equality National Monument
+Washington, DC
+38.89232, -77.00377
+activism history / historic house | limited
+This historic house served as National Woman's Party headquarters and preserves the long campaign for women's political equality.
+Source: https://www.nps.gov/bepa/
+
+67. Smithsonian National Carousel
+Washington, DC
+38.88915, -77.02461
+historic carousel / civil rights history | open
+The restored carousel on the National Mall returned in 2026 and carries a civil-rights-era connection to the desegregation of amusement facilities in the capital region.
+Source: https://www.si.edu/
+
+68. Chinatown Barnes Dance
+Washington, DC
+38.89965, -77.02212
+street design / urban oddity | open
+A pedestrian scramble at 7th and H Streets lets people cross in every direction at once and is decorated with Chinatown-themed street details.
+Source: https://www.fhwa.dot.gov/infrastructure/barnes.cfm
+
+69. Arizona Avenue Trestle
+Washington, DC
+38.92451, -77.10725
+railroad ruin / trail oddity | open
+This crooked former railroad trestle incorporates recycled bridge spans and now carries a trail over Arizona Avenue.
+Source: https://www.atlasobscura.com/places/arizona-avenue-trestle
+
+70. Mary's Garden
+Washington, DC
+38.93170, -77.00125
+hidden garden / sacred landscape | open
+A quiet devotional garden tucked beside the Basilica offers a small, overlooked landscape of Marian sculpture and plantings.
+Source: https://www.nationalshrine.org/
+
+71. D.C.'s Underground Bald Cypress Fossils
+Washington, DC
+38.89895, -77.03769
+geology / buried landscape | open
+Fossilized remains of an ancient bald-cypress swamp have been found beneath downtown D.C.; modern bald cypresses in Lafayette Square mark the strange buried landscape.
+Source: https://pubs.usgs.gov/
+
+72. District of Columbia Center Point
+Washington, DC
+38.88984, -77.00903
+geographic marker / Capitol oddity | limited
+A small marble compass in the U.S. Capitol Crypt marks the traditional meeting point of D.C.'s four quadrants; it is reached on authorized Capitol visits.
+Source: https://www.aoc.gov/explore-capitol-campus/buildings-grounds/capitol-building/crypt
+
+73. Congressional Cemetery
+Washington, DC
+38.88283, -76.97900
+cemetery / unusual monuments | open
+This historic cemetery holds cenotaphs, political figures, artists, activists, and an unusually eclectic collection of monuments and stories.
+Source: https://congressionalcemetery.org/
+
+74. Capitol Tile Room
+Washington, DC
+38.88984, -77.00973
+hidden architecture / Capitol history | limited
+A little-known Capitol storage space preserves ornate leftover floor tiles from 19th-century renovations; access is not part of ordinary public wandering and should be treated as special-access only.
+Source: https://www.atlasobscura.com/places/capitol-tile-room
+
+75. Owney the Postal Dog
+Washington, DC
+38.89807, -77.00820
+taxidermy / postal history | open
+The taxidermied mascot of the Railway Mail Service traveled vast distances with postal workers and is now preserved at the National Postal Museum.
+Source: https://postalmuseum.si.edu/exhibition/behind-the-badge/owney
+
+76. Glenwood Cemetery Chainsaw Sculptures
+Washington, DC
+38.92307, -77.00648
+cemetery art / chainsaw sculpture | limited
+Large figures carved from fallen old-growth trees stand behind Glenwood Cemetery's chapel; observe normal cemetery hours and etiquette.
+Source: https://www.atlasobscura.com/places/glenwood-cemeterys-chainsaw-sculptures
+
+77. Throne of the Third Heaven
+Washington, DC
+38.89799, -77.02301
+outsider art / visionary art | open
+James Hampton's monumental foil-covered visionary throne was assembled from discarded materials and is now one of the Smithsonian American Art Museum's signature outsider-art works.
+Source: https://americanart.si.edu/artwork/throne-third-heaven-nations-millennium-general-assembly-9897
+
+78. Ben's Chili Bowl Mural
+Washington, DC
+38.91724, -77.02881
+mural / cultural landmark | roadside
+The exterior of Ben's Chili Bowl carries a large mural honoring prominent Black cultural figures, turning a restaurant wall into a public-art destination.
+Source: https://benschilibowl.com/
+
+79. Willard InterContinental Lobby
+Washington, DC
+38.89660, -77.03227
+political lore / historic hotel | open
+The Willard's lobby is tied to generations of political meetings and the popular, though debated, story connecting Ulysses S. Grant's visitors with the word 'lobbyist.'
+Source: https://washington.intercontinental.com/
+
+80. Preamble in License Plates
+Washington, DC
+38.89787, -77.02305
+found-object art / Constitution | open
+At the Smithsonian American Art Museum, the Constitution's preamble is spelled out using vanity license plates.
+Source: https://americanart.si.edu/
+
+81. Navy Yard Railroad Gun
+Washington, DC
+38.87240, -76.99618
+military artifact / giant weapon | limited
+A massive World War I-era naval railway gun survives at the Washington Navy Yard; access is subject to active military security and visitor rules.
+Source: https://www.history.navy.mil/
+
+82. Hall of Fake Presidents
+Washington, DC
+38.92208, -76.99752
+film memorabilia / pop culture | open
+A movie-theater display celebrates fictional U.S. presidents from film and television rather than the real occupants of the White House.
+Source: https://drafthouse.com/dc-metro-area/theater/bryant-street
+
+83. Gun Barrel Fence
+Washington, DC
+38.90943, -77.05740
+architectural oddity / military reuse | roadside
+A Georgetown iron fence has long been identified as being made from recycled gun barrels, though the exact origin remains debated.
+Source: https://www.atlasobscura.com/places/gun-barrel-fence
+
+84. The Cairo
+Washington, DC
+38.91133, -77.03751
+architectural oddity / height-law history | roadside
+This unusually tall 1890s apartment building helped provoke the backlash that shaped Washington's later building-height restrictions.
+Source: https://www.atlasobscura.com/places/the-cairo-washington-dc
+
+85. Serenity Statue
+Washington, DC
+38.92197, -77.03614
+odd memorial / public sculpture | open
+A small weathered memorial statue in Meridian Hill Park has endured repeated vandalism and repairs, giving it a strange afterlife among D.C. monuments.
+Source: https://www.atlasobscura.com/places/serenity-statue
+
+86. Capitalsaurus Court
+Washington, DC
+38.88200, -77.00584
+dinosaur history / street oddity | roadside
+A small street designation marks the area where dinosaur bones were uncovered in the 19th century, inspiring D.C.'s official dinosaur, Capitalsaurus.
+Source: https://www.atlasobscura.com/places/capitalsaurus-court
+
+87. Daguerre Monument
+Washington, DC
+38.89735, -77.02206
+photography history / monument | open
+A monument near the National Portrait Gallery honors Louis Daguerre and the early photographic process that bears his name.
+Source: https://www.loc.gov/pictures/item/2001695538/
+
+88. Fort Reno Park High Point
+Washington, DC
+38.95252, -77.07911
+Civil War history / geographic high point | open
+D.C.'s highest natural point sits in Fort Reno Park, near the site of Civil War defenses and later Cold War communications infrastructure.
+Source: https://www.nps.gov/cwdw/learn/historyculture/fort-reno.htm
+
+89. Historic Elevator at Potbelly
+Washington, DC
+38.89434, -77.02143
+mechanical oddity / industrial relic | open
+Behind plexiglass inside the Indiana Avenue Potbelly is a 19th-century open-cage elevator, long misidentified as an 1850s Otis but still a genuine antique machine.
+Source: https://www.atlasobscura.com/places/potbelly-elevator
+
+90. Washington Monument Lightning Rod
+Washington, DC
+38.88945, -77.03525
+engineering oddity / lightning | open
+The Washington Monument's aluminum apex and later lightning-protection system tell a surprisingly destructive history of repeated lightning strikes high above the Mall.
+Source: https://www.nps.gov/wamo/
+
+91. Sonny Bono Memorial Park
+Washington, DC
+38.90832, -77.04471
+tiny park / music memorial | open
+A tiny triangular private memorial park contains a plaque to Sonny Bono and, according to its creator, a buried cache that includes sheet music.
+Source: https://www.atlasobscura.com/places/sonny-bono-memorial-park
+
+92. Japanese American Memorial to Patriotism During World War II
+Washington, DC
+38.89458, -77.01057
+dark history / memorial | open
+Bronze cranes tangled in barbed wire anchor a memorial documenting Japanese American incarceration and military service during World War II.
+Source: https://www.nps.gov/places/japanese-american-memorial-to-patriotism-during-world-war-ii.htm
+
+93. Knife Edge at the National Gallery
+Washington, DC
+38.89094, -77.01723
+architectural oddity / modernism | open
+I. M. Pei's East Building forms a 19.5-degree marble prow so sharp and tactile that architecture fans have turned the corner into a minor pilgrimage site.
+Source: https://www.nga.gov/
+
+94. Godey Lime Kilns
+Washington, DC
+38.90373, -77.05643
+industrial ruins / roadside history | roadside
+Two surviving 19th-century lime kilns sit improbably close to Rock Creek and Potomac Parkway, remnants of Georgetown's industrial past.
+Source: https://www.loc.gov/pictures/item/dc0327/
+
+95. Sharpshooter's Tree Marker
+Washington, DC
+38.97363, -77.02785
+Civil War lore / hidden marker | limited
+A small marker near the former Walter Reed grounds recalls the Confederate sharpshooter said to have fired toward Abraham Lincoln during the Battle of Fort Stevens; access can be controlled.
+Source: https://www.nps.gov/articles/president-lincoln-under-fire-at-fort-stevens.htm
+
+96. Washington Coliseum / Uline Arena
+Washington, DC
+38.90537, -77.00238
+music history / adaptive reuse | open
+The old Uline Arena hosted the Beatles' first U.S. concert and now survives as a dramatically repurposed commercial building.
+Source: https://www.atlasobscura.com/places/washington-coliseum-1
+
+97. Washington Monument Marble Stripe
+Washington, DC
+38.88953, -77.03514
+architectural anomaly / monument history | open
+A visible change in marble color partway up the Washington Monument records the long interruption between its two major construction phases.
+Source: https://www.nps.gov/wamo/
+
+98. Old Post Office Tower
+Washington, DC
+38.89372, -77.02776
+observation tower / bells | open
+A National Park Service observation tower rises above the Old Post Office and contains the Bells of Congress, with free elevated views over central Washington.
+Source: https://www.nps.gov/thingstodo/old-post-office-tower.htm
+
+99. National Cathedral Bell Tower
+Washington, DC
+38.93059, -77.07065
+bell tower / hidden access | limited
+Special tower climbs can reach the National Cathedral's bell room and spaces normally unseen by casual visitors.
+Source: https://cathedral.org/
+
+100. Temperance Fountain
+Washington, DC
+38.89380, -77.02166
+odd monument / social history | open
+A much-mocked 19th-century fountain was donated by a temperance advocate who hoped free drinking water would steer people away from alcohol.
+Source: https://www.atlasobscura.com/places/temperance-fountain-of-washington-dc
+

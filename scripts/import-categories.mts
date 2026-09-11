@@ -123,6 +123,60 @@ export const CATEGORY_ALIASES: Record<string, string> = {
   "geology-folklore": "folklore",
   "name-oddities": "roadside-oddities",
   "giant-roadside-art": "roadside-oddities",
+  /*
+    Added for the Washington, D.C. batch, which arrived with 48 spellings the
+    map had not seen — a city's worth of vocabulary rather than a state's.
+    Each was checked against the stop it describes; five are deliberately not
+    where the suggestion put them and say so.
+  */
+  espionage: "museums",                    // the Spy Museum is a museum, not an oddity
+  "espionage-history": "weird-history",
+  "unusual-museum": "museums",
+  "historic-library": "weird-history",
+  "space-relic": "roadside-oddities",
+  "miniature-monument": "roadside-oddities",
+  "wetland-oddity": "roadside-oddities",
+  "book-sculpture": "roadside-oddities",
+  "geographic-marker": "roadside-oddities",
+  inventions: "museums",                   // the patent model collection is a museum
+  "historic-estate": "weird-history",
+  "historic-recreation": "weird-history",
+  "maritime-memorial": "weird-history",
+  "science-memorial": "weird-history",
+  "historic-market": "weird-history",
+  "hidden-detail": "roadside-oddities",
+  island: "roadside-oddities",
+  "library-oddity": "roadside-oddities",
+  "science-fiction-relic": "museums",
+  "rare-books": "museums",
+  "asylum-history": "weird-history",
+  "civil-war-ruins": "weird-history",
+  "civil-war-lore": "folklore",
+  "sacred-architecture": "roadside-oddities",
+  "fraternal-architecture": "roadside-oddities",
+  "giant-roadside-object": "roadside-oddities",
+  "strange-sculpture": "roadside-oddities",
+  "computing-relic": "museums",            // the bug is a Smithsonian exhibit
+  "dinosaur-sculpture": "roadside-oddities", // Uncle Beazley stands outdoors at the zoo
+  "dinosaur-history": "weird-history",
+  "assassination-history": "weird-history",
+  "forgotten-infrastructure": "weird-history",
+  taxidermy: "museums",                    // Martha is a museum specimen in a case
+  "activism-history": "weird-history",
+  "historic-carousel": "roadside-oddities",
+  "street-design": "roadside-oddities",
+  "railroad-ruin": "weird-history",
+  "hidden-architecture": "roadside-oddities",
+  mural: "roadside-oddities",
+  "political-lore": "folklore",
+  "found-object-art": "roadside-oddities",
+  "military-artifact": "weird-history",
+  "film-memorabilia": "museums",
+  "odd-memorial": "roadside-oddities",
+  "tiny-park": "roadside-oddities",
+  "architectural-anomaly": "roadside-oddities",
+  "observation-tower": "roadside-oddities",
+  "bell-tower": "roadside-oddities",
   extraterrestrial: "ufos",
   "route-66-history": "roadside-oddities",
   "cryptid-roadside": "cryptids",

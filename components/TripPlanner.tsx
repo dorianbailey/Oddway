@@ -409,6 +409,17 @@ export function TripPlanner({
   });
   const hasSearched = status === "done" && result !== null;
 
+  /*
+    Paid cards belong in the recommendations row and nowhere else.
+
+    Not in search results, where a bought card ranked among places that are
+    genuinely closer would make the ranking worthless. And not when somebody
+    has a trip loaded either — that list is their nine stops, and dropping an
+    advertisement into it would push one of their own out to make room.
+  */
+  const showSponsored =
+    !hasSearched && savedTrip.length === 0 && sponsoredPlaces.length > 0;
+
   return (
     <>
       <section className="border-b-2 border-ink/70">
@@ -481,11 +492,43 @@ export function TripPlanner({
           would squeeze both.
         */}
         <div className="mt-14 flex flex-wrap items-end justify-between gap-x-8 gap-y-4 first:mt-0">
-          <h2 id="stops-heading" className="max-w-[24ch] text-section">
-            {hasSearched
-              ? `${listedStops.length} ${listedStops.length === 1 ? "stop" : "stops"} worth pulling off for`
-              : "OddWay recommendations"}
-          </h2>
+          {/*
+            Three states, and the heading used to admit to two.
+
+            A trip loaded from a trip page goes into the same store the map and
+            this list read from, so nine curated stops appeared under the words
+            "OddWay recommendations" — and stayed there on every later visit,
+            because the store is persisted. Somebody who clicked "Load these 9
+            stops" once in March found the homepage still showing them in
+            September, with nothing on the page explaining why or offering to
+            stop.
+
+            Naming the state fixes both halves: the load is confirmed by
+            arriving at a page that says so, and the way out is next to it.
+          */}
+          <div className="max-w-[30ch]">
+            <h2 id="stops-heading" className="text-section">
+              {hasSearched
+                ? `${listedStops.length} ${listedStops.length === 1 ? "stop" : "stops"} worth pulling off for`
+                : savedTrip.length > 0
+                  ? `Your trip — ${savedTrip.length} ${savedTrip.length === 1 ? "stop" : "stops"}`
+                  : "OddWay recommendations"}
+            </h2>
+
+            {!hasSearched && savedTrip.length > 0 ? (
+              <p className="mt-2 text-[0.95rem] text-ink-soft">
+                Loaded from a trip and kept on this device.{" "}
+                <button
+                  type="button"
+                  onClick={() => tripStore.load([])}
+                  className="underline underline-offset-4 hover:text-route"
+                >
+                  Clear it
+                </button>{" "}
+                to go back to recommendations.
+              </p>
+            ) : null}
+          </div>
 
           {hasSearched && result && listedStops.length < result.stops.length ? (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -591,7 +634,7 @@ export function TripPlanner({
               above places that are genuinely closer — would make the ranking
               worth nothing.
             */}
-            {!hasSearched
+            {showSponsored
               ? sponsoredPlaces.map((place) => (
                   <li key={place.id} className="flex">
                     <SponsoredCard place={place} />
@@ -599,9 +642,9 @@ export function TripPlanner({
                 ))
               : null}
 
-            {(hasSearched
-              ? listedStops
-              : listedStops.slice(0, Math.max(0, 3 - sponsoredPlaces.length))
+            {(showSponsored
+              ? listedStops.slice(0, Math.max(0, 3 - sponsoredPlaces.length))
+              : listedStops
             ).map((stop) => (
               <li key={stop.id} className="flex">
                 <StopCard stop={stop} />

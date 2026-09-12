@@ -195,8 +195,20 @@ export default async function ExplorePage({ searchParams }: ExplorePageProps) {
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
                   <h2 id={`${category.slug}-heading`} className="text-section">
                     {category.label}
+                    {/*
+                      matchCount, not matches.length.
+
+                      In overview mode each section fetches six rows as a
+                      preview, so matches.length is always six and the heading
+                      read "Cryptids 6" for a category holding eighty-four. It
+                      looked like a total because it sat where a total goes.
+
+                      matchCount is the count the query returned alongside the
+                      rows, so it respects whatever state or search is applied
+                      — which is what somebody reading it would assume.
+                    */}
                     <span className="ml-3 align-middle text-[0.9rem] font-normal text-ink-soft">
-                      {matches.length}
+                      {matchCount.toLocaleString()}
                     </span>
                   </h2>
 

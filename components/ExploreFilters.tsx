@@ -83,6 +83,15 @@ export function ExploreFilters({
           value={text}
           onChange={(event) => setText(event.target.value)}
           placeholder="Mothman, asylum, Ohio…"
+          /*
+            The browser's form history, not ours, was producing what looked
+            like duplicate suggestions: Chrome remembers submitted values for a
+            named input and offers them back, and the same term submitted with
+            different whitespace shows as two identical rows.
+
+            StopSearch already turns this off for the same reason.
+          */
+          autoComplete="off"
           className="mt-2 w-full rounded-[3px] border border-contour/50 bg-paper px-4 py-2.5 text-ink placeholder:text-ink-soft/60 hover:border-contour sm:w-64"
         />
       </div>

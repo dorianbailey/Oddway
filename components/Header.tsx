@@ -58,6 +58,28 @@ export function Header() {
     earlier, so it is derived instead.
   */
   const [openedOn, setOpenedOn] = useState<string | null>(null);
+
+  /*
+    Forget where the menu was opened as soon as the route changes.
+
+    Without this the path lingers, and coming back to it later reopens the
+    menu: open it on the home page, go to a trip, press "Load these 9 stops",
+    and the push back to "/" makes openedOn === pathname true again. A drawer
+    full of navigation links appeared over a page somebody had just asked to
+    load their trip into, with nothing having been clicked to cause it. The
+    back button did it too.
+
+    Adjusting state during render rather than in an effect. React handles this
+    by re-rendering immediately without committing the first pass, which is
+    both cheaper than an effect and free of the setState-in-effect loop this
+    header has already been bitten by once.
+  */
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpenedOn(null);
+  }
+
   const menuOpen = openedOn === pathname;
   const setMenuOpen = (open: boolean) => setOpenedOn(open ? pathname : null);
 

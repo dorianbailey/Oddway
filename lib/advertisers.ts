@@ -21,7 +21,7 @@ export interface ActiveAd {
   destinationUrl: string;
   description: string | null;
   bannerPath: string | null;
-  plan: "banner" | "map";
+  plan: "banner" | "banner_map";
   locationName: string | null;
   latitude: number | null;
   longitude: number | null;
@@ -34,7 +34,7 @@ interface AdRow {
   destination_url: string;
   description: string | null;
   banner_path: string | null;
-  plan: "banner" | "map";
+  plan: "banner" | "banner_map";
   location_name: string | null;
   latitude: number | null;
   longitude: number | null;
@@ -107,25 +107,56 @@ export async function getActiveAds(): Promise<ActiveAd[]> {
  * only when there is something to rotate.
  */
 export async function getBanner(): Promise<ActiveAd | null> {
-  /*
-    Banner-plan advertisers only. Map placement is a different product now
-    rather than a tier above this one, and somebody who bought a marker did
-    not buy a banner — showing one would be giving away the thing the other
-    plan is for.
-  */
-  const ads = (await getActiveAds()).filter(
-    (ad) => ad.plan === "banner" && ad.bannerPath,
-  );
+  const ads = await getActiveAds();
   if (ads.length === 0) return null;
 
   const day = Math.floor(Date.now() / 86_400_000);
   return ads[day % ads.length];
 }
 
+/**
+ * How many banner slots are spoken for.
+ *
+ * Counts pending as well as active, because somebody who has paid and not yet
+ * filled in the form is holding a slot — they have the receipt. Counting only
+ * the live ones would let a fourth banner be sold while a third was in the
+ * post, and the fix for that is a refund and an apology.
+ *
+ * The cost is that an abandoned signup blocks a sale until somebody clears it.
+ * The review screen shows which pending rows are holding slots, which makes
+ * that a two-minute job rather than a mystery.
+ *
+ * Read with the service role: the public view deliberately hides pending rows,
+ * and a count that cannot see them would be the wrong count.
+ */
+export async function countBannersTaken(): Promise<number> {
+  const { getAdminSupabase } = await import("./supabase-admin");
+
+  try {
+    const { count, error } = await getAdminSupabase()
+      .from("advertisers")
+      .select("id", { count: "exact", head: true })
+      .eq("plan", "banner")
+      .in("status", ["active", "pending"]);
+
+    if (error) throw new Error(error.message);
+    return count ?? 0;
+  } catch (caught) {
+    /*
+      Fail closed. If the count cannot be read, report the slots as full rather
+      than as free — refusing a sale is recoverable and overselling is not.
+    */
+    console.error("countBannersTaken failed:", caught);
+    return Number.MAX_SAFE_INTEGER;
+  }
+}
+
 /** Sponsored places for the map. Empty until the map work lands. */
 export async function getSponsoredPlaces(): Promise<ActiveAd[]> {
   return (await getActiveAds()).filter(
     (ad) =>
-      ad.plan === "map" && ad.latitude !== null && ad.longitude !== null,
+      ad.plan === "banner_map" &&
+      ad.latitude !== null &&
+      ad.longitude !== null,
   );
 }

@@ -2,10 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { PlanButton } from "@/components/PlanButton";
-import { PLANS } from "@/lib/stripe";
+import { BANNER_SLOTS, PLANS } from "@/lib/stripe";
+import { countBannersTaken } from "@/lib/advertisers";
 import { countStops } from "@/lib/stops";
 
-export const revalidate = 3600;
+/*
+  A minute, not an hour.
+
+  The page now states how many slots are left, and a number that is an hour
+  stale is a number that sells a fourth banner. The checkout route refuses that
+  sale, but being told "two left" and then rejected at the till is a worse
+  experience than being told the truth on arrival.
+*/
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Advertise",
@@ -14,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default async function AdvertisePage() {
-  const total = await countStops();
+  const [total, taken] = await Promise.all([countStops(), countBannersTaken()]);
+  const bannersLeft = Math.max(0, BANNER_SLOTS - taken);
 
   return (
     <>
@@ -55,8 +65,43 @@ export default async function AdvertisePage() {
                   ))}
                 </ul>
 
+                {/*
+                  Only the banner is capped. A marker on a map does not compete
+                  for a position — two sponsors in different states are both
+                  simply there — so there is nothing to run out of.
+                */}
+                {id === "banner" ? (
+                  <p className="mt-6 text-[0.95rem] font-semibold text-ink-soft">
+                    {bannersLeft === 0
+                      ? "Sold out."
+                      : bannersLeft === 1
+                        ? "One slot left."
+                        : `${bannersLeft} of ${BANNER_SLOTS} slots left.`}
+                  </p>
+                ) : null}
+
                 <div className="mt-8 pt-2">
-                  <PlanButton plan={id} label={`Advertise for $${plan.monthly}/month`} />
+                  {id === "banner" && bannersLeft === 0 ? (
+                    <>
+                      <p
+                        aria-live="polite"
+                        className="w-full rounded-[3px] border border-contour/50 bg-paper-sunk px-6 py-3 text-center font-semibold text-ink-soft"
+                      >
+                        All three slots are taken
+                      </p>
+                      <p className="mt-3 text-[0.95rem] text-ink-soft">
+                        Write in through the{" "}
+                        <Link href="/suggest?kind=other">suggestion box</Link>{" "}
+                        and we will tell you when one comes free. Featured map
+                        placement below is still open.
+                      </p>
+                    </>
+                  ) : (
+                    <PlanButton
+                      plan={id}
+                      label={`Advertise for $${plan.monthly}/month`}
+                    />
+                  )}
                 </div>
               </section>
             );
@@ -72,7 +117,23 @@ export default async function AdvertisePage() {
           that being a sensible order of operations and it being a surprise.
         */}
         <section className="mt-16 max-w-[68ch] border-t border-contour/40 pt-10">
-          <h2 className="text-section">What happens after you pay</h2>
+          <h2 className="text-section">Why only three banners</h2>
+          <div className="article mt-6 space-y-6">
+            <p>
+              The banner rotates by day. With three advertisers each one has the
+              slot roughly a third of the time, which is what the plan
+              describes. A fourth would quietly turn that into a quarter, and
+              nobody would have been told — so we stop at three rather than sell
+              a share of something you did not agree to.
+            </p>
+            <p>
+              Map placement has no limit, because a marker does not take
+              anybody else&rsquo;s position. Your business is where it is
+              whether there is one sponsor or fifty.
+            </p>
+          </div>
+
+          <h2 className="mt-12 text-section">What happens after you pay</h2>
           <ol className="article mt-6 list-decimal space-y-3 pl-5">
             <li>
               Stripe takes the payment and we email you a link — usually within

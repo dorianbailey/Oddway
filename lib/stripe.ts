@@ -12,6 +12,20 @@ import Stripe from "stripe";
 
 export type PlanId = "banner" | "map";
 
+/**
+ * How many banners run at once.
+ *
+ * Three, because the slot rotates by day and a fourth advertiser would show
+ * only three days in four — which is not what "your banner on the homepage"
+ * says. Selling a share of a rotation nobody was told about is the kind of
+ * thing that produces refunds and bad reviews in that order.
+ *
+ * Map placements are not capped. A marker does not compete for a position: two
+ * sponsors in different states are both simply there, and a hundred of them
+ * would still each be exactly where they paid to be.
+ */
+export const BANNER_SLOTS = 3;
+
 export interface Plan {
   id: PlanId;
   name: string;

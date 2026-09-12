@@ -128,6 +128,16 @@ export function AdvertiserList({ advertisers }: { advertisers: AdvertiserRow[] }
               <p className="mt-3 border-l-2 border-contour pl-4 text-[0.95rem] text-ink-soft">
                 Paid, but has not filled in the form yet. Their setup link is
                 still unused and expires seven days after they paid.
+                {ad.plan === "banner" ? (
+                  <>
+                    {" "}
+                    <strong className="text-ink">
+                      This is holding one of the three banner slots.
+                    </strong>{" "}
+                    If they have gone quiet, deleting the row frees it for
+                    somebody else.
+                  </>
+                ) : null}
               </p>
             ) : null}
 

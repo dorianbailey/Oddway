@@ -1,5 +1,13 @@
 import { NextResponse } from "next/server";
-import { PLANS, getStripe, priceIdFor, siteUrl, type PlanId } from "@/lib/stripe";
+import {
+  BANNER_SLOTS,
+  PLANS,
+  getStripe,
+  priceIdFor,
+  siteUrl,
+  type PlanId,
+} from "@/lib/stripe";
+import { countBannersTaken } from "@/lib/advertisers";
 
 export const runtime = "nodejs";
 
@@ -23,6 +31,24 @@ export async function POST(request: Request) {
     plan = asked;
   } catch {
     return NextResponse.json({ error: "Bad request." }, { status: 400 });
+  }
+
+  /*
+    The cap is enforced here, not on the page.
+
+    A sold-out notice and a disabled button are a courtesy; they do nothing for
+    somebody who had the page open before the last slot went, or who posts to
+    this route directly. Without this check the limit is decoration and the
+    fourth advertiser finds out by receiving a refund.
+  */
+  if (plan === "banner" && (await countBannersTaken()) >= BANNER_SLOTS) {
+    return NextResponse.json(
+      {
+        error:
+          "All three banner slots are taken. Featured map placement is still available.",
+      },
+      { status: 409 },
+    );
   }
 
   const price = priceIdFor(plan);

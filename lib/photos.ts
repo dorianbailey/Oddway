@@ -178,8 +178,13 @@ export async function getPublicProfile(id: string): Promise<PublicProfile | null
   const supabase = await getServerSupabase();
   if (!supabase) return null;
 
+  /*
+    public_profiles, not profiles. The table is no longer readable by anyone
+    who is not its owner or an administrator; the view carries the four fields
+    a photo credit and a profile page actually show.
+  */
   const { data } = await supabase
-    .from("profiles")
+    .from("public_profiles")
     .select("id, display_name, avatar_path, bio, blocked")
     .eq("id", id)
     .maybeSingle();

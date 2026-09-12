@@ -59,14 +59,22 @@ export async function isNameTaken(raw: string): Promise<boolean> {
   if (!name) return false;
 
   try {
-    const supabase = getBrowserSupabase();
-    const { data } = await supabase
-      .from("profiles")
-      .select("id")
-      .ilike("display_name", name)
-      .limit(1);
+    /*
+      A function returning one boolean, rather than a query over the table.
 
-    return Boolean(data && data.length > 0);
+      This runs in the browser during signup, before there is an account, so it
+      cannot sit behind an authenticated policy — and the table is no longer
+      open to strangers. name_taken answers the question without being able to
+      answer "what names exist" or "who is the administrator", which is what
+      reading the table allowed.
+    */
+    const supabase = getBrowserSupabase();
+    const { data, error } = await supabase.rpc("name_taken", {
+      candidate: name,
+    });
+
+    if (error) throw new Error(error.message);
+    return data === true;
   } catch {
     /*
       If the check cannot run, say the name is free and let the insert decide.

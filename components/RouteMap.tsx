@@ -25,6 +25,16 @@ interface RouteMapProps {
   markerStyle?: "numbered" | "dot";
 }
 
+export interface SponsoredPlace {
+  id: string;
+  businessName: string;
+  destinationUrl: string;
+  description: string | null;
+  locationName: string | null;
+  latitude: number;
+  longitude: number;
+}
+
 type MapStatus = "loading" | "ready" | "error";
 
 /** How long to wait for the basemap style before calling it a failure. */
@@ -51,6 +61,35 @@ export function RouteMap({
   const mapRef = useRef<MapLibreMap | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const popupsRef = useRef<Popup[]>([]);
+  /*
+    Paid placements, fetched here rather than passed in.
+
+    The first attempt had MapSection read them and hand them down, which meant
+    making that component async — and it is rendered from inside TripPlanner,
+    a client component, so async is not allowed. That broke every page with a
+    map on it, at runtime.
+
+    Fetching from the client sidesteps the boundary entirely: this component is
+    already "use client" and already loads maplibre dynamically. It also means
+    no page has to remember to pass anything, which is one fewer way for a
+    sponsor's marker to be missing from somewhere nobody checked.
+  */
+  const [sponsored, setSponsored] = useState<SponsoredPlace[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/sponsored")
+      .then((response) => (response.ok ? response.json() : { places: [] }))
+      .then((data) => {
+        if (!cancelled) setSponsored(data.places ?? []);
+      })
+      .catch(() => {
+        // An advertising failure must never take the map down with it.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const [status, setStatus] = useState<MapStatus>("loading");
 
   // Create the map once.
@@ -197,14 +236,36 @@ export function RouteMap({
       const clustered = markerStyle === "dot" && stops.length > CLUSTER_ABOVE;
 
       if (clustered) {
-        plotClusters(maplibregl, map, stops);
+        plotClusters(maplibregl, map, stops, sponsored);
         frameStops(maplibregl, map, stops, route);
         return;
       }
 
       removeClusterLayers(map);
 
-      stops.forEach((stop, index) => {
+      /*
+        Below the clustering threshold every stop is its own DOM marker, so
+        paid placements are drawn the same way and in the same loop. Marking
+        them here rather than keeping a second list means the two can never
+        drift into looking different from each other.
+      */
+      const plotted: Array<MapStop & { sponsor?: SponsoredPlace }> = [
+        ...stops,
+        ...(sponsored.map((place) => ({
+          id: place.id,
+          slug: "",
+          name: place.businessName,
+          category: "",
+          city: place.locationName ?? "",
+          state: "",
+          latitude: place.latitude,
+          longitude: place.longitude,
+          detourMinutes: 0,
+          sponsor: place,
+        })) as unknown as Array<MapStop & { sponsor: SponsoredPlace }>),
+      ];
+
+      plotted.forEach((stop, index) => {
         const element = document.createElement("button");
         element.type = "button";
         element.className =
@@ -217,7 +278,15 @@ export function RouteMap({
           `${stop.name}, ${stop.city}, ${stop.state}`,
         );
 
-        const content = popupContent(stop);
+        const sponsor = stop.sponsor;
+        const content = sponsor
+          ? sponsorPopupContent({
+              businessName: sponsor.businessName,
+              destinationUrl: sponsor.destinationUrl,
+              description: sponsor.description,
+              locationName: sponsor.locationName,
+            })
+          : popupContent(stop);
 
         const popup = new maplibregl.Popup({
           offset: 22,
@@ -242,7 +311,13 @@ export function RouteMap({
     return () => {
       cancelled = true;
     };
-  }, [stops, route, status, markerStyle]);
+    /*
+      sponsored is in here because it arrives from a fetch after the first
+      plot. Without it the markers are drawn once, before the request comes
+      back, and a paid placement never appears at all — silently, on a map that
+      otherwise looks correct.
+    */
+  }, [stops, route, status, markerStyle, sponsored]);
 
   // Draw the route, once there is one.
   useEffect(() => {
@@ -357,6 +432,7 @@ function plotClusters(
   maplibregl: typeof import("maplibre-gl"),
   map: MapLibreMap,
   stops: MapStop[],
+  sponsored: SponsoredPlace[] = [],
 ) {
   const styles = getComputedStyle(document.documentElement);
   const route = styles.getPropertyValue("--color-route").trim() || "#7d5f0e";
@@ -382,21 +458,55 @@ function plotClusters(
     clusterMinPoints: 25,
     data: {
       type: "FeatureCollection",
-      features: stops.map((stop) => ({
-        type: "Feature" as const,
-        geometry: {
-          type: "Point" as const,
-          coordinates: [stop.longitude, stop.latitude],
-        },
-        properties: {
-          slug: stop.slug,
-          name: stop.name,
-          category: stop.category,
-          city: stop.city,
-          state: stop.state,
-          detourMinutes: stop.detourMinutes ?? null,
-        },
-      })),
+      features: [
+        ...stops.map((stop) => ({
+          type: "Feature" as const,
+          geometry: {
+            type: "Point" as const,
+            coordinates: [stop.longitude, stop.latitude],
+          },
+          properties: {
+            slug: stop.slug,
+            name: stop.name,
+            category: stop.category,
+            city: stop.city,
+            state: stop.state,
+            detourMinutes: stop.detourMinutes ?? null,
+            sponsored: false,
+          },
+        })),
+        /*
+          Paid placements, in the same source as everything else.
+
+          They were drawn as separate DOM markers at first, which meant a
+          single gold pin sitting on top of a map of grey clustered circles —
+          obviously a different kind of object, and worse with every sponsor
+          sold. In here they cluster, colour and behave exactly like a stop.
+
+          The cost is real and worth stating: at low zoom a sponsor disappears
+          into a cluster like anything else, and only appears once somebody
+          zooms into their region. That is the trade for a map that still looks
+          like a map once there are twenty of them.
+        */
+        ...sponsored.map((place) => ({
+          type: "Feature" as const,
+          geometry: {
+            type: "Point" as const,
+            coordinates: [place.longitude, place.latitude],
+          },
+          properties: {
+            slug: "",
+            name: place.businessName,
+            category: "",
+            city: place.locationName ?? "",
+            state: "",
+            detourMinutes: null,
+            sponsored: true,
+            destinationUrl: place.destinationUrl,
+            description: place.description ?? "",
+          },
+        })),
+      ],
     },
   });
 
@@ -483,9 +593,23 @@ function plotClusters(
       city: string;
       state: string;
       detourMinutes: number | null;
+      sponsored?: boolean;
+      destinationUrl?: string;
+      description?: string;
     };
 
-    const content = popupContent(props);
+    /*
+      The marker is identical; the popup is where the difference is disclosed.
+      A paid placement has no page here, so it links out instead.
+    */
+    const content = props.sponsored
+      ? sponsorPopupContent({
+          businessName: props.name,
+          destinationUrl: props.destinationUrl ?? "",
+          description: props.description || null,
+          locationName: props.city || null,
+        })
+      : popupContent(props);
 
     const [lng, lat] = (
       feature.geometry as unknown as { coordinates: [number, number] }
@@ -529,6 +653,66 @@ function plotClusters(
  * the database can never inject markup, and shared by both popup paths so the
  * marker and cluster versions cannot drift apart.
  */
+/**
+ * What a paid marker says when you tap it.
+ *
+ * Built as DOM nodes with textContent, never as an HTML string — the same as
+ * every other popup here, and it matters more in this one. This is the only
+ * text on the map supplied by somebody outside the project, and setHTML would
+ * hand it to maplibre's sanitiser, which as of the version in use has a known
+ * bypass. createElement never parses HTML at all, so there is nothing to
+ * bypass.
+ *
+ * The link is rendered from a URL already checked server-side for an http or
+ * https protocol. Both ends of that matter: a javascript: href would run on
+ * click regardless of how the node was built.
+ */
+function sponsorPopupContent(place: {
+  businessName: string;
+  destinationUrl: string;
+  description: string | null;
+  locationName: string | null;
+}): HTMLElement {
+  const content = document.createElement("div");
+  content.className = "oddway-popup";
+
+  const label = document.createElement("p");
+  label.className = "oddway-popup-meta";
+  label.textContent = "Sponsored";
+  label.style.textTransform = "uppercase";
+  label.style.letterSpacing = "0.12em";
+  label.style.fontSize = "0.66rem";
+
+  const heading = document.createElement("p");
+  heading.className = "oddway-popup-name";
+  const link = document.createElement("a");
+  link.href = place.destinationUrl;
+  link.target = "_blank";
+  link.rel = "sponsored nofollow noopener noreferrer";
+  link.textContent = place.businessName;
+  link.className = "oddway-popup-link";
+  heading.append(link);
+
+  content.append(label, heading);
+
+  if (place.locationName) {
+    const where = document.createElement("p");
+    where.className = "oddway-popup-meta";
+    where.textContent = place.locationName;
+    content.append(where);
+  }
+
+  if (place.description) {
+    const blurb = document.createElement("p");
+    blurb.className = "oddway-popup-meta";
+    blurb.textContent = place.description;
+    blurb.style.textTransform = "none";
+    content.append(blurb);
+  }
+
+  return content;
+}
+
 function popupContent(stop: {
   name: string;
   slug: string;

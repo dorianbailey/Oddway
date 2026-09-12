@@ -11,6 +11,8 @@ import { CategoryFilters } from "./CategoryFilters";
 import { MapSection } from "./MapSection";
 import { RouteSearch } from "./RouteSearch";
 import { StopCard } from "./StopCard";
+import { SponsoredCard } from "./SponsoredCard";
+import type { SponsoredPlace } from "./RouteMap";
 import type { RoutedStop } from "@/lib/corridor";
 import { TripSummary } from "./TripSummary";
 import { formatDuration } from "@/lib/format";
@@ -21,6 +23,15 @@ import type { CategorySlug, MapStop, Route, Stop } from "@/types/oddway";
 interface TripPlannerProps {
   /** Featured before any search runs, so the page is never empty. */
   fallbackStops: Stop[];
+  /**
+   * Paid placements for the recommendations row, already narrowed to three and
+   * rotated on the server.
+   *
+   * Chosen there rather than here because the rotation is by day, and a date
+   * computed in the browser disagrees with the one computed during rendering
+   * often enough to produce a hydration mismatch.
+   */
+  sponsoredPlaces?: SponsoredPlace[];
   /** Every stop, plotted on the map until a route narrows it down. */
   allStops?: MapStop[];
   /** Totals for the empty state, so the whole index need not be shipped. */
@@ -75,7 +86,13 @@ const REFINE_DEBOUNCE_MS = 500;
  * The heavy lifting happens server-side in /api/trip — this component never
  * sees an API key and never talks to a provider directly.
  */
-export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: TripPlannerProps) {
+export function TripPlanner({
+  fallbackStops,
+  allStops,
+  stopCount,
+  stateCount,
+  sponsoredPlaces = [],
+}: TripPlannerProps) {
   /*
     The whole index used to travel inside this page's HTML so the overview map
     could draw. That was a megabyte of markup on the homepage, growing with
@@ -559,7 +576,33 @@ export function TripPlanner({ fallbackStops, allStops, stopCount, stateCount }: 
           </div>
         ) : (
           <ul className="mt-10 grid gap-x-7 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-            {listedStops.map((stop) => (
+            {/*
+              Paid placements first, then ordinary recommendations to make
+              three.
+
+              Three is the row, not three-plus-adverts: a sponsor takes a place
+              in it rather than adding one. With one sponsor that is one paid
+              card and two recommendations; with three or more it is three paid
+              cards, rotated daily on the server the same way the
+              recommendations themselves are.
+
+              Only outside a search. A results row is somebody deciding what to
+              drive to, and a paid card sitting among their results — ranked
+              above places that are genuinely closer — would make the ranking
+              worth nothing.
+            */}
+            {!hasSearched
+              ? sponsoredPlaces.map((place) => (
+                  <li key={place.id} className="flex">
+                    <SponsoredCard place={place} />
+                  </li>
+                ))
+              : null}
+
+            {(hasSearched
+              ? listedStops
+              : listedStops.slice(0, Math.max(0, 3 - sponsoredPlaces.length))
+            ).map((stop) => (
               <li key={stop.id} className="flex">
                 <StopCard stop={stop} />
               </li>

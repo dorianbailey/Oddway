@@ -25,6 +25,16 @@ interface StopCardProps {
    * sits from the current route. That field only exists after a search.
    */
   stop: Stop & { distanceFromRouteKm?: number };
+  /**
+   * Marks the card as paid placement.
+   *
+   * Only ever set for a stop that an advertiser has bought a position for —
+   * never for an ordinary entry. The label is the whole of the difference, and
+   * it is deliberately not subtle: the about page promises nothing in the
+   * index is there because somebody paid, and a paid card that could be
+   * mistaken for an ordinary one would make that promise false everywhere.
+   */
+  sponsored?: boolean;
 }
 
 /**
@@ -36,7 +46,7 @@ interface StopCardProps {
  * hydration. Four values is enough to look hand-placed without any card
  * tilting far enough to be annoying.
  */
-export function StopCard({ stop }: StopCardProps) {
+export function StopCard({ stop, sponsored = false }: StopCardProps) {
   // Shared store, so the card and the trip panel can never disagree.
   // Stable per stop, so it never changes between renders.
   const tiltIndex = stop.id
@@ -69,6 +79,14 @@ export function StopCard({ stop }: StopCardProps) {
       </div>
 
       <div className="flex grow flex-col p-5">
+        {sponsored ? (
+          <p className="mb-3 text-center font-body text-[0.68rem] font-bold tracking-[0.2em] text-ink-soft uppercase">
+            <span className="rounded-full border border-brass/60 bg-brass/15 px-3 py-1">
+              Sponsored
+            </span>
+          </p>
+        ) : null}
+
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
           <h3 className="text-title">
             <Link

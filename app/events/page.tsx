@@ -20,12 +20,12 @@ export async function generateMetadata({
     return {
       title: "Events",
       description:
-        "Cryptid festivals, UFO conferences and paranormal gatherings across the United States, listed alphabetically with dates and locations.",
+        "Ghost conventions, cryptid festivals and UFO gatherings across the United States, listed alphabetically with dates and locations.",
     };
   }
 
   return {
-    title: `Cryptid and paranormal events in ${stateName(code)}`,
+    title: `Paranormal, cryptid and UFO events in ${stateName(code)}`,
     description: `Festivals, conferences and gatherings in ${stateName(code)}, with dates and how far each one is from you.`,
   };
 }
@@ -46,10 +46,17 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
           <h1 className="max-w-[20ch] text-hero">
             {selected ? `Events in ${stateName(selected)}` : "Events"}
           </h1>
+          {/*
+            This said "for people who drive a long way to hear about a monster",
+            which was right when thirty of the thirty-four events were about
+            Bigfoot. The calendar is now nearly a third ghost conventions and
+            paranormal weekends, and a page that names only one of the three
+            things it lists tells two thirds of visitors it is not for them.
+          */}
           <p className="mt-6 max-w-[62ch] text-lede text-[#cfc9bb]">
-            Festivals, conferences and gatherings for people who drive a long
-            way to hear about a monster. Listed alphabetically — sort by how
-            close they are, or how soon.
+            Ghost hunts and paranormal conventions, cryptid festivals, UFO
+            gatherings — the weekends people drive a long way for. Listed
+            alphabetically; sort by how close they are, or how soon.
           </p>
         </PageHero>
 

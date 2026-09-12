@@ -15,6 +15,13 @@ const FOOTER_LINKS = [
   { href: "/artists", label: "Odd artists" },
   { href: "/about", label: "About" },
   { href: "/suggest", label: "Suggest a stop" },
+  /*
+    The one page whose whole job is being found by somebody who has never been
+    told it exists. It was in the header nav and nowhere else — and a business
+    wondering whether they can advertise here looks at the bottom of the page,
+    not the top.
+  */
+  { href: "/advertise", label: "Advertise with us" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
 ] as const;

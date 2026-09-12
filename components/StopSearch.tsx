@@ -56,11 +56,28 @@ export function StopSearch({ value, onChange }: StopSearchProps) {
       setSearching(true);
       try {
         const supabase = getBrowserSupabase();
-        const pattern = `%${term.replace(/[%_]/g, "")}%`;
+        /*
+          Quoted, because or() takes a filter expression rather than a
+          parameter — whatever goes in becomes part of the query language. The
+          old version stripped the LIKE wildcards and left the grammar open: a
+          comma separates filters, a dot separates column from operator. A
+          search for "a,name.eq.x" was parsed rather than matched.
+
+          PostgREST treats a double-quoted value as literal, so quoting handles
+          the commas and dots without deleting them — which matters, because
+          stripping the full stop out of "St. Ignace" stops it matching the
+          town it is looking for. Only the backslash and the quote itself have
+          to go, and neither appears in a place name.
+
+          Nothing dangerous was reachable here: stops is public and read-only
+          and row level security still applies. Worth closing anyway, before
+          the same pattern is copied to a table where it is not.
+        */
+        const pattern = `%${term.replace(/["\\%_]/g, "")}%`;
         const { data } = await supabase
           .from("stops")
           .select("id, slug, name, city, state")
-          .or(`name.ilike.${pattern},city.ilike.${pattern}`)
+          .or(`name.ilike."${pattern}",city.ilike."${pattern}"`)
           .order("name")
           .limit(8);
 

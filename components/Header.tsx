@@ -28,6 +28,7 @@ const NAV_LINKS = [
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Artists" },
   { href: "/photos", label: "Photos" },
+  { href: "/meet-the-maker", label: "Meet the Maker" },
   { href: "/about", label: "About" },
   { href: "/advertise", label: "Advertise with us" },
 ] as const;

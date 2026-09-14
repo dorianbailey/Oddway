@@ -38,6 +38,11 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
   const artist = getArtist(slug);
   if (!artist) notFound();
 
+  const hero = artist.heroImage ?? artist.image;
+  const heroCredit = artist.heroImage
+    ? artist.heroImageCredit
+    : artist.imageCredit;
+
   return (
     <>
       <PageHero>
@@ -55,10 +60,15 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
       </PageHero>
 
       <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
-        {artist.image ? (
+        {/*
+          The hero when there is one, the list image otherwise. The credit
+          follows whichever picture is actually shown — attaching one image's
+          credit to another is worse than having none.
+        */}
+        {hero ? (
           <figure className="mb-10">
             <Image
-              src={artist.image}
+              src={hero}
               alt=""
               width={1200}
               height={900}
@@ -67,9 +77,9 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
               className="h-auto w-full border border-contour/45"
             />
             {/* Credit is not optional on somebody else's work. */}
-            {artist.imageCredit ? (
+            {heroCredit ? (
               <figcaption className="mt-2 text-[0.85rem] text-ink-soft">
-                {artist.imageCredit}
+                {heroCredit}
               </figcaption>
             ) : null}
           </figure>

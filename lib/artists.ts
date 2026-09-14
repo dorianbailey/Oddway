@@ -33,9 +33,22 @@ export interface Artist {
   medium?: string;
   /** Shop, site, socials. Order is the order shown. */
   links: ArtistLink[];
-  /** Path under /public, with a credit line. */
+  /** Path under /public, with a credit line. Used in the list and the card. */
   image?: string;
   imageCredit?: string;
+  /**
+   * A different picture for the top of the artist's own page.
+   *
+   * Optional, and it falls back to `image` when absent, so the six profiles
+   * written before this existed are untouched.
+   *
+   * It exists because the two images are doing different jobs. The list
+   * thumbnail is square and crops hard from the centre, so it wants something
+   * that survives that; the page runs full width and can carry a wide photo.
+   * Forcing one file to do both means choosing which of the two looks wrong.
+   */
+  heroImage?: string;
+  heroImageCredit?: string;
   /**
    * Whether the artist has agreed to be featured.
    *
@@ -83,6 +96,10 @@ function parse(fileName: string): Artist {
     links,
     image: data.image ? String(data.image) : undefined,
     imageCredit: data.imageCredit ? String(data.imageCredit) : undefined,
+    heroImage: data.heroImage ? String(data.heroImage) : undefined,
+    heroImageCredit: data.heroImageCredit
+      ? String(data.heroImageCredit)
+      : undefined,
     permission: data.permission === true,
     featureOrder:
       typeof data.featureOrder === "number"

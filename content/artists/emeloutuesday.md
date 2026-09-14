@@ -8,12 +8,17 @@ permission: true
 
 # Shop first, then where the work is posted.
 links:
-  - label: Etsy shop
-    href: https://emeloutuesday.etsy.com/
+  - label: Ko-fi shop
+    href: https://ko-fi.com/emeloutuesday
+  - label: Portfolio
+    href: https://emeloutuesday.artstation.com/
+  - label: Substack
+    href: https://substack.com/@emeloutuesday
   - label: Instagram
     href: https://www.instagram.com/emeloutuesday/
 
 image: /images/artists/emeloutuesday.jpg
+heroImage: /images/artists/emeloutuesday-hero.jpg
 ---
 
 EmelouTuesday is an independent artist and illustrator whose work blends

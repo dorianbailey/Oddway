@@ -28,7 +28,7 @@ experiment with different styles, textures, and interpretations of familiar
 legends.
 
 Through Glitter and Toadstools, Hannah turns her original artwork into a wide
-range of products, including original pieces, art prints, stickers, enamel
+range of products, including original pieces, art prints, stickers, wooden
 pins, card decks, hats, shirts, and other merchandise. Whether she is
 illustrating a creature from folklore, putting a new spin on an old fairytale,
 or creating something inspired by the stranger side of the world, her work

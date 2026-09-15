@@ -150,7 +150,9 @@ export default function PrivacyPage() {
           <h2>Who else handles it</h2>
           <p>
             We do not run our own servers. These companies process data on our
-            behalf, all of them in the United States:
+            behalf. Most are in the United States; the two mapping services are
+            not, and that is worth knowing because a routing request carries
+            where you are going:
           </p>
           <ul>
             <li>
@@ -174,8 +176,17 @@ export default function PrivacyPage() {
               to Stripe or known to them.
             </li>
             <li>
-              <strong>OpenRouteService and OpenFreeMap</strong> — routing and
-              map tiles, as above.
+              <strong>OpenRouteService</strong> — works out the route between
+              the two places you type in, so it necessarily receives them. Run
+              by HeiGIT, a non-profit attached to Heidelberg University, in
+              Germany. Requests leave the United States to reach it.
+            </li>
+            <li>
+              <strong>OpenFreeMap</strong> — the map tiles. Run by one person on
+              dedicated servers in Europe, served through a content network. It
+              takes no registration, sets no cookies and keeps no user database,
+              which is a large part of why we chose it over the commercial
+              alternatives.
             </li>
           </ul>
           <p>

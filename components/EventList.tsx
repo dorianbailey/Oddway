@@ -226,7 +226,7 @@ export function EventList({ events }: { events: OddEvent[] }) {
 
             <p className="mt-3">
               <span className={cx(finished && "text-ink-soft")}>
-                {event.displayDate ?? "Date not published"}
+                {stripConfidence(event.displayDate) ?? "Date not published"}
               </span>
               {/*
                 Estimated dates are marked every time they appear. Rendering a
@@ -240,7 +240,19 @@ export function EventList({ events }: { events: OddEvent[] }) {
               ) : null}
             </p>
 
-            {!finished && until !== null && until >= 0 ? (
+            {/*
+              Only against a date somebody announced.
+
+              daysUntil counts from start_date, which for an estimated event is
+              our guess — so "In 4 days" appeared beside "Estimated fall 2026",
+              which is a precise-sounding claim about a date nobody has set.
+              The badge said it was an estimate and the line below contradicted
+              it.
+            */}
+            {!finished &&
+            event.dateConfidence === "confirmed" &&
+            until !== null &&
+            until >= 0 ? (
               <p className="mt-1 text-[0.9rem] text-ink-soft">
                 {until === 0
                   ? "Happening today"
@@ -308,16 +320,34 @@ export function EventList({ events }: { events: OddEvent[] }) {
               )}
             </p>
 
-            {event.contact ? (
-              <p className="mt-2 max-w-[70ch] text-[0.9rem] text-ink-soft">
-                {event.contact}
-              </p>
-            ) : null}
+            {/*
+              Contact details are not rendered.
+
+              The column holds whatever the research turned up — organiser
+              emails, mobile numbers, and notes to ourselves like "no public
+              email located". None of that belongs on a public page: the notes
+              are working material, and publishing somebody's personal address
+              because it appeared on a festival flyer is not ours to do. The
+              official site link is the right way to reach an organiser.
+            */}
           </li>
         ))}
       </ul>
     </>
   );
+}
+
+/**
+ * Drop a trailing "(confirmed)" or "(estimated)" from a display date.
+ *
+ * Both are carried in the stored string, and the badge beside it already says
+ * the same thing — which read as "October 2-4, 2026 (estimated) Estimated —
+ * confirm before travelling". The parenthetical is for whoever is editing the
+ * row; the badge is for the reader.
+ */
+function stripConfidence(value: string | null): string | null {
+  if (!value) return value;
+  return value.replace(/\s*\((confirmed|estimated)\)\s*$/i, "").trim();
 }
 
 /** The spreadsheet lists bare domains; links need a scheme. */

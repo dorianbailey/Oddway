@@ -24,7 +24,7 @@ export default async function MeetTheMakerPage() {
     <>
       <PageHero>
         <p className="text-[0.95rem] tracking-[0.14em] text-[#cfc9bb] uppercase">
-          Meet the Maker
+          Meet Six
         </p>
         <h1 className="mt-4 max-w-[16ch] text-hero">The Story of Six</h1>
         <p className="mt-6 max-w-[56ch] text-lede text-[#cfc9bb]">

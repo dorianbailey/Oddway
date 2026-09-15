@@ -146,7 +146,7 @@ export default async function TripPage({ params }: TripPageProps) {
         <p className="mt-4 text-[0.95rem] text-[#cfc9bb]">
           {stops.length} stops
           {trip.onFoot ? " · on foot" : ""}
-          {trip.days ? ` · ${trip.days} days` : ""}
+          {trip.days ? ` · ${trip.days} ${trip.days === 1 ? "day" : "days"}` : ""}
           {states.length > 0 ? ` · ${states.map(stateName).join(", ")}` : ""}
           {` · ${scale}`}
         </p>

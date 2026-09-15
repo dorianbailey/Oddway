@@ -94,16 +94,24 @@ export default async function AboutPage() {
             search finds things whose names contain the keyword and misses the
             Albatwitch at Chickies Rock entirely.
           </p>
+          {/*
+            This used to explain that rival guides are credited "without
+            linking, so you can check it without us handing them the click".
+            True, and beside the point — it made the paragraph about them
+            rather than about the gap in what we know. The admission is the
+            valuable part; the swipe was doing nothing for the reader.
+          */}
           <p>
-            Every entry cites where its facts came from. Where that source is a
-            rival travel guide we credit it by name without linking, so you can
-            check it without us handing them the click — and for{" "}
+            Every entry cites where its facts came from. Some rest on a
+            secondary source because no primary one exists — for{" "}
             <strong>
-              {guideOnly.toLocaleString()} entries that guide is the only thing
-              anybody has ever written about the place.
+              {guideOnly.toLocaleString()} entries, another travel guide's
+              write-up is the only thing anybody has ever published about the
+              place.
             </strong>{" "}
-            That is worth saying out loud: a citation is not the same as
-            standing there, and the{" "}
+            Those are credited by name rather than linked. It is worth saying
+            out loud either way: a citation is not the same as standing there,
+            and the{" "}
             <Link href="/suggest?kind=correction">suggestion box</Link> exists
             because somebody standing outside a museum that shut two years ago
             knows something the index does not.

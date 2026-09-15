@@ -8,7 +8,7 @@ stops:
   - north-park-gravity-hill-pittsburgh-pa
   - kecksburg-ufo-monument
   - gravity-hill-new-paris
-  - centralia
+  - centralia-mine-fire
   - eastern-state-penitentiary
 ---
 

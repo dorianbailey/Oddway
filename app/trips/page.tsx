@@ -52,7 +52,7 @@ export default async function TripsPage() {
               <p className="mt-2 max-w-[68ch] text-ink-soft">{trip.summary}</p>
               <p className="mt-3 text-[0.9rem] text-ink-soft">
                 {resolved.length} stops
-                {trip.days ? ` · ${trip.days} days` : ""}
+                {trip.days ? ` · ${trip.days} ${trip.days === 1 ? "day" : "days"}` : ""}
                 {states.length > 0
                   ? ` · ${states.map(stateName).join(", ")}`
                   : ""}

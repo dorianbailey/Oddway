@@ -28,6 +28,7 @@ const NAV_LINKS = [
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Artists" },
   { href: "/photos", label: "Photos" },
+  { href: "https://shoptheoddway.com", label: "Shop the OddWay", external: true },
   { href: "/meet-the-maker", label: "Meet Six" },
   { href: "/about", label: "About" },
   { href: "/advertise", label: "Advertise with us" },
@@ -185,16 +186,34 @@ export function Header() {
       >
         <nav aria-label="Main" className="mx-auto max-w-6xl px-5 py-4 sm:px-8">
           <ul className="flex flex-col gap-2">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block rounded-[3px] px-3 py-3 text-[1.05rem] capitalize text-paper transition-colors hover:bg-white/10"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const className =
+                "block rounded-[3px] px-3 py-3 text-[1.05rem] capitalize text-paper transition-colors hover:bg-white/10";
+
+              // Off-site links get a plain anchor and a new tab: next/link
+              // is for routes this app owns, and somebody mid-route-plan
+              // should not lose it by tapping Shop.
+              const external = "external" in link && link.external;
+
+              return (
+                <li key={link.href}>
+                  {external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className={className}>
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <Link

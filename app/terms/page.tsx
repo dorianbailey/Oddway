@@ -127,6 +127,24 @@ export default function TermsPage() {
             sponsor slot is advertising and should be read as advertising.
           </p>
 
+          <h2>The shop</h2>
+          {/*
+            Short on purpose. Shopify handles the order, the payment and the
+            fulfilment, so their terms are the ones that govern a purchase —
+            and writing our own version of a returns policy we do not operate
+            would create two sets of rules that could disagree.
+          */}
+          <p>
+            <a href="https://shoptheoddway.com">Shop the OddWay</a> is our shop
+            and it runs on Shopify, not here. Anything you buy is covered by the
+            terms and the returns policy on that site rather than by this page,
+            and the order, the payment and the posting are all handled there.
+          </p>
+          <p>
+            Nothing in the shop buys a place in the index, the same as
+            advertising does not.
+          </p>
+
           <h2>Accounts</h2>
           <p>
             Aged 13 and over. One person per account. Do not use somebody

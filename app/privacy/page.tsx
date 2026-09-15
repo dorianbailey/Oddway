@@ -189,6 +189,28 @@ export default function PrivacyPage() {
               alternatives.
             </li>
           </ul>
+
+          <h2>The shop</h2>
+          {/*
+            Ours, but not on this site and not in this database. Worth being
+            exact about: "a separate site" would read as somebody else's
+            company, and "we sell things" would imply this site handles the
+            order. Neither is true.
+          */}
+          <p>
+            <a href="https://shoptheoddway.com">Shop the OddWay</a> is our shop,
+            and it runs on Shopify rather than here. If you buy something, your
+            name, address and payment details go to Shopify and to the printers
+            who make and post the goods. None of it reaches this site, and we
+            could not look it up here if we wanted to.
+          </p>
+          <p>
+            That means the shop has its own privacy policy, which is the one
+            that applies once you follow the link. This page covers
+            taketheoddway.com and nothing else.
+          </p>
+          <ul style={{ display: "none" }}>
+          </ul>
           <p>
             We do not sell data to anyone, and there is nothing here worth
             selling.

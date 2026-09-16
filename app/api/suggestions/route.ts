@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
 import { notifySuggestion } from "@/lib/notify";
+import { withinRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -17,11 +18,6 @@ const MAX_MESSAGE = 4000;
  * answer is a captcha or Supabase Edge Function with a shared rate limiter,
  * not more guessing here.
  */
-const WINDOW_MS = 60_000;
-const MAX_PER_WINDOW = 10;
-
-let windowStart = Date.now();
-let countInWindow = 0;
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -70,9 +66,17 @@ export async function POST(request: Request) {
       ? body.category
       : null;
 
-  if (!allowRequest()) {
+  /*
+    Five an hour from one caller. A person reporting a closed museum sends one;
+    somebody sending six is either testing us or filling the table.
+
+    Counted in Postgres rather than in this module. The old counter lived in a
+    module-level variable, which on Vercel counts per instance — so a client
+    opening requests in parallel got a fresh allowance with each one.
+  */
+  if (!(await withinRateLimit(request, "suggestions", 5, 3600))) {
     return NextResponse.json(
-      { error: "Too many suggestions at once. Try again in a minute." },
+      { error: "That is a lot of suggestions at once. Try again in a while." },
       { status: 429 },
     );
   }
@@ -111,12 +115,4 @@ export async function POST(request: Request) {
   return NextResponse.json({ ok: true });
 }
 
-function allowRequest(): boolean {
-  const now = Date.now();
-  if (now - windowStart > WINDOW_MS) {
-    windowStart = now;
-    countInWindow = 0;
-  }
-  countInWindow += 1;
-  return countInWindow <= MAX_PER_WINDOW;
-}
+

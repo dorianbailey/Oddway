@@ -209,8 +209,24 @@ export default function PrivacyPage() {
             that applies once you follow the link. This page covers
             taketheoddway.com and nothing else.
           </p>
-          <ul style={{ display: "none" }}>
-          </ul>
+          <h2>Stopping abuse</h2>
+          {/*
+            Added when the rate limiter went in. It stores something derived
+            from a visitor, and a privacy page that lists every processor by
+            name should not go quiet about the one thing the site itself keeps.
+          */}
+          <p>
+            The suggestion form and the address search are open to anybody,
+            which makes them worth flooding. To count how often one person uses
+            them, we keep a scrambled version of your network address against a
+            counter for up to a day.
+          </p>
+          <p>
+            It cannot be turned back into an address, nobody reads it, and it is
+            deleted after a day. It exists so that one visitor cannot spoil
+            either of those things for everybody else.
+          </p>
+
           <p>
             We do not sell data to anyone, and there is nothing here worth
             selling.

@@ -4,7 +4,18 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { getArtists, getFeaturedArtist, nextRotation } from "@/lib/artists";
 
-export const revalidate = 3600;
+/*
+  A minute, not an hour.
+
+  The feature changes at nine on a Wednesday morning, and an hour-long cache
+  meant it could still be showing last week's artist at ten — worse, the first
+  visitor after the change gets the stale page and only triggers the rebuild,
+  so somebody checking at nine sees the old one and assumes it is broken.
+
+  The page reads eight markdown files off disk and touches no database, so
+  regenerating it every minute costs nothing worth saving.
+*/
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Odd artists",

@@ -27,11 +27,9 @@ const NAV_LINKS = [
   { href: "/trips", label: "Trips" },
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Artists" },
-  { href: "/photos", label: "Photos" },
   { href: "https://shoptheoddway.com", label: "Shop the OddWay", external: true },
   { href: "/meet-the-maker", label: "Meet Six" },
   { href: "/about", label: "About" },
-  { href: "/advertise", label: "Advertise with us" },
 ] as const;
 
 /** Matches the media query the rest of the site honours. */

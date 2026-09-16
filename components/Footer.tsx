@@ -13,6 +13,8 @@ const FOOTER_LINKS = [
   { href: "/trips", label: "Trips" },
   { href: "/stories", label: "Stories" },
   { href: "/artists", label: "Odd artists" },
+  /* Moved out of the burger menu, which is for the things people come for. */
+  { href: "/photos", label: "Photos" },
   { href: "/about", label: "About" },
   { href: "/suggest", label: "Suggest a stop" },
   /*

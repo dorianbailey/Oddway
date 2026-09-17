@@ -50,6 +50,16 @@ export interface Artist {
   heroImage?: string;
   heroImageCredit?: string;
   /**
+   * A second picture, dropped into the middle of the page.
+   *
+   * Optional like the hero. It exists because a profile with one image at the
+   * top and six paragraphs under it reads like a press release — and for an
+   * illustrator, the work is the argument. Better to interrupt the prose with
+   * a piece than to describe it for another paragraph.
+   */
+  bodyImage?: string;
+  bodyImageCredit?: string;
+  /**
    * Whether the artist has agreed to be featured.
    *
    * Required, and profiles without it are never shown. Featuring somebody's
@@ -99,6 +109,10 @@ function parse(fileName: string): Artist {
     heroImage: data.heroImage ? String(data.heroImage) : undefined,
     heroImageCredit: data.heroImageCredit
       ? String(data.heroImageCredit)
+      : undefined,
+    bodyImage: data.bodyImage ? String(data.bodyImage) : undefined,
+    bodyImageCredit: data.bodyImageCredit
+      ? String(data.bodyImageCredit)
       : undefined,
     permission: data.permission === true,
     featureOrder:

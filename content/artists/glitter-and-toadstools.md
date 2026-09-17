@@ -3,7 +3,7 @@ name: Glitter and Toadstools
 summary: Hannah Mathis takes folklore, fairytales and cryptids — the ones usually drawn as frightening — and reimagines them colourful, whimsical and playful. Prints, stickers, pins, card decks and shirts.
 medium: Gouache, acrylic, pencil, ink and digital illustration
 
-featureOrder: 8
+featureOrder: 9
 permission: true
 
 links:

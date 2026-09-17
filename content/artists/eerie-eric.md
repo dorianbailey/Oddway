@@ -6,7 +6,7 @@ medium: Painting, tattooing, cartooning and illustration
 
 # Sixth in the rotation. Check this is the next number after the highest
 # already in use — the others are in the five files beside this one.
-featureOrder: 6
+featureOrder: 7
 
 # Set to false deliberately.
 #

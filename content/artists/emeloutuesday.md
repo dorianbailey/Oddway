@@ -3,7 +3,7 @@ name: EmelouTuesday
 summary: An artist and illustrator blending graphite with digital painting to make biologically grounded creatures — beings that could genuinely exist within their own worlds, rather than monsters to be afraid of.
 medium: Graphite and digital illustration, creature design, trading cards
 
-featureOrder: 7
+featureOrder: 8
 permission: true
 
 # Shop first, then where the work is posted.

@@ -38,6 +38,21 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
   const artist = getArtist(slug);
   if (!artist) notFound();
 
+  /*
+    The first paragraph goes above the hero image.
+
+    A page that opens on a picture makes the reader work out who they are
+    looking at from the caption. One paragraph of introduction, then the work.
+
+    The prose arrives as a single blob of HTML from the markdown, so this cuts
+    on the first closing paragraph tag — there is no component boundary to use.
+    An artist with one paragraph renders exactly as before.
+  */
+  const parts = artist.html.split("</p>");
+  const hasLead = parts.length > 1;
+  const lead = hasLead ? parts[0] + "</p>" : "";
+  const rest = hasLead ? parts.slice(1).join("</p>") : artist.html;
+
   const hero = artist.heroImage ?? artist.image;
   const heroCredit = artist.heroImage
     ? artist.heroImageCredit
@@ -60,6 +75,13 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
       </PageHero>
 
       <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
+        {hasLead ? (
+          <div
+            className="article mb-10"
+            dangerouslySetInnerHTML={{ __html: lead }}
+          />
+        ) : null}
+
         {/*
           The hero when there is one, the list image otherwise. The credit
           follows whichever picture is actually shown — attaching one image's
@@ -87,8 +109,30 @@ export default async function ArtistPage({ params }: ArtistPageProps) {
 
         <div
           className="article"
-          dangerouslySetInnerHTML={{ __html: artist.html }}
+          dangerouslySetInnerHTML={{ __html: rest }}
         />
+
+        {/*
+          The second picture sits after the prose and immediately before the
+          links — once somebody knows what she makes, and right where they can
+          go and buy it.
+        */}
+        {artist.bodyImage ? (
+          <figure className="mt-12">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={artist.bodyImage}
+              alt={`Work by ${artist.name}`}
+              loading="lazy"
+              className="w-full border border-contour/45"
+            />
+            {artist.bodyImageCredit ? (
+              <figcaption className="mt-2 text-[0.85rem] text-ink-soft">
+                {artist.bodyImageCredit}
+              </figcaption>
+            ) : null}
+          </figure>
+        ) : null}
 
         {artist.links.length > 0 ? (
           <section className="mt-12 border-t border-contour/40 pt-8">

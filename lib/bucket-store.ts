@@ -78,7 +78,43 @@ async function load() {
     loaded = true;
     loading = false;
     emit();
+    // After the list is known, so the check for "already saved" is accurate.
+    void flushPendingSave();
   }
+}
+
+/**
+ * A stop somebody tried to save before they had an account.
+ *
+ * Kept in sessionStorage rather than in this module, because signing in
+ * reloads the page — a variable here would not survive the trip, which is the
+ * whole moment we are trying to hold on to.
+ *
+ * Session rather than local: if they abandon it and come back tomorrow,
+ * silently adding something they half-chose yesterday would be worse than
+ * forgetting.
+ */
+const PENDING_KEY = "oddway:pending-bucket";
+
+export function rememberPendingSave(stopId: string) {
+  try {
+    window.sessionStorage.setItem(PENDING_KEY, stopId);
+  } catch {
+    // Private browsing, or storage disabled. They will have to tap again.
+  }
+}
+
+/** Save whatever they were trying to save before signing in. */
+async function flushPendingSave() {
+  if (!userId) return;
+  let pending: string | null = null;
+  try {
+    pending = window.sessionStorage.getItem(PENDING_KEY);
+    if (pending) window.sessionStorage.removeItem(PENDING_KEY);
+  } catch {
+    return;
+  }
+  if (pending && !ids.has(pending)) await bucketStore.toggle(pending);
 }
 
 export const bucketStore = {

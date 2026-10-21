@@ -202,7 +202,18 @@ function weeksSinceAnchor(now: Date): number {
   if (weekday === 3 && hour < 9) back = 7;
 
   const thisWeek = Date.UTC(year, month - 1, day) - back * 86_400_000;
-  const anchor = Date.UTC(2026, 8, 9); // 9 September 2026
+  /*
+    Moved forward a week on 21 October 2026.
+
+    The rotation picks by position in the list, not by the featureOrder number,
+    so inserting an artist shifts everyone after them — including which week
+    the maths says they were featured in. Adding Brett Manning at position five
+    pushed Emily Crabtree Stephens a week late against what she had been told.
+
+    Shifting the anchor rather than renumbering keeps the order intact and puts
+    the right person in the right week.
+  */
+  const anchor = Date.UTC(2026, 8, 16); // 16 September 2026
 
   return Math.max(0, Math.round((thisWeek - anchor) / (7 * 86_400_000)));
 }

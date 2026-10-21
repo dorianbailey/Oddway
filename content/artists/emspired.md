@@ -15,21 +15,25 @@ links:
 
 In her own words:
 
-> Drawing inspiration from folklore, nature, illustration, and horror, Emily's
-> art comes from a special place where diverse mediums, complex textures, and
-> bold color theory blur the lines between reality and fantasy — a place she
-> hopes you will be inspired.
+> Drawing inspiration from folklore, nature, illustration, and horror, my art
+> comes from a special place where diverse mediums, complex textures, and bold
+> color theory blur the lines between reality and fantasy — a place I hope you
+> will be inspired.
+
+> Take a closer look and the "in between" becomes obvious: a shrouded figure
+> lifts its veil to you; a fragile tea cup, cracked and dirty, continues to
+> pour despite its weariness; unyielding and unblinking eyes, tangled in a mess
+> of thought and acrylic pen, beg for rest; a traveling paper boat sails across
+> a sea of stars, leaving a rainbow in its wake; delicate hands hold tight to
+> each other against the passage of time…. Each piece moves seamlessly from
+> tenderness to unsettling and back again without seeming to change at all,
+> which is exactly what the older stories do.
 
 ## Why She Is Here
 
-Look at the range in one picture and the folklore part is obvious: a shrouded
-figure in charcoal, a field of eyes and lightning, a paper boat trailing a
-rainbow through space, hands reaching through a sun. It moves between the
-tender and the unsettling without seeming to change gear, which is exactly what
-the older stories do.
-
-Half this index is places where somebody saw something and nobody could agree
-what. Her work sits in the same doubt and seems happy there.
+Half of this index is places where someone saw something — and though no one
+could agree on what it was, you'd always go looking again. Her work sits in
+that same place, and seems happy there.
 
 ## Getting Hold Of It
 
